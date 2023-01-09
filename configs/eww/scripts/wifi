@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+
+toggle() {
+  status=$(rfkill -J | jq -r '.rfkilldevices[] | select(.type == "wlan") | .soft' | head -1)
+
+  if [ "$status" = "unblocked" ]; then
+    rfkill block wlan
+  else
+    rfkill unblock wlan
+  fi
+}
+if [[ "$1" = "toggle" ]]; then
+  toggle
+else
+  while [[ true ]]; do
+    status=$(nmcli g | grep -oE "disconnected")
+    essid=$(nmcli -t -f active,ssid dev wifi | grep '^yes' | cut -d: -f2)
+
+    if [ $status ]; then
+      icon="睊"
+      text="..."
+      color=#fb4934
+      echo '{ "text": "'"$text"'", "icon": "'"$icon"'", "color": "'"$color"'" }'
+    else
+      icon=""
+      text="${essid}"
+      color=#ebdbb2
+      echo '{ "text": "'"$text"'", "icon": "'"$icon"'", "color": "'"$color"'" }'
+    fi
+
+    sleep 3
+  done
+fi

@@ -1,0 +1,104 @@
+#!/usr/bin/env bash
+
+volicons=(" " "墳" " " " " " ")
+
+cachelocation=$HOME/.cache/volumescript
+[ -f $cachelocation ] || echo "false" >$cachelocation
+
+vol() {
+  wpctl get-volume @DEFAULT_AUDIO_$1@ | awk '{print int($2*100)}'
+}
+ismuted() {
+  wpctl get-volume @DEFAULT_AUDIO_"$1"@ | rg -i muted
+  echo $?
+}
+setvol() {
+  wpctl set-volume @DEFAULT_AUDIO_"$1"@ "$(awk -v n="$2" 'BEGIN{print (n / 100)}')"
+}
+setmute() {
+  wpctl set-mute @DEFAULT_AUDIO_"$1"@ toggle
+}
+isheadphone() {
+  status=$(pactl list sinks | rg -e analog-output- | awk '/Active Port:/{print $3}')
+  if [[ $status = 'analog-output-headphones' ]]; then
+    echo $?
+  else
+    echo $?
+  fi
+}
+togglesink() {
+  status="$(isheadphone)"
+  if [[ "$status" = "0" ]]; then
+    pactl set-sink-port 0 analog-output-lineout
+  else
+    pactl set-sink-port 0 analog-output-headphones
+  fi
+}
+
+if [ "$1" = "mute" ]; then
+  if [ "$2" != "SOURCE" ] && [ "$2" != "SINK" ]; then
+    echo "Can only mute SINK or SOURCE"
+    exit 1
+  fi
+  setmute "$2"
+elif [ "$1" = "setvol" ]; then
+  if [ "$2" != "SOURCE" ] && [ "$2" != "SINK" ]; then
+    echo "Can only set volume for SINK or SOURCE"
+    exit 1
+  elif [ "$3" -lt 1 ] || [ "$3" -gt 150 ]; then
+    echo "Volume must be between 1 and 150"
+    exit 1
+  fi
+  setvol "$2" "$3"
+elif [ "$1" = "togglesink" ]; then
+  togglesink
+else
+  # initial values
+  lvl=$(awk -v n="$(vol "SINK")" 'BEGIN{print int(n/34)}')
+  ismuted=$(ismuted "SINK")
+  volicon=""
+  muteicon=""
+
+  seticon() {
+    status="$(isheadphone)"
+    if [ "$status" = "0" ]; then
+      volicon=""
+      muteicon="ﳌ"
+    else
+      volicon="${volicons[$lvl]}"
+      muteicon="奄"
+    fi
+  }
+
+  if [ "$ismuted" = 1 ]; then
+    seticon
+    icon=$volicon
+    color=#ebdbb2
+    text="$(vol "SINK")"
+  else
+    seticon
+    icon=$muteicon
+    color=#fb4934
+    text=0
+  fi
+  echo '{ "icon": "'"$icon"'", "color": "'"$color"'", "percent": "'"$text"'", "microphone": "'"$(vol "SOURCE")"'" }'
+
+  # event loop
+  pactl subscribe | rg --line-buffered "change" | while read -r _; do
+    lvl=$(awk -v n="$(vol "SINK")" 'BEGIN{print int(n/34)}')
+    ismuted=$(ismuted "SINK")
+
+    if [ "$ismuted" = 1 ]; then
+      seticon
+      icon=$volicon
+      color=#ebdbb2
+      text="$(vol "SINK")"
+    else
+      seticon
+      icon=$muteicon
+      color=#fb4934
+      text=0
+    fi
+    echo '{ "icon": "'"$icon"'", "color": "'"$color"'", "percent": "'"$text"'", "microphone": "'"$(vol "SOURCE")"'" }'
+  done
+fi

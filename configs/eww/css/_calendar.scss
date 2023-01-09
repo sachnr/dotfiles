@@ -1,0 +1,38 @@
+.calendar-win {
+  @include window;
+  background-color: $base00;
+  border: 1px solid $xcolor0;
+  color: $xcolor15;
+  padding: 0.2em;
+}
+
+calendar {
+  padding: 4px;
+  font-size: 14px;
+  font-weight: bold;
+
+  :selected {
+    border-radius: 6px;
+    background: $xcolor12;
+  }
+
+  .header {
+    color: $xcolor12;
+    font-size: 14px;
+    font-weight: bold;
+  }
+
+  .highlight {
+    color: $xcolor12;
+    font-size: 16px;
+    font-weight: bold;
+  }
+
+  .button {
+    color: $xcolor15;
+  }
+
+  :indeterminate {
+    color: $xcolor7;
+  }
+}

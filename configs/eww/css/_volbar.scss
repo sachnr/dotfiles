@@ -1,0 +1,19 @@
+scale trough {
+  all: unset;
+  background-color: $base01;
+  box-shadow: 0 2px 3px 2px $base00;
+  border-radius: 16px;
+  min-height: 10px;
+  min-width: 70px;
+  margin: 0px 5px 0px 10px;
+}
+
+.slider trough highlight {
+  background-image: linear-gradient(
+    to right,
+    $xcolor12 30%,
+    $xcolor10 50%,
+    $xcolor12 100% * 50
+  );
+  border-radius: 10px;
+}

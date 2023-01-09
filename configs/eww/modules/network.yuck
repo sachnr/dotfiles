@@ -1,0 +1,40 @@
+(deflisten wifi "scripts/wifi")
+(defvar wifi_rev false)
+
+(deflisten bluetooth "scripts/bluetooth")
+(defvar bluetooth_rev false)
+
+(defwidget network-module []
+      (box :class "module"
+           :orientation "h"
+           :space-evenly "false"
+           :spacing 3
+           (eventbox :onhover "${EWW_CMD} update wifi_rev=true"
+                     :onhoverlost "${EWW_CMD} update wifi_rev=false"
+                     :onrightclick "blueberry &"
+                     :onclick "scripts/bluetooth toggle"
+                     :cursor "pointer"
+                    (box :orientation "h" :space-evenly "false" 
+                        (button :class "icon"
+                                :style "color:${bluetooth["color"]};"
+                               "${bluetooth["icon"]}")
+                              (revealer :reveal wifi_rev
+                                        :transition "slideright"
+                                        :duration "350ms"
+                                        (label :class "text"
+                                              :text {bluetooth["text"]}))))
+            (eventbox :onhover "${EWW_CMD} update bluetooth_rev=true"
+                     :onhoverlost "${EWW_CMD} update bluetooth_rev=false"
+                     :onrightclick "nm-connection-editor &"
+                     :onclick "scripts/wifi toggle"
+                     :cursor "pointer"
+                    (box :orientation "h" :space-evenly "false" :spacing 3
+                        (button :class "text"
+                                :style "color:${wifi["color"]};"
+                               "${wifi["icon"]}")
+                              (revealer :reveal bluetooth_rev
+                                        :transition "slideright"
+                                        :duration "350ms"
+                                        (label :text {wifi["text"]}
+                                              :class "text"))))))
+

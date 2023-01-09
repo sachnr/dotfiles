@@ -1,0 +1,64 @@
+.workspace {
+  font-size: 14px;
+  color: $xcolor7;
+  padding: 0 0.6em;
+  margin: 6px;
+  border-radius: 6px;
+  background-color: $xcolor0;
+}
+
+.0,
+.01,
+.02,
+.03,
+.04,
+.05,
+.06,
+.07,
+.08,
+.09,
+.011,
+.022,
+.033,
+.044,
+.055,
+.066,
+.077,
+.088,
+.099 {
+  padding: 6px 10px 6px 8px;
+  margin-right: 4px;
+}
+
+/* Unoccupied */
+.0 {
+  color: $xcolor7;
+}
+
+/* Occupied */
+.01,
+.02,
+.03,
+.04,
+.05,
+.06,
+.07,
+.08,
+.09 {
+  color: $base07;
+}
+
+/* Focused */
+.011,
+.022,
+.033,
+.044,
+.055,
+.066,
+.077,
+.088,
+.099 {
+  color: $base07;
+  background-color: $xcolor12;
+  border-radius: 6px;
+}

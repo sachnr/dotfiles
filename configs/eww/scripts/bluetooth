@@ -1,0 +1,39 @@
+#!/usr/bin/env bash
+
+toggle() {
+  status=$(rfkill -J | jq -r '.rfkilldevices[] | select(.type == "bluetooth") | .soft' | head -1)
+
+  if [ "$status" = "unblocked" ]; then
+    rfkill block bluetooth
+  else
+    rfkill unblock bluetooth
+  fi
+}
+
+if [[ "$1" = "toggle" ]]; then
+  toggle
+else
+  while [[ true ]]; do
+    info=$(bluetoothctl info)
+    status=$(bluetoothctl show | rg Powered | cut -f 2- -d ' ')
+    name=$(echo "$info" | rg Name | cut -f 2- -d ' ')
+
+    if [ $status = "yes" ]; then
+      icon=""
+      if [ -n "$name" ]; then
+        text="$name"
+      else
+        text="..."
+      fi
+      color=#ebdbb2
+      echo '{ "text": "'"$text"'", "icon": "'"$icon"'", "color": "'"$color"'" }'
+    else
+      icon=""
+      text="..."
+      color=#fb4934
+      echo '{ "text": "'"$text"'", "icon": "'"$icon"'", "color": "'"$color"'" }'
+    fi
+
+    sleep 3
+  done
+fi

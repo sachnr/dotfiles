@@ -1,0 +1,211 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto+Mono");
+/* :root { */
+/*   --bg: ${base00}; */
+/*   --fg: ${xcolor4}; */
+/*   --secondaryFg: ${xcolor15}; */
+/*   --containerBg: ${base01}; */
+/*   --searchBg: var(--containerBg); */
+/*   --scrollbarColor: ${xcolor4}; */
+/*   --shadow: ${xcolor0}; */
+/*   --border: ${xcolor0}; */
+/*   --fontFamily: 'Roboto Mono', monospace; */
+/* } */
+
+:root {
+  --bg: #1d2021;
+  --fg: #458588;
+  --secondaryFg: #ebdbb2;
+  --containerBg: #3c3836;
+  --searchBg: var(--containerBg);
+  --scrollbarColor: #83a598;
+  --shadow: #282828;
+  --border: #282828;
+  --grey: = "#a89984";
+  --fontFamily: "Roboto Mono", monospace;
+}
+
+body {
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-image: url("file:///image");
+  margin: 0px;
+}
+
+.container {
+  width: 100%;
+  height: 94vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+#clock {
+  width: 30%;
+  background-color: var(--containerBg);
+  border-radius: 1px;
+  padding: 0.5rem;
+  font-family: sans-serif;
+  font-size: 3.5rem;
+  font-weight: 600;
+  font-family: var(--fontFamily);
+  color: var(--fg);
+  margin-bottom: 0.25em;
+  text-align: center;
+  box-shadow: 6px 8px 12px var(--shadow);
+}
+
+.topContainer {
+  width: 100%;
+  height: 5vh;
+  height: fit-content;
+  display: flex;
+  align-items: flex-end;
+  justify-content: end;
+  flex-direction: row;
+}
+
+#edit {
+  width: 6%;
+  background-color: var(--containerBg);
+  border-radius: 1px;
+  border-color: (--border);
+  padding: 0.1rem;
+  font-family: sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  font-family: var(--fontFamily);
+  color: var(--fg);
+  margin-bottom: 0em;
+  text-align: center;
+  box-shadow: 6px 8px 12px var(--shadow);
+}
+
+#search {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+#search-field {
+  width: 25%;
+  padding: 1em;
+  background-color: var(--searchBg);
+  border: solid 0px var(--searchBg);
+  font-family: var(--fontFamily);
+  font-size: 1rem;
+  color: var(--fg);
+  border-radius: 3px;
+  text-align: center;
+}
+
+#search-toggle {
+  text-align: center;
+  border-radius: 3px;
+  padding: 1em;
+  cursor: pointer;
+}
+
+input::-webkit-input-placeholder {
+  color: var(--grey) !important;
+}
+
+::placeholder {
+  color: var(--grey) !important;
+}
+
+.weather-container {
+  width: 30%;
+  background-color: var(--containerBg);
+  padding: 1em;
+  border-radius: 3px;
+  font-family: var(--fontFamily);
+  color: var(--fg);
+  text-align: center;
+  box-shadow: 6px 8px 12px var(--shadow);
+}
+.inline {
+  display: inline-block;
+}
+
+#bookmark-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 50%;
+  margin: 1em 0em;
+}
+
+@media only screen and (max-width: 960px) {
+  .container {
+    height: auto;
+  }
+  #clock {
+    margin-top: 1em;
+  }
+  .container > #bookmark-container {
+    flex-direction: column;
+    width: 60%;
+  }
+  #bookmark-container > .bookmark-set {
+    width: auto;
+    margin: 1em 0em;
+  }
+}
+
+.bookmark-set {
+  padding: 1em;
+  background-color: var(--containerBg);
+  border-radius: 3px;
+  font-family: var(--fontFamily);
+  font-size: 0.9rem;
+  width: 25%;
+  height: 15em;
+  margin: 0em 0.5em;
+  box-sizing: border-box;
+  box-shadow: 6px 8px 12px var(--shadow);
+}
+
+.bookmark-inner-container {
+  overflow-y: scroll;
+  height: 80%;
+  vertical-align: top;
+  padding-right: 6px;
+  box-sizing: border-box;
+
+  scrollbar-width: thin;
+  scrollbar-color: var(--scrollbarColor) #ffffff00;
+}
+
+.bookmark-inner-container::-webkit-scrollbar {
+  width: 6px;
+}
+.bookmark-inner-container::-webkit-scrollbar-track {
+  background: #ffffff00;
+}
+.bookmark-inner-container::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbarColor);
+  border-radius: 6px;
+  border: 3px solid #ffffff00;
+}
+
+.bookmark-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--fg);
+  margin: 0em 0em 0.35em 0em;
+}
+.bookmark {
+  text-decoration: none;
+  color: var(--secondaryFg);
+  display: block;
+  margin: 0.5em 0em;
+}
+.bookmark:hover {
+  color: var(--fg);
+}

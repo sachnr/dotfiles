@@ -1,0 +1,170 @@
+{
+  pkgs,
+  user,
+  config,
+  lib,
+  ...
+}: let
+  cfg = config.modules.services.mpd;
+  mpdconf = ''
+    music_directory                 "~/Music"
+    playlist_directory              "~/.config/mpd"
+    db_file                         "~/.config/mpd/mpd.db"
+    log_file                        "~/.config/mpd/log"
+    pid_file                        "~/.config/mpd/mpd.pid"
+    state_file                      "~/.config/mpd/mpdstate"
+    sticker_file                    "~/.config/mpd/sticker.sql"
+    user                            "sachnr"
+    bind_to_address                 "127.0.0.1"
+    port                            "6600"
+    log_level                       "default"
+    restore_paused                  "yes"
+    input {
+      plugin "curl"
+    }
+    audio_output {
+      type            "pipewire"
+      name            "MPD Output"
+    }
+    audio_output {
+      type        "fifo"
+      name        "Visualizer"
+      path        "/tmp/mpd.fifo"
+      format      "44100:16:2"
+    }
+    filesystem_charset              "UTF-8"
+  '';
+in
+  with lib; {
+    options.modules.services.mpd = {
+      enable = mkOption {
+        type = types.bool;
+        default = false;
+        description = "enables mpd and ncmpcpp";
+      };
+    };
+
+    config = mkIf (cfg.enable) {
+      home = {
+        packages = with pkgs; [
+          mpv
+          mpc-cli
+        ];
+      };
+
+      systemd.user.tmpfiles.rules = ["
+        d /home/${user}/.config/mpd
+        d /home/${user}/.config/ncmpcpp
+      "];
+
+      services = {
+        mpd.enable = true;
+      };
+
+      home.file."mpd/mpd.conf".text = mpdconf;
+
+      programs = {
+        ncmpcpp = {
+          enable = true;
+          mpdMusicDir = "/home/${user}/Music";
+          package = pkgs.ncmpcpp.override {visualizerSupport = true;};
+          bindings = [
+            {
+              key = "j";
+              command = "scroll_down";
+            }
+            {
+              key = "k";
+              command = "scroll_up";
+            }
+            {
+              key = "J";
+              command = ["select_item" "scroll_down"];
+            }
+            {
+              key = "K";
+              command = ["select_item" "scroll_up"];
+            }
+          ];
+          settings = {
+            # MPD
+            # ---
+            mpd_host = "127.0.0.1";
+            mpd_port = 6600;
+            mpd_crossfade_time = "2";
+
+            # VISUALIZER
+            # ---
+            visualizer_data_source = "/tmp/mpd.fifo";
+            visualizer_output_name = "Visualizer";
+            visualizer_in_stereo = "no";
+            visualizer_fps = "60";
+            visualizer_type = "wave";
+            visualizer_look = "∗▐";
+            visualizer_color = "199,200,201,202,166,130,94,58,22";
+            visualizer_spectrum_smooth_look = "yes";
+
+            # GENERAL
+            # ---
+            lyrics_directory = "~/.config/mpd/lyrics";
+            connected_message_on_startup = "yes";
+            cyclic_scrolling = "yes";
+            mouse_support = "yes";
+            mouse_list_scroll_whole_page = "yes";
+            lines_scrolled = "1";
+            message_delay_time = "1";
+            playlist_shorten_total_times = "yes";
+            playlist_display_mode = "columns";
+            browser_display_mode = "columns";
+            search_engine_display_mode = "columns";
+            playlist_editor_display_mode = "columns";
+            autocenter_mode = "yes";
+            centered_cursor = "yes";
+            user_interface = "classic";
+            follow_now_playing_lyrics = "yes";
+            locked_screen_width_part = "50";
+            ask_for_locked_screen_width_part = "yes";
+            display_bitrate = "no";
+            external_editor = "nano";
+            main_window_color = "default";
+            startup_screen = "playlist";
+
+            # PROGRESS BAR
+            # ---
+            progressbar_look = "━━━";
+            #progressbar_look = "▃▃▃";
+            progressbar_elapsed_color = "5";
+            progressbar_color = "black";
+
+            # UI VISIBILITY
+            # ---
+            header_visibility = "no";
+            statusbar_visibility = "yes";
+            titles_visibility = "yes";
+            enable_window_title = "yes";
+
+            # COLORS
+            # ---
+            statusbar_color = "white";
+            color1 = "white";
+            color2 = "blue";
+
+            # UI APPEARANCE
+            # ---
+            now_playing_prefix = "$b$2$7 ";
+            now_playing_suffix = "  $/b$8";
+            current_item_prefix = "$b$7$/b$3 ";
+            current_item_suffix = "  $8";
+
+            song_columns_list_format = "(50)[]{t|fr:Title} (0)[magenta]{a}";
+
+            song_list_format = " {%t $R   $8%a$8}|{%f $R   $8%l$8} $8";
+
+            song_status_format = "$b$6$7[$8      $7]$6 $2 $7{$8 %b }|{$8 %t }|{$8 %f }$7 $8";
+
+            song_window_title_format = "Now Playing ..";
+          };
+        };
+      };
+    };
+  }

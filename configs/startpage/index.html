@@ -21,12 +21,11 @@
       <!-- </div> -->
       <!-- </div> -->
       <div id="search">
-        <img id="search-toggle" onclick="getIcon()" />
+        <img id="search-toggle" onclick="changeIcon()" />
         <input
           id="search-field"
           type="text"
           name="search-field"
-          placeholder="search with ddg"
           onkeypress="return search(event)"
           autofocus
         />
@@ -36,7 +35,33 @@
 
     <script src="bookmarks.js"></script>
     <script>
-      const searchUrl = "https://duckduckgo.com/?t=ffab&q=";
+      var ddg = true;
+      var searchUrl = "https://duckduckgo.com/?t=ffab&q=";
+      const img = document.getElementById("search-toggle");
+      const input = document.getElementById("search-field");
+      input.placeholder = "search with duckduckgo";
+      img.src = "duckduckgo.svg";
+      input.addEventListener("load", () => {
+        console.log("Text Changed");
+      });
+      img.addEventListener("load", () => {
+        console.log("The image has loaded!");
+      });
+
+      function changeIcon() {
+        if (ddg) {
+          img.src = "nix-snowflake.svg";
+          searchUrl = "https://search.nixos.org/packages?query=";
+          input.placeholder = "search in nixpkgs";
+          ddg = false;
+        } else {
+          img.src = "duckduckgo.svg";
+          searchUrl = "https://duckduckgo.com/?t=ffab&q=";
+          input.placeholder = "search with duckduckgo";
+          ddg = true;
+        }
+      }
+
       // Search on enter key event
       function search(e) {
         if (e.keyCode == 13) {
@@ -60,8 +85,6 @@
           (sec < 10 ? "0" + sec : sec)
         );
       }
-
-      function getIcon() {}
 
       // Handle Weather request
       function getWeather() {

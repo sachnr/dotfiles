@@ -33,7 +33,6 @@ in {
       youtube-dl
 
       # General
-      neovim
       networkmanagerapplet
       blueberry
       veracrypt
@@ -80,11 +79,11 @@ in {
 
       # Dev
       python39Full
+      nodePackages.typescript
       git
       nodePackages.npm
       nodejs
       jq
-      vimPlugins.markdown-preview-nvim
 
       # Formatters
       black

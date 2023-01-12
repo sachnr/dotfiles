@@ -6,18 +6,19 @@
 }: let
   gruvbox-kvantum = pkgs.callPackage ../../../../pkgs/gruvbox-kvantum.nix {};
   gruvbox-gtk = pkgs.callPackage ../../../../pkgs/gruvbox-gtk.nix {};
+  Kvantum-themes = pkgs.callPackage ../../../../pkgs/kvantum-themes.nix {};
 in {
   home = {
     packages = with pkgs; [
       gruvbox-gtk
       qogir-theme
     ];
+    # kvantumthemes
     file = {
-      ".config/Kvantum" = {
-        source = gruvbox-kvantum;
+      ".config/" = {
+        source = Kvantum-themes;
         recursive = true;
       };
     };
   };
 }
-

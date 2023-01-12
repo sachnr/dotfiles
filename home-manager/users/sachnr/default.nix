@@ -27,6 +27,9 @@ in {
       gtk.enable = true;
     };
     programs = {
+      neovim = {
+        enable = true;
+      };
       firefox.enable = true;
       kitty.enable = true;
       rofi.enable = true;

@@ -160,10 +160,12 @@ in {
       socat
       lsof
       file
+      glibc
       patchelf
       lm_sensors
       whois
       pulseaudio
+      nix-index
       sddm-theme
 
       ntfs3g

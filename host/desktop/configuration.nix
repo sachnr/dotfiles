@@ -7,6 +7,7 @@
   ...
 }: let
   rtl8814au = config.boot.kernelPackages.callPackage ../../pkgs/rtl88xxau.nix {};
+  sddm-theme = pkgs.callPackage ../../pkgs/sddmtheme.nix {};
 in {
   imports = [
     # Include the results of the hardware scan.
@@ -79,6 +80,7 @@ in {
       };
       displayManager.sddm = {
         enable = true;
+        theme = "nixos-sddm";
       };
     };
     # greetd = {
@@ -162,6 +164,7 @@ in {
       lm_sensors
       whois
       pulseaudio
+      sddm-theme
 
       ntfs3g
       alsa-utils

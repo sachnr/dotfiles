@@ -21,5 +21,7 @@ in
         --replace "rgba(83A598ff)" "rgba(${(builtins.substring 1 6 xcolor12)}ff)" \
         --replace "rgba(1D2021ff)" "rgba(${(builtins.substring 1 6 xcolor0)}ff)" \
         --replace "rgba(1C252C90)" "rgba(${(builtins.substring 1 6 base00)}90)"
+      substituteInPlace $out/hyprpaper.conf \
+        --replace "~/.config/hypr/wallpaper/Shibata_Zeshin.jpg" "${wallpaper}"
     '';
   }

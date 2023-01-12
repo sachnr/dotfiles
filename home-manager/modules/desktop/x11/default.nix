@@ -16,21 +16,16 @@ in
     };
 
     imports = [./xresources.nix];
-    config = mkIf (cfg.enable) {
+    config = mkIf cfg.enable {
       home = {
         packages = with pkgs; [
           xclip
         ];
+        file.".xinitrc".text = ''nvidia-settings --load-config-only'';
       };
       # Enable display manager
       xsession = {
         enable = true;
-        initExtra = ''
-          nvidia-settings --load-config-only &
-        '';
-        profileExtra = ''
-          nvidia-settings --load-config-only &
-        '';
       };
     };
   }

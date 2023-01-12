@@ -16,7 +16,7 @@ in
       };
     };
 
-    config = mkIf (cfg.enable) {
+    config = mkIf cfg.enable {
       programs.kitty = {
         enable = true;
         settings = with theme.colors; {
@@ -121,8 +121,8 @@ in
           "ctrl+shift+equal" = "increase_font_size";
           "ctrl+shift+minus" = "decrease_font_size";
           "ctrl+shift+backspace" = "restore_font_size";
-          "alt+s" = "set_background_opacity + 0.05";
-          "alt+a" = "set_background_opacity - 0.05";
+          "alt+s" = "set_background_opacity +0.05";
+          "alt+a" = "set_background_opacity -0.05";
         };
       };
     };

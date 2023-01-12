@@ -37,7 +37,7 @@ _: {
     sha256 = "sha256:1yyzpffr4a9iklswfvzz1k69bc0g3dbrz68qv4yfhcrrq3fl1phf";
   };
   name = {
-    gtk = "Gruvbox";
+    gtk = "Gruvbox-Dark-B";
     kvantum = "gruvbox-kvantum";
     icon = "Papirus-Dark";
     font = "Roboto";

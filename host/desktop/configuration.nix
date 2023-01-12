@@ -59,25 +59,6 @@ in {
   # polkit
   security.polkit.enable = true;
 
-  # Enable pipewire/pulseaudio
-
-  # hardware.pulseaudio = {
-  #   enable = true;
-  #   support32Bit = true;
-  # };
-
-  services.pipewire = {
-    enable = true;
-    audio.enable = true;
-    alsa = {
-      enable = true;
-      support32Bit = true;
-    };
-    wireplumber.enable = true;
-    pulse.enable = true;
-    jack.enable = true;
-  };
-
   # services.openssh.enable = true;
   # services.printing.enable = true;
 
@@ -100,7 +81,6 @@ in {
         enable = true;
       };
     };
-
     # greetd = {
     #   enable = true;
     #   package = pkgs.greetd.wlgreet;
@@ -112,6 +92,18 @@ in {
     #     default_session = initial_session;
     #   };
     # };
+    # sound
+    pipewire = {
+      enable = true;
+      audio.enable = true;
+      alsa = {
+        enable = true;
+        support32Bit = true;
+      };
+      wireplumber.enable = true;
+      pulse.enable = true;
+      jack.enable = true;
+    };
   };
 
   # nvidia options
@@ -149,7 +141,7 @@ in {
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.sachnr = {
     isNormalUser = true;
-    extraGroups = ["wheel" "video" "audio" "networkmanager" "storage"]; # Enable ‘sudo’ for the user.
+    extraGroups = ["wheel" "video" "audio" "users"]; # Enable ‘sudo’ for the user.
     shell = pkgs.zsh;
   };
 

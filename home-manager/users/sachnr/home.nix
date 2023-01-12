@@ -30,6 +30,7 @@ in {
       pfetch
       gitui
       ripgrep
+      youtube-dl
 
       # General
       neovim
@@ -46,6 +47,7 @@ in {
       # File Manager
       libsForQt5.dolphin-plugins
       libsForQt5.dolphin
+      libsForQt5.ark
 
       # icons
       papirus-icon-theme

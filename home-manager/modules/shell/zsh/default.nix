@@ -52,6 +52,7 @@ in
             [[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
           '';
           shellAliases = {
+            gg = "${pkgs.gitui}/bin/gitui";
             nixr = "sudo nixos-rebuild switch --flake /home/${user}/flake#desktop";
             nixc = "sudo nix-collect-garbage --delete-older-than 7d";
             ls = "${pkgs.exa}/bin/exa --icons --group-directories-first";

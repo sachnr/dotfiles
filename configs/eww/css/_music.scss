@@ -8,7 +8,7 @@
 }
 
 .song-button {
-  color: $base07;
+  color: $xcolor15;
   padding: 0 0.2em;
   font-weight: bold;
   font-size: 14px;
@@ -29,7 +29,7 @@
   @include window;
   background-color: $xcolor0;
   border: 1px solid $base00;
-  color: $base07;
+  color: $xcolor15;
 }
 
 .music-cover-art {
@@ -69,7 +69,7 @@
 
 .music-time {
   font-weight: bold;
-  color: $base07;
+  color: $xcolor15;
   margin: 0 1rem;
 }
 

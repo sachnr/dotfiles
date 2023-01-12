@@ -1,3 +1,3 @@
 _: {
-  colors = import ./gruvbox.nix {};
+  colors = import ./one-dark.nix {};
 }

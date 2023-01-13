@@ -16,7 +16,7 @@ in
       };
     };
 
-    config = lib.mkIf (cfg.enable) {
+    config = mkIf cfg.enable {
       home.packages = with pkgs; [
         exa
         fzf
@@ -60,6 +60,7 @@ in
             tree = "${pkgs.exa}/bin/exa --tree --icons --group-directories-first";
             e = "${pkgs.neovim}/bin/nvim";
             ef = "${pkgs.neovim}/bin/nvim $(${pkgs.fzf}/bin/fzf)";
+            f = "${pkgs.ranger}/bin/ranger";
           };
           plugins = [
             {

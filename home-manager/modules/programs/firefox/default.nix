@@ -16,6 +16,7 @@
       AboutNewTab.newTabURL = newTabURL;
     } catch(e){Cu.reportError(e);}
   '';
+  startpage = pkgs.callPackage ../../../../pkgs/startpage.nix {};
 in
   with lib; {
     options.modules.programs.firefox = {
@@ -24,13 +25,21 @@ in
         default = false;
         description = "enable firefox";
       };
+      startpage = mkOption {
+        type = types.bool;
+        default = false;
+        description = "enable startpage";
+      };
     };
 
-    imports = [
-      ./startpage.nix
-    ];
-
     config = mkIf cfg.enable {
+      home.file = mkIf cfg.startpage {
+        ".config/startpage" = {
+          source = startpage;
+          recursive = true;
+        };
+      };
+
       programs.firefox = {
         enable = true;
         package = pkgs.wrapFirefox pkgs.firefox-unwrapped {
@@ -43,7 +52,10 @@ in
               Snippets = false;
             };
           };
-          extraPrefs = mozillaCfg;
+          extraPrefs =
+            if cfg.startpage
+            then mozillaCfg
+            else "";
         };
         extensions = with pkgs.nur.repos.rycee.firefox-addons; [
           darkreader

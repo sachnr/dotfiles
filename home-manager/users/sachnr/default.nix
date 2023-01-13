@@ -30,7 +30,10 @@ in {
       neovim = {
         enable = true;
       };
-      firefox.enable = true;
+      firefox = {
+        enable = true;
+        startpage = true;
+      };
       kitty.enable = true;
       rofi.enable = true;
       qutebrowser.enable = true;

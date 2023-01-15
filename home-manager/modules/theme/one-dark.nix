@@ -33,8 +33,8 @@ _: {
   xcolor15 = "#ffffff";
   transparent = "#00000000";
   wallpaper = builtins.fetchurl {
-    url = "https://raw.githubusercontent.com/sachnr/awesomewm-dotfiles/master/wallpapers/darkforest.png";
-    sha256 = "sha256:06cbznwp84rv86753sif8gj17cm5xa73r23i4ncv3srk8wdv1nac";
+    url = "https://raw.githubusercontent.com/sachnr/awesomewm-dotfiles/master/wallpapers/jellyfish.jpg";
+    sha256 = "0f8w5myarkzjxbzpr5hchx0my4vy9hgjcdj2w75ln2xwpzncvbbd";
   };
   name = {
     gtk = "Qogir-Dark";

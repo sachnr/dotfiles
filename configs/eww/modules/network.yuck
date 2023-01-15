@@ -5,36 +5,22 @@
 (defvar bluetooth_rev false)
 
 (defwidget network-module []
-      (box :class "module"
-           :orientation "h"
-           :space-evenly "false"
-           :spacing 3
-           (eventbox :onhover "${EWW_CMD} update wifi_rev=true"
-                     :onhoverlost "${EWW_CMD} update wifi_rev=false"
-                     :onrightclick "blueberry &"
-                     :onclick "scripts/bluetooth toggle"
-                     :cursor "pointer"
-                    (box :orientation "h" :space-evenly "false" 
-                        (button :class "icon"
-                                :style "color:${bluetooth["color"]};"
-                               "${bluetooth["icon"]}")
-                              (revealer :reveal wifi_rev
-                                        :transition "slideright"
-                                        :duration "350ms"
-                                        (label :class "text"
-                                              :text {bluetooth["text"]}))))
-            (eventbox :onhover "${EWW_CMD} update bluetooth_rev=true"
-                     :onhoverlost "${EWW_CMD} update bluetooth_rev=false"
-                     :onrightclick "nm-connection-editor &"
-                     :onclick "scripts/wifi toggle"
-                     :cursor "pointer"
-                    (box :orientation "h" :space-evenly "false" :spacing 3
-                        (button :class "text"
-                                :style "color:${wifi["color"]};"
-                               "${wifi["icon"]}")
-                              (revealer :reveal bluetooth_rev
-                                        :transition "slideright"
-                                        :duration "350ms"
-                                        (label :text {wifi["text"]}
-                                              :class "text"))))))
+  (box :class "module"
+    :orientation "h"
+    :space-evenly "false"
+    :spacing 3
+    (eventbox :cursor "pointer"
+      (button :class "icon"
+        :tooltip "${bluetooth["text"]}"
+        :onrightclick "blueberry &"
+        :onclick "scripts/bluetooth toggle"
+        :style "color:${bluetooth["color"]};"
+      "${bluetooth["icon"]}"))
+    (eventbox :cursor "pointer"
+      (button :class "iconsmall"
+        :onrightclick "nm-connection-editor &"
+        :tooltip "${wifi["text"]}"
+        :onclick "scripts/wifi toggle"
+        :style "color:${wifi["color"]};"
+      "${wifi["icon"]}"))))
 

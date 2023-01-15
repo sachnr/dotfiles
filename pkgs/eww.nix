@@ -52,9 +52,9 @@ in
         --replace "#fb4934" "${xcolor9}"
       substituteInPlace $out/scripts/wifi \
         --replace "#ebdbb2" "${xcolor15}" \
-        --replace "#fb4934" "${xcolor9}"
+        --replace "#8ec07c" "${xcolor14}"
       substituteInPlace $out/scripts/bluetooth \
         --replace "#ebdbb2" "${xcolor15}" \
-        --replace "#fb4934" "${xcolor9}"
+        --replace "#8ec07c" "${xcolor14}"
     '';
   }

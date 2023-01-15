@@ -1,0 +1,61 @@
+.dashboard {
+  border: 1px solid $base00;
+  border-radius: 8px;
+  box-shadow: 0 2px 3px $base00;
+  margin: 5px 5px 10px;
+  background-color: $xcolor0;
+}
+
+.dashboard_module1 {
+  padding: 1em;
+  border-radius: 6px;
+  background-color: $base00;
+}
+
+.dashboard_module2 {
+  border-radius: 6px;
+  background-color: $base00;
+}
+
+.dashboard_button {
+  padding: 0.6em;
+  border-radius: 6px;
+  background-color: $xcolor0;
+
+  &:hover {
+    background-color: rgba($xcolor12, 0.4);
+  }
+}
+
+.dashtitle {
+  padding: 0 0.6em;
+  font-size: 18px;
+  font-weight: bold;
+  color: $xcolor12;
+}
+
+.pfp {
+  background-position: center;
+  background-size: 100% 120%;
+  border-radius: 50%;
+  margin: 1em;
+  min-height: 100px;
+  min-width: 100px;
+}
+
+.shutdown,
+.reboot,
+.lock,
+.suspend,
+.logout {
+  color: $xcolor15;
+  font-size: 17px;
+  padding: 0.5em 0.7em;
+  border-radius: 8px;
+  background-color: $base01;
+  font-weight: bold;
+
+  &:hover {
+    background-color: rgba($xcolor12, 0.4);
+  }
+}

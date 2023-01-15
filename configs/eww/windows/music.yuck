@@ -11,42 +11,42 @@
       (label
         :class "music-title"
         :wrap true
-        :text {song_title})
+      :text {song_title})
       (label
         :class "music-artist"
         :wrap true
-        :text {song_artist})
+      :text {song_artist})
       (centerbox
         :halign "center"
         :class "music-button-box"
-        (button :class "music-button" :onclick "playerctl next" "ﭣ" )
-        (button :class "music-button" :onclick "mpc toggle" {song_status})
-        (button :class "music-button" :onclick "mpc next" "ﭡ" ))
+        (hoverbutton :class "music-button" :cmd "mpc prev" :icon "ﭣ" )
+        (hoverbutton :class "music-button" :cmd "mpc toggle" :icon {song_status})
+        (hoverbutton :class "music-button" :cmd "mpc next" :icon "ﭡ" ))
       (box
         :orientation "v"
         (box
           (label
             :xalign 0
             :class "music-time"
-            :text {song_current_time})
+          :text {song_current_time})
           (label
             :xalign 1
             :class "music-time"
-            :text {song_total_time}))
+          :text {song_total_time}))
         (box
           :class "music-bar"
           (scale
-            :onchange "playerctl position `bc <<< \"{} * $(playerctl metadata mpris:length) / 1000000 / 100\"`"
-            :value {song_bar}))))))
+            :onchange "mpc seek {}%"
+          :value {song_bar}))))))
 
 (defwindow music
   :stacking "fg"
   :focusable false
-  :monitor 0
+  :monitor 1
   :geometry (geometry
     :x "0%"
     :y "0%"
     :width "0%"
     :height "0%"
-    :anchor "top center")
+  :anchor "top center")
   (music))

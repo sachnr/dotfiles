@@ -1,0 +1,4 @@
+(defwidget hoverbutton [class icon cmd]
+  (eventbox :cursor "pointer" (button :class class
+      :onclick cmd 
+    icon)))

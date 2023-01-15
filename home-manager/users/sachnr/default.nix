@@ -40,6 +40,7 @@ in {
     };
     services = {
       mpd.enable = true;
+      gammastep.enable = true;
       eww.enable = true;
       mako.enable = true;
       polkit.enable = true;

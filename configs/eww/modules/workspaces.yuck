@@ -1,5 +1,5 @@
 (deflisten workspace "scripts/workspaces")
 
 (defwidget workspaces []
-  (literal 
-    :content workspace))
+  (literal
+  :content workspace))

@@ -3,15 +3,16 @@
 (defpoll clock_date :interval "1h" "date '+   %b %d, %Y'")
 (defvar calender_reveal false)
 (defvar clock_reveal true)
-(defwidget clock_module []
-  (eventbox 
+(defwidget clock-module []
+  (eventbox
+    :cursor "pointer"
     :onhover "${EWW_CMD} update calender_reveal=true clock_reveal=false"
-  	:onhoverlost "${EWW_CMD} update calender_reveal=false clock_reveal=true"
-    (box 
-      :class "module"
+    :onhoverlost "${EWW_CMD} update calender_reveal=false clock_reveal=true"
+    (box
+      :class "modulehover"
       :space-evenly "false"
       :orientation "h"
-      :spacing "0" 
+      :spacing "0"
       (revealer
         :reveal clock_reveal
         :transition "slideleft"
@@ -22,5 +23,5 @@
         :transition "slideright"
         :duration "250ms"
         (button :class "text"
-                :onclick "${EWW_CMD} open --toggle calendar"
-                clock_date)))))
+          :onclick "${EWW_CMD} open --toggle calendar"
+        clock_date)))))

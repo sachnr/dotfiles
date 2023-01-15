@@ -8,7 +8,7 @@
 (defpoll song_status :interval "2s"  "scripts/music --status")
 (defpoll cover_art :interval "2s"  "scripts/music --cover")
 
-	;;  Music 
+;;  Music
 (defwidget music-module []
   (eventbox
     :onhover "${EWW_CMD} update music_reveal=true"
@@ -19,15 +19,19 @@
       (box
         :class "song-cover-art"
         :style "background-image: url(\"${cover_art}\");")
-      (button
-        :class "song-title"
-        :onclick "${EWW_CMD} open --toggle music"
-        {song_title})
+      (eventbox
+        :cursor "pointer"
+        (button
+          :class "song-title"
+          :onclick "${EWW_CMD} open --toggle music"
+        {song_title}))
       (revealer
         :transition "slideright"
         :reveal music_reveal
         :duration "350ms"
-        (box
-          (button :class "song-button" :onclick "mpc next" "ﭣ" )
-          (button :class "song-button" :onclick "mpc toggle" {song_status})
-          (button :class "song-button" :onclick "mpc prev" "ﭡ" ))))))
+        (eventbox
+          :cursor "pointer"
+          (box
+            (button :class "song-button" :onclick "mpc next" "ﭣ" )
+            (button :class "song-button" :onclick "mpc toggle" {song_status})
+            (button :class "song-button" :onclick "mpc prev" "ﭡ" )))))))

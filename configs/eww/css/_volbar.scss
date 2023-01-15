@@ -11,9 +11,9 @@ scale trough {
 .slider trough highlight {
   background-image: linear-gradient(
     to right,
-    $xcolor12 30%,
-    $xcolor10 50%,
-    $xcolor12 100% * 50
+    rgba($xcolor4, 1) 30%,
+    rgba($xcolor12, 1) 50%,
+    rgba($xcolor4, 1) 100% * 50,
   );
   border-radius: 10px;
 }

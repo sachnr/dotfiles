@@ -40,6 +40,7 @@ in
             fi
 
             export PATH="''${PATH}:$HOME/.local/share/nodePackages:''${HOME}/.local/share/nvim/mason/bin"
+            export EDITOR="nvim"
 
             zstyle ':completion:*' matcher-list "" 'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=* r:|=*'
           '';

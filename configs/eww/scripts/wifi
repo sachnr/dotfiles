@@ -19,12 +19,12 @@ else
     if [ $status ]; then
       icon="睊"
       text="..."
-      color=#fb4934
+      color=#ebdbb2
       echo '{ "text": "'"$text"'", "icon": "'"$icon"'", "color": "'"$color"'" }'
     else
-      icon=""
+      icon=" "
       text="${essid}"
-      color=#ebdbb2
+      color=#8ec07c
       echo '{ "text": "'"$text"'", "icon": "'"$icon"'", "color": "'"$color"'" }'
     fi
 

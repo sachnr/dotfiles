@@ -2,29 +2,25 @@
 (defvar vol_reveal false)
 
 (defwidget volume-module []
-      (eventbox
-        :onscroll "echo {} | sed -e 's/down/-/g' -e 's/up/+/g' | xargs -I% wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05%"
-        :onhover "${EWW_CMD} update vol_reveal=true"
-        :onhoverlost "${EWW_CMD} update vol_reveal=false"
-        :onclick "scripts/volume mute SINK"
-        :onmiddleclick "pavucontrol"
-        :onrightclick "scripts/volume togglesink"
-        :cursor "pointer"
-        (box :class "module"
-             :orientation "h"
-             :space-evenly "false"
-             (button :class "icon"
-                    :style "color:${volume["color"]};"
-                  "${volume["icon"]}")
-            ;;      (revealer :reveal vol_reveal
-              ;;              :transition "slideright"
-                ;;            :duration "350ms"
-                            (scale :class "slider"
-                                   :orientation "h"
-                                   :value {volume["percent"]}
-                                   :max 150
-                                   :min 0
-                                   :onchange "scripts/volume setvol SINK {}");;)
-                                   (label :text "${volume["percent"]}%"
-                                          :class "text"))))
+  (eventbox
+    :onscroll "echo {} | sed -e 's/down/-/g' -e 's/up/+/g' | xargs -I% wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05%"
+    :cursor "pointer"
+    (box :class "module"
+      :orientation "h"
+      :space-evenly "false"
+      (eventbox :cursor "pointer"
+        (button :class "icon"
+          :onclick "scripts/volume mute SINK"
+          :onmiddleclick "pavucontrol"
+          :onrightclick "scripts/volume togglesink"
+          :style "color:${volume["color"]};"
+        "${volume["icon"]}"))
+      (scale :class "slider"
+        :orientation "h"
+        :value {volume["percent"]}
+        :max 150
+        :min 0
+      :onchange "scripts/volume setvol SINK {}")
+      (label :text "${volume["percent"]}%"
+      :class "text"))))
 

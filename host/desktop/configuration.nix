@@ -36,15 +36,14 @@ in {
     };
   };
 
-  networking.hostName = "sachnr-nixos";
-  networking.networkmanager.enable = true; # Easiest to use and most distros use this by default.
+  networking = {
+    hostName = "sachnr-nixos";
+    networkmanager.enable = true; # Easiest to use and most distros use this by default.
+    proxy.noProxy = "127.0.0.1,localhost,internal.domain";
+  };
 
   # Set your time zone.
   time.timeZone = "Asia/Kolkata";
-
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
@@ -108,25 +107,22 @@ in {
     };
   };
 
-  # nvidia options
-  hardware.opengl = {
-    enable = true;
-    driSupport = true;
-    driSupport32Bit = true;
-    extraPackages = with pkgs; [
-      vaapiVdpau
-      libvdpau-va-gl
-      nvidia-vaapi-driver
-    ];
-  };
-  hardware.nvidia = {
-    open = true;
-    powerManagement.enable = true;
-    modesetting.enable = true;
-  };
-
-  # enable bluetooth
   hardware = {
+    opengl = {
+      enable = true;
+      driSupport = true;
+      driSupport32Bit = true;
+      extraPackages = with pkgs; [
+        vaapiVdpau
+        libvdpau-va-gl
+        nvidia-vaapi-driver
+      ];
+    };
+    nvidia = {
+      open = true;
+      powerManagement.enable = true;
+      modesetting.enable = true;
+    };
     bluetooth = {
       enable = true;
       settings = {
@@ -156,7 +152,6 @@ in {
   environment = {
     systemPackages = with pkgs; [
       # system
-      util-linux
       socat
       lsof
       file

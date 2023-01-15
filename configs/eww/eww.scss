@@ -21,6 +21,7 @@
 @import "css/workspaces";
 @import "css/music";
 @import "css/volbar";
+@import "css/dashboard";
 
 tooltip {
   background-color: $xcolor0;
@@ -32,33 +33,47 @@ tooltip {
 
 .module {
   padding: 0 0.6em;
-  margin: 4px;
+  margin: 6px;
   border-radius: 6px;
   background-color: $xcolor0;
 }
 
+.modulehover {
+  padding: 0 0.6em;
+  margin: 6px;
+  border-radius: 6px;
+  background-color: $xcolor0;
+
+  &:hover {
+    background-color: rgba($xcolor12, 0.4);
+  }
+}
+
 .text {
-  padding: 0 0.4em;
+  padding: 0 0.6em;
   font-size: 13px;
   font-weight: bold;
   color: $xcolor15;
-}
-.text:hover {
-  padding: 0 0.4em;
-  font-size: 13px;
-  font-weight: bold;
-  color: $xcolor12;
 }
 
 .icon {
-  padding: 0 0.4em;
+  padding: 0 0.6em;
   font-size: 15px;
   font-weight: bold;
   color: $xcolor15;
+  &:hover {
+    border-bottom: 3px solid;
+    border-color: $xcolor12;
+  }
 }
-.icon:hover {
-  padding: 0 0.4em;
-  font-size: 15px;
+
+.iconsmall {
+  padding: 0 0.6em;
+  font-size: 13px;
   font-weight: bold;
-  color: $xcolor12;
+  color: $xcolor15;
+  &:hover {
+    border-bottom: 3px solid;
+    border-color: $xcolor12;
+  }
 }

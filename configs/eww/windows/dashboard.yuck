@@ -1,0 +1,75 @@
+;;Dashboard window
+(defpoll whoami :interval "900s" "scripts/dashboard --whoami")
+(defvar pfp "scripts/pfp.gif")
+(deflisten dash "scripts/dashboard --daemon")
+
+(defwidget power []
+  (box
+    :class "dashboard_module1"
+    :orientation "v"
+    :space-evenly false
+    (box
+      :class "dashboard_module2"
+      :orientation "h"
+      (box
+        :class "pfp"
+        :style "background-image: url('${pfp}');")
+      (box :class "dashboard_module2"
+        :orientation "v"
+        :halign "center"
+        :valign "center"
+        :spacing 1
+        (label :class "dashtitle" :text whoami)
+        (label :class "text" :text "Uptime: ${dash["uptime"]}")
+      ))
+    (box
+      :orientation "h"
+      :class "dashboard_module2"
+      :halign "center"
+      :valign "center"
+      :spacing 12
+      (hoverbutton :class "lock" :cmd "scripts/dashboard --lock" :icon "")
+      (hoverbutton :class "suspend" :cmd "scripts/dashboard --suspend" :icon "")
+      (hoverbutton :class "logout" :cmd "scripts/dashboard --logout" :icon "")
+      (hoverbutton :class "reboot" :cmd "scripts/dashboard --reboot" :icon "")
+      (hoverbutton :class "shutdown" :cmd "scripts/dashboard --shutdown" :icon "襤")
+    )))
+
+;;(defwidget vert1 []
+;;  (box
+;;    :orientation "v"
+;;    :space-evenly true
+;;    :halign "center"
+;;    :valign "center"
+;;    :class "dashboard"
+;;  ))
+;;
+;;(defwidget vert2 []
+;;  (box
+;;    :orientation "v"
+;;    :space-evenly true
+;;    :halign "center"
+;;    :valign "center"
+;;    :class "dashboard"
+;;  ))
+
+(defwidget dashboard []
+  (box
+    :orientation "h"
+    :space-evenly false
+    :halign "center"
+    :valign "center"
+    :class "dashboard"
+    (power)
+  ))
+
+(defwindow dashboard
+  :stacking "fg"
+  :monitor 1
+  :geometry (geometry :x "0%"
+    :y "0%"
+    :width "20%"
+    :height "10%"
+  :anchor "top right")
+  (dashboard))
+

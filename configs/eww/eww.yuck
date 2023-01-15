@@ -1,76 +1,80 @@
 (deflisten focused_monitor :initial 1
   `hyprctl monitors -j | jq '.[] | select(.focused==true).id'`
-  )
+)
 
+(include "./modules/widgets.yuck")
 (include "./modules/clock.yuck")
 (include "./modules/workspaces.yuck")
 (include "./modules/music.yuck")
 (include "./modules/volume.yuck")
 (include "./modules/network.yuck")
+(include "./modules/dashboard.yuck")
 
 (include "./windows/calender.yuck")
 (include "./windows/music.yuck")
+(include "./windows/dashboard.yuck")
 
 (defwidget left []
-	(box 
-	  :orientation "h" 
-		:space-evenly false  
+  (box
+    :orientation "h"
+    :space-evenly false
     :halign "start"
-		:class "left"
+    :class "left"
     (workspaces)
-))
+  ))
 
 (defwidget center []
-	(box 
-     :orientation "h" 
-		 :space-evenly false  
-     :halign "center"
-		 :class "center"
+  (box
+    :orientation "h"
+    :space-evenly false
+    :halign "center"
+    :class "center"
     (music-module)
-))
+  ))
 
 (defwidget right []
-	(box
-	  :orientation "h" 
-		:space-evenly false  
+  (box
+    :orientation "h"
+    :space-evenly false
     :halign "end"
-		:class "right"
+    :class "right"
     (network-module)
     (volume-module)
-    (clock_module)
-))
+    (clock-module)
+    (dashboard-module)
+  ))
 
 (defwidget bar_layout []
-  (centerbox 
+  (centerbox
     :class "bar"
     :orientation "h"
     (left)
     (center)
     (right)
-    ))
+  ))
 
 (defwindow bar0
-    :monitor 0
-    :exclusive true
-    :geometry (geometry 
-        :x "0px"
-        :y "0px"
-        :width "100%"
-        :height "32px"
-        :anchor "top center")
-    :stacking "fg"
-    :windowtype "dock"
-    (bar_layout))
+  :monitor 0
+  :exclusive true
+  :geometry (geometry
+    :x "0px"
+    :y "0px"
+    :width "100%"
+    :height "32px"
+  :anchor "top center")
+  :stacking "fg"
+  :windowtype "dock"
+  (bar_layout))
 
 (defwindow bar1
-    :monitor 1
-    :exclusive true
-    :geometry (geometry 
-        :x "0px"
-        :y "0px"
-        :width "100%"
-        :height "32px"
-        :anchor "top center")
-    :stacking "fg"
-    :windowtype "dock"
-    (bar_layout))
+  :monitor 1
+  :exclusive true
+  :geometry (geometry
+    :x "0px"
+    :y "0px"
+    :width "100%"
+    :height "32px"
+  :anchor "top center")
+  :stacking "fg"
+  :windowtype "dock"
+  (bar_layout))

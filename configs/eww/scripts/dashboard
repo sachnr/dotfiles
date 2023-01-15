@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+
+getuptime() {
+  uptime | awk '{print $1}'
+  echo $?
+}
+
+if [[ $1 == '--shutdown' ]]; then
+  systemctl poweroff
+elif [[ $1 == '--reboot' ]]; then
+  systemctl reboot
+elif [[ $1 == '--suspend' ]]; then
+  mpc -q pause
+  systemctl suspend
+elif [[ $1 == '--lock' ]]; then
+  swaylock
+elif [[ $1 == '--logout' ]]; then
+  hyprctl dispatch exit 1
+elif [[ $1 == '--whoami' ]]; then
+  getent passwd $(whoami) | cut -d ':' -f 1
+elif [[ $1 == '--daemon' ]]; then
+  while [[ true ]]; do
+    echo '{ "uptime": "'"$(uptime | awk '{print $3}' | sed 's/,//;s/:/H /;s/$/M/')"'" }'
+    sleep 30
+  done
+else
+  echo "options: --shutdown --reboot --suspend --lock --logout --daemon"
+  exit 0
+fi

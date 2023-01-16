@@ -12,6 +12,7 @@ in {
     packages = with pkgs; [
       gruvbox-gtk
       qogir-theme
+      catppuccin-gtk
     ];
     # kvantumthemes
     file = {

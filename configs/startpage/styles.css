@@ -18,7 +18,7 @@
   --containerBg: #3c3836;
   --searchBg: var(--containerBg);
   --scrollbarColor: #83a598;
-  --shadow: #282828;
+  --shadow: #1d2021;
   --border: #282828;
   --grey: = "#a89984";
   --fontFamily: "Roboto Mono", monospace;
@@ -102,6 +102,7 @@ body {
   border-radius: 3px;
   text-align: center;
   box-sizing: border-box;
+  box-shadow: 6px 8px 12px var(--shadow);
 }
 
 #search-toggle {

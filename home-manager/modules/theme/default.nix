@@ -1,3 +1,3 @@
 _: {
-  colors = import ./one-dark.nix {};
+  colors = import ./catppuccin.nix {};
 }

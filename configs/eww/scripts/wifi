@@ -24,7 +24,7 @@ else
     else
       icon=" "
       text="${essid}"
-      color=#8ec07c
+      color=#83a598
       echo '{ "text": "'"$text"'", "icon": "'"$icon"'", "color": "'"$color"'" }'
     fi
 

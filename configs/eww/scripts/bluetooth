@@ -25,7 +25,7 @@ else
       else
         text="..."
       fi
-      color=#8ec07c
+      color=#83a598
       echo '{ "text": "'"$text"'", "icon": "'"$icon"'", "color": "'"$color"'" }'
     else
       icon=""

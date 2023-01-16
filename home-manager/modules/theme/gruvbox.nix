@@ -38,7 +38,7 @@ _: {
   };
   name = {
     gtk = "Gruvbox-Dark-B";
-    kvantum = "gruvbox-kvantum";
+    kvantum = "Gruvbox";
     icon = "Papirus-Dark";
     font = "Roboto";
     fontmonospace = "RobotoMono Nerd Font";

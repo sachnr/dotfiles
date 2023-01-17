@@ -16,7 +16,7 @@ in
       };
     };
 
-    config = mkIf (cfg.enable) {
+    config = mkIf cfg.enable {
       programs.mako = with theme.colors; {
         enable = true;
         backgroundColor = base01;

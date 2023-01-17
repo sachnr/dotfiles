@@ -8,7 +8,7 @@
   cfg = config.modules.services.mpd;
   mpdconf = ''
     music_directory                 "~/Music"
-    playlist_directory              "~/.config/mpd"
+    playlist_directory              "~/.config/mpd/playlist"
     db_file                         "~/.config/mpd/mpd.db"
     log_file                        "~/.config/mpd/log"
     pid_file                        "~/.config/mpd/mpd.pid"
@@ -44,7 +44,7 @@ in
       };
     };
 
-    config = mkIf (cfg.enable) {
+    config = mkIf cfg.enable {
       home = {
         packages = with pkgs; [
           mpv
@@ -52,16 +52,44 @@ in
         ];
       };
 
-      systemd.user.tmpfiles.rules = ["
-        d /home/${user}/.config/mpd
-        d /home/${user}/.config/ncmpcpp
-      "];
-
       services = {
-        mpd.enable = true;
+        # mpd.enable = true;
+        mopidy = {
+          enable = true;
+          extensionPackages = with pkgs; [mopidy-mpd mopidy-youtube];
+          extraConfigFiles = [/home/${user}/Keys/youtube];
+          settings = {
+            # ╞══════════════════════════════════════════════════════════╡
+            file = {
+              media_dirs = [
+                "$XDG_MUSIC_DIR"
+              ];
+              follow_symlinks = true;
+              excluded_file_extensions = [
+                ".html"
+                ".zip"
+                ".jpg"
+                ".jpeg"
+                ".png"
+              ];
+            };
+            # ╞══════════════════════════════════════════════════════════╡
+            mpd = {
+              enabled = true;
+              hostname = "127.0.0.1";
+              port = 6600;
+            };
+            # ╞══════════════════════════════════════════════════════════╡
+            youtube = {
+              enabled = true;
+              allow_cache = true;
+              playlist_max_videos = 1000;
+            };
+          };
+        };
       };
 
-      home.file."mpd/mpd.conf".text = mpdconf;
+      # home.file.".config/mpd/mpd.conf".text = mpdconf;
 
       programs = {
         ncmpcpp = {

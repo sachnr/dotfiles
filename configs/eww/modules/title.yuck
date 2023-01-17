@@ -1,0 +1,7 @@
+(defpoll title :interval "500ms" "hyprctl activewindow | rg -e class | awk '{print $2}'")
+
+(defwidget title-module []
+(box :orientation "h"
+      :class "inactive"
+      (label :class "inactivetext"
+              :text title)))

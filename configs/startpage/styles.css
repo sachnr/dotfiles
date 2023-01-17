@@ -18,7 +18,7 @@
   --containerBg: #3c3836;
   --searchBg: var(--containerBg);
   --scrollbarColor: #83a598;
-  --shadow: #1d2021;
+  --shadow: #000000;
   --border: #282828;
   --grey: = "#a89984";
   --fontFamily: "Roboto Mono", monospace;

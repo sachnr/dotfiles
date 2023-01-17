@@ -9,6 +9,7 @@
 (include "./modules/volume.yuck")
 (include "./modules/network.yuck")
 (include "./modules/dashboard.yuck")
+(include "./modules/title.yuck")
 
 (include "./windows/calender.yuck")
 (include "./windows/music.yuck")
@@ -21,6 +22,7 @@
     :halign "start"
     :class "left"
     (workspaces)
+    (title-module)
   ))
 
 (defwidget center []

@@ -36,11 +36,12 @@
 
 .pfp {
   background-position: center;
-  background-size: 100% 120%;
+  background-repeat: no-repeat;
+  background-size: cover;
   border-radius: 50%;
   margin: 1em;
-  min-height: 100px;
-  min-width: 100px;
+  min-height: 96px;
+  min-width: 96px;
 }
 
 .shutdown,

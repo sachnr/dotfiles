@@ -1,5 +1,5 @@
 .song-cover-art {
-  @include rounding;
+  @include radius;
   background-position: center;
   background-size: cover;
   margin: 4px 5px 4px 0;

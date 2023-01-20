@@ -10,6 +10,7 @@
     :space-evenly false
     (box
       :class "dashboard_module2"
+      :space-evenly "false"
       :orientation "h"
       (box
         :class "pfp"
@@ -36,22 +37,22 @@
     )))
 
 ;;(defwidget vert1 []
-;;  (box
-;;    :orientation "v"
-;;    :space-evenly true
-;;    :halign "center"
-;;    :valign "center"
-;;    :class "dashboard"
-;;  ))
+  ;;  (box
+    ;;    :orientation "v"
+    ;;    :space-evenly true
+    ;;    :halign "center"
+    ;;    :valign "center"
+    ;;    :class "dashboard"
+  ;;  ))
 ;;
 ;;(defwidget vert2 []
-;;  (box
-;;    :orientation "v"
-;;    :space-evenly true
-;;    :halign "center"
-;;    :valign "center"
-;;    :class "dashboard"
-;;  ))
+  ;;  (box
+    ;;    :orientation "v"
+    ;;    :space-evenly true
+    ;;    :halign "center"
+    ;;    :valign "center"
+    ;;    :class "dashboard"
+  ;;  ))
 
 (defwidget dashboard []
   (box

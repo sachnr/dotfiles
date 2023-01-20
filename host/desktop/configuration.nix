@@ -68,31 +68,25 @@ in {
       enable = true;
       layout = "us";
       videoDrivers = ["nvidia"];
-      displayManager.startx.enable = true;
-      desktopManager.xfce.enable = true;
-      desktopManager.xterm.enable = true;
+      desktopManager = {
+        xfce.enable = false;
+        cinnamon.enable = true;
+      };
+      displayManager = {
+        startx.enable = true;
+        sddm = {
+          enable = true;
+          theme = "elarun";
+        };
+      };
       libinput = {
         enable = true;
         mouse.accelProfile = "flat";
         mouse.accelSpeed = "0";
         touchpad.naturalScrolling = true;
       };
-      displayManager.sddm = {
-        enable = true;
-        theme = "nixos-sddm";
-      };
     };
-    # greetd = {
-    #   enable = true;
-    #   package = pkgs.greetd.wlgreet;
-    #   settings = rec {
-    #     initial_session = {
-    #       command = "hyprlandwrapped";
-    #       user = "sachnr";
-    #     };
-    #     default_session = initial_session;
-    #   };
-    # };
+
     # sound
     pipewire = {
       enable = true;
@@ -108,6 +102,7 @@ in {
   };
 
   hardware = {
+    pulseaudio.enable = false;
     opengl = {
       enable = true;
       driSupport = true;

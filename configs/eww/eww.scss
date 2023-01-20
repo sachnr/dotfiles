@@ -1,91 +1,40 @@
+* {
+  all: unset;
+  transition: all 640ms cubic-bezier(0.68, -0.55, 0.27, 1.55);
+  font-family: Roboto, RobotoMono Nerd Font;
+}
+
 @import "./colors.scss";
 
-@mixin rounding {
-  border-radius: 8px;
+@mixin radius {
+  border-radius: 6px;
 }
 
 @mixin window {
   border: 1px solid $xcolor0;
-  box-shadow: 0 2px 3px $base00;
+  box-shadow: 5px 4px 3px 0px rgba(#010203, 0.6);
   margin: 5px 5px 10px;
-  @include rounding;
+  border-radius: 8px;
 }
 
-* {
-  all: unset;
-  transition: all 0.3s cubic-bezier(0.55, -0.68, 0.48, 1.68);
-  font-family: Roboto, RobotoMono Nerd Font;
+@mixin bold-text {
+  padding: 0 0.6em;
+  font-weight: bold;
 }
 
+@mixin event-icon {
+  @include bold-text;
+  color: $xcolor15;
+
+  &:hover {
+    border-bottom: 3px solid;
+    border-color: $xcolor4;
+  }
+}
+
+@import "css/bar";
 @import "css/calendar";
 @import "css/workspaces";
 @import "css/music";
 @import "css/volbar";
 @import "css/dashboard";
-
-tooltip {
-  background-color: $xcolor0;
-}
-
-.bar {
-  background-color: $base00;
-}
-
-.module {
-  padding: 0 0.6em;
-  margin: 6px;
-  border-radius: 6px;
-  background-color: $xcolor0;
-}
-
-.modulehover {
-  padding: 0 0.6em;
-  margin: 6px;
-  border-radius: 6px;
-  background-color: $xcolor0;
-
-  &:hover {
-    background-color: rgba($xcolor12, 0.4);
-  }
-}
-
-.inactive {
-  padding: 0 0.6em;
-  margin: 6px;
-}
-
-.text {
-  padding: 0 0.6em;
-  font-size: 13px;
-  font-weight: bold;
-  color: $xcolor15;
-}
-
-.inactivetext {
-  padding: 0 0.6em;
-  font-size: 14px;
-  font-weight: bold;
-  color: $xcolor7;
-}
-
-.icon {
-  padding: 0 0.6em;
-  font-size: 15px;
-  font-weight: bold;
-  color: $xcolor15;
-  &:hover {
-    border-bottom: 3px solid;
-    border-color: $xcolor12;
-  }
-}
-
-.iconsmall {
-  padding: 0 0.6em;
-  font-size: 13px;
-  font-weight: bold;
-  color: $xcolor15;
-  &:hover {
-    border-bottom: 3px solid;
-    border-color: $xcolor12;
-  }
-}

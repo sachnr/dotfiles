@@ -16,11 +16,12 @@ in
       cp -r ${src} $out
       substituteInPlace $out/styles.css \
         --replace "file:///image" "file:///${wallpaper}" \
-        --replace "#458588" "${xcolor4}" \
-        --replace "#ebdbb2" "${xcolor15}" \
-        --replace "#3c3836" "${base01}" \
-        --replace "#83a598" "${xcolor12}" \
-        --replace "#282828" "${xcolor0}" \
-        --replace "#a89984" "${xcolor7}" \
+        --replace "--bg: #1d2021;" "--bg: ${base00};" \
+        --replace "--fg: #458588;" "--fg: ${xcolor12};" \
+        --replace "--secondaryFg: #ebdbb2;" "--secondaryFg: ${xcolor15};" \
+        --replace "--containerBg: #3c3836;" "--containerBg: ${base01};" \
+        --replace "--scrollbarColor: #83a598;" "--scrollbarColor: ${xcolor12};" \
+        --replace "--border: #282828;" "--border: ${xcolor0};" \
+        --replace "--grey: "#a89984";" "--grey: ${xcolor7};"
     '';
   }

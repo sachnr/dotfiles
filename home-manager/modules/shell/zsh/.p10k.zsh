@@ -41,7 +41,7 @@
   # automatically hidden when the input line reaches it. Right prompt above the
   # last prompt line gets hidden if it would overlap with left prompt.
   typeset -g POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(
-    # status                  # exit code of the last command
+    status                  # exit code of the last command
     command_execution_time  # duration of the last command
     # background_jobs         # presence of background jobs
     # direnv                  # direnv status (https://direnv.net/)
@@ -82,12 +82,12 @@
     # toolbox                 # toolbox name (https://github.com/containers/toolbox)
     # context                 # user@hostname
     # nordvpn                 # nordvpn connection status, linux only (https://nordvpn.com/)
-    # ranger                  # ranger shell (https://github.com/ranger/ranger)
+    ranger                  # ranger shell (https://github.com/ranger/ranger)
     # nnn                     # nnn shell (https://github.com/jarun/nnn)
     # xplr                    # xplr shell (https://github.com/sayanarijit/xplr)
-    # vim_shell               # vim shell indicator (:sh)
+    vim_shell               # vim shell indicator (:sh)
     # midnight_commander      # midnight commander shell (https://midnight-commander.org/)
-    # nix_shell               # nix shell (https://nixos.org/nixos/nix-pills/developing-with-nix-shell.html)
+    nix_shell               # nix shell (https://nixos.org/nixos/nix-pills/developing-with-nix-shell.html)
     vi_mode                 # vi mode (you don't need this if you've enabled prompt_char)
     # vpn_ip                # virtual private network indicator
     # load                  # CPU load

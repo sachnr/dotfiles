@@ -1,13 +1,13 @@
 {
   lib,
-  stdenv,
+  stdenvNoCC,
   pkgs,
   fetchurl,
   ...
 }: let
   theme = import ../home-manager/modules/theme {};
 in
-  stdenv.mkDerivation rec {
+  stdenvNoCC.mkDerivation rec {
     pname = "Kvantum-themes";
     version = "v0.1";
 
@@ -29,7 +29,7 @@ in
     sourceRoot = ".";
 
     installPhase = ''
-      mkdir -p $out/Kvantum
-      cp -a * $out/Kvantum
+      mkdir -p $out/share/Kvantum
+      cp -r * $out/share/Kvantum
     '';
   }

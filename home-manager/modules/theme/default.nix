@@ -1,3 +1,3 @@
 _: {
-  colors = import ./catppuccin.nix {};
+  colors = import ./gruvbox-light.nix {};
 }

@@ -21,8 +21,8 @@ in
         enable = true;
         settings = with theme.colors; {
           # Fonts
-          font_family = "JetBrains Mono Regular Nerd Font Complete";
-          italic_font = "JetBrains Mono Regular Italic Nerd Font Complete";
+          font_family = "JetBrains Mono Medium Nerd Font Complete";
+          italic_font = "JetBrains Mono Medium Italic Nerd Font Complete";
           bold_font = "JetBrains Mono Bold Nerd Font Complete";
           bold_italic_font = "JetBrains Mono Bold Italic Nerd Font Complete";
           font_size = "10.6";
@@ -71,10 +71,11 @@ in
           hide_window_decorations = false;
 
           # Tabs
-          tab_bar_edge = "bottom";
+          tab_bar_edge = "top";
           tab_bar_style = "powerline";
-          tab_bar_margin_width = "0.0";
-          tab_separator = " ┇ ";
+          tab_powerline_style = "round";
+          tab_bar_margin_width = "2.0";
+          tab_separator = " | ";
           active_tab_font_style = "bold";
           inactive_tab_font_style = "normal";
 
@@ -110,10 +111,11 @@ in
           active_border_color = xcolor12;
           inactive_border_color = base00;
           url_color = xcolor14;
-          active_tab_foreground = xcolor15;
-          active_tab_background = xcolor0;
+          active_tab_foreground = xcolor0;
+          active_tab_background = xcolor4;
           inactive_tab_foreground = xcolor8;
-          inactive_tab_background = base00;
+          inactive_tab_background = base02;
+          tab_bar_background = base01;
         };
         keybindings = {
           "ctrl+shift+v" = "paste_from_clipboard";
@@ -121,8 +123,13 @@ in
           "ctrl+shift+equal" = "increase_font_size";
           "ctrl+shift+minus" = "decrease_font_size";
           "ctrl+shift+backspace" = "restore_font_size";
-          "alt+s" = "set_background_opacity +0.05";
-          "alt+a" = "set_background_opacity -0.05";
+          "ctrl+shift+s" = "set_background_opacity +0.05";
+          "ctrl+shift+a" = "set_background_opacity -0.05";
+          "ctrl+tab" = "next_tab";
+          "ctrl+shift+tab" = "previous_tab";
+          "ctrl+shift+t" = "new_tab";
+          "ctrl+shift+q" = "close_tab";
+          "ctrl+shift+alt+t" = "set_tab_title";
         };
       };
     };

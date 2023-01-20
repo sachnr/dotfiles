@@ -84,16 +84,6 @@ in
               };
             }
             {
-              name = "fzf-tab";
-              file = "fzf-tab.plugin.zsh";
-              src = pkgs.fetchFromGitHub {
-                owner = "Aloxaf";
-                repo = "fzf-tab";
-                rev = "ffb7b776be492333b94cf0be87456b62a1f26e2f";
-                sha256 = "sha256-bIlnYKjjOC6h5/Gg7xBg+i2TBk+h82wmHgAJPhzMsek=";
-              };
-            }
-            {
               name = "ohmyzsh";
               file = "plugins/git/git.plugin.zsh";
               src = pkgs.fetchFromGitHub {

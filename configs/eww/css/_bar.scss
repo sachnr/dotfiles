@@ -1,0 +1,67 @@
+tooltip {
+  background-color: $xcolor0;
+}
+
+.bar {
+  background-color: $base00;
+  @include window;
+}
+
+.module {
+  @include radius;
+  padding: 0 0.6em;
+  margin: 6px;
+  background-color: $xcolor0;
+}
+
+.module1 {
+  @include radius;
+  @include bold-text;
+  color: $xcolor0;
+  font-size: 13px;
+  margin: 6px;
+  background-color: rgba($xcolor4, 0.8);
+  &:hover {
+    background-color: rgba($xcolor4, 0.9);
+  }
+}
+
+.module2 {
+  @include radius;
+  font-weight: bold;
+  padding: 0 0.9em 0 0.6em;
+  color: $xcolor0;
+  font-size: 13px;
+  margin: 6px;
+  background-color: rgba($xcolor4, 0.8);
+  &:hover {
+    background-color: rgba($xcolor4, 0.9);
+  }
+}
+
+.inactive {
+  padding: 0 0.6em;
+  margin: 6px;
+}
+
+.text {
+  @include bold-text;
+  font-size: 13px;
+  color: $xcolor15;
+}
+
+.inactivetext {
+  @include bold-text;
+  font-size: 14px;
+  color: $xcolor7;
+}
+
+.icon {
+  @include event-icon;
+  font-size: 15px;
+}
+
+.iconsmall {
+  @include event-icon;
+  font-size: 15px;
+}

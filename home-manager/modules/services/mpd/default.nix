@@ -57,7 +57,6 @@ in
         mopidy = {
           enable = true;
           extensionPackages = with pkgs; [mopidy-mpd mopidy-youtube];
-          extraConfigFiles = [/home/${user}/Keys/youtube];
           settings = {
             # ╞══════════════════════════════════════════════════════════╡
             file = {

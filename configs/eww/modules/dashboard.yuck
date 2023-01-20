@@ -1,6 +1,5 @@
 (defwidget dashboard-module []
-  (box :class "modulehover"
+  (box :space-evenly "false"
     (eventbox
       :cursor "pointer"
-      :onclick "${EWW_CMD} open --toggle dashboard"
-      (label :class "icon" :text ""))))
+      (hoverbutton :class "module2" :cmd "${EWW_CMD} open --toggle dashboard" :icon "" ))))

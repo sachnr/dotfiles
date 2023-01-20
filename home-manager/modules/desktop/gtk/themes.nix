@@ -13,13 +13,7 @@ in {
       gruvbox-gtk
       qogir-theme
       catppuccin-gtk
+      Kvantum-themes
     ];
-    # kvantumthemes
-    file = {
-      ".config/" = {
-        source = Kvantum-themes;
-        recursive = true;
-      };
-    };
   };
 }

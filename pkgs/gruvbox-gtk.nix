@@ -15,14 +15,19 @@ in
     src = pkgs.fetchFromGitHub {
       owner = "Fausto-Korpsvart";
       repo = "Gruvbox-GTK-Theme";
-      rev = "c3172d8dcba66f4125a014d280d41e23f0b95cad";
-      sha256 = "sha256-Qqzk5TGOHn72mrM1W+hfCCiQ9U88wNEGn6YFyaisIZA=";
+      rev = "13fe1d7bfb43557642a37da3498cd35ba285c593";
+      sha256 = "sha256-3mME+2iCph/MHl7PzY7W6H6/Npg0n0IFRijMEOF44L0=";
     };
+
+    sourceRoot = "source";
+
+    patches = [../patches/0001-titlebar.patch];
 
     propagatedUserEnvPkgs = [gtk-engine-murrine];
 
     installPhase = ''
       mkdir -p $out/share/themes
-      cp -r $src/themes/Gruvbox-Dark-B $out/share/themes
+      cp -r themes/Gruvbox-Dark-B $out/share/themes
+      cp -r themes/Gruvbox-Light-B $out/share/themes
     '';
   }

@@ -21,13 +21,16 @@ in
 
     sourceRoot = "source";
 
-    patches = [../patches/0001-titlebar.patch];
+    # patches = [../patches/0001-titlebar.patch];
 
     propagatedUserEnvPkgs = [gtk-engine-murrine];
 
     installPhase = ''
       mkdir -p $out/share/themes
+      mkdir -p $out/share/icons
       cp -r themes/Gruvbox-Dark-B $out/share/themes
       cp -r themes/Gruvbox-Light-B $out/share/themes
+      cp -r icons/Gruvbox-Dark $out/share/icons
+      cp -r icons/Gruvbox-Light $out/share/icons
     '';
   }

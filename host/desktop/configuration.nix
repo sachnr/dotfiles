@@ -70,13 +70,11 @@ in {
       videoDrivers = ["nvidia"];
       desktopManager = {
         xfce.enable = false;
-        cinnamon.enable = true;
       };
       displayManager = {
-        startx.enable = true;
         sddm = {
           enable = true;
-          theme = "elarun";
+          theme = "maldives";
         };
       };
       libinput = {

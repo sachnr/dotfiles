@@ -20,8 +20,14 @@ in
       home = {
         packages = with pkgs; [
           xclip
+          xorg.xorgserver
+          xorg.xf86inputevdev
+          xorg.xf86inputsynaptics
+          xorg.xf86inputlibinput
         ];
-        file.".xinitrc".text = ''nvidia-settings --load-config-only'';
+        file.".xinitrc".text = ''
+          nvidia-settings --load-config-only
+        '';
       };
       # Enable display manager
       xsession = {

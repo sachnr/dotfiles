@@ -13,7 +13,15 @@ in {
       gruvbox-gtk
       qogir-theme
       catppuccin-gtk
-      Kvantum-themes
+      libsForQt5.breeze-icons
+      papirus-icon-theme
     ];
+    # kvantumthemes
+    file = {
+      ".config/" = {
+        source = Kvantum-themes;
+        recursive = true;
+      };
+    };
   };
 }

@@ -18,7 +18,8 @@ in
     config = mkIf cfg.enable {
       home = {
         packages = with pkgs; [
-          polkit_gnome
+          libsForQt5.polkit-kde-agent
+          # polkit_gnome
         ];
       };
 
@@ -32,7 +33,7 @@ in
         Install.WantedBy = ["hyprland-session.target"];
 
         Service = {
-          ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
+          ExecStart = "${pkgs.libsForQt5.polkit-kde-agent}/libexec/polkit-kde-authentication-agent-1";
           Restart = "on-failure";
         };
       };

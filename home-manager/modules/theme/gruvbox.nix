@@ -33,13 +33,13 @@ _: {
   xcolor15 = "#ebdbb2";
   transparent = "#00000000";
   wallpaper = builtins.fetchurl {
-    url = "https://raw.githubusercontent.com/sachnr/hyprlandcfg/main/wallpaper/wall.jpg";
-    sha256 = "sha256:1yyzpffr4a9iklswfvzz1k69bc0g3dbrz68qv4yfhcrrq3fl1phf";
+    url = "https://raw.githubusercontent.com/FrenzyExists/wallpapers/main/Gruv/gruv-pixel-III.png";
+    sha256 = "sha256:0qb9jydrn9i5mbrzf55hw6h0vlxhmwy2gihp9rdcri3wl4294pp8";
   };
   name = {
     gtk = "Gruvbox-Dark-B";
-    kvantum = "Gruvbox";
-    icon = "Papirus-Dark";
+    kvantum = "Gruvbox-Dark-Blue";
+    icon = "Gruvbox-Dark";
     font = "Roboto";
     fontmonospace = "RobotoMono Nerd Font";
   };

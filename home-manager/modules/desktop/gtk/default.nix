@@ -68,7 +68,11 @@ in
           name = "phinger-cursors-light";
           size = 32;
         };
+        sessionVariables = {
+          GTK_THEME = "${theme.colors.name.gtk}";
+        };
       };
+
       gtk = with theme.colors; {
         enable = true;
         gtk3.extraConfig = {
@@ -89,6 +93,14 @@ in
           package = pkgs.phinger-cursors;
           name = "phinger-cursors-light";
           size = 32;
+        };
+      };
+      qt = {
+        enable = true;
+        platformTheme = null;
+        style = {
+          package = null;
+          name = null;
         };
       };
       home.file.".config/Kvantum/kvantum.kvconfig".text = kvtheme;

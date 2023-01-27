@@ -44,6 +44,7 @@ in
         enable = true;
         package = pkgs.wrapFirefox pkgs.firefox-unwrapped {
           extraPolicies = {
+            ExtensionSettings = {};
             DisableFirefoxStudies = true;
             DisablePocket = true;
             DisableTelemetry = true;
@@ -66,6 +67,7 @@ in
           decentraleyes
           return-youtube-dislikes
           lovely-forks
+          tabcenter-reborn
         ];
         profiles = {
           ${user} = {
@@ -101,6 +103,7 @@ in
               user_pref("toolkit.telemetry.coverage.opt-out", true);
               user_pref("toolkit.coverage.opt-out", true);
               user_pref("toolkit.coverage.endpoint.base", "");
+              user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);
               user_pref("browser.ping-centre.telemetry", false);
               user_pref("browser.newtabpage.activity-stream.feeds.telemetry", false);
               user_pref("browser.newtabpage.activity-stream.telemetry", false);
@@ -112,6 +115,7 @@ in
               user_pref("browser.link.open_newwindow", 3);
               user_pref("browser.link.open_newwindow.restriction", 0);
             '';
+            userChrome = import ./userChrome-css.nix {};
           };
         };
       };

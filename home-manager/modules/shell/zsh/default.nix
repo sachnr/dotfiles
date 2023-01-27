@@ -6,8 +6,10 @@
   ...
 }: let
   cfg = config.modules.shell.zsh;
+  theme = import ../../theme {};
 in
-  with lib; {
+  with lib;
+  with theme.colors; {
     options.modules.shell.zsh = {
       enable = mkOption {
         type = types.bool;
@@ -43,6 +45,13 @@ in
             export EDITOR="nvim"
 
             zstyle ':completion:*' matcher-list "" 'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=* r:|=*'
+            zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa --icons --color=always --group-directories-first $realpath'
+
+            export FZF_DEFAULT_OPTS='
+              --ansi --layout=reverse
+              --color fg:${xcolor15},bg:${xcolor0},hl:${xcolor10},fg+:${xcolor15},bg+:${base01},hl+:${xcolor7},border:${base00}
+              --color pointer:${xcolor15},info:${xcolor7},spinner:${xcolor7},header:${base01},prompt:${base02},marker:${xcolor4}
+            '
           '';
           initExtra = ''
             if [[ -f "$HOME/.config/zsh/plugins/ohmyzsh/plugins/sudo/sudo.plugin.zsh" ]]; then
@@ -81,6 +90,15 @@ in
                 repo = "zsh-vi-mode";
                 rev = "v0.9.0";
                 sha256 = "sha256-KQ7UKudrpqUwI6gMluDTVN0qKpB15PI5P1YHHCBIlpg=";
+              };
+            }
+            {
+              name = "fzf-tab";
+              src = pkgs.fetchFromGitHub {
+                owner = "Aloxaf";
+                repo = "fzf-tab";
+                rev = "ffb7b776be492333b94cf0be87456b62a1f26e2f";
+                sha256 = "sha256-bIlnYKjjOC6h5/Gg7xBg+i2TBk+h82wmHgAJPhzMsek=";
               };
             }
             {

@@ -31,14 +31,15 @@
       handbrake
 
       # File Manager
+      # gnome.file-roller
+      # gnome.nautilus
+      # gnome.nautilus-python
+      # nautilus-open-any-terminal
       libsForQt5.dolphin-plugins
       libsForQt5.dolphin
       libsForQt5.kdegraphics-thumbnailers
       libsForQt5.ark
-      resvg
-
-      # icons
-      papirus-icon-theme
+      ghostscript
 
       # fonts
       roboto
@@ -73,6 +74,9 @@
       nodePackages.npm
       nodejs
       jq
+      gcc
+      gdb
+      go
 
       # Formatters
       black
@@ -81,11 +85,6 @@
       astyle
       nodePackages.prettier
       alejandra
-
-      # Compiler
-      gcc
-      gdb
-      go
 
       # Build tools
       automake

@@ -33,13 +33,13 @@ _: {
   xcolor15 = "#3c3836";
   transparent = "#00000000";
   wallpaper = builtins.fetchurl {
-    url = "https://raw.githubusercontent.com/sachnr/awesomewm-dotfiles/master/wallpapers/gruvbox-light.png";
-    sha256 = "1m7hhkrcah8s3krmh1zykzsi4wy4hd83ghvy6mwz3vwc7zvcnag8";
+    url = "https://raw.githubusercontent.com/sachnr/awesomewm-dotfiles/master/wallpapers/gruvbox-light3.jpg";
+    sha256 = "0rdd0f4s4j8r3qgy2x1ah9r6w45gfqs89icxk59qs4n5r47468nh";
   };
   name = {
     gtk = "Gruvbox-Light-B";
-    kvantum = "Gruvbox";
-    icon = "Papirus-Dark";
+    kvantum = "Gruvbox_Light_Blue";
+    icon = "Breeze";
     font = "Roboto";
     fontmonospace = "RobotoMono Nerd Font";
   };

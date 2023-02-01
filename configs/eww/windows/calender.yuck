@@ -4,7 +4,7 @@
     (calendar)))
 
 (defwindow calendar
-  :monitor 1
+  :monitor 0
   :geometry (geometry
     :x "0%"
     :y "0%"

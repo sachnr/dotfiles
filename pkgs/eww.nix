@@ -3,7 +3,7 @@
   stdenv,
   ...
 }: let
-  theme = import ../home-manager/modules/theme {};
+  theme = import ../theme {};
 in
   stdenv.mkDerivation rec {
     name = "ewwCfg";
@@ -15,7 +15,7 @@ in
     installPhase = with theme.colors; ''
       cp -r ${src} $out
       substituteInPlace $out/eww.scss \
-        --replace "colors" "nixcolors" 
+        --replace "colors" "nixcolors"
       substituteInPlace $out/nixcolors.scss \
         --replace "nixc00" "${base00}" \
         --replace "nixc01" "${base01}" \

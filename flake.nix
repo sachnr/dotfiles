@@ -20,12 +20,18 @@
     };
 
     nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
+
+    nixpkgs-f2k.url = "github:fortuneteller2k/nixpkgs-f2k";
   };
 
   outputs = inputs @ {self, ...}: let
     overlays = with inputs; [
       nur.overlay
       nixpkgs-wayland.overlay
+      (final: prev: {
+        awesome-git = nixpkgs-f2k.packages.x86_64-linux.awesome-git;
+        picom-git = nixpkgs-f2k.packages.x86_64-linux.picom-git;
+      })
     ];
   in {
     nixosConfigurations = with inputs; {

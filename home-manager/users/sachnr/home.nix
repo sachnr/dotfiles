@@ -17,6 +17,7 @@
       pfetch
       gitui
       ripgrep
+      fd
       youtube-dl
 
       # General
@@ -41,10 +42,6 @@
       libsForQt5.ark
       ghostscript
 
-      # fonts
-      roboto
-      (nerdfonts.override {fonts = ["JetBrainsMono" "RobotoMono"];})
-
       # Browsers
       tor-browser-bundle-bin
 
@@ -59,10 +56,12 @@
       nodePackages.bash-language-server
       nodePackages.yaml-language-server
       nodePackages.vue-language-server
+      nodePackages.typescript-language-server
       nodePackages.vscode-langservers-extracted
       nodePackages.eslint_d
       nodePackages.eslint
       efm-langserver
+      rnix-lsp
       statix
       sqls
       ccls
@@ -108,6 +107,8 @@
     less.enable = true;
     java.enable = true;
   };
+
+  services.network-manager-applet.enable = true;
 
   xdg.userDirs = {
     enable = true;

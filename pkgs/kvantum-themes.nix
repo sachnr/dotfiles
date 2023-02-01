@@ -5,7 +5,7 @@
   fetchurl,
   ...
 }: let
-  theme = import ../home-manager/modules/theme {};
+  theme = import ../theme {};
 in
   stdenv.mkDerivation rec {
     pname = "Kvantum-themes";

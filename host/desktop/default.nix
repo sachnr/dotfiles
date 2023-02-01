@@ -36,12 +36,15 @@
       '';
     }))
   .override {nvidiaPatches = true;};
+
+  theme = import ../../theme {};
 in
   lib.nixosSystem {
     inherit system pkgs;
     modules = [
       nur.nixosModules.nur
       ./configuration.nix
+      ./fontconfig.nix
       ../../extra-settings.nix
 
       home-manager.nixosModules.home-manager
@@ -50,7 +53,7 @@ in
           useGlobalPkgs = true;
           useUserPackages = true;
           users.${user} = import ../../home-manager/users/sachnr;
-          extraSpecialArgs = {inherit inputs pkgs system user hyprlandpkg;};
+          extraSpecialArgs = {inherit inputs pkgs system user hyprlandpkg theme;};
         };
       }
       hyprland.nixosModules.default

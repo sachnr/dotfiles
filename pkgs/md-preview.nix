@@ -5,7 +5,6 @@
   autoPatchelfHook,
   ...
 }: let
-  theme = import ../home-manager/modules/theme {};
 in
   stdenv.mkDerivation rec {
     pname = "markdown-preview";

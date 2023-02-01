@@ -3,7 +3,7 @@
   stdenv,
   ...
 }: let
-  theme = import ../home-manager/modules/theme {};
+  theme = import ../theme {};
 in
   stdenv.mkDerivation rec {
     name = "startpage";

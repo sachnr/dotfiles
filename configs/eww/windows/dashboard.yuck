@@ -66,10 +66,10 @@
 
 (defwindow dashboard
   :stacking "fg"
-  :monitor 1
-  :geometry (geometry :x "0%"
-    :y "0%"
-    :width "20%"
+  :monitor 0
+  :geometry (geometry :x "1%"
+    :y "1%"
+    :width "10%"
     :height "10%"
   :anchor "top right")
   (dashboard))

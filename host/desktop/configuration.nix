@@ -19,7 +19,7 @@ in {
     supportedFilesystems = ["ntfs"];
     kernelPackages = pkgs.linuxPackages_latest;
     blacklistedKernelModules = ["nouveau"];
-    kernelParams = ["nomodeset"];
+    kernelParams = ["nomodeset" "quiet"];
     extraModulePackages = [rtl8814au];
     loader = {
       timeout = 5;
@@ -71,11 +71,19 @@ in {
       desktopManager = {
         xfce.enable = false;
       };
-      displayManager = {
-        sddm = {
+      windowManager = {
+        awesome = {
           enable = true;
+          package = pkgs.awesome-git;
+        };
+      };
+      displayManager = {
+        startx.enable = true;
+        sddm = {
+          enable = false;
           theme = "maldives";
         };
+        lightdm.enable = false;
       };
       libinput = {
         enable = true;
@@ -84,7 +92,17 @@ in {
         touchpad.naturalScrolling = true;
       };
     };
-
+    greetd = {
+      enable = true;
+      package = pkgs.greetd.tuigreet;
+      vt = 7;
+      settings = {
+        default_session = {
+          user = "sachnr";
+          command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd sway";
+        };
+      };
+    };
     # sound
     pipewire = {
       enable = true;

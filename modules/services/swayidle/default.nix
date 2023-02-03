@@ -81,6 +81,7 @@ in
             timeout = 900;
             command = "${pkgs.mpc-cli}/bin/mpc pause";
           }
+
           {
             timeout = 910;
             command = "${pkgs.sway}/bin/swaymsg 'output * dpms off'";

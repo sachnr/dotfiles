@@ -95,11 +95,11 @@ in {
     greetd = {
       enable = true;
       package = pkgs.greetd.tuigreet;
-      vt = 7;
+      vt = 2;
       settings = {
         default_session = {
           user = "sachnr";
-          command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd sway";
+          command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd hyprland --remember --remember-session";
         };
       };
     };
@@ -116,6 +116,11 @@ in {
       jack.enable = true;
     };
   };
+
+  environment.etc."greetd/environments".text = ''
+    sway
+    hyprland
+  '';
 
   hardware = {
     pulseaudio.enable = false;

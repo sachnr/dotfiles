@@ -6,11 +6,12 @@ in
         border-radius: 0;
         font-family: Material Design Icons, ${name.fontmonospace} ;
         font-weight: bold;
-        font-size: 11px;
+        font-size: 12px;
       }
       window#waybar {
-        background: rgba(0, 0, 0, 0);
+        background: ${base00};
         color: ${xcolor15};
+        box-shadow: 5px 4px 3px 0px rgba(1, 2, 3, 0.6);
       }
       #workspaces {
         margin-right: 6px;
@@ -18,7 +19,7 @@ in
       }
       #workspaces button {
         all: initial;
-        padding: 0 0.6em;
+        padding: 0.2em 0.6em;
         margin: 2px 5px;
         border-radius: 4px;
         background-color: ${xcolor0};
@@ -36,9 +37,10 @@ in
       #pulseaudio,
       #network,
       #clock,
+      #mode,
       #mpd,
       #tray {
-        padding: 0 0.6em;
+        padding: 0.2em 0.6em;
         margin: 2px 5px;
         margin-right: 8px;
         border-radius: 4px;
@@ -47,26 +49,31 @@ in
         box-shadow: 5px 4px 3px 0px rgba(1, 2, 3, 0.6);
       }
 
+      #window{
+        color: ${xcolor7};
+      }
+
       #mpd{
         padding: 0 2em;
       }
 
       tooltip {
         font-family: "RobotoMono Nerd Font";
-        font-size : 13px;
+        font-size : 12px;
         border-radius: 8px;
-        padding: 20px;
+        padding: 10px;
         margin: 30px;
       }
 
       tooltip label {
         font-family: "RobotoMono Nerd Font Bold";
-        font-size : 15px;
+        font-size : 13px;
+        font-weight: bold;
         padding: 20px;
       }
 
     #custom-power {
-      font-size: 13;
+      font-size: 13px;
       margin-right: 6px;
     }
   ''

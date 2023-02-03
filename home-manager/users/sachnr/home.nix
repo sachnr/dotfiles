@@ -29,7 +29,6 @@
       feh
       pavucontrol
       steam
-      handbrake
 
       # File Manager
       # gnome.file-roller
@@ -52,7 +51,7 @@
 
       # Language Servers
       sumneko-lua-language-server
-      python39Packages.python-lsp-server
+      python311Packages.python-lsp-server
       nodePackages.bash-language-server
       nodePackages.yaml-language-server
       nodePackages.vue-language-server
@@ -67,7 +66,7 @@
       ccls
 
       # Dev
-      python39Full
+      python311Full
       nodePackages.typescript
       git
       nodePackages.npm

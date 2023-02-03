@@ -27,10 +27,5 @@ in
         extraSessionCommands = import ./wrapper.nix {};
         extraOptions = ["--unsupported-gpu"];
       };
-
-      home = {
-        packages = with pkgs; [
-        ];
-      };
     };
   }

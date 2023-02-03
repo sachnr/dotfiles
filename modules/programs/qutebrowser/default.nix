@@ -23,11 +23,8 @@ in
         loadAutoconfig = false;
         keyBindings = {
           normal = {
-            "<Space>q" = "tab-close";
             "<Ctrl-v>" = "spawn mpv {url}";
             "<Ctrl-C>" = "yank selection";
-            "<Tab>" = "tab-next";
-            "<Shift-Tab>" = "tab-prev";
           };
         };
         keyMappings = {
@@ -56,8 +53,6 @@ in
             position = "top";
             title.format = "{index}: {audio}{current_title}";
             title.format_pinned = "{index}: {audio}{current_title}";
-            max_width = 220;
-            min_width = 140;
             indicator = {
               width = 4;
             };

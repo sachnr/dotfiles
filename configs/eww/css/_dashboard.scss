@@ -2,26 +2,26 @@
   all: initial;
   border: 1px solid $base00;
   border-radius: 8px;
-  box-shadow: 0 2px 3px $base00;
+  box-shadow: 5px 4px 3px 0px rgba(#010203, 0.6);
   margin: 5px 5px;
-  background-color: $xcolor0;
+  background-color: $base00;
 }
 
 .dashboard_module1 {
   padding: 1em;
   border-radius: 6px;
-  background-color: $base00;
+  background-color: $xcolor0;
 }
 
 .dashboard_module2 {
   border-radius: 6px;
-  background-color: $base00;
+  background-color: $xcolor0;
 }
 
 .dashboard_button {
   padding: 0.6em;
   border-radius: 6px;
-  background-color: $xcolor0;
+  background-color: $base00;
 
   &:hover {
     background-color: rgba($xcolor12, 0.4);

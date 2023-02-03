@@ -3,7 +3,7 @@ in {
   mainBar = {
     layer = "top";
     position = "top";
-    height = 24;
+    height = 28;
     mode = "dock";
     exclusive = true;
     passthrough = false;
@@ -29,22 +29,32 @@ in {
     "sway/workspaces" = {
       disable-scroll = true;
       all-outputs = true;
+      "format" = "{name}.{icon}";
+      "format-icons" = {
+        "1" = "";
+        "2" = "";
+        "3" = "";
+        "4" = "";
+        "5" = "";
+        "6" = "";
+        "7" = "";
+        "8" = "";
+        "9" = "";
+      };
     };
 
     "sway/window" = {
-      icon = true;
-      icon-size = 16;
-      max-length = 24;
+      max-length = 20;
     };
 
     "custom/power" = {
       tooltip = false;
       on-click = "eww open --toggle dashboard";
-      format = "󰤆";
+      format = "  ";
     };
 
     "sway/mode" = {
-      "format" = " {}";
+      "format" = "  {} ";
       "max-length" = 50;
     };
 

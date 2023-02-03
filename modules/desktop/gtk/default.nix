@@ -65,11 +65,11 @@ in
         ];
         pointerCursor = {
           package = pkgs.phinger-cursors;
-          name = "phinger-cursors-light";
-          size = 32;
+          name = "phinger-cursors";
+          size = 24;
           gtk.enable = true;
           x11.enable = true;
-          x11.defaultCursor = "phinger-cursors-light";
+          x11.defaultCursor = "phinger-cursors";
         };
         sessionVariables = {
           GTK_THEME = "${theme.colors.name.gtk}";
@@ -94,8 +94,8 @@ in
         };
         cursorTheme = {
           package = pkgs.phinger-cursors;
-          name = "phinger-cursors-light";
-          size = 32;
+          name = "phinger-cursors";
+          size = 24;
         };
       };
       qt = {

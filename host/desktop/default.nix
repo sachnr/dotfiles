@@ -20,23 +20,6 @@
 
   user = "sachnr";
 
-  hyprlandpkg = (hyprland.packages.${pkgs.hostPlatform.system}.default.overrideAttrs
-    (prevAttrs: rec {
-      postInstall = let
-        Session = ''
-          [Desktop Entry]
-          Name=Hyprland
-          Comment=An intelligent dynamic tiling Wayland compositor
-          Exec=hyprlandwrapped
-          Type=Application
-        '';
-      in ''
-        mkdir -p $out/share/wayland-sessions
-        echo "${Session}" > $out/share/wayland-sessions/hyprland.desktop
-      '';
-    }))
-  .override {nvidiaPatches = true;};
-
   theme = import ../../theme {};
 in
   lib.nixosSystem {
@@ -53,14 +36,7 @@ in
           useGlobalPkgs = true;
           useUserPackages = true;
           users.${user} = import ../../home-manager/users/sachnr;
-          extraSpecialArgs = {inherit inputs pkgs system user hyprlandpkg theme;};
-        };
-      }
-      hyprland.nixosModules.default
-      {
-        programs.hyprland = {
-          enable = true;
-          package = hyprlandpkg;
+          extraSpecialArgs = {inherit inputs pkgs system user hyprland theme;};
         };
       }
     ];

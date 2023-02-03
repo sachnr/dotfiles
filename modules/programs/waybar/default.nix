@@ -3,6 +3,8 @@
   lib,
   pkgs,
   theme,
+  inputs,
+  system,
   ...
 }: let
   cfg = config.modules.programs.waybar;

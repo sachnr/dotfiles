@@ -23,6 +23,7 @@ in {
   config.modules = {
     desktop = {
       x11.enable = true;
+      waylandPkgs.enable = true;
       hyprland.enable = true;
       sway.enable = true;
       gtk.enable = true;

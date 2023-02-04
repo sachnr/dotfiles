@@ -84,6 +84,7 @@ in
               user_pref("media.rdd-ffmpeg.enabled", true);
               user_pref("media.rdd-vpx.enabled", true);
               user_pref("media.av1.enabled", false);
+              user_pref("media.peerconnection.enabled", true);
               user_pref("widget.dmabuf.force-enabled", true);
               user_pref("geo.provider.use_gpsd", false);
               user_pref("geo.provider.use_geoclue", false);

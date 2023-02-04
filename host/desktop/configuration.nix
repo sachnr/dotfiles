@@ -62,6 +62,8 @@ in {
   # services.openssh.enable = true;
   # services.printing.enable = true;
 
+  security.rtkit.enable = true;
+
   # Enable display manager
   services = {
     xserver = {
@@ -99,7 +101,7 @@ in {
       settings = {
         default_session = {
           user = "sachnr";
-          command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd hyprland --remember --remember-session";
+          command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd sway --remember --remember-session -s sway:hyprland --user-menu";
         };
       };
     };
@@ -121,6 +123,7 @@ in {
     sway
     hyprland
   '';
+  environment.pathsToLink = [ "/share/zsh" ];
 
   hardware = {
     pulseaudio.enable = false;

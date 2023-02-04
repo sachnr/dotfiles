@@ -19,8 +19,8 @@ in
       }
       #workspaces button {
         all: initial;
-        padding: 0.2em 0.6em;
-        margin: 2px 5px;
+        padding: 0.0em 0.8em;
+        margin: 4px 6px;
         border-radius: 4px;
         background-color: ${xcolor0};
         color: ${xcolor7};
@@ -31,6 +31,8 @@ in
         background-color: ${base01};
       }
 
+
+
       #custom-power,
       #battery,
       #backlight,
@@ -39,9 +41,11 @@ in
       #clock,
       #mode,
       #mpd,
+      #scratchpad,
+      #scratchpad.empty,
       #tray {
-        padding: 0.2em 0.6em;
-        margin: 2px 5px;
+        padding: 0.0em 0.6em;
+        margin: 4px 6px;
         margin-right: 8px;
         border-radius: 4px;
         background-color: ${xcolor0};
@@ -53,8 +57,13 @@ in
         color: ${xcolor7};
       }
 
+      #scratchpad.empty{
+        color: ${xcolor7};
+      }
+
       #mpd{
         padding: 0 2em;
+        margin: 4px 6px;
       }
 
       tooltip {

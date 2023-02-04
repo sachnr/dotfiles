@@ -1,5 +1,5 @@
 {pkgs}:
-pkgs.writeShellScriptBin "hyprland"
+pkgs.writeShellScriptBin ".hyprland-wrapped"
 ''
   export WLR_NO_HARDWARE_CURSORS=1
   export GBM_BACKEND=nvidia-drm

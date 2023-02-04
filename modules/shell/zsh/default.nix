@@ -43,6 +43,22 @@ in
 
             export PATH="''${PATH}:$HOME/.local/share/nodePackages/bin:''${HOME}/.local/share/nvim/mason/bin"
             export EDITOR="nvim"
+          '';
+          initExtra = ''
+            if [[ -f "$HOME/.config/zsh/plugins/ohmyzsh/plugins/sudo/sudo.plugin.zsh" ]]; then
+              source "$HOME/.config/zsh/plugins/ohmyzsh/plugins/sudo/sudo.plugin.zsh"
+            fi
+
+            if [[ -f "$HOME/.config/zsh/plugins/ohmyzsh/lib/theme-and-appearance.zsh" ]]; then
+              source "$HOME/.config/zsh/plugins/ohmyzsh/lib/theme-and-appearance.zsh"
+            fi
+
+            if [[ -f "$HOME/.config/zsh/plugins/ohmyzsh/lib/completion.zsh" ]]; then
+              source "$HOME/.config/zsh/plugins/ohmyzsh/lib/completion.zsh"
+            fi
+
+            ZSH_THEME="powerlevel10k/powerlevel10k"
+            [[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
 
             zstyle ':completion:*' matcher-list "" 'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=* r:|=*'
             zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa --icons --color=always --group-directories-first $realpath'
@@ -50,14 +66,6 @@ in
             export FZF_DEFAULT_OPTS='
               --ansi --layout=reverse
             '
-          '';
-          initExtra = ''
-            if [[ -f "$HOME/.config/zsh/plugins/ohmyzsh/plugins/sudo/sudo.plugin.zsh" ]]; then
-              source "$HOME/.config/zsh/plugins/ohmyzsh/plugins/sudo/sudo.plugin.zsh"
-            fi
-
-            ZSH_THEME="powerlevel10k/powerlevel10k"
-            [[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
           '';
           shellAliases = {
             gg = "${pkgs.gitui}/bin/gitui";

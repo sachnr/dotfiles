@@ -22,9 +22,11 @@ in
         config = null;
         extraConfigEarly = import ./config.nix {inherit pkgs theme;};
         extraConfig = import ./keys.nix {};
-        systemdIntegration = true;
-        wrapperFeatures = {gtk = true;};
-        extraSessionCommands = import ./wrapper.nix {};
+        systemdIntegration = false;
+        wrapperFeatures = {
+          gtk = true;
+        };
+        extraSessionCommands = import ./wrapper.nix {inherit pkgs;};
         extraOptions = ["--unsupported-gpu"];
       };
     };

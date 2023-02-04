@@ -53,39 +53,39 @@ in
       };
 
       services = {
-        # mpd.enable = true;
-        mopidy = {
-          enable = true;
-          extensionPackages = with pkgs; [mopidy-mpd mopidy-youtube];
-          settings = {
-            # ╞══════════════════════════════════════════════════════════╡
-            file = {
-              media_dirs = [
-                "$XDG_MUSIC_DIR"
-              ];
-              follow_symlinks = true;
-              excluded_file_extensions = [
-                ".html"
-                ".zip"
-                ".jpg"
-                ".jpeg"
-                ".png"
-              ];
-            };
-            # ╞══════════════════════════════════════════════════════════╡
-            mpd = {
-              enabled = true;
-              hostname = "127.0.0.1";
-              port = 6600;
-            };
-            # ╞══════════════════════════════════════════════════════════╡
-            youtube = {
-              enabled = true;
-              allow_cache = true;
-              playlist_max_videos = 1000;
-            };
-          };
-        };
+        mpd.enable = true;
+        # mopidy = {
+        #   enable = true;
+        #   extensionPackages = with pkgs; [mopidy-mpd mopidy-youtube];
+        #   settings = {
+        #     # ╞══════════════════════════════════════════════════════════╡
+        #     file = {
+        #       media_dirs = [
+        #         "$XDG_MUSIC_DIR"
+        #       ];
+        #       follow_symlinks = true;
+        #       excluded_file_extensions = [
+        #         ".html"
+        #         ".zip"
+        #         ".jpg"
+        #         ".jpeg"
+        #         ".png"
+        #       ];
+        #     };
+        #     # ╞══════════════════════════════════════════════════════════╡
+        #     mpd = {
+        #       enabled = true;
+        #       hostname = "127.0.0.1";
+        #       port = 6600;
+        #     };
+        #     # ╞══════════════════════════════════════════════════════════╡
+        #     youtube = {
+        #       enabled = true;
+        #       allow_cache = true;
+        #       playlist_max_videos = 1000;
+        #     };
+        #   };
+        # };
       };
 
       # home.file.".config/mpd/mpd.conf".text = mpdconf;

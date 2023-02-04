@@ -1,4 +1,4 @@
-_: ''
+{pkgs}: ''
   # nvidia
   export WLR_NO_HARDWARE_CURSORS=1
   export GBM_BACKEND=nvidia-drm

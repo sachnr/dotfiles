@@ -15,9 +15,12 @@ in {
     modules-left = [
       "sway/workspaces"
       "sway/mode"
+      "sway/scratchpad"
       "sway/window"
     ];
-    modules-center = ["mpd"];
+    modules-center = [
+      "mpd"
+    ];
     modules-right = [
       "tray"
       "pulseaudio"
@@ -41,6 +44,14 @@ in {
         "8" = "";
         "9" = "";
       };
+    };
+
+    "sway/scratchpad" = {
+      "format" = "{icon} {count}";
+      "show-empty" = true;
+      "format-icons" = ["" ""];
+      "tooltip" = true;
+      "tooltip-format" = "{app}: {title}";
     };
 
     "sway/window" = {

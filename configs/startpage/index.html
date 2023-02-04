@@ -35,11 +35,11 @@
     <script src="bookmarks.js"></script>
     <script>
       var ddg = true;
-      var searchUrl = "https://duckduckgo.com/?t=ffab&q=";
+      var searchUrl = "https://www.google.com/search?q=";
       const img = document.getElementById("search-toggle");
       const input = document.getElementById("search-field");
-      input.placeholder = "search with duckduckgo";
-      img.src = "duckduckgo.svg";
+      input.placeholder = "search with Google";
+      img.src = "google.svg";
 
       function changeIcon() {
         if (ddg) {
@@ -48,7 +48,7 @@
           input.placeholder = "search in nixpkgs";
           ddg = false;
         } else {
-          img.src = "duckduckgo.svg";
+          img.src = "google.svg";
           searchUrl = "https://duckduckgo.com/?t=ffab&q=";
           input.placeholder = "search with duckduckgo";
           ddg = true;

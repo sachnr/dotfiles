@@ -46,6 +46,10 @@
         xdg-desktop-portal-hyprland = xdph.packages.${prev.system}.default.override {
           hyprland-share-picker = xdph.packages.${prev.system}.hyprland-share-picker.override {inherit hyprland-git;};
         };
+        wlroots = prev.wlroots.overrideAttrs (_: {
+          patches = (prev.patches or []) ++ [./patches/nvidia.patch];
+          postPatch = (prev.postPatch or "") + ''substituteInPlace render/gles2/renderer.c --replace "glFlush();" "glFinish();" '';
+        });
       })
     ];
   in {

@@ -56,13 +56,94 @@ in {
   # Enable sound.
   sound.enable = true;
 
+  hardware = {
+    pulseaudio.enable = false;
+    opengl = {
+      enable = true;
+      driSupport = true;
+      driSupport32Bit = true;
+      extraPackages = with pkgs; [
+        vaapiVdpau
+        libvdpau-va-gl
+        nvidia-vaapi-driver
+      ];
+    };
+    nvidia = {
+      open = true;
+      powerManagement.enable = true;
+      modesetting.enable = true;
+    };
+    bluetooth = {
+      enable = true;
+      settings = {
+        General = {
+          Enable = "Source,Sink,Media,Socket";
+        };
+      };
+    };
+  };
+
+  # Define a user account. Don't forget to set a password with ‘passwd’.
+  users.users.sachnr = {
+    isNormalUser = true;
+    extraGroups = ["wheel" "video" "audio" "users"]; # Enable ‘sudo’ for the user.
+    shell = pkgs.zsh;
+  };
+
+  nixpkgs.config = {
+    allowUnfree = true;
+  };
+
+  # List packages installed in system profile. To search, run:
+  # $ nix search wget
+  environment = {
+    systemPackages = with pkgs; [
+      # system
+      socat
+      lsof
+      file
+      glibc
+      patchelf
+      lm_sensors
+      whois
+      pulseaudio
+      nix-index
+      sddm-theme
+
+      ntfs3g
+      alsa-utils
+      usbutils
+      ffmpeg
+
+      # compression
+      p7zip
+      unzip
+      exfat
+      zip
+
+      #vulcan/opengl
+      glxinfo
+      vulkan-tools
+      glmark2
+    ];
+  };
+
   # polkit
-  security.polkit.enable = true;
+  security = {
+    polkit.enable = true;
+    rtkit.enable = true;
+  };
+
+  # List services that you want to enable:
+  services = {
+    blueman.enable = true;
+    fstrim.enable = true;
+    gvfs.enable = true;
+    dbus.enable = true;
+  };
 
   # services.openssh.enable = true;
   # services.printing.enable = true;
-
-  security.rtkit.enable = true;
 
   # Enable display manager
   services = {
@@ -123,89 +204,7 @@ in {
     sway
     hyprland
   '';
-  environment.pathsToLink = [ "/share/zsh" ];
-
-  hardware = {
-    pulseaudio.enable = false;
-    opengl = {
-      enable = true;
-      driSupport = true;
-      driSupport32Bit = true;
-      extraPackages = with pkgs; [
-        vaapiVdpau
-        libvdpau-va-gl
-        nvidia-vaapi-driver
-      ];
-    };
-    nvidia = {
-      open = true;
-      powerManagement.enable = true;
-      modesetting.enable = true;
-    };
-    bluetooth = {
-      enable = true;
-      settings = {
-        General = {
-          Enable = "Source,Sink,Media,Socket";
-        };
-      };
-    };
-  };
-
-  # enable dbus
-  services.dbus.enable = true;
-
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.sachnr = {
-    isNormalUser = true;
-    extraGroups = ["wheel" "video" "audio" "users"]; # Enable ‘sudo’ for the user.
-    shell = pkgs.zsh;
-  };
-
-  nixpkgs.config = {
-    allowUnfree = true;
-  };
-
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  environment = {
-    systemPackages = with pkgs; [
-      # system
-      socat
-      lsof
-      file
-      glibc
-      patchelf
-      lm_sensors
-      whois
-      pulseaudio
-      nix-index
-      sddm-theme
-
-      ntfs3g
-      alsa-utils
-      usbutils
-      ffmpeg
-
-      # compression
-      p7zip
-      unzip
-      exfat
-      zip
-
-      #vulcan/opengl
-      glxinfo
-      vulkan-tools
-      glmark2
-    ];
-  };
-
-  # List services that you want to enable:
-  services = {
-    blueman.enable = true;
-    fstrim.enable = true;
-    gvfs.enable = true;
-  };
+  environment.pathsToLink = ["/share/zsh"];
 
   # Enable the OpenSSH daemon.
 

@@ -4,7 +4,6 @@
   pkgs,
   config,
   gtk-engine-murrine,
-  ...
 }: let
   theme = import ../theme {};
 in

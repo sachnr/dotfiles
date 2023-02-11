@@ -33,12 +33,19 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.hyprland-protocols.follows = "hyprland-protocols";
     };
+
+    neovim-nightly-overlay = {
+      url = "github:nix-community/neovim-nightly-overlay";
+      # Pin to a nixpkgs revision that doesn't have NixOS/nixpkgs#208103 yet
+      inputs.nixpkgs.url = "github:nixos/nixpkgs?rev=fad51abd42ca17a60fc1d4cb9382e2d79ae31836";
+    };
   };
 
   outputs = inputs @ {self, ...}: let
     overlays = with inputs; [
       nur.overlay
       nixpkgs-wayland.overlay
+      neovim-nightly-overlay.overlay
       (final: prev: rec {
         awesome-git = nixpkgs-f2k.packages.x86_64-linux.awesome-git;
         picom-git = nixpkgs-f2k.packages.x86_64-linux.picom-git;

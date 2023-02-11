@@ -15,23 +15,28 @@ in
       }
       #workspaces {
         margin-right: 6px;
-        background-color: rgba(0, 0, 0, 0);
+        background-color: ${xcolor0};
+        margin: 4px 6px;
+        border-radius: 4px;
+        box-shadow: 5px 4px 3px 0px rgba(1, 2, 3, 0.6);
       }
       #workspaces button {
         all: initial;
         padding: 0.0em 0.8em;
-        margin: 4px 6px;
         border-radius: 4px;
         background-color: ${xcolor0};
-        color: ${xcolor7};
-        box-shadow: 5px 4px 3px 0px rgba(1, 2, 3, 0.6);
+        color: ${xcolor15};
       }
       #workspaces button.focused {
         color: ${xcolor15};
-        background-color: ${base01};
+        background-color: ${base02};
       }
-
-
+      #workspaces button.persistent{
+        color: ${xcolor7};
+      }
+      #workspaces button.urgent{
+        color: ${xcolor9};
+      }
 
       #custom-power,
       #battery,

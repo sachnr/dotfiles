@@ -23,6 +23,7 @@ in
           grim
           slurp
           # clipman
+          swww
           wl-clipboard
           wlr-randr
           mpvpaper

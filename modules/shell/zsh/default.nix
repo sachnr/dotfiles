@@ -36,32 +36,33 @@ in
             expireDuplicatesFirst = true;
             path = "$HOME/.config/zsh/.zsh_history";
           };
+          completionInit = ''
+            fpath+="${pkgs.exa}/share/zsh/site-functions"
+            autoload -U compinit && compinit
+          '';
           initExtraFirst = ''
             if [[ -r "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh" ]]; then
               source "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh"
-            fi
-
-            export PATH="''${PATH}:$HOME/.local/share/nodePackages/bin:''${HOME}/.local/share/nvim/mason/bin"
-            export EDITOR="nvim"
-          '';
-          initExtra = ''
-            if [[ -f "$HOME/.config/zsh/plugins/ohmyzsh/plugins/sudo/sudo.plugin.zsh" ]]; then
-              source "$HOME/.config/zsh/plugins/ohmyzsh/plugins/sudo/sudo.plugin.zsh"
-            fi
-
-            if [[ -f "$HOME/.config/zsh/plugins/ohmyzsh/lib/theme-and-appearance.zsh" ]]; then
-              source "$HOME/.config/zsh/plugins/ohmyzsh/lib/theme-and-appearance.zsh"
             fi
 
             if [[ -f "$HOME/.config/zsh/plugins/ohmyzsh/lib/completion.zsh" ]]; then
               source "$HOME/.config/zsh/plugins/ohmyzsh/lib/completion.zsh"
             fi
 
+            if [[ -f "$HOME/.config/zsh/plugins/ohmyzsh/lib/theme-and-appearance.zsh" ]]; then
+              source "$HOME/.config/zsh/plugins/ohmyzsh/lib/theme-and-appearance.zsh"
+            fi
+
+            if [[ -f "$HOME/.config/zsh/plugins/ohmyzsh/plugins/sudo/sudo.plugin.zsh" ]]; then
+              source "$HOME/.config/zsh/plugins/ohmyzsh/plugins/sudo/sudo.plugin.zsh"
+            fi
+
+            export PATH="''${PATH}:$HOME/.local/share/nodePackages/bin:''${HOME}/.local/share/nvim/mason/bin"
+            export EDITOR="nvim"
+          '';
+          initExtra = ''
             ZSH_THEME="powerlevel10k/powerlevel10k"
             [[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
-
-            zstyle ':completion:*' matcher-list "" 'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=* r:|=*'
-            zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa --icons --color=always --group-directories-first $realpath'
 
             export FZF_DEFAULT_OPTS='
               --ansi --layout=reverse

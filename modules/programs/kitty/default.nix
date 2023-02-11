@@ -73,7 +73,7 @@ in
           # Tabs
           tab_bar_edge = "top";
           tab_bar_style = "powerline";
-          tab_powerline_style = "round";
+          tab_powerline_style = "angled";
           tab_bar_margin_width = "2.0";
           tab_separator = " | ";
           active_tab_font_style = "bold";

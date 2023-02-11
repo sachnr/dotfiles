@@ -32,8 +32,16 @@ in {
     "sway/workspaces" = {
       disable-scroll = true;
       all-outputs = true;
-      "format" = "{name}.{icon}";
-      "format-icons" = {
+      format = "{icon}";
+      persistent_workspaces = {
+        "1"= [];
+        "2"= [];
+        "3"= [];
+        "4"= [];
+        "5"= [];
+        "6"= [];
+      };
+      format-icons = {
         "1" = "";
         "2" = "";
         "3" = "";

@@ -5,10 +5,6 @@
 }: let
 in
   with theme.colors; ''
-    exec ${pkgs.dbus}/bin/dbus-update-activation-environment --systemd DISPLAY I3SOCK SWAYSOCK WAYLAND_DISPLAY XDG_CURRENT_DESKTOP && systemctl --user start sway-session.target
-    exec ${pkgs.blueman}/bin/blueman-applet
-    exec ${pkgs.networkmanagerapplet}/bin/nm-applet --indicator
-
     font pango:monospace 8.000000
     floating_modifier Mod4
     default_border pixel 2
@@ -56,6 +52,7 @@ in
     for_window [window_type="dialog"] floating enable
     for_window [window_type="menu"] floating enable
     for_window [instance="update_installer"] floating enable
+    for_window [instance="feh"] floating enable
 
     # ScratchPad - Dropdown Windows
     #
@@ -67,7 +64,7 @@ in
     for_window [title="Dropdown *"] resize set width 625
     for_window [title="Dropdown *"] resize set height 400
     for_window [title="Dropdown *"] border pixel 3
-    for_window [title="Dropdown *"] move position center	
+    for_window [title="Dropdown *"] move position center
     # General dropdown window traits. The order can matter.
     for_window [title="Dropdown Launcher*"] floating enable
     for_window [title="Dropdown Launcher*"] move scratchpad
@@ -79,14 +76,18 @@ in
     for_window [title="Dropdown Launcher*"] move position center
 
     assign [app_id="kitty"] 1
+    for_window [app_id="kitty"]  workspace number 1
     assign [app_id="firefox"] 2
     assign [app_id="org.qutebrowser.qutebrowser"] 2
+    for_window [app_id="firefox|org.qutebrowser.qutebrowser"]  workspace number 2
     assign [app_id="dolphin"] 4
+    for_window [app_id="dolphin"]  workspace number 4
     assign [app_id="veracrypt"] 6
+    for_window [app_id="veracrypt"]  workspace number 6
     assign [app_id="Steam"] 7
+    for_window [app_id="Steam"]  workspace number 7
 
     output "HDMI-A-1" resolution 1920x1080@144hz position 0,0 adaptive_sync on {
-      bg ${wallpaper} fill
     }
 
     input type:pointer {
@@ -97,4 +98,10 @@ in
       swaybar_command waybar
       position top
     }
+
+    exec ${pkgs.blueman}/bin/blueman-applet
+    exec ${pkgs.networkmanagerapplet}/bin/nm-applet --indicator
+    exec ${pkgs.eww-wayland}/bin/eww daemon
+    exec ${pkgs.swww}/bin/swww init
+    exec ${pkgs.swww}/bin/swww img ${pkgs.wallpapers}/share/wallpapers/animated-gifs/white-oak-chillhop.gif
   ''

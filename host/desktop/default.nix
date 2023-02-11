@@ -8,10 +8,17 @@
 }: let
   system = "x86_64-linux"; # System architecture
 
+  wallpapers = pkgs.callPackage ../../pkgs/wallpapers.nix {};
+  swww = pkgs.callPackage ../../pkgs/swww.nix {};
+
   pkgs = import nixpkgs {
     inherit system;
     inherit overlays;
     config = {
+      packageOverrides = super: {
+        inherit swww;
+        inherit wallpapers;
+      };
       allowUnfree = true; # Allow proprietary software
     };
   };

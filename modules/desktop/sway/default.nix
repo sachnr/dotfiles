@@ -22,7 +22,7 @@ in
         config = null;
         extraConfigEarly = import ./config.nix {inherit pkgs theme;};
         extraConfig = import ./keys.nix {};
-        systemdIntegration = false;
+        systemdIntegration = true;
         wrapperFeatures = {
           gtk = true;
         };

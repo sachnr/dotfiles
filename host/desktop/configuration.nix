@@ -8,6 +8,7 @@
 }: let
   rtl8814au = config.boot.kernelPackages.callPackage ../../pkgs/rtl88xxau.nix {};
   sddm-theme = pkgs.callPackage ../../pkgs/sddmtheme.nix {};
+  theme = import ../../theme {};
 in {
   imports = [
     # Include the results of the hardware scan.
@@ -19,7 +20,7 @@ in {
     supportedFilesystems = ["ntfs"];
     kernelPackages = pkgs.linuxPackages_latest;
     blacklistedKernelModules = ["nouveau"];
-    kernelParams = ["nomodeset" "quiet"];
+    kernelParams = ["quiet"];
     extraModulePackages = [rtl8814au];
     loader = {
       timeout = 5;
@@ -29,9 +30,11 @@ in {
       };
       grub = {
         enable = true;
+        gfxmodeEfi = "1920x1080";
         devices = ["nodev"];
         efiSupport = true;
         useOSProber = true;
+        default = "saved";
       };
     };
   };
@@ -51,6 +54,25 @@ in {
     font = "Lat2-Terminus16";
     # keyMap = "us";
     useXkbConfig = true; # use xkbOptions in tty.
+    earlySetup = true;
+    colors = with theme.colors; [
+      (builtins.substring 1 6 xcolor0)
+      (builtins.substring 1 6 xcolor1)
+      (builtins.substring 1 6 xcolor2)
+      (builtins.substring 1 6 xcolor3)
+      (builtins.substring 1 6 xcolor4)
+      (builtins.substring 1 6 xcolor5)
+      (builtins.substring 1 6 xcolor6)
+      (builtins.substring 1 6 xcolor7)
+      (builtins.substring 1 6 xcolor8)
+      (builtins.substring 1 6 xcolor9)
+      (builtins.substring 1 6 xcolor10)
+      (builtins.substring 1 6 xcolor11)
+      (builtins.substring 1 6 xcolor12)
+      (builtins.substring 1 6 xcolor13)
+      (builtins.substring 1 6 xcolor14)
+      (builtins.substring 1 6 xcolor15)
+    ];
   };
 
   # Enable sound.
@@ -69,7 +91,7 @@ in {
       ];
     };
     nvidia = {
-      open = true;
+      open = false;
       powerManagement.enable = true;
       modesetting.enable = true;
     };

@@ -4,8 +4,12 @@ _: ''
     bindsym mod4+Return exec kitty
     bindsym mod4+Shift+r reload
     bindsym mod4+f fullscreen toggle
+    bindsym mod4+Shift+w exec rofi-wallpaper
+    bindsym Print exec grim -t png -g "$(slurp)" ~/Pictures/$(date +%Y-%m-%d_%H-%m-%s).png
 
     # Workspace
+    bindsym mod4+Tab workspace next
+    bindsym mod4+Shift+Tab workspace prev
     bindsym mod4+1 workspace number 1
     bindsym mod4+2 workspace number 2
     bindsym mod4+3 workspace number 3

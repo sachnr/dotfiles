@@ -2,6 +2,8 @@
   pkgs,
   config,
   lib,
+  wallpapers,
+  theme,
   ...
 }: let
   cfg = config.modules.desktop.waylandPkgs;
@@ -15,7 +17,23 @@ in
       };
     };
 
+    imports = [
+      wallpapers.homeManagerModules.default
+    ];
+
     config = mkIf cfg.enable {
+      programs.wall-utils = with theme.colors;{
+        enable = true;
+        swww.enable = true;
+        customCommand = "swww img";
+        background = base00;
+        background-alt = xcolor0;
+        foreground = xcolor15;
+        selected = xcolor12;
+        active = xcolor10;
+        urgent = xcolor9;
+        font = "RobotoMono Nerd Font 9";
+      };
       home = {
         packages = with pkgs; [
           libsForQt5.qt5.qtwayland
@@ -23,7 +41,7 @@ in
           grim
           slurp
           # clipman
-          swww
+          # swww
           wl-clipboard
           wlr-randr
           mpvpaper

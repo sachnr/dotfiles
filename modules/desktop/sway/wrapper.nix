@@ -30,4 +30,5 @@
 
   # firefox
   export MOZ_ENABLE_WAYLAND=1
+  export QUTE_SKIP_NOUVEAU_CHECK=1
 ''

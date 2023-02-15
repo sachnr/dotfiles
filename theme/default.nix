@@ -1,3 +1,4 @@
-_: {
-  colors = import ./everforest.nix {};
+_: let
+in {
+  colors = import ./one-dark.nix {};
 }

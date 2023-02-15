@@ -8,8 +8,8 @@ in
     font pango:monospace 8.000000
     floating_modifier Mod4
     default_border pixel 2
-    gaps inner 10
-    smart_gaps on
+    gaps inner 6
+    smart_gaps off
     tiling_drag enable
     default_floating_border pixel 2
     hide_edge_borders none
@@ -41,6 +41,8 @@ in
     for_window [window_role="GtkFileChooserDialog"] resize set 800 600
     for_window [window_role="GtkFiileChooserDialog"] move position center
     for_window [app_id="org.kde.ark"] floating enable
+    for_window [app_id="veracrypt"] floating enable
+    for_window [title="Library"] floating enable
     for_window [title="Steam Guard"] floating enable
     for_window [class="(?i)steam_app$"] inhibit_idle focus
     for_window [class="(?i)steam_app$"] max_render_time 3
@@ -87,8 +89,7 @@ in
     assign [app_id="Steam"] 7
     for_window [app_id="Steam"]  workspace number 7
 
-    output "HDMI-A-1" resolution 1920x1080@144hz position 0,0 adaptive_sync on {
-    }
+    output "HDMI-A-1" resolution 1920x1080@144hz position 0,0 adaptive_sync on
 
     input type:pointer {
       accel_profile flat
@@ -102,6 +103,5 @@ in
     exec ${pkgs.blueman}/bin/blueman-applet
     exec ${pkgs.networkmanagerapplet}/bin/nm-applet --indicator
     exec ${pkgs.eww-wayland}/bin/eww daemon
-    exec ${pkgs.swww}/bin/swww init
-    exec ${pkgs.swww}/bin/swww img ${pkgs.wallpapers}/share/wallpapers/animated-gifs/white-oak-chillhop.gif
+    exec ${pkgs.swww}/bin/swww init && ${pkgs.swww}/bin/swww img ${pkgs.rofi-wallpaper}/share/wallpapers/animated-gifs/white-oak-chillhop.gif
   ''

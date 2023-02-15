@@ -33,8 +33,8 @@ _: {
   xcolor15 = "#cdd6f4";
   transparent = "#00000000";
   wallpaper = builtins.fetchurl {
-    url = "https://raw.githubusercontent.com/sachnr/awesomewm-dotfiles/master/wallpapers/minimal-mountain.jpg";
-    sha256 = "0lbcpagrvp6xd9zxijw4kld7p3fsr9va9sffwndkc0x8h1w2jy4j";
+    url = "https://raw.githubusercontent.com/catppuccin/wallpapers/main/flatppuccin/flatppuccin_4k_macchiato.png";
+    sha256 = "12s7qcf5al14kp9rd0vi8g7bmm2jsawb22rb7ppkapmwv5hb6yl4";
   };
   name = {
     gtk = "Catppuccin-Dark";

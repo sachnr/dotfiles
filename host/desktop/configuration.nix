@@ -51,8 +51,9 @@ in {
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
   console = {
-    font = "Lat2-Terminus16";
     # keyMap = "us";
+    packages = with pkgs; [terminus_font];
+    font = "ter-i32b";
     useXkbConfig = true; # use xkbOptions in tty.
     earlySetup = true;
     colors = with theme.colors; [

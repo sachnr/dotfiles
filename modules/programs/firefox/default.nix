@@ -42,6 +42,16 @@ in
 
       programs.firefox = {
         enable = true;
+        extensions = with pkgs.nur.repos.rycee.firefox-addons; [
+          darkreader
+          betterttv
+          ublock-origin
+          df-youtube
+          cookie-autodelete
+          decentraleyes
+          return-youtube-dislikes
+          lovely-forks
+        ];
         package = pkgs.wrapFirefox pkgs.firefox-unwrapped {
           extraPolicies = {
             ExtensionSettings = {};
@@ -58,18 +68,19 @@ in
             then mozillaCfg
             else "";
         };
-        extensions = with pkgs.nur.repos.rycee.firefox-addons; [
-          darkreader
-          betterttv
-          ublock-origin
-          df-youtube
-          cookie-autodelete
-          decentraleyes
-          return-youtube-dislikes
-          lovely-forks
-        ];
         profiles = {
           ${user} = {
+            # extensions = with pkgs.nur.repos.rycee.firefox-addons; [
+            #   darkreader
+            #   betterttv
+            #   ublock-origin
+            #   df-youtube
+            #   cookie-autodelete
+            #   decentraleyes
+            #   return-youtube-dislikes
+            #   lovely-forks
+            # ];
+
             settings = {
               "browser.startup.homepage" = "file:///home/${user}/.config/startpage/index.html";
               "browser.search.region" = "IN";

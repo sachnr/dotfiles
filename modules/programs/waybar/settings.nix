@@ -3,7 +3,7 @@ in {
   mainBar = {
     layer = "top";
     position = "top";
-    height = 28;
+    height = 30;
     mode = "dock";
     exclusive = true;
     passthrough = false;

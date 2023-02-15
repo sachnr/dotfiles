@@ -29,32 +29,25 @@ in
           enable = true;
           enableCompletion = true;
           enableAutosuggestions = true;
-          enableSyntaxHighlighting = true;
           autocd = true;
           dotDir = ".config/zsh";
           history = {
             expireDuplicatesFirst = true;
             path = "$HOME/.config/zsh/.zsh_history";
           };
-          completionInit = ''
-            fpath+="${pkgs.exa}/share/zsh/site-functions"
-            autoload -U compinit && compinit
-          '';
+          completionInit =
+            (import ./completion.nix)
+            + ''
+              autoload -U +X compinit && compinit
+              autoload -U +X bashcompinit && bashcompinit
+            '';
           initExtraFirst = ''
             if [[ -r "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh" ]]; then
               source "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh"
             fi
 
-            if [[ -f "$HOME/.config/zsh/plugins/ohmyzsh/lib/completion.zsh" ]]; then
-              source "$HOME/.config/zsh/plugins/ohmyzsh/lib/completion.zsh"
-            fi
-
-            if [[ -f "$HOME/.config/zsh/plugins/ohmyzsh/lib/theme-and-appearance.zsh" ]]; then
-              source "$HOME/.config/zsh/plugins/ohmyzsh/lib/theme-and-appearance.zsh"
-            fi
-
-            if [[ -f "$HOME/.config/zsh/plugins/ohmyzsh/plugins/sudo/sudo.plugin.zsh" ]]; then
-              source "$HOME/.config/zsh/plugins/ohmyzsh/plugins/sudo/sudo.plugin.zsh"
+            if [[ -f "$HOME/.config/zsh/plugins/sudo/sudo.plugin.zsh" ]]; then
+                source "$HOME/.config/zsh/plugins/sudo/sudo.plugin.zsh"
             fi
 
             export PATH="''${PATH}:$HOME/.local/share/nodePackages/bin:''${HOME}/.local/share/nvim/mason/bin"
@@ -100,13 +93,12 @@ in
               };
             }
             {
-              name = "ohmyzsh";
-              file = "plugins/git/git.plugin.zsh";
+              name = "fast-syntax-highlighting";
               src = pkgs.fetchFromGitHub {
-                owner = "ohmyzsh";
-                repo = "ohmyzsh";
-                rev = "a3c579bf27b34942d4c6ad64e7cfd75788b05ea3";
-                sha256 = "sha256-rfKFQzECnovJLPNrEpcPPMu+C5HwfKBTZvw4WuGQY4M=";
+                owner = "zdharma-continuum";
+                repo = "fast-syntax-highlighting";
+                rev = "7c390ee3bfa8069b8519582399e0a67444e6ea61";
+                sha256 = "sha256-wLpgkX53wzomHMEpymvWE86EJfxlIb3S8TPy74WOBD4=";
               };
             }
           ];
@@ -114,5 +106,6 @@ in
       };
 
       home.file.".config/zsh/.p10k.zsh".source = ./.p10k.zsh;
+      home.file.".config/zsh/plugins/sudo/sudo.plugin.zsh".source = ./sudo.plugin.zsh;
     };
   }

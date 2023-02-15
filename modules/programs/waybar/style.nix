@@ -28,8 +28,8 @@ in
         color: ${xcolor15};
       }
       #workspaces button.focused {
-        color: ${xcolor15};
-        background-color: ${base02};
+        color: ${base00};
+        background-color: ${xcolor12};
       }
       #workspaces button.persistent{
         color: ${xcolor7};

@@ -23,6 +23,8 @@
 
     nixpkgs-f2k.url = "github:fortuneteller2k/nixpkgs-f2k";
 
+    wallpapers.url = "github:sachnr/wallpapers";
+
     hyprland-protocols = {
       url = "github:hyprwm/hyprland-protocols";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -46,6 +48,7 @@
       nur.overlay
       nixpkgs-wayland.overlay
       neovim-nightly-overlay.overlay
+      wallpapers.overlay
       (final: prev: rec {
         awesome-git = nixpkgs-f2k.packages.x86_64-linux.awesome-git;
         picom-git = nixpkgs-f2k.packages.x86_64-linux.picom-git;
@@ -62,7 +65,7 @@
   in {
     nixosConfigurations = with inputs; {
       desktop = import ./host/desktop {
-        inherit nixpkgs home-manager nur overlays hyprland inputs;
+        inherit nixpkgs home-manager nur overlays hyprland inputs wallpapers;
       };
     };
   };

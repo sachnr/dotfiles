@@ -20,6 +20,7 @@ in
       programs.kitty = {
         enable = true;
         settings = with theme.colors; {
+          clear_all_shortcuts = true;
           # Fonts
           font_family = "JetBrains Mono Medium Nerd Font Complete";
           italic_font = "JetBrains Mono Medium Italic Nerd Font Complete";
@@ -74,6 +75,7 @@ in
           tab_bar_edge = "top";
           tab_bar_style = "powerline";
           tab_powerline_style = "angled";
+          tab_title_template = "{index}:{title} {bell_symbol}";
           tab_bar_margin_width = "2.0";
           tab_separator = " | ";
           active_tab_font_style = "bold";
@@ -112,24 +114,35 @@ in
           inactive_border_color = base00;
           url_color = xcolor14;
           active_tab_foreground = xcolor0;
-          active_tab_background = xcolor4;
+          active_tab_background = xcolor12;
           inactive_tab_foreground = xcolor8;
           inactive_tab_background = base02;
           tab_bar_background = base01;
         };
         keybindings = {
+          "ctrl+shift+up" = "scroll_page_up";
+          "ctrl+shift+down" = "scroll_page_down";
+          "ctrl+shift+left" = "previous_tab";
+          "ctrl+shift+right" = "next_tab";
           "ctrl+shift+v" = "paste_from_clipboard";
           "ctrl+shift+c" = "copy_to_clipboard";
           "ctrl+shift+equal" = "increase_font_size";
           "ctrl+shift+minus" = "decrease_font_size";
           "ctrl+shift+backspace" = "restore_font_size";
-          "ctrl+shift+s" = "set_background_opacity +0.05";
-          "ctrl+shift+a" = "set_background_opacity -0.05";
-          "ctrl+tab" = "next_tab";
-          "ctrl+shift+tab" = "previous_tab";
-          "ctrl+shift+t" = "new_tab_with_cwd";
-          "ctrl+shift+q" = "close_tab";
-          "ctrl+shift+alt+t" = "set_tab_title";
+          "ctrl+b>s" = "set_background_opacity +0.05";
+          "ctrl+b>a" = "set_background_opacity -0.05";
+          "ctrl+b>t" = "new_tab_with_cwd";
+          "ctrl+b>q" = "close_tab";
+          "ctrl+b>," = "set_tab_title";
+          "ctrl+b>1" = "goto_tab 1";
+          "ctrl+b>2" = "goto_tab 2";
+          "ctrl+b>3" = "goto_tab 3";
+          "ctrl+b>4" = "goto_tab 4";
+          "ctrl+b>5" = "goto_tab 5";
+          "ctrl+b>6" = "goto_tab 6";
+          "ctrl+b>7" = "goto_tab 7";
+          "ctrl+b>8" = "goto_tab 8";
+          "ctrl+b>9" = "goto_tab 9";
         };
       };
     };

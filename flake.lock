@@ -505,6 +505,22 @@
         "type": "github"
       }
     },
+    "nixpkgs_6": {
+      "locked": {
+        "lastModified": 1676209454,
+        "narHash": "sha256-alj9mBkV9U6tTPDK026671D2pesLSYZZc9j5dBZJ9f0=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "8c619a1f3cedd16ea172146e30645e703d21bfc1",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "nixpkgs-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nur": {
       "locked": {
         "lastModified": 1675356724,
@@ -548,6 +564,7 @@
         "nixpkgs-f2k": "nixpkgs-f2k",
         "nixpkgs-wayland": "nixpkgs-wayland",
         "nur": "nur",
+        "wallpapers": "wallpapers",
         "xdph": "xdph_2"
       }
     },
@@ -607,6 +624,24 @@
       "original": {
         "owner": "numtide",
         "repo": "flake-utils",
+        "type": "github"
+      }
+    },
+    "wallpapers": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_6"
+      },
+      "locked": {
+        "lastModified": 1676459343,
+        "narHash": "sha256-2obd2TEh+ygfiQ7ucWHSpFjeUsFvIhvNeR7ImVUtNG0=",
+        "owner": "sachnr",
+        "repo": "wallpapers",
+        "rev": "dca6b238631eab8b995f5699a85740cd60ee53eb",
+        "type": "github"
+      },
+      "original": {
+        "owner": "sachnr",
+        "repo": "wallpapers",
         "type": "github"
       }
     },

@@ -5,20 +5,15 @@
   overlays,
   hyprland,
   inputs,
+  wallpapers,
 }: let
   system = "x86_64-linux"; # System architecture
-
-  wallpapers = pkgs.callPackage ../../pkgs/wallpapers.nix {};
-  swww = pkgs.callPackage ../../pkgs/swww.nix {};
-
   pkgs = import nixpkgs {
     inherit system;
     inherit overlays;
     config = {
-      packageOverrides = super: {
-        inherit swww;
-        inherit wallpapers;
-      };
+      # packageOverrides = super: {
+      # };
       allowUnfree = true; # Allow proprietary software
     };
   };
@@ -37,13 +32,15 @@ in
       ./fontconfig.nix
       ../../extra-settings.nix
 
+      # wallpapers.homeManagerModules.default
+
       home-manager.nixosModules.home-manager
       {
         home-manager = {
           useGlobalPkgs = true;
           useUserPackages = true;
           users.${user} = import ../../home-manager/users/sachnr;
-          extraSpecialArgs = {inherit inputs pkgs system user hyprland theme;};
+          extraSpecialArgs = {inherit inputs pkgs system user theme hyprland wallpapers;};
         };
       }
     ];

@@ -49,23 +49,22 @@
       nixpkgs-wayland.overlay
       neovim-nightly-overlay.overlay
       wallpapers.overlay
+      hyprland.overlays.default
       (final: prev: rec {
         awesome-git = nixpkgs-f2k.packages.x86_64-linux.awesome-git;
         picom-git = nixpkgs-f2k.packages.x86_64-linux.picom-git;
-        hyprland-git = hyprland.packages.x86_64-linux.default.override {nvidiaPatches = true;};
-        xdg-desktop-portal-hyprland = xdph.packages.${prev.system}.default.override {
-          hyprland-share-picker = xdph.packages.${prev.system}.hyprland-share-picker.override {inherit hyprland-git;};
+        sway-unwrapped = prev.sway-unwrapped.override {
+          wlroots_0_16 = prev.wlroots.overrideAttrs (_: {
+            patches = (prev.patches or []) ++ [./patches/nvidia.patch];
+            postPatch = (prev.postPatch or "") + ''substituteInPlace render/gles2/renderer.c --replace "glFlush();" "glFinish();" '';
+          });
         };
-        wlroots = prev.wlroots.overrideAttrs (_: {
-          patches = (prev.patches or []) ++ [./patches/nvidia.patch];
-          postPatch = (prev.postPatch or "") + ''substituteInPlace render/gles2/renderer.c --replace "glFlush();" "glFinish();" '';
-        });
       })
     ];
   in {
     nixosConfigurations = with inputs; {
       desktop = import ./host/desktop {
-        inherit nixpkgs home-manager nur overlays hyprland inputs wallpapers;
+        inherit nixpkgs home-manager nur overlays inputs;
       };
     };
   };

@@ -3,11 +3,11 @@
   home-manager,
   nur,
   overlays,
-  hyprland,
   inputs,
-  wallpapers,
 }: let
+
   system = "x86_64-linux"; # System architecture
+
   pkgs = import nixpkgs {
     inherit system;
     inherit overlays;
@@ -40,7 +40,7 @@ in
           useGlobalPkgs = true;
           useUserPackages = true;
           users.${user} = import ../../home-manager/users/sachnr;
-          extraSpecialArgs = {inherit inputs pkgs system user theme hyprland wallpapers;};
+          extraSpecialArgs = {inherit inputs pkgs system user theme;};
         };
       }
     ];

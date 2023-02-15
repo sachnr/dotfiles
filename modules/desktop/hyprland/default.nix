@@ -1,20 +1,13 @@
 {
   pkgs,
   config,
-  hyprland,
+  inputs,
   lib,
   ...
 }: let
   cfg = config.modules.desktop.hyprland;
   hyprcfg = pkgs.callPackage ../../../pkgs/hyprland.nix {};
-  wrapped = import ./wrapper.nix {inherit pkgs;};
-  wrap = pkgs.symlinkJoin {
-    name = "hyprland";
-    paths = [
-      wrapped
-      pkgs.hyprland-git
-    ];
-  };
+  hyprland-wrapped = import ../../../pkgs/hyprland-wrapped.nix {inherit pkgs;};
 in
   with lib; {
     options.modules.desktop.hyprland = {
@@ -25,19 +18,11 @@ in
       };
     };
 
-    imports = [
-      hyprland.homeManagerModules.default
-    ];
-
     config = mkIf (cfg.enable) {
-      wayland.windowManager.hyprland = {
-        enable = true;
-        package = wrap;
-      };
-
       home = {
         packages = with pkgs; [
           hyprpaper
+          hyprland-wrapped.hyprland
         ];
         file.".config/hypr" = {
           source = hyprcfg;

@@ -2,7 +2,7 @@
   pkgs,
   config,
   lib,
-  wallpapers,
+  inputs,
   theme,
   ...
 }: let
@@ -18,11 +18,11 @@ in
     };
 
     imports = [
-      wallpapers.homeManagerModules.default
+      inputs.wallpapers.homeManagerModules.default
     ];
 
     config = mkIf cfg.enable {
-      programs.wall-utils = with theme.colors;{
+      programs.wall-utils = with theme.colors; {
         enable = true;
         swww.enable = true;
         customCommand = "swww img";

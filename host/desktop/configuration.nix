@@ -6,7 +6,14 @@
   pkgs,
   ...
 }: let
-  rtl8814au = config.boot.kernelPackages.callPackage ../../pkgs/rtl88xxau.nix {};
+  rtl8814au = pkgs.pkgs.linuxKernel.packages.linux_6_1.rtl88xxau-aircrack.overrideAttrs (_: {
+    src = pkgs.fetchFromGitHub {
+      owner = "aircrack-ng";
+      repo = "rtl8812au";
+      rev = "d98018d038a5db96066e79f26ed4a72f2fe1774e";
+      sha256 = "sha256-R+DDdM8mkuAimgI/OCp927LEb4jX9tgf2lmbXFArqtY=";
+    };
+  });
   sddm-theme = pkgs.callPackage ../../pkgs/sddmtheme.nix {};
   theme = import ../../theme {};
 in {

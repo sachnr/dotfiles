@@ -4,14 +4,20 @@
   pkgs,
   ...
 }: let
-  theme = import ../theme {};
+  theme = import ../../theme {};
 in
   stdenv.mkDerivation rec {
     name = "hyprlandcfg";
 
-    src = ../configs/hyprland;
-
-    phases = ["installPhase"];
+    src = lib.cleanSourceWith {
+      filter = name: type: let
+        baseName = baseNameOf (toString name);
+      in
+        ! (
+          lib.hasSuffix ".nix" baseName
+        );
+      src = lib.cleanSource ./.;
+    };
 
     installPhase = with theme.colors; ''
       cp -r ${src} $out

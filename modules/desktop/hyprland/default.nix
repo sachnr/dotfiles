@@ -6,8 +6,8 @@
   ...
 }: let
   cfg = config.modules.desktop.hyprland;
-  hyprcfg = pkgs.callPackage ../../../pkgs/hyprland.nix {};
-  hyprland-wrapped = import ../../../pkgs/hyprland-wrapped.nix {inherit pkgs;};
+  hyprcfg = pkgs.callPackage ../../../configs/hyprland {};
+  hyprland-wrapped = import ./hyprland-wrapped.nix {inherit pkgs;};
 in
   with lib; {
     options.modules.desktop.hyprland = {

@@ -24,7 +24,6 @@ in
     config = mkIf cfg.enable {
       programs.wall-utils = with theme.colors; {
         enable = true;
-        swww.enable = true;
         customCommand = "swww img";
         background = base00;
         background-alt = xcolor0;
@@ -37,6 +36,7 @@ in
       home = {
         packages = with pkgs; [
           libsForQt5.qt5.qtwayland
+          qt6.qtwayland
           dconf
           grim
           slurp

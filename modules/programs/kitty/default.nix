@@ -74,7 +74,7 @@ in
           # Tabs
           tab_bar_edge = "top";
           tab_bar_style = "powerline";
-          tab_powerline_style = "angled";
+          tab_powerline_style = "round";
           tab_title_template = "{index}:{title} {bell_symbol}";
           tab_bar_margin_width = "2.0";
           tab_separator = " | ";
@@ -110,11 +110,11 @@ in
           cursor = xcolor15;
           selection_foreground = xcolor15;
           selection_background = base01;
-          active_border_color = xcolor12;
+          active_border_color = xcolor4;
           inactive_border_color = base00;
           url_color = xcolor14;
           active_tab_foreground = xcolor0;
-          active_tab_background = xcolor12;
+          active_tab_background = xcolor4;
           inactive_tab_foreground = xcolor8;
           inactive_tab_background = base02;
           tab_bar_background = base01;

@@ -23,8 +23,8 @@ _: {
   xcolor10 = "#afc68c";
   xcolor3 = "#d9bb80";
   xcolor11 = "#dcc18c";
-  xcolor4 = "#83b6af";
-  xcolor12 = "#8fbdb7";
+  xcolor4 = "#7393b3";
+  xcolor12 = "#83b6af";
   xcolor5 = "#d39bb6";
   xcolor13 = "#d7a5bd";
   xcolor6 = "#87c095";

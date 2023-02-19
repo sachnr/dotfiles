@@ -89,7 +89,9 @@ in
     assign [app_id="Steam"] 7
     for_window [app_id="Steam"]  workspace number 7
 
-    output "HDMI-A-1" resolution 1920x1080@144hz position 0,0 adaptive_sync on
+    output "HDMI-A-1" resolution 1920x1080@144hz position 0,0 adaptive_sync on {
+        bg ${wallpaper} fill
+    }
 
     input type:pointer {
       accel_profile flat
@@ -103,5 +105,5 @@ in
     exec ${pkgs.blueman}/bin/blueman-applet
     exec ${pkgs.networkmanagerapplet}/bin/nm-applet --indicator
     exec ${pkgs.eww-wayland}/bin/eww daemon
-    exec ${pkgs.swww}/bin/swww init && ${pkgs.swww}/bin/swww img ${pkgs.rofi-wallpaper}/share/wallpapers/animated-gifs/white-oak-chillhop.gif
+    exec ${pkgs.swww}/bin/swww init 
   ''

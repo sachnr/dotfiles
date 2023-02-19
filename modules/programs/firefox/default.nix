@@ -16,7 +16,7 @@
       AboutNewTab.newTabURL = newTabURL;
     } catch(e){Cu.reportError(e);}
   '';
-  startpage = pkgs.callPackage ../../../pkgs/startpage.nix {};
+  startpage = pkgs.callPackage ../../../configs/startpage {};
 in
   with lib; {
     options.modules.programs.firefox = {
@@ -42,16 +42,6 @@ in
 
       programs.firefox = {
         enable = true;
-        extensions = with pkgs.nur.repos.rycee.firefox-addons; [
-          darkreader
-          betterttv
-          ublock-origin
-          df-youtube
-          cookie-autodelete
-          decentraleyes
-          return-youtube-dislikes
-          lovely-forks
-        ];
         package = pkgs.wrapFirefox pkgs.firefox-unwrapped {
           extraPolicies = {
             ExtensionSettings = {};
@@ -70,16 +60,16 @@ in
         };
         profiles = {
           ${user} = {
-            # extensions = with pkgs.nur.repos.rycee.firefox-addons; [
-            #   darkreader
-            #   betterttv
-            #   ublock-origin
-            #   df-youtube
-            #   cookie-autodelete
-            #   decentraleyes
-            #   return-youtube-dislikes
-            #   lovely-forks
-            # ];
+            extensions = with pkgs.nur.repos.rycee.firefox-addons; [
+              darkreader
+              betterttv
+              ublock-origin
+              df-youtube
+              cookie-autodelete
+              decentraleyes
+              return-youtube-dislikes
+              lovely-forks
+            ];
 
             settings = {
               "browser.startup.homepage" = "file:///home/${user}/.config/startpage/index.html";

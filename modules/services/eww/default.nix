@@ -5,7 +5,7 @@
   ...
 }: let
   cfg = config.modules.services.eww;
-  ewwcfg = pkgs.callPackage ../../../pkgs/eww.nix {};
+  ewwcfg = pkgs.callPackage ../../../configs/eww {};
 in
   with lib; {
     options.modules.services.eww = {

@@ -42,6 +42,7 @@
       ghostscript
 
       # Browsers
+      ungoogled-chromium
       tor-browser-bundle-bin
 
       # Downloader
@@ -70,7 +71,9 @@
       nodePackages.typescript
       git
       nodePackages.npm
+      yarn
       nodejs
+      deno
       jq
       gcc
       gdb

@@ -5,13 +5,14 @@
 }: {
   fonts = {
     fonts = with pkgs; [
+      jetbrains-mono
       noto-fonts
       noto-fonts-cjk
       noto-fonts-emoji
       material-icons
       material-design-icons
       roboto
-      (nerdfonts.override {fonts = ["JetBrainsMono" "RobotoMono"];})
+      (nerdfonts.override {fonts = ["JetBrainsMono" "RobotoMono" "NerdFontsSymbolsOnly"];})
     ];
 
     fontconfig = {

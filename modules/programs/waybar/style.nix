@@ -9,13 +9,13 @@ in
         font-size: 12px;
       }
       window#waybar {
-        background: ${base00};
-        color: ${xcolor15};
+        background: ${black};
+        color: ${foreground};
         box-shadow: 5px 4px 3px 0px rgba(1, 2, 3, 0.6);
       }
       #workspaces {
         margin-right: 6px;
-        background-color: ${xcolor0};
+        background-color: ${background};
         margin: 4px 6px;
         border-radius: 4px;
         box-shadow: 5px 4px 3px 0px rgba(1, 2, 3, 0.6);
@@ -24,18 +24,18 @@ in
         all: initial;
         padding: 0.0em 0.8em;
         border-radius: 4px;
-        background-color: ${xcolor0};
-        color: ${xcolor15};
+        background-color: ${background};
+        color: ${foreground};
       }
       #workspaces button.focused {
-        color: ${base00};
-        background-color: ${xcolor12};
+        color: ${black};
+        background-color: ${blue};
       }
       #workspaces button.persistent{
-        color: ${xcolor7};
+        color: ${gray};
       }
       #workspaces button.urgent{
-        color: ${xcolor9};
+        color: ${brightred};
       }
 
       #custom-power,
@@ -53,17 +53,17 @@ in
         margin: 4px 6px;
         margin-right: 8px;
         border-radius: 4px;
-        background-color: ${xcolor0};
-        color: ${xcolor15};
+        background-color: ${background};
+        color: ${foreground};
         box-shadow: 5px 4px 3px 0px rgba(1, 2, 3, 0.6);
       }
 
       #window{
-        color: ${xcolor7};
+        color: ${gray};
       }
 
       #scratchpad.empty{
-        color: ${xcolor7};
+        color: ${gray};
       }
 
       #mpd{

@@ -22,13 +22,15 @@ in
         settings = with theme.colors; {
           clear_all_shortcuts = true;
           # Fonts
-          font_family = "JetBrains Mono Medium Nerd Font Complete";
-          italic_font = "JetBrains Mono Medium Italic Nerd Font Complete";
-          bold_font = "JetBrains Mono Bold Nerd Font Complete";
-          bold_italic_font = "JetBrains Mono Bold Italic Nerd Font Complete";
+          font_family = "JetBrains Mono";
+          italic_font = "JetBrains Mono Italic";
+          bold_font = "JetBrains Mono Bold";
+          bold_italic_font = "JetBrains Mono Bold Italic";
+          symbol_map = "U+23FB-U+23FE,U+2665,U+26A1,U+2B58,U+E000-U+E00A,U+E0A0-U+E0A3,U+E0B0-U+E0C8,U+E0CA,U+E0CC-U+E0D2,U+E0D4,U+E200-U+E2A9,U+E300-U+E3E3,U+E5FA-U+E634,U+E700-U+E7C5,U+EA60-U+EBEB,U+F000-U+F2E0,U+F300-U+F32F,U+F400-U+F4A9,U+F500-U+F8FF Symbols Nerd Font Mono";
           font_size = "10.6";
           modify_font = "underline_position 125%";
 
+          disable_ligatures = "always";
           adjust_line_height = "0";
           adjust_column_width = "0";
           box_drawing_scale = "0.001, 1, 1.5, 2";
@@ -73,8 +75,8 @@ in
 
           # Tabs
           tab_bar_edge = "top";
-          tab_bar_style = "powerline";
-          tab_powerline_style = "round";
+          tab_bar_min_tabs = 1;
+          tab_bar_style = "custom";
           tab_title_template = "{index}:{title} {bell_symbol}";
           tab_bar_margin_width = "2.0";
           tab_separator = " | ";
@@ -88,36 +90,39 @@ in
           # term = "xterm-kitty";
 
           # colors
-          color0 = xcolor0;
-          color1 = xcolor1;
-          color2 = xcolor2;
-          color3 = xcolor3;
-          color4 = xcolor4;
-          color5 = xcolor5;
-          color6 = xcolor6;
-          color7 = xcolor7;
-          color8 = xcolor8;
-          color9 = xcolor9;
-          color10 = xcolor10;
-          color11 = xcolor11;
-          color12 = xcolor12;
-          color13 = xcolor13;
-          color14 = xcolor14;
-          color15 = xcolor15;
+          color0 = black;
+          color1 = red;
+          color2 = green;
+          color3 = yellow;
+          color4 = blue;
+          color5 = purple;
+          color6 = aqua;
+          color7 = gray;
+          color8 = brightblack;
+          color9 = brightred;
+          color10 = brightgreen;
+          color11 = brightyellow;
+          color12 = brightblue;
+          color13 = brightpurple;
+          color14 = brightaqua;
+          color15 = brightgray;
 
-          background = base00;
-          foreground = xcolor15;
-          cursor = xcolor15;
-          selection_foreground = xcolor15;
-          selection_background = base01;
-          active_border_color = xcolor4;
-          inactive_border_color = base00;
-          url_color = xcolor14;
-          active_tab_foreground = xcolor0;
-          active_tab_background = xcolor4;
-          inactive_tab_foreground = xcolor8;
-          inactive_tab_background = base02;
-          tab_bar_background = base01;
+          background = background;
+          foreground = foreground;
+          cursor = foreground;
+
+          selection_foreground = background;
+          selection_background = selection;
+          active_border_color = brightblue;
+          inactive_border_color = background;
+
+          url_color = brightgreen;
+
+          active_tab_foreground = background;
+          active_tab_background = blue;
+          inactive_tab_foreground = gray;
+          inactive_tab_background = selection;
+          tab_bar_background = background;
         };
         keybindings = {
           "ctrl+shift+up" = "scroll_page_up";
@@ -145,5 +150,6 @@ in
           "ctrl+b>9" = "goto_tab 9";
         };
       };
+      home.file.".config/kitty/tab_bar.py".source = ./tab_bar.py;
     };
   }

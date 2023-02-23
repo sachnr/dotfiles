@@ -20,8 +20,6 @@ in
 
     sourceRoot = "source";
 
-    # patches = [../patches/0001-titlebar.patch];
-
     propagatedUserEnvPkgs = [gtk-engine-murrine];
 
     installPhase = ''

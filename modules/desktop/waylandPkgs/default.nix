@@ -25,12 +25,12 @@ in
       programs.wall-utils = with theme.colors; {
         enable = true;
         customCommand = "swww img";
-        background = base00;
-        background-alt = xcolor0;
-        foreground = xcolor15;
-        selected = xcolor12;
-        active = xcolor10;
-        urgent = xcolor9;
+        background = black;
+        background-alt = background;
+        foreground = foreground;
+        selected = blue;
+        active = green;
+        urgent = red;
         font = "RobotoMono Nerd Font 9";
       };
       home = {
@@ -43,6 +43,7 @@ in
           # clipman
           # swww
           wl-clipboard
+          swww
           wlr-randr
           mpvpaper
           xsettingsd

@@ -34,29 +34,29 @@
     /*****----- Global Properties -----*****/
 
     * {
-        border-colour:               ${xcolor12};
-        handle-colour:               ${xcolor12};
-        background-colour:           ${xcolor0};
-        foreground-colour:           ${xcolor15};
-        alternate-background:        ${base01};
-        normal-background:           ${xcolor0};
-        normal-foreground:           ${xcolor15};
-        urgent-background:           ${xcolor9};
-        urgent-foreground:           ${xcolor0};
-        active-background:           ${xcolor10};
-        active-foreground:           ${xcolor0};
-        selected-normal-background:  ${xcolor12};
-        selected-normal-foreground:  ${xcolor0};
-        selected-urgent-background:  ${xcolor10};
-        selected-urgent-foreground:  ${xcolor0};
-        selected-active-background:  ${xcolor9};
-        selected-active-foreground:  ${xcolor0};
-        alternate-normal-background: ${xcolor0};
-        alternate-normal-foreground: ${xcolor15};
-        alternate-urgent-background: ${xcolor9};
-        alternate-urgent-foreground: ${xcolor0};
-        alternate-active-background: ${xcolor10};
-        alternate-active-foreground: ${xcolor0};
+        border-colour:               ${blue};
+        handle-colour:               ${blue};
+        background-colour:           ${background};
+        foreground-colour:           ${foreground};
+        alternate-background:        ${background};
+        normal-background:           ${background};
+        normal-foreground:           ${foreground};
+        urgent-background:           ${red};
+        urgent-foreground:           ${background};
+        active-background:           ${green};
+        active-foreground:           ${background};
+        selected-normal-background:  ${blue};
+        selected-normal-foreground:  ${background};
+        selected-urgent-background:  ${red};
+        selected-urgent-foreground:  ${background};
+        selected-active-background:  ${green};
+        selected-active-foreground:  ${background};
+        alternate-normal-background: ${background};
+        alternate-normal-foreground: ${foreground};
+        alternate-urgent-background: ${red};
+        alternate-urgent-foreground: ${background};
+        alternate-active-background: ${blue};
+        alternate-active-foreground: ${background};
     }
 
     /*****----- Main Window -----*****/

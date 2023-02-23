@@ -21,10 +21,10 @@ in
     workspace_auto_back_and_forth no
 
     # class        border backgr. text indicator child_border
-    client.focused ${xcolor4} ${base00} ${xcolor15} ${xcolor12} ${xcolor4}
-    client.focused_inactive ${xcolor4} ${xcolor0} ${xcolor15} ${xcolor12} ${xcolor4}
-    client.unfocused ${base00} ${xcolor0} ${xcolor7} ${base01} ${base00}
-    client.urgent ${xcolor1} ${xcolor0} ${xcolor7} ${base01} ${base00}
+    client.focused ${blue} ${black} ${foreground} ${brightblue} ${blue}
+    client.focused_inactive ${background} ${background} ${foreground} ${brightblue} ${blue}
+    client.unfocused ${background} ${background} ${gray} ${selection} ${black}
+    client.urgent ${red} ${background} ${gray} ${brightblack} ${black}
     # ignored i3 compatiblity
     client.placeholder #000000 #0c0c0c #ffffff #000000 #0c0c0c
     client.background #ffffff

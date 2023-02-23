@@ -5,13 +5,13 @@
   overlays,
   inputs,
 }: let
-
   system = "x86_64-linux"; # System architecture
 
   pkgs = import nixpkgs {
     inherit system;
     inherit overlays;
     config = {
+      # allowBroken = true;
       # packageOverrides = super: {
       # };
       allowUnfree = true; # Allow proprietary software

@@ -17,40 +17,40 @@
       !- 0.1 to 0.9 = transparency
       st.alpha: 1
 
-      *background: ${base00}
-      *foreground: ${xcolor15}
+      *background: ${background}
+      *foreground: ${foreground}
 
       ! Black + DarkGrey
-      *color0:  ${xcolor0}
-      *color8:  ${xcolor8}
+      *color0:  ${black}
+      *color8:  ${brightblack}
 
       ! DarkRed + Red
-      *color1:  ${xcolor1}
-      *color9:  ${xcolor9}
+      *color1:  ${red}
+      *color9:  ${brightred}
 
       ! DarkGreen + Green
-      *color2:  ${xcolor2}
-      *color10: ${xcolor10}
+      *color2:  ${green}
+      *color10: ${brightgreen}
 
       ! DarkYellow + Yellow
-      *color3:  ${xcolor3}
-      *color11: ${xcolor11}
+      *color3:  ${yellow}
+      *color11: ${brightyellow}
 
       ! DarkBlue + Blue
-      *color4:  ${xcolor4}
-      *color12: ${xcolor12}
+      *color4:  ${blue}
+      *color12: ${brightblue}
 
       ! DarkMagenta + Magenta
-      *color5:  ${xcolor5}
-      *color13: ${xcolor13}
+      *color5:  ${purple}
+      *color13: ${brightpurple}
 
       ! DarkCyan + Cyan
-      *color6:  ${xcolor6}
-      *color14: ${xcolor14}
+      *color6:  ${aqua}
+      *color14: ${brightaqua}
 
       ! LightGrey + White
-      *color7:  ${xcolor7}
-      *color15: ${xcolor15}
+      *color7:  ${gray}
+      *color15: ${brightgray}
     '';
   };
 }

@@ -1,30 +1,30 @@
 .dashboard {
   all: initial;
-  border: 1px solid $base00;
+  border: 1px solid $black;
   border-radius: 8px;
   box-shadow: 5px 4px 3px 0px rgba(#010203, 0.6);
   margin: 5px 5px;
-  background-color: $base00;
+  background-color: $black;
 }
 
 .dashboard_module1 {
   padding: 1em;
   border-radius: 6px;
-  background-color: $xcolor0;
+  background-color: $background;
 }
 
 .dashboard_module2 {
   border-radius: 6px;
-  background-color: $xcolor0;
+  background-color: $background;
 }
 
 .dashboard_button {
   padding: 0.6em;
   border-radius: 6px;
-  background-color: $base00;
+  background-color: $black;
 
   &:hover {
-    background-color: rgba($xcolor12, 0.4);
+    background-color: rgba($brightblue, 0.4);
   }
 }
 
@@ -32,7 +32,7 @@
   padding: 0 0.6em;
   font-size: 18px;
   font-weight: bold;
-  color: $xcolor12;
+  color: $brightblue;
 }
 
 .pfp {
@@ -50,14 +50,14 @@
 .lock,
 .suspend,
 .logout {
-  color: $xcolor15;
+  color: $foreground;
   font-size: 17px;
   padding: 0.5em 0.7em;
   border-radius: 8px;
-  background-color: $base01;
+  background-color: $selection;
   font-weight: bold;
 
   &:hover {
-    background-color: rgba($xcolor12, 0.4);
+    background-color: rgba($brightblue, 0.4);
   }
 }

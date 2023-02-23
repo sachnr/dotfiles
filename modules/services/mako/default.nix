@@ -19,10 +19,10 @@ in
     config = mkIf cfg.enable {
       programs.mako = with theme.colors; {
         enable = true;
-        backgroundColor = base01;
-        borderColor = base00;
-        progressColor = xcolor10;
-        textColor = xcolor15;
+        backgroundColor = background;
+        borderColor = black;
+        progressColor = green;
+        textColor = foreground;
         anchor = "top-right";
         borderRadius = 8;
         borderSize = 2;

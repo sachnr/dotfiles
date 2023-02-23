@@ -24,9 +24,9 @@ in
       substituteInPlace $out/autostart.conf \
         --replace "dbus-update-activation-environment" "${pkgs.dbus}/bin/dbus-update-activation-environment"
       substituteInPlace $out/options.conf \
-        --replace "rgba(83A598ff)" "rgba(${(builtins.substring 1 6 xcolor12)}ff)" \
-        --replace "rgba(1D2021ff)" "rgba(${(builtins.substring 1 6 xcolor0)}ff)" \
-        --replace "rgba(1C252C90)" "rgba(${(builtins.substring 1 6 base00)}90)"
+        --replace "rgba(83A598ff)" "rgba(${(builtins.substring 1 6 brightblue)}ff)" \
+        --replace "rgba(1D2021ff)" "rgba(${(builtins.substring 1 6 background)}ff)" \
+        --replace "rgba(1C252C90)" "rgba(${(builtins.substring 1 6 black)}90)"
       substituteInPlace $out/hyprpaper.conf \
         --replace "~/.config/hypr/wallpaper/Shibata_Zeshin.jpg" "${wallpaper}"
     '';

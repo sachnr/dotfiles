@@ -3,13 +3,12 @@
   user,
   config,
   lib,
-  theme,
   ...
 }: let
   cfg = config.modules.shell.zsh;
 in
   with lib;
-  with theme.colors; {
+   {
     options.modules.shell.zsh = {
       enable = mkOption {
         type = types.bool;

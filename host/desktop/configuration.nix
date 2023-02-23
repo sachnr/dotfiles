@@ -64,22 +64,22 @@ in {
     useXkbConfig = true; # use xkbOptions in tty.
     earlySetup = true;
     colors = with theme.colors; [
-      (builtins.substring 1 6 xcolor0)
-      (builtins.substring 1 6 xcolor1)
-      (builtins.substring 1 6 xcolor2)
-      (builtins.substring 1 6 xcolor3)
-      (builtins.substring 1 6 xcolor4)
-      (builtins.substring 1 6 xcolor5)
-      (builtins.substring 1 6 xcolor6)
-      (builtins.substring 1 6 xcolor7)
-      (builtins.substring 1 6 xcolor8)
-      (builtins.substring 1 6 xcolor9)
-      (builtins.substring 1 6 xcolor10)
-      (builtins.substring 1 6 xcolor11)
-      (builtins.substring 1 6 xcolor12)
-      (builtins.substring 1 6 xcolor13)
-      (builtins.substring 1 6 xcolor14)
-      (builtins.substring 1 6 xcolor15)
+      (builtins.substring 1 6 black)
+      (builtins.substring 1 6 red)
+      (builtins.substring 1 6 green)
+      (builtins.substring 1 6 yellow)
+      (builtins.substring 1 6 blue)
+      (builtins.substring 1 6 purple)
+      (builtins.substring 1 6 aqua)
+      (builtins.substring 1 6 gray)
+      (builtins.substring 1 6 brightblack)
+      (builtins.substring 1 6 brightred)
+      (builtins.substring 1 6 brightgreen)
+      (builtins.substring 1 6 brightyellow)
+      (builtins.substring 1 6 brightblue)
+      (builtins.substring 1 6 brightpurple)
+      (builtins.substring 1 6 brightaqua)
+      (builtins.substring 1 6 brightgray)
     ];
   };
 

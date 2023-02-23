@@ -11,7 +11,7 @@
 }
 
 @mixin window {
-  border: 1px solid $xcolor0;
+  border: 1px solid $background;
   box-shadow: 5px 4px 3px 0px rgba(#010203, 0.6);
   margin: 5px 5px 10px;
   border-radius: 8px;
@@ -24,11 +24,11 @@
 
 @mixin event-icon {
   @include bold-text;
-  color: $xcolor15;
+  color: $foreground;
 
   &:hover {
     border-bottom: 3px solid;
-    border-color: $xcolor4;
+    border-color: $blue;
   }
 }
 

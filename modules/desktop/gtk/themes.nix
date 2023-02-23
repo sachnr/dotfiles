@@ -7,6 +7,7 @@
   gruvbox-kvantum = pkgs.callPackage ../../../pkgs/gruvbox-kvantum.nix {};
   gruvbox-gtk = pkgs.callPackage ../../../pkgs/gruvbox-gtk.nix {};
   everforest-gtk = pkgs.callPackage ../../../pkgs/everforest-gtk.nix {};
+  tokyonight-gtk = pkgs.callPackage ../../../pkgs/tokyonight-gtk.nix {};
   Kvantum-themes = pkgs.callPackage ../../../pkgs/kvantum-themes.nix {};
 in {
   home = {
@@ -15,6 +16,7 @@ in {
       qogir-theme
       catppuccin-gtk
       everforest-gtk
+      tokyonight-gtk
       libsForQt5.breeze-icons
       papirus-icon-theme
     ];

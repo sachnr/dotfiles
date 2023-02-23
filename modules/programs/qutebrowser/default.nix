@@ -113,183 +113,183 @@ in
             #     ╞══════════════════════════════════════════════════════════╡
             tabs = {
               even = {
-                bg = xcolor0;
-                fg = xcolor7;
+                bg = background;
+                fg = gray;
               };
               odd = {
-                bg = xcolor0;
-                fg = xcolor7;
+                bg = background;
+                fg = gray;
               };
-              bar.bg = base00;
+              bar.bg = black;
               selected = {
                 even = {
-                  bg = base01;
-                  fg = xcolor15;
+                  bg = selection;
+                  fg = foreground;
                 };
                 odd = {
-                  bg = base01;
-                  fg = xcolor15;
+                  bg = selection;
+                  fg = foreground;
                 };
               };
               pinned = {
                 even = {
-                  bg = xcolor6;
-                  fg = xcolor15;
+                  bg = green;
+                  fg = foreground;
                 };
                 odd = {
-                  bg = xcolor6;
-                  fg = xcolor15;
+                  bg = green;
+                  fg = foreground;
                 };
               };
               indicator = {
-                start = xcolor4;
-                stop = xcolor4;
-                error = xcolor9;
+                start = blue;
+                stop = blue;
+                error = red;
               };
             };
             #     ╞══════════════════════════════════════════════════════════╡
             contextmenu = {
               menu = {
-                fg = xcolor15;
-                bg = xcolor0;
+                fg = foreground;
+                bg = background;
               };
               disabled = {
-                fg = xcolor7;
-                bg = xcolor0;
+                fg = gray;
+                bg = background;
               };
               selected = {
-                fg = xcolor15;
-                bg = base01;
+                fg = foreground;
+                bg = selection;
               };
             };
             #     ╞══════════════════════════════════════════════════════════╡
             statusbar = {
               normal = {
-                fg = xcolor15;
-                bg = base00;
+                fg = foreground;
+                bg = black;
               };
               insert = {
-                fg = xcolor13;
-                bg = base00;
+                fg = brightpurple;
+                bg = black;
               };
               command = {
-                fg = xcolor10;
-                bg = base00;
+                fg = brightgreen;
+                bg = black;
               };
               passthrough = {
-                fg = xcolor7;
-                bg = base00;
+                fg = gray;
+                bg = black;
               };
               private = {
-                fg = xcolor5;
-                bg = base00;
+                fg = purple;
+                bg = black;
               };
               command.private = {
-                fg = xcolor10;
-                bg = base00;
+                fg = brightgreen;
+                bg = black;
               };
               url = {
-                fg = xcolor15;
-                error.fg = xcolor9;
-                warn.fg = xcolor11;
-                hover.fg = xcolor6;
-                success.http.fg = xcolor15;
-                success.https.fg = xcolor15;
+                fg = foreground;
+                error.fg = red;
+                warn.fg = brightyellow;
+                hover.fg = green;
+                success.http.fg = foreground;
+                success.https.fg = foreground;
               };
-              progress.bg = xcolor6;
+              progress.bg = green;
               caret = {
-                fg = xcolor15;
-                bg = base00;
+                fg = foreground;
+                bg = black;
                 selection = {
-                  fg = xcolor15;
-                  bg = base01;
+                  fg = foreground;
+                  bg = selection;
                 };
               };
             };
             #     ╞══════════════════════════════════════════════════════════╡
             completion = {
-              fg = xcolor15;
-              odd.bg = base01;
-              even.bg = base01;
+              fg = foreground;
+              odd.bg = selection;
+              even.bg = selection;
               category = {
-                fg = xcolor15;
-                bg = xcolor0;
+                fg = foreground;
+                bg = background;
                 border = {
-                  top = base00;
-                  bottom = base00;
+                  top = black;
+                  bottom = black;
                 };
               };
               item = {
                 selected = {
-                  fg = xcolor15;
-                  bg = base02;
+                  fg = foreground;
+                  bg = selection;
                   border = {
-                    top = base00;
-                    bottom = base00;
+                    top = black;
+                    bottom = black;
                   };
-                  match.fg = xcolor14;
+                  match.fg = brightgreen;
                 };
               };
-              match.fg = xcolor14;
+              match.fg = brightgreen;
               scrollbar = {
-                fg = base02;
-                bg = base01;
+                fg = selection;
+                bg = background;
               };
             };
             #     ╞══════════════════════════════════════════════════════════╡
             hints = {
-              bg = xcolor0;
-              fg = xcolor7;
-              match.fg = xcolor15;
+              bg = background;
+              fg = gray;
+              match.fg = foreground;
             };
             #     ╞══════════════════════════════════════════════════════════╡
             keyhint = {
-              bg = base01;
-              fg = xcolor15;
-              suffix.fg = xcolor7;
+              bg = selection;
+              fg = foreground;
+              suffix.fg = gray;
             };
             #     ╞══════════════════════════════════════════════════════════╡
             messages = {
               error = {
-                fg = xcolor9;
-                bg = base01;
-                border = xcolor9;
+                fg = red;
+                bg = selection;
+                border = red;
               };
               warning = {
-                fg = xcolor11;
-                bg = base01;
-                border = xcolor3;
+                fg = brightyellow;
+                bg = selection;
+                border = yellow;
               };
               info = {
-                fg = xcolor12;
-                bg = base01;
-                border = xcolor12;
+                fg = brightblue;
+                bg = selection;
+                border = brightblue;
               };
             };
             #     ╞══════════════════════════════════════════════════════════╡
             prompts = {
-              fg = xcolor15;
-              bg = base01;
-              border = base00;
+              fg = foreground;
+              bg = selection;
+              border = black;
               selected = {
-                bg = base01;
-                fg = xcolor15;
+                bg = selection;
+                fg = foreground;
               };
             };
             #     ╞══════════════════════════════════════════════════════════╡
             downloads = {
-              bar.bg = xcolor6;
+              bar.bg = green;
               start = {
-                fg = xcolor15;
-                bg = base01;
+                fg = foreground;
+                bg = selection;
               };
               stop = {
-                fg = xcolor7;
-                bg = base01;
+                fg = gray;
+                bg = selection;
               };
               error = {
-                fg = xcolor9;
-                bg = base01;
+                fg = red;
+                bg = selection;
               };
             };
           };

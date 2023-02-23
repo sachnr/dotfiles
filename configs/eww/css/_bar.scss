@@ -1,9 +1,9 @@
 tooltip {
-  background-color: $xcolor0;
+  background-color: $background;
 }
 
 .bar {
-  background-color: $base00;
+  background-color: $black;
   @include window;
 }
 
@@ -11,18 +11,18 @@ tooltip {
   @include radius;
   padding: 0 0.6em;
   margin: 6px;
-  background-color: $xcolor0;
+  background-color: $background;
 }
 
 .module1 {
   @include radius;
   @include bold-text;
-  color: $xcolor0;
+  color: $background;
   font-size: 13px;
   margin: 6px;
-  background-color: rgba($xcolor4, 0.8);
+  background-color: rgba($blue, 0.8);
   &:hover {
-    background-color: rgba($xcolor4, 0.9);
+    background-color: rgba($blue, 0.9);
   }
 }
 
@@ -30,12 +30,12 @@ tooltip {
   @include radius;
   font-weight: bold;
   padding: 0 0.9em 0 0.6em;
-  color: $xcolor0;
+  color: $background;
   font-size: 13px;
   margin: 6px;
-  background-color: rgba($xcolor4, 0.8);
+  background-color: rgba($blue, 0.8);
   &:hover {
-    background-color: rgba($xcolor4, 0.9);
+    background-color: rgba($blue, 0.9);
   }
 }
 
@@ -47,13 +47,13 @@ tooltip {
 .text {
   @include bold-text;
   font-size: 13px;
-  color: $xcolor15;
+  color: $foreground;
 }
 
 .inactivetext {
   @include bold-text;
   font-size: 14px;
-  color: $xcolor7;
+  color: $gray;
 }
 
 .icon {

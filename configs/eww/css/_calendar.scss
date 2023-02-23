@@ -1,7 +1,7 @@
 .calendar-win {
   @include window;
-  background-color: $base00;
-  color: $xcolor15;
+  background-color: $black;
+  color: $foreground;
   padding: 0.2em;
 }
 
@@ -12,27 +12,27 @@ calendar {
 
   :selected {
     border-radius: 6px;
-    color: $xcolor0;
-    background: $xcolor4;
+    color: $background;
+    background: $blue;
   }
 
   .header {
-    color: $xcolor4;
+    color: $blue;
     font-size: 14px;
     font-weight: bold;
   }
 
   .highlight {
-    color: $xcolor4;
+    color: $blue;
     font-size: 16px;
     font-weight: bold;
   }
 
   .button {
-    color: $xcolor15;
+    color: $foreground;
   }
 
   :indeterminate {
-    color: $xcolor7;
+    color: $gray;
   }
 }

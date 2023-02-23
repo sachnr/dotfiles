@@ -8,28 +8,28 @@
 }
 
 .song-button {
-  color: $xcolor15;
+  color: $foreground;
   padding: 0 0.2em;
   font-weight: bold;
   font-size: 14px;
 }
 
 .song-title {
-  color: $xcolor15;
+  color: $foreground;
   font-weight: bold;
   font-size: 13px;
   margin-right: 4px;
 }
 
 .song-button:hover {
-  color: $xcolor12;
+  color: $brightblue;
 }
 
 .music-window {
   @include window;
-  background-color: $xcolor0;
-  border: 1px solid $base00;
-  color: $xcolor15;
+  background-color: $background;
+  border: 1px solid $black;
+  color: $foreground;
 }
 
 .music-cover-art {
@@ -46,7 +46,7 @@
 }
 
 .music-title {
-  color: $xcolor15;
+  color: $foreground;
   font-weight: bold;
   font-size: 16px;
 }
@@ -54,38 +54,38 @@
 .music-artist {
   font-weight: bold;
   font-size: 14px;
-  color: $xcolor12;
+  color: $brightblue;
 }
 
 .music-button label {
   padding: 0 0.2em;
-  color: $xcolor15;
+  color: $foreground;
   font-size: 2rem;
 }
 
 .music-button:hover label {
-  color: $xcolor12;
+  color: $brightblue;
 }
 
 .music-time {
   font-weight: bold;
-  color: $xcolor15;
+  color: $foreground;
   margin: 0 1rem;
 }
 
-.music-bar scale {
-  highlight {
+.music-bar  {
+  scale highlight {
     background-image: linear-gradient(
       to right,
-      rgba($xcolor4, 1) 30%,
-      rgba($xcolor12, 1) 50%,
-      rgba($xcolor4, 1) 100% * 50
+      rgba($blue, 1) 30%,
+      rgba($brightblue, 1) 50%,
+      rgba($blue, 1) 100% * 50
     );
     border-radius: 24px;
   }
 
   trough {
-    background-color: $base01;
+    background-color: $selection;
     border-radius: 24px;
     margin-top: 0;
     min-height: 10px;

@@ -1,13 +1,6 @@
 // Note: having length != 4 will mess with layout based on how the site is styled
 const bookmarks = [
   {
-    title: "Media",
-    links: [
-      { name: "Youtube", url: "https://youtube.com" },
-      { name: "Twitch", url: "https://Twitch.tv" },
-    ],
-  },
-  {
     title: "Social",
     links: [
       { name: "Amazon", url: "https://www.amazon.in/" },
@@ -20,6 +13,7 @@ const bookmarks = [
   {
     title: "Docs",
     links: [
+      { name: "TsDocs", url: "https://devdocs.io/typescript/" },
       { name: "GoDoc", url: "https://go.dev/doc/" },
       {
         name: "PythonDoc",

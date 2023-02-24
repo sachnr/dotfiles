@@ -1,8 +1,0 @@
-#!/usr/bin/env bash
-
-if [[ $XDG_CURRENT_DESKTOP = Hyprland ]]; then
-    monitor=$(hyprctl monitors -j | jq '.[] | select(.focused==true).id')
-    eww open $1 --toggle --screen $monitor
-    exit
-fi
-eww open $1 --toggle --screen 0

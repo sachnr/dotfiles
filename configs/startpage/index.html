@@ -34,7 +34,7 @@
 
     <script src="bookmarks.js"></script>
     <script>
-      var ddg = true;
+      var counter = 0;
       var searchUrl = "https://www.google.com/search?q=";
       const img = document.getElementById("search-toggle");
       const input = document.getElementById("search-field");
@@ -42,16 +42,21 @@
       img.src = "google.svg";
 
       function changeIcon() {
-        if (ddg) {
+        if (counter === 0) {
           img.src = "nix-snowflake.svg";
           searchUrl = "https://search.nixos.org/packages?query=";
-          input.placeholder = "search in nixpkgs";
-          ddg = false;
-        } else {
+          input.placeholder = "nixpkgs search";
+          counter++;
+        } else if (counter === 2) {
           img.src = "google.svg";
-          searchUrl = "https://duckduckgo.com/?t=ffab&q=";
-          input.placeholder = "search with duckduckgo";
-          ddg = true;
+          searchUrl = "https://www.google.com/search?q=";
+          input.placeholder = "google search";
+          counter = 0;
+        } else if (counter === 1) {
+          img.src = "youtube.svg";
+          searchUrl = "https://www.youtube.com/results?search_query=";
+          input.placeholder = "youtube search";
+          counter++;
         }
       }
 

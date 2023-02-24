@@ -1,5 +1,7 @@
+(deflisten window "scripts/open_in_focused")
+
 (defwidget dashboard-module []
   (box :space-evenly "false"
     (eventbox
       :cursor "pointer"
-      (hoverbutton :class "module2" :cmd "${EWW_CMD} open --toggle dashboard" :icon "" ))))
+      (hoverbutton :class "module2" :cmd "scripts/open_in_focused dashboard" :icon "" ))))

@@ -37,6 +37,9 @@
       # nautilus-open-any-terminal
       libsForQt5.dolphin-plugins
       libsForQt5.dolphin
+      libsForQt5.kservice
+      libsForQt5.kio
+      libsForQt5.kio-extras
       libsForQt5.kdegraphics-thumbnailers
       libsForQt5.ark
       ghostscript
@@ -98,10 +101,6 @@
       meson
       cargo
     ];
-
-    file.".npmrc".text = ''
-      prefix=~/.local/share/nodePackages
-    '';
   };
 
   programs = {

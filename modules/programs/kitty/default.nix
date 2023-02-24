@@ -125,19 +125,19 @@ in
           tab_bar_background = background;
         };
         keybindings = {
-          "ctrl+shift+up" = "scroll_page_up";
-          "ctrl+shift+down" = "scroll_page_down";
-          "ctrl+shift+left" = "previous_tab";
-          "ctrl+shift+right" = "next_tab";
+          "ctrl+alt+k" = "scroll_page_up";
+          "ctrl+alt+j" = "scroll_page_down";
+          "ctrl+alt+h" = "previous_tab";
+          "ctrl+alt+l" = "next_tab";
           "ctrl+shift+v" = "paste_from_clipboard";
           "ctrl+shift+c" = "copy_to_clipboard";
           "ctrl+shift+equal" = "increase_font_size";
           "ctrl+shift+minus" = "decrease_font_size";
           "ctrl+shift+backspace" = "restore_font_size";
-          "ctrl+b>s" = "set_background_opacity +0.05";
-          "ctrl+b>a" = "set_background_opacity -0.05";
+          "ctrl+alt+s" = "set_background_opacity +0.05";
+          "ctrl+alt+a" = "set_background_opacity -0.05";
           "ctrl+b>t" = "new_tab_with_cwd";
-          "ctrl+b>q" = "close_tab";
+          "ctrl+b>d" = "close_tab";
           "ctrl+b>," = "set_tab_title";
           "ctrl+b>1" = "goto_tab 1";
           "ctrl+b>2" = "goto_tab 2";

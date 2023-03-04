@@ -3,8 +3,10 @@
   pkgs,
   system,
   user,
+  lib,
   ...
-}: {
+}: let
+in {
   home = {
     username = "sachnr";
     homeDirectory = "/home/sachnr";
@@ -75,6 +77,7 @@
       git
       nodePackages.npm
       yarn
+      libpulseaudio
       nodejs
       deno
       jq

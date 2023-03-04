@@ -1,20 +1,27 @@
 // Note: having length != 4 will mess with layout based on how the site is styled
 const bookmarks = [
+  // {
+  //   title: "Media",
+  //   links: [
+  //     { name: "Youtube", url: "https://youtube.com" },
+  //     { name: "Twitch", url: "https://Twitch.tv" },
+  //   ],
+  // },
   {
     title: "Social",
     links: [
       { name: "Amazon", url: "https://www.amazon.in/" },
       { name: "GMail", url: "https://mail.google.com/mail" },
       { name: "Github", url: "https://github.com" },
-      { name: "Reddit", url: "https://www.reddit.com/" },
-      { name: "Twitter", url: "https://twitter.com/" },
+      // { name: "Reddit", url: "https://www.reddit.com/" },
+      // { name: "Twitter", url: "https://twitter.com/" },
     ],
   },
   {
     title: "Docs",
     links: [
       { name: "TsDocs", url: "https://devdocs.io/typescript/" },
-      { name: "GoDoc", url: "https://go.dev/doc/" },
+      // { name: "GoDoc", url: "https://go.dev/doc/" },
       {
         name: "PythonDoc",
         url: "https://docs.python.org/3.7/library/index.html",
@@ -24,16 +31,16 @@ const bookmarks = [
         name: "JavaDoc",
         url: "https://docs.oracle.com/javase/tutorial/java/index.html",
       },
-      { name: "nix-man", url: "https://nixos.org/manual/nix/stable/" },
+      // { name: "nix-man", url: "https://nixos.org/manual/nix/stable/" },
     ],
   },
   {
     title: "misc",
     links: [
-      { name: "nixpkgs", url: "https://search.nixos.org/packages" },
+      // { name: "nixpkgs", url: "https://search.nixos.org/packages" },
       { name: "nix-lib", url: "https://teu5us.github.io/nix-lib.html" },
-      { name: "ArchWiki", url: "https://bbs.archlinux.org/" },
-      { name: "UploadSS", url: "https://imgur.com/upload" },
+      // { name: "ArchWiki", url: "https://bbs.archlinux.org/" },
+      // { name: "UploadSS", url: "https://imgur.com/upload" },
     ],
   },
 ];

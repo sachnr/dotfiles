@@ -8,14 +8,16 @@
     package = pkgs.nixFlakes;
     settings = {
       substituters = [
+        "https://cache.nixos.org?priority=10"
         "https://hyprland.cachix.org"
-        "https://cache.nixos.org"
+        "https://fortuneteller2k.cachix.org"
         "https://nixpkgs-wayland.cachix.org"
       ];
       trusted-public-keys = [
         "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
         "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
         "nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA="
+        "fortuneteller2k.cachix.org-1:kXXNkMV5yheEQwT0I4XYh1MaCSz+qg72k8XAi2PthJI="
       ];
       experimental-features = ["nix-command" "flakes"];
       auto-optimise-store = true;
@@ -47,7 +49,7 @@
   xdg.portal = {
     enable = true;
     extraPortals = [
-      pkgs.xdg-desktop-portal-hyprland
+      pkgs.xdg-desktop-portal-wlr
     ];
   };
 }

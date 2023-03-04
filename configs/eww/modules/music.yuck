@@ -1,11 +1,7 @@
 (defvar music_reveal false)
-
-(defpoll song_title :interval "2s"  "scripts/music --song")
-(defpoll song_artist :interval "2s"  "scripts/music --artist")
+(deflisten music "scripts/music")
 (defpoll song_current_time :interval "1s"  "scripts/music --ctime")
-(defpoll song_total_time :interval "1s"  "scripts/music --ttime")
 (defpoll song_bar :interval "1s"  "scripts/music --time")
-(defpoll song_status :interval "2s"  "scripts/music --status")
 (defpoll cover_art :interval "2s"  "scripts/music --cover")
 
 ;;  Music
@@ -24,7 +20,7 @@
         (button
           :class "song-title"
           :onclick "${EWW_CMD} open --toggle music"
-        {song_title}))
+        {music["title"]}))
       (revealer
         :transition "slideright"
         :reveal music_reveal
@@ -32,6 +28,6 @@
         (eventbox
           :cursor "pointer"
           (box
-            (button :class "song-button" :onclick "mpc next" "ﭣ" )
-            (button :class "song-button" :onclick "mpc toggle" {song_status})
-            (button :class "song-button" :onclick "mpc prev" "ﭡ" )))))))
+            (button :class "song-button" :onclick "mpc -q next" " ﭣ " )
+            (button :class "song-button" :onclick "mpc -q toggle" {music["status"]})
+            (button :class "song-button" :onclick "mpc -q prev" "ﭡ" )))))))

@@ -91,15 +91,15 @@ in
                 sha256 = "sha256-KQ7UKudrpqUwI6gMluDTVN0qKpB15PI5P1YHHCBIlpg=";
               };
             }
-            {
-              name = "fast-syntax-highlighting";
-              src = pkgs.fetchFromGitHub {
-                owner = "zdharma-continuum";
-                repo = "fast-syntax-highlighting";
-                rev = "7c390ee3bfa8069b8519582399e0a67444e6ea61";
-                sha256 = "sha256-wLpgkX53wzomHMEpymvWE86EJfxlIb3S8TPy74WOBD4=";
-              };
-            }
+            # {
+            #   name = "fast-syntax-highlighting";
+            #   src = pkgs.fetchFromGitHub {
+            #     owner = "zdharma-continuum";
+            #     repo = "fast-syntax-highlighting";
+            #     rev = "7c390ee3bfa8069b8519582399e0a67444e6ea61";
+            #     sha256 = "sha256-wLpgkX53wzomHMEpymvWE86EJfxlIb3S8TPy74WOBD4=";
+            #   };
+            # }
           ];
         };
       };

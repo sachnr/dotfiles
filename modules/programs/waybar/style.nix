@@ -32,7 +32,7 @@ in
         background-color: ${blue};
       }
       #workspaces button.persistent{
-        color: ${gray};
+        color: ${brightblack};
       }
       #workspaces button.urgent{
         color: ${brightred};

@@ -69,7 +69,6 @@ in
           size = 24;
           gtk.enable = true;
           x11.enable = true;
-          x11.defaultCursor = "phinger-cursors";
         };
         sessionVariables = {
           GTK_THEME = "${theme.colors.name.gtk}";

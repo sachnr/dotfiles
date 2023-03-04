@@ -19,7 +19,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
+    nixpkgs-wayland = {
+      url = "github:nix-community/nixpkgs-wayland";
+    };
 
     nixpkgs-f2k.url = "github:fortuneteller2k/nixpkgs-f2k";
 
@@ -28,12 +30,6 @@
     hyprland-protocols = {
       url = "github:hyprwm/hyprland-protocols";
       inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    xdph = {
-      url = "github:hyprwm/xdg-desktop-portal-hyprland";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.hyprland-protocols.follows = "hyprland-protocols";
     };
 
     neovim-nightly-overlay = {
@@ -46,13 +42,13 @@
       nur.overlay
       nixpkgs-wayland.overlay
       neovim-nightly-overlay.overlay
+      nixpkgs-f2k.overlays.compositors
       wallpapers.overlay
-      hyprland.overlays.default
+      # hyprland.overlays.default
       (final: prev: rec {
-        awesome-git = nixpkgs-f2k.packages.x86_64-linux.awesome-git;
-        picom-git = nixpkgs-f2k.packages.x86_64-linux.picom-git;
-        sway-unwrapped = prev.sway-unwrapped.override {
-          wlroots_0_16 = prev.wlroots.overrideAttrs (_: {
+        awesome = nixpkgs-f2k.packages.x86_64-linux.awesome-git;
+        sway-unwrapped = nixpkgs-wayland.packages.x86_64-linux.sway-unwrapped.override {
+          wlroots_0_16 = nixpkgs-wayland.packages.x86_64-linux.wlroots.overrideAttrs (_: {
             patches = (prev.patches or []) ++ [./patches/nvidia.patch];
             postPatch = (prev.postPatch or "") + ''substituteInPlace render/gles2/renderer.c --replace "glFlush();" "glFinish();" '';
           });

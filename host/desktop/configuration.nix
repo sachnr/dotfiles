@@ -6,7 +6,7 @@
   pkgs,
   ...
 }: let
-  rtl8814au = pkgs.pkgs.linuxKernel.packages.linux_6_1.rtl88xxau-aircrack.overrideAttrs (_: {
+  rtl8814au = pkgs.linuxKernel.packages.linux_6_2.rtl8812au.overrideAttrs (_: {
     src = pkgs.fetchFromGitHub {
       owner = "aircrack-ng";
       repo = "rtl8812au";
@@ -14,6 +14,7 @@
       sha256 = "sha256-R+DDdM8mkuAimgI/OCp927LEb4jX9tgf2lmbXFArqtY=";
     };
   });
+  sessions = pkgs.callPackage ../../pkgs/session.nix {};
   sddm-theme = pkgs.callPackage ../../pkgs/sddmtheme.nix {};
   theme = import ../../theme {};
 in {
@@ -26,7 +27,7 @@ in {
   boot = {
     supportedFilesystems = ["ntfs"];
     kernelPackages = pkgs.linuxPackages_latest;
-    blacklistedKernelModules = ["nouveau"];
+    blacklistedKernelModules = ["nouveau" "i2c_nvidia_gpu"];
     kernelParams = ["quiet"];
     extraModulePackages = [rtl8814au];
     loader = {
@@ -60,7 +61,7 @@ in {
   console = {
     # keyMap = "us";
     packages = with pkgs; [terminus_font];
-    font = "ter-i32b";
+    font = "ter-u28b";
     useXkbConfig = true; # use xkbOptions in tty.
     earlySetup = true;
     colors = with theme.colors; [
@@ -99,8 +100,7 @@ in {
       ];
     };
     nvidia = {
-      open = false;
-      powerManagement.enable = true;
+      open = true;
       modesetting.enable = true;
     };
     bluetooth = {
@@ -127,6 +127,11 @@ in {
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment = {
+    sessionVariables = rec {
+      QT_QPA_PLATFORMTHEME = "qt5ct";
+      EDITOR = "nvim";
+    };
+
     systemPackages = with pkgs; [
       # system
       socat
@@ -187,15 +192,18 @@ in {
       windowManager = {
         awesome = {
           enable = true;
-          package = pkgs.awesome-git;
         };
+      };
+      desktopManager = {
+        xterm.enable = false;
       };
       displayManager = {
         startx.enable = true;
         sddm = {
-          enable = false;
+          enable = true;
           theme = "maldives";
         };
+        sessionPackages = [sessions];
         lightdm.enable = false;
       };
       libinput = {
@@ -205,17 +213,17 @@ in {
         touchpad.naturalScrolling = true;
       };
     };
-    greetd = {
-      enable = true;
-      package = pkgs.greetd.tuigreet;
-      vt = 2;
-      settings = {
-        default_session = {
-          user = "sachnr";
-          command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd sway --remember --remember-session -s sway:hyprland --user-menu";
-        };
-      };
-    };
+    # greetd = {
+    #   enable = true;
+    #   package = pkgs.greetd.tuigreet;
+    #   vt = 2;
+    #   settings = {
+    #     default_session = {
+    #       user = "sachnr";
+    #       command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd sway --remember --remember-session --user-menu";
+    #     };
+    #   };
+    # };
     # sound
     pipewire = {
       enable = true;
@@ -230,10 +238,6 @@ in {
     };
   };
 
-  environment.etc."greetd/environments".text = ''
-    sway
-    hyprland
-  '';
   environment.pathsToLink = ["/share/zsh"];
 
   # Enable the OpenSSH daemon.
@@ -255,5 +259,5 @@ in {
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "22.11"; # Did you read the comment?
+  system.stateVersion = "23.05"; # Did you read the comment?
 }

@@ -88,7 +88,7 @@ in
         # };
       };
 
-      # home.file.".config/mpd/mpd.conf".text = mpdconf;
+      home.file.".config/mpd/mpd.conf".text = mpdconf;
 
       programs = {
         ncmpcpp = {

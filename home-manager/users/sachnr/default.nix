@@ -20,11 +20,12 @@ in {
     ++ services
     ++ shell;
 
-  config.modules = {
+  config.modules = rec {
     desktop = {
-      x11.enable = true;
+      awesome.enable = true;
+      i3.enable = false;
       waylandPkgs.enable = true;
-      hyprland.enable = true;
+      hyprland.enable = false;
       sway.enable = true;
       gtk.enable = true;
     };
@@ -42,8 +43,13 @@ in {
       qutebrowser.enable = true;
     };
     services = {
+      picom.enable =
+        if config.modules.desktop.awesome.enable
+        then true
+        else false;
+      polybar.enable = false;
       mpd.enable = true;
-      gammastep.enable = true;
+      gammastep.enable = false;
       eww.enable = true;
       mako.enable = true;
       polkit.enable = true;

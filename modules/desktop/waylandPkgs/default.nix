@@ -45,7 +45,6 @@ in
           wl-clipboard
           swww
           wlr-randr
-          mpvpaper
           xsettingsd
         ];
       };

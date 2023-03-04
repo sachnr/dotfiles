@@ -23,10 +23,10 @@ date_bg = as_rgb(color_as_int(opts.active_tab_background))
 tab_bg = as_rgb(color_as_int(opts.background))
 SEPARATOR_SYMBOL, SOFT_SEPARATOR_SYMBOL = ("", "")
 SEPARATOR_SYMBOL_RIGHT = ""
-RIGHT_MARGIN = -17
+RIGHT_MARGIN = -16
 REFRESH_TIME = 1
 ICON = "   "
-right_status_length = -1
+right_status_length = 0
 timer_id = None
 
 

@@ -8,92 +8,104 @@ MUSIC_DIR="$HOME/Music"
 
 ## Get status
 get_status() {
-	if [[ $STATUS == *"[playing]"* ]]; then
-		echo ""
-	else
-		echo "奈"
-	fi
+    if [[ $1 = *"[playing]"* ]]; then
+        echo ""
+    else
+        echo "奈"
+    fi
 }
 
 ## Get song
 get_song() {
-	song=`mpc -f %title% current`
-	if [[ -z "$song" ]]; then
-		echo "Offline"
-	else
-		echo "$song"
-	fi	
+    if [[ -z "$1" ]]; then
+        echo "Offline"
+    else
+        echo "$1"
+    fi
 }
 
 ## Get artist
 get_artist() {
-	artist=`mpc -f %artist% current`
-	if [[ -z "$artist" ]]; then
-		echo ""
-	else
-		echo "$artist"
-	fi	
+    if [[ -z "$1" ]]; then
+        echo ""
+    else
+        echo "$artist"
+    fi
 }
 
 ## Get time
 get_time() {
-	time=`mpc status | grep "%)" | awk '{print $4}' | tr -d '(%)'`
-	if [[ -z "$time" ]]; then
-		echo "0"
-	else
-		echo "$time"
-	fi	
+    time=$(mpc status | grep "%)" | awk '{print $4}' | tr -d '(%)')
+    if [[ -z "$time" ]]; then
+        echo "0"
+    else
+        echo "$time"
+    fi
 }
 get_ctime() {
-	ctime=`mpc status | grep "#" | awk '{print $3}' | sed 's|/.*||g'`
-	if [[ -z "$ctime" ]]; then
-		echo "0:00"
-	else
-		echo "$ctime"
-	fi	
+    ctime=$(mpc status | grep "#" | awk '{print $3}' | sed 's|/.*||g')
+    if [[ -z "$ctime" ]]; then
+        echo "0:00"
+    else
+        echo "$ctime"
+    fi
 }
 get_ttime() {
-	ttime=`mpc -f %time% current`
-	if [[ -z "$ttime" ]]; then
-		echo "0:00"
-	else
-		echo "$ttime"
-	fi	
+    if [[ -z "$1" ]]; then
+        echo "0:00"
+    else
+        echo "$ttime"
+    fi
 }
 
 ## Get cover
 get_cover() {
-	ffmpeg -i "${MUSIC_DIR}/$(mpc current -f %file%)" "${COVER}" -y &> /dev/null
-	STATUS=$?
+    ffmpeg -i "${MUSIC_DIR}/$(mpc current -f %file%)" "${COVER}" -y &>/dev/null
+    STATUS=$?
 
-	# Check if the file has a embbeded album art
-	if [ "$STATUS" -eq 0 ];then
-		echo "$COVER"
-	else
-		echo "$HOME/.config/eww/scripts/albumart.jpg"
-	fi
+    # Check if the file has a embbeded album art
+    if [ "$STATUS" -eq 0 ]; then
+        echo "$COVER"
+    else
+        echo "$HOME/.config/eww/scripts/albumart.jpg"
+    fi
 }
 
 ## Execute accordingly
-if [[ "$1" == "--song" ]]; then
-	get_song
-elif [[ "$1" == "--artist" ]]; then
-	get_artist
-elif [[ "$1" == "--status" ]]; then
-	get_status
-elif [[ "$1" == "--time" ]]; then
-	get_time
-elif [[ "$1" == "--ctime" ]]; then
-	get_ctime
+if [[ "$1" == "--ctime" ]]; then
+    get_ctime
 elif [[ "$1" == "--ttime" ]]; then
-	get_ttime
+    get_ttime
 elif [[ "$1" == "--cover" ]]; then
-	get_cover
-elif [[ "$1" == "--toggle" ]]; then
-	mpc -q toggle
+    get_cover
 elif [[ "$1" == "--next" ]]; then
-	{ mpc -q next; get_cover; }
+    {
+        mpc -q next
+        get_cover
+    }
 elif [[ "$1" == "--prev" ]]; then
-	{ mpc -q prev; get_cover; }
-fi
+    {
+        mpc -q prev
+        get_cover
+    }
+else
+    # startup
+    input="$(mpc -f 'artist:{%artist%}\ntitle:{%title%}\nfile:{%file%}\nalbum:{%album%}\ntime:{%time%}')"
+    artist=$(echo "$input" | grep -oP '(?<=artist:{).+?(?=})')
+    title=$(echo "$input" | grep -oP '(?<=title:{).+?(?=})')
+    paused=$(echo "$input" | grep -o '\[.*\]')
+    time=$(echo "$input" | grep -oP '(?<=time:{).+?(?=})')
 
+    echo '{ "status": "'"$(get_status $paused)"'", "title": "'"$(get_song $title)"'", "artist": "'"$(get_artist $artist)"'", "total_time": "'"$(get_ttime $time)"'" }'
+
+    # loop
+    mpc idleloop player | while read -r; do
+        input="$(mpc -f 'artist:{%artist%}\ntitle:{%title%}\nfile:{%file%}\nalbum:{%album%}\ntime:{%time%}')"
+        artist=$(echo "$input" | grep -oP '(?<=artist:{).+?(?=})')
+        title=$(echo "$input" | grep -oP '(?<=title:{).+?(?=})')
+        paused=$(echo "$input" | grep -o '\[.*\]')
+        time=$(echo "$input" | grep -oP '(?<=time:{).+?(?=})')
+
+        echo '{ "status": "'"$(get_status $paused)"'", "title": "'"$(get_song $title)"'", "artist": "'"$(get_artist $artist)"'", "total_time": "'"$(get_ttime $time)"'" }'
+    done
+fi

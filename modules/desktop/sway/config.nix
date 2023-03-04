@@ -24,17 +24,15 @@ in
     client.focused ${blue} ${black} ${foreground} ${brightblue} ${blue}
     client.focused_inactive ${background} ${background} ${foreground} ${brightblue} ${blue}
     client.unfocused ${background} ${background} ${gray} ${selection} ${black}
-    client.urgent ${red} ${background} ${gray} ${brightblack} ${black}
+    client.urgent ${red} ${background} ${foreground} ${brightblack} ${black}
     # ignored i3 compatiblity
     client.placeholder #000000 #0c0c0c #ffffff #000000 #0c0c0c
     client.background #ffffff
 
-    for_window [app_id="system-config-printer"] floating enable
     for_window [app_id="gnome-calculator"] floating enable
     for_window [class="(?i)Lxappearance$"] floating enable
     for_window [app_id="(?i)mpv"] floating enable
     for_window [app_id="pavucontrol"] floating enable
-    for_window [app_id="pamac-manager"] floating enable
     for_window [app_id="nm-connection-editor$"] floating enable
     for_window [app_id="gnome-(calendar|calculator|power-statistics|control-center)"] floating enable
     for_window [window_role="GtkFileChooserDialog"] floating enable

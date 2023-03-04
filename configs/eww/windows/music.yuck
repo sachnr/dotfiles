@@ -11,17 +11,17 @@
       (label
         :class "music-title"
         :wrap true
-      :text {song_title})
+      :text {music["title"]})
       (label
         :class "music-artist"
         :wrap true
-      :text {song_artist})
+      :text {music["artist"]})
       (centerbox
         :halign "center"
         :class "music-button-box"
-        (hoverbutton :class "music-button" :cmd "mpc prev" :icon "ﭣ" )
-        (hoverbutton :class "music-button" :cmd "mpc toggle" :icon {song_status})
-        (hoverbutton :class "music-button" :cmd "mpc next" :icon "ﭡ" ))
+        (hoverbutton :class "music-button" :cmd "mpc -q prev" :icon "ﭣ" )
+        (hoverbutton :class "music-button" :cmd "mpc -q toggle" :icon {music["status"]})
+        (hoverbutton :class "music-button" :cmd "mpc -q next" :icon "ﭡ" ))
       (box
         :orientation "v"
         (box
@@ -32,7 +32,7 @@
           (label
             :xalign 1
             :class "music-time"
-          :text {song_total_time}))
+          :text {music["total_time"]}))
         (box
           :class "music-bar"
           (scale

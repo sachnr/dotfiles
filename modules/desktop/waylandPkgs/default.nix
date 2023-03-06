@@ -24,7 +24,8 @@ in
     config = mkIf cfg.enable {
       programs.wall-utils = with theme.colors; {
         enable = true;
-        customCommand = "swww img";
+        customCommand = "feh --bg-scale";
+        customDir = "${pkgs.wallpapers}/wallpapers";
         background = black;
         background-alt = background;
         foreground = foreground;
@@ -36,6 +37,7 @@ in
       home = {
         packages = with pkgs; [
           libsForQt5.qt5.qtwayland
+          wallpapers
           qt6.qtwayland
           dconf
           grim

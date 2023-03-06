@@ -25,7 +25,7 @@
 
     nixpkgs-f2k.url = "github:fortuneteller2k/nixpkgs-f2k";
 
-    wallpapers.url = "github:sachnr/wallpapers";
+    wallpapers.url = "github:sachnr/asdf";
 
     hyprland-protocols = {
       url = "github:hyprwm/hyprland-protocols";

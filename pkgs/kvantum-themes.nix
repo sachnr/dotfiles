@@ -12,10 +12,6 @@ in
     version = "v0.1";
 
     srcs = [
-      # (fetchurl {
-      #   url = "https://raw.githubusercontent.com/sachnr/awesomewm-dotfiles/master/misc/kvantum/Gruvbox.tar.gz";
-      #   sha256 = "sha256-5k5LhrGbUFn1RmXsaik0h6nK3y0GMfePYbITfJivxg8=";
-      # })
       (fetchurl {
         url = "https://raw.githubusercontent.com/sachnr/awesomewm-dotfiles/master/assets/kvantum/Qogir.tar.xz";
         sha256 = "sha256-kaXuorozEIq7c7CscHsCK524fxtKcvGLqBzHlMLF3Uo=";

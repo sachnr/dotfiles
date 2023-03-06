@@ -1,12 +1,23 @@
 {
-  inputs,
-  pkgs,
-  system,
   user,
+  config,
+  pkgs,
   lib,
   ...
-}: let
-in {
+}: {
+  programs = {
+    obs-studio.enable = true;
+    less.enable = true;
+    java.enable = true;
+  };
+
+  services.network-manager-applet.enable = true;
+
+  xdg.userDirs = {
+    enable = true;
+    createDirectories = true;
+  };
+
   home = {
     username = "sachnr";
     homeDirectory = "/home/sachnr";
@@ -57,7 +68,7 @@ in {
 
       # Language Servers
       sumneko-lua-language-server
-      python311Packages.python-lsp-server
+      python39Packages.python-lsp-server
       nodePackages.bash-language-server
       nodePackages.yaml-language-server
       nodePackages.vue-language-server
@@ -72,7 +83,7 @@ in {
       ccls
 
       # Dev
-      python311Full
+      python39
       nodePackages.typescript
       git
       nodePackages.npm
@@ -104,18 +115,5 @@ in {
       meson
       cargo
     ];
-  };
-
-  programs = {
-    obs-studio.enable = true;
-    less.enable = true;
-    java.enable = true;
-  };
-
-  services.network-manager-applet.enable = true;
-
-  xdg.userDirs = {
-    enable = true;
-    createDirectories = true;
   };
 }

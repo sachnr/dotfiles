@@ -7,13 +7,13 @@
 }: let
   cfg = config.modules.services.mpd;
   mpdconf = ''
-    music_directory                 "~/Music"
-    playlist_directory              "~/.config/mpd/playlist"
-    db_file                         "~/.config/mpd/mpd.db"
-    log_file                        "~/.config/mpd/log"
-    pid_file                        "~/.config/mpd/mpd.pid"
-    state_file                      "~/.config/mpd/mpdstate"
-    sticker_file                    "~/.config/mpd/sticker.sql"
+    music_directory                 "/home/${user}/Music"
+    playlist_directory              "/home/${user}/.config/mpd/playlist"
+    db_file                         "/home/${user}/.config/mpd/mpd.db"
+    log_file                        "/home/${user}/.config/mpd/log"
+    pid_file                        "/home/${user}/.config/mpd/mpd.pid"
+    state_file                      "/home/${user}/.config/mpd/mpdstate"
+    sticker_file                    "/home/${user}/.config/mpd/sticker.sql"
     user                            "sachnr"
     bind_to_address                 "127.0.0.1"
     port                            "6600"

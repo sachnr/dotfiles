@@ -28,6 +28,8 @@ in
 
       substituteInPlace $out/nixcolors.scss \
         --replace "backgroundnix" "${background}" \
+        --replace "background2nix" "${background2}" \
+        --replace "background3nix" "${background3}" \
         --replace "foregroundnix" "${foreground}" \
         --replace "selectionnix" "${selection}" \
         --replace "blacknix" "${black}" \

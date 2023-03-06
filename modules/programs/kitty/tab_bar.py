@@ -15,19 +15,19 @@ from kitty.tab_bar import (
 
 opts = get_options()
 icon_fg = as_rgb(color_as_int(opts.foreground))
-icon_bg = as_rgb(color_as_int(opts.color0))
-clock_fg = as_rgb(color_as_int(opts.inactive_tab_foreground))
-clock_bg = as_rgb(color_as_int(opts.selection_background))
-date_fg = as_rgb(color_as_int(opts.color0))
-date_bg = as_rgb(color_as_int(opts.active_tab_background))
+icon_bg = as_rgb(color_as_int(opts.background))
+clock_fg = as_rgb(color_as_int(opts.active_tab_foreground))
+clock_bg = as_rgb(color_as_int(opts.background))
+date_fg = as_rgb(color_as_int(opts.foreground))
+date_bg = as_rgb(color_as_int(opts.background))
 tab_bg = as_rgb(color_as_int(opts.background))
 SEPARATOR_SYMBOL, SOFT_SEPARATOR_SYMBOL = ("", "")
 SEPARATOR_SYMBOL_RIGHT = ""
-RIGHT_MARGIN = -16
 REFRESH_TIME = 1
 ICON = "   "
-right_status_length = 0
 timer_id = None
+right_status_length = 0
+RIGHT_MARGIN = 2
 
 
 def _draw_icon(screen: Screen, index: int) -> int:
@@ -128,13 +128,10 @@ def draw_tab(
     cells = [
         (clock_bg, tab_bg, SEPARATOR_SYMBOL_RIGHT),
         (clock_fg, clock_bg, clock),
-        (date_bg, clock_bg, SEPARATOR_SYMBOL_RIGHT),
-        (date_fg, date_bg, date),
     ]
-
     right_status_length = RIGHT_MARGIN
     for cell in cells:
-        right_status_length += len(str(cell[1]))
+        right_status_length += len(cell)
 
     _draw_icon(screen, index)
     _draw_left_status(

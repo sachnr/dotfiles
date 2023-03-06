@@ -32,8 +32,6 @@ in
       ./fontconfig.nix
       ../../extra-settings.nix
 
-      # wallpapers.homeManagerModules.default
-
       home-manager.nixosModules.home-manager
       {
         home-manager = {

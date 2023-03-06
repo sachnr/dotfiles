@@ -31,7 +31,6 @@ in
             blur-background = true;
           };
           shadow = true;
-          shadowOffsets = ["-15" "-15"];
           shadowOpacity = 0.7;
           shadowExclude = [];
           vSync = true;

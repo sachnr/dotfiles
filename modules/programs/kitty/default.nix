@@ -118,11 +118,11 @@ in
 
           url_color = brightgreen;
 
-          active_tab_foreground = background;
-          active_tab_background = blue;
+          active_tab_foreground = brightblue;
+          active_tab_background = background;
           inactive_tab_foreground = gray;
-          inactive_tab_background = selection;
-          tab_bar_background = background;
+          inactive_tab_background = background;
+          tab_bar_background = black;
         };
         keybindings = {
           "ctrl+shift+up" = "scroll_page_up";

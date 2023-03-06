@@ -1,4 +1,4 @@
 _: let
 in {
-  colors = import ./tokyonight.nix {};
+  colors = import ./dark.nix {};
 }

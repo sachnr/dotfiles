@@ -1,5 +1,5 @@
 _: {
-  background = "#282829";
+  background = "#282828";
   foreground = "#ebdbb2";
   selection = "#504945";
   black = "#1d2021";

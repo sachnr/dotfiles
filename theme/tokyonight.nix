@@ -6,6 +6,7 @@ _: {
   selection = "#33467c";
   black = "#15161e";
   red = "#f7768e";
+  orange = "#db4b4b";
   green = "#9ece6a";
   yellow = "#e0af68";
   blue = "#7aa2f7";
@@ -14,6 +15,7 @@ _: {
   gray = "#a9b1d6";
   brightblack = "#414868";
   brightred = "#f7768e";
+  brightorange = "#ff9e64";
   brightgreen = "#9ece6a";
   brightyellow = "#e0af68";
   brightblue = "#7aa2f7";

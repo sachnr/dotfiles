@@ -2,6 +2,7 @@
   pkgs,
   config,
   lib,
+  theme,
   ...
 }: let
   gruvbox-kvantum = pkgs.callPackage ../../../pkgs/gruvbox-kvantum.nix {};
@@ -19,6 +20,7 @@ in {
       tokyonight-gtk
       libsForQt5.breeze-icons
       papirus-icon-theme
+      plata-theme
     ];
     # kvantumthemes
     file = {

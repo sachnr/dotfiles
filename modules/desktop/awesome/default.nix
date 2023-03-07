@@ -7,6 +7,7 @@
   ...
 }: let
   cfg = config.modules.desktop.awesome;
+  i3lockwconfig = import ./i3lock.nix {inherit pkgs theme;};
 in
   with lib; {
     options.modules.desktop.awesome = {
@@ -18,6 +19,22 @@ in
     };
 
     config = mkIf cfg.enable {
+      services.xidlehook = {
+        enable = true;
+        not-when-audio = true;
+        not-when-fullscreen = true;
+        timers = [
+          {
+            delay = 600;
+            command = "xrandr --output \"$PRIMARY_DISPLAY\" --brightness .1";
+            canceller = "xrandr --output \"$PRIMARY_DISPLAY\" --brightness 1";
+          }
+          {
+            delay = 630;
+            command = "${i3lockwconfig}/bin/i3lockwconfig";
+          }
+        ];
+      };
       # xsession.scriptPath = ".xsession-hm";
       # xsession.windowManager.awesome = {
       #   enable = true;
@@ -26,6 +43,8 @@ in
         packages = with pkgs; [
           xclip
           scrot
+          i3lock-color
+          i3lockwconfig
           redshift
         ];
         # for startx

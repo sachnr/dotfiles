@@ -42,8 +42,6 @@ in
           dconf
           grim
           slurp
-          # clipman
-          # swww
           wl-clipboard
           swww
           wlr-randr

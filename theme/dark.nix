@@ -1,4 +1,5 @@
 _: {
+  accent = "#7E97AB";
   background = "#171717";
   background2 = "#2e2e2e";
   background3 = "#313131";
@@ -23,13 +24,14 @@ _: {
   brightaqua = "#88afa2";
   brightgray = "#AFAFAF";
   wallpaper = builtins.fetchurl {
-    url = "https://raw.githubusercontent.com/sachnr/wallpapers/main/wallpapers/minimalistic/black-minimalism-wallpapers.jpg";
-    sha256 = "05d6kimpqvflvmbvn9nm037931q0amv4mwwhvmn4zv9lnwr3k1hx";
+    url = "https://raw.githubusercontent.com/sachnr/awesomewm-dotfiles/master/assets/black-minimal.jpg";
+    sha256 = "1zwxmwmw15wjmyw9jjbsph35sypdzb4hddql23kq65v1c60dm9ig";
   };
   name = {
-    gtk = "Plata-Noir-Compact";
-    kvantum = "Win10OS-dark";
-    icon = "Tokyonight-Moon";
+    gtk = "numix";
+    kvantum = "Kvantum";
+    qt_style = "Fusion";
+    icon = "icons_papirus";
     font = "Roboto";
     fontmonospace = "RobotoMono Nerd Font";
   };

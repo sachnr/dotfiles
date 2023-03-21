@@ -4,9 +4,11 @@
   pkgs,
   lib,
   ...
-}: {
+}: let
+  themix = pkgs.callPackage ../../../pkgs/themix-gui.nix {};
+in {
   programs = {
-    obs-studio.enable = true;
+    obs-studio.enable = false;
     less.enable = true;
     java.enable = true;
   };
@@ -28,10 +30,10 @@
       ranger
       btop
       pfetch
-      gitui
+      lazygit
       ripgrep
       fd
-      youtube-dl
+      yt-dlp
 
       # General
       networkmanagerapplet
@@ -68,33 +70,30 @@
 
       # Language Servers
       sumneko-lua-language-server
+      rust-analyzer
       python39Packages.python-lsp-server
       nodePackages.bash-language-server
       nodePackages.yaml-language-server
       nodePackages.vue-language-server
       nodePackages.typescript-language-server
       nodePackages.vscode-langservers-extracted
-      nodePackages.eslint_d
-      nodePackages.eslint
-      efm-langserver
       rnix-lsp
       statix
       sqls
       ccls
 
       # Dev
+      rustup
       python39
-      nodePackages.typescript
       git
       nodePackages.npm
       yarn
-      libpulseaudio
       nodejs
       deno
       jq
       gcc
       gdb
-      go
+      # go
 
       # Formatters
       black
@@ -105,15 +104,7 @@
       alejandra
 
       # Build tools
-      automake
-      gnumake
       maven
-      pkg-config
-      clang-tools
-      cmake
-      ninja
-      meson
-      cargo
     ];
   };
 }

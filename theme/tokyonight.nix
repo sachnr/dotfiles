@@ -1,4 +1,5 @@
 _: {
+  accent = "#bb9af7";
   background = "#1a1b27";
   background2 = "#24283b";
   background3 = "#3b4261";
@@ -27,9 +28,10 @@ _: {
     sha256 = "0mxq7pv4623zmjiyzp78yp6in5pvpk2j5div3g2s4r5r5byl3qfj";
   };
   name = {
-    gtk = "Tokyonight-Dark-B";
-    kvantum = "Catppuccin-Mocha-Blue";
-    icon = "Tokyonight-Dark";
+    gtk = "numix";
+    kvantum = "Kvantum";
+    qt_style = "Fusion";
+    icon = "icons_papirus";
     font = "Roboto";
     fontmonospace = "RobotoMono Nerd Font";
   };

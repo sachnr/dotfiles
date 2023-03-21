@@ -43,6 +43,7 @@
       nixpkgs-wayland.overlay
       neovim-nightly-overlay.overlay
       nixpkgs-f2k.overlays.compositors
+      nixpkgs-f2k.overlays.terminal-emulators
       wallpapers.overlay
       # hyprland.overlays.default
       (final: prev: rec {

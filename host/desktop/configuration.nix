@@ -4,6 +4,7 @@
 {
   config,
   pkgs,
+  lib,
   ...
 }: let
   rtl8814au = pkgs.linuxKernel.packages.linux_6_2.rtl8812au.overrideAttrs (_: {
@@ -64,24 +65,27 @@ in {
     font = "ter-u28b";
     useXkbConfig = true; # use xkbOptions in tty.
     earlySetup = true;
-    colors = with theme.colors; [
-      (builtins.substring 1 6 black)
-      (builtins.substring 1 6 red)
-      (builtins.substring 1 6 green)
-      (builtins.substring 1 6 yellow)
-      (builtins.substring 1 6 blue)
-      (builtins.substring 1 6 purple)
-      (builtins.substring 1 6 aqua)
-      (builtins.substring 1 6 gray)
-      (builtins.substring 1 6 brightblack)
-      (builtins.substring 1 6 brightred)
-      (builtins.substring 1 6 brightgreen)
-      (builtins.substring 1 6 brightyellow)
-      (builtins.substring 1 6 brightblue)
-      (builtins.substring 1 6 brightpurple)
-      (builtins.substring 1 6 brightaqua)
-      (builtins.substring 1 6 brightgray)
-    ];
+    colors = let
+      substr = str: lib.strings.removePrefix "#" str;
+    in
+      with theme.colors; [
+        (substr black)
+        (substr red)
+        (substr green)
+        (substr yellow)
+        (substr blue)
+        (substr purple)
+        (substr aqua)
+        (substr gray)
+        (substr brightblack)
+        (substr brightred)
+        (substr brightgreen)
+        (substr brightyellow)
+        (substr brightblue)
+        (substr brightpurple)
+        (substr brightaqua)
+        (substr brightgray)
+      ];
   };
 
   # Enable sound.
@@ -100,6 +104,7 @@ in {
       ];
     };
     nvidia = {
+      forceFullCompositionPipeline = true;
       open = true;
       modesetting.enable = true;
     };
@@ -137,13 +142,9 @@ in {
       socat
       lsof
       file
-      glibc
-      patchelf
       lm_sensors
-      whois
       pulseaudio
       nix-index
-      sddm-theme
 
       ntfs3g
       alsa-utils
@@ -152,14 +153,10 @@ in {
 
       # compression
       p7zip
+      unrar
       unzip
       exfat
       zip
-
-      #vulcan/opengl
-      glxinfo
-      vulkan-tools
-      glmark2
     ];
   };
 
@@ -184,6 +181,13 @@ in {
   services = {
     xserver = {
       enable = true;
+      xrandrHeads = [
+        {
+          output = "HDMI-0";
+          primary = true;
+          monitorConfig = "Option \"PreferredMode\" \"1920x1080@144.0\"";
+        }
+      ];
       layout = "us";
       videoDrivers = ["nvidia"];
       desktopManager = {

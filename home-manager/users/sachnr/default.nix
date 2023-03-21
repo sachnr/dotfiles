@@ -2,6 +2,7 @@
   user,
   config,
   lib,
+  gtk-engine-murrine,
   ...
 }: let
   # returns list of all folders in path
@@ -41,6 +42,8 @@ in {
       kitty.enable = true;
       rofi.enable = true;
       qutebrowser.enable = true;
+      zathura.enable = true;
+      wezterm.enable = true;
     };
     services = {
       picom.enable =

@@ -12,7 +12,7 @@
       material-icons
       material-design-icons
       roboto
-      (nerdfonts.override {fonts = ["JetBrainsMono" "RobotoMono" "NerdFontsSymbolsOnly"];})
+      (nerdfonts.override {fonts = ["UbuntuMono" "JetBrainsMono" "RobotoMono" "NerdFontsSymbolsOnly"];})
     ];
 
     fontconfig = {

@@ -53,10 +53,10 @@ in
               Snippets = false;
             };
           };
-          extraPrefs =
-            if cfg.startpage
-            then mozillaCfg
-            else "";
+          # extraPrefs =
+          #   if cfg.startpage
+          #   then mozillaCfg
+          #   else "";
         };
         profiles = {
           ${user} = {

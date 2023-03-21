@@ -7,8 +7,7 @@
 }: let
   cfg = config.modules.shell.zsh;
 in
-  with lib;
-   {
+  with lib; {
     options.modules.shell.zsh = {
       enable = mkOption {
         type = types.bool;
@@ -49,7 +48,7 @@ in
                 source "$HOME/.config/zsh/plugins/sudo/sudo.plugin.zsh"
             fi
 
-            export PATH="''${PATH}:$HOME/.local/share/nodePackages/bin:''${HOME}/.local/share/nvim/mason/bin"
+            export PATH="''${PATH}:$HOME/.local/share/nodePackages/bin:''${HOME}/.local/share/nvim/mason/bin:''${HOME}/.cargo/bin"
             export EDITOR="nvim"
           '';
           initExtra = ''
@@ -61,7 +60,7 @@ in
             '
           '';
           shellAliases = {
-            gg = "${pkgs.gitui}/bin/gitui";
+            gg = "${pkgs.lazygit}/bin/lazygit";
             nixr = "sudo nixos-rebuild switch --flake /home/${user}/flake#desktop";
             nixc = "sudo nix-collect-garbage --delete-older-than 7d";
             ls = "${pkgs.exa}/bin/exa --icons --group-directories-first";
@@ -91,15 +90,6 @@ in
                 sha256 = "sha256-KQ7UKudrpqUwI6gMluDTVN0qKpB15PI5P1YHHCBIlpg=";
               };
             }
-            # {
-            #   name = "fast-syntax-highlighting";
-            #   src = pkgs.fetchFromGitHub {
-            #     owner = "zdharma-continuum";
-            #     repo = "fast-syntax-highlighting";
-            #     rev = "7c390ee3bfa8069b8519582399e0a67444e6ea61";
-            #     sha256 = "sha256-wLpgkX53wzomHMEpymvWE86EJfxlIb3S8TPy74WOBD4=";
-            #   };
-            # }
           ];
         };
       };

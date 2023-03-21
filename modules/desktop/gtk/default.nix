@@ -3,20 +3,22 @@
   config,
   lib,
   theme,
+  user,
   ...
 }: let
+  oomox = pkgs.callPackage ../../../pkgs/themix-gui.nix {inherit theme;};
   cfg = config.modules.desktop.gtk;
   kvtheme = ''
     [General]
     theme=${theme.colors.name.kvantum}
   '';
-  qt5ct = ''
+  qt5ct = with theme.colors; ''
     [Appearance]
-    color_scheme_path=/home/sachnr/.config/qt5ct/colors/catppuccin.conf
-    custom_palette=false
+    color_scheme_path=/home/${user}/.config/qt5ct/colors/numix.conf
+    custom_palette=true
     icon_theme=${theme.colors.name.icon}
     standard_dialogs=default
-    style=kvantum
+    style=${name.qt_style}
 
     [Fonts]
     fixed=@Variant(\0\0\0@\0\0\0(\0R\0o\0\x62\0o\0t\0o\0M\0o\0n\0o\0 \0N\0\x65\0r\0\x64\0 \0\x46\0o\0n\0t@$\0\0\0\0\0\0\xff\xff\xff\xff\x5\x1\0\x32\x10)
@@ -54,13 +56,13 @@ in
       };
     };
 
-    imports = [./themes.nix];
-
     config = mkIf cfg.enable {
       home = {
         packages = with pkgs; [
           libsForQt5.qt5ct
           libsForQt5.qtstyleplugin-kvantum
+          papirus-icon-theme
+          oomox
           gtk3
         ];
         pointerCursor = {
@@ -97,15 +99,18 @@ in
           size = 24;
         };
       };
-      qt = {
+      qt = with theme.colors; {
         enable = true;
-        platformTheme = null;
-        style = {
-          package = null;
-          name = null;
-        };
+        # gtk, gnome, lxqt, qt5ct, kde
+        # platformTheme = "qt5ct";
+        # style = {
+        #   name = "${name.qt_style}";
+        # };
       };
       home.file.".config/Kvantum/kvantum.kvconfig".text = kvtheme;
       home.file.".config/qt5ct/qt5ct.conf".text = qt5ct;
+      home.file.".config/qt5ct/colors/numix.conf" = {
+        source = "${oomox}/.config/qt5ct/colors/numix.conf";
+      };
     };
   }

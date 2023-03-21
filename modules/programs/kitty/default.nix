@@ -30,10 +30,10 @@ in
           font_size = "10.6";
           modify_font = "underline_position 125%";
 
-          disable_ligatures = "always";
+          disable_ligatures = "never";
           adjust_line_height = "0";
           adjust_column_width = "0";
-          box_drawing_scale = "0.001, 1, 1.5, 2";
+          # box_drawing_scale = "0.001, 1, 1.5, 2";
 
           # Cursor
           cursor_blink_interval = "-1";
@@ -131,23 +131,23 @@ in
           "ctrl+shift+right" = "next_tab";
           "ctrl+shift+v" = "paste_from_clipboard";
           "ctrl+shift+c" = "copy_to_clipboard";
-          "ctrl+shift+equal" = "increase_font_size";
-          "ctrl+shift+minus" = "decrease_font_size";
+          "ctrl+shift+equal" = "change_font_size current +1";
+          "ctrl+shift+minus" = "change_font_size current -1";
           "ctrl+shift+backspace" = "restore_font_size";
           "ctrl+alt+s" = "set_background_opacity +0.05";
           "ctrl+alt+a" = "set_background_opacity -0.05";
-          "ctrl+b>t" = "new_tab_with_cwd";
-          "ctrl+b>q" = "close_tab";
-          "ctrl+b>," = "set_tab_title";
-          "ctrl+b>1" = "goto_tab 1";
-          "ctrl+b>2" = "goto_tab 2";
-          "ctrl+b>3" = "goto_tab 3";
-          "ctrl+b>4" = "goto_tab 4";
-          "ctrl+b>5" = "goto_tab 5";
-          "ctrl+b>6" = "goto_tab 6";
-          "ctrl+b>7" = "goto_tab 7";
-          "ctrl+b>8" = "goto_tab 8";
-          "ctrl+b>9" = "goto_tab 9";
+          "ctrl+shift+t" = "new_tab_with_cwd";
+          "ctrl+shift+q" = "close_tab";
+          "ctrl+shift+," = "set_tab_title";
+          "ctrl+shift+1" = "goto_tab 1";
+          "ctrl+shift+2" = "goto_tab 2";
+          "ctrl+shift+3" = "goto_tab 3";
+          "ctrl+shift+4" = "goto_tab 4";
+          "ctrl+shift+5" = "goto_tab 5";
+          "ctrl+shift+6" = "goto_tab 6";
+          "ctrl+shift+7" = "goto_tab 7";
+          "ctrl+shift+8" = "goto_tab 8";
+          "ctrl+shift+9" = "goto_tab 9";
         };
       };
       home.file.".config/kitty/tab_bar.py".source = ./tab_bar.py;

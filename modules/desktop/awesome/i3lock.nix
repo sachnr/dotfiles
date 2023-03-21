@@ -13,5 +13,5 @@ in
           --separator-color=${substr brightblack} \
           --ind-pos="x+86:y+1003" --time-pos="x+86:y+940" --date-pos="x+86:y+955" --radius=15 \
           --date-color=${foreground} --time-color=${foreground} \
-          --radius=15 --verif-text="" --wrong-text=""
+          --radius=15 --verif-text="" --wrong-text="" --noinput-text=""
     ''

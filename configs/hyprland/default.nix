@@ -5,6 +5,7 @@
   ...
 }: let
   theme = import ../../theme {};
+  substr = str: lib.strings.removePrefix "#" str;
 in
   stdenv.mkDerivation rec {
     name = "hyprlandcfg";
@@ -24,9 +25,9 @@ in
       substituteInPlace $out/autostart.conf \
         --replace "dbus-update-activation-environment" "${pkgs.dbus}/bin/dbus-update-activation-environment"
       substituteInPlace $out/options.conf \
-        --replace "rgba(83A598ff)" "rgba(${(builtins.substring 1 6 brightblue)}ff)" \
-        --replace "rgba(1D2021ff)" "rgba(${(builtins.substring 1 6 background)}ff)" \
-        --replace "rgba(1C252C90)" "rgba(${(builtins.substring 1 6 black)}90)"
+        --replace "rgba(83A598ff)" "rgba(${(substr brightblue)}ff)" \
+        --replace "rgba(1D2021ff)" "rgba(${(substr background)}ff)" \
+        --replace "rgba(1C252C90)" "rgba(${(substr black)}90)"
       substituteInPlace $out/hyprpaper.conf \
         --replace "~/.config/hypr/wallpaper/Shibata_Zeshin.jpg" "${wallpaper}"
     '';

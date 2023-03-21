@@ -1,9 +1,13 @@
 _: {
+  accent = "#3d3d3d";
   background = "#282828";
+  background2 = "#2e2e2e";
+  background3 = "#353535";
   foreground = "#ebdbb2";
   selection = "#504945";
   black = "#1d2021";
   red = "#cc241d";
+  orange = "#e78a4e";
   green = "#98971a";
   yellow = "#d79921";
   blue = "#458588";
@@ -12,6 +16,7 @@ _: {
   gray = "#a89984";
   brightblack = "#928374";
   brightred = "#fb4934";
+  brightorange = "#e78a4e";
   brightgreen = "#b8bb26";
   brightyellow = "#fabd2f";
   brightblue = "#83a598";
@@ -23,9 +28,10 @@ _: {
     sha256 = "sha256:0qb9jydrn9i5mbrzf55hw6h0vlxhmwy2gihp9rdcri3wl4294pp8";
   };
   name = {
-    gtk = "Gruvbox-Dark-B";
-    kvantum = "Gruvbox-Dark-Blue";
-    icon = "Gruvbox-Dark";
+    gtk = "numix";
+    kvantum = "Kvantum";
+    qt_style = "Fusion";
+    icon = "icons_papirus";
     font = "Roboto";
     fontmonospace = "RobotoMono Nerd Font";
   };

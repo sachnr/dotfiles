@@ -1,17 +1,17 @@
-{
-  user,
-  config,
-  lib,
-  gtk-engine-murrine,
-  ...
-}: let
+{ user
+, config
+, lib
+, ...
+}:
+let
   # returns list of all folders in path
   getDirfolders = path: (lib.attrsets.mapAttrsToList (name: _: path + ("/" + name)) (lib.attrsets.filterAttrs (name: value: value == "directory") (builtins.readDir path)));
   shell = getDirfolders ../../../modules/shell;
   desktop = getDirfolders ../../../modules/desktop;
   programs = getDirfolders ../../../modules/programs;
   services = getDirfolders ../../../modules/services;
-in {
+in
+{
   imports =
     [
       ./home.nix
@@ -26,7 +26,7 @@ in {
       awesome.enable = true;
       i3.enable = false;
       waylandPkgs.enable = true;
-      hyprland.enable = false;
+      hyprland.enable = true;
       sway.enable = true;
       gtk.enable = true;
     };

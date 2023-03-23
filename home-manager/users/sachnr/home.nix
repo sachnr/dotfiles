@@ -101,7 +101,7 @@ in {
       stylua
       astyle
       nodePackages.prettier
-      alejandra
+      nixpkgs-fmt
 
       # Build tools
       maven

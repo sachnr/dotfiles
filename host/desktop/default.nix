@@ -1,10 +1,11 @@
-{
-  nixpkgs,
-  home-manager,
-  nur,
-  overlays,
-  inputs,
-}: let
+{ nixpkgs
+, home-manager
+, nur
+, overlays
+, inputs
+,
+}:
+let
   system = "x86_64-linux"; # System architecture
 
   pkgs = import nixpkgs {
@@ -22,24 +23,24 @@
 
   user = "sachnr";
 
-  theme = import ../../theme {};
+  theme = import ../../theme { };
 in
-  lib.nixosSystem {
-    inherit system pkgs;
-    modules = [
-      nur.nixosModules.nur
-      ./configuration.nix
-      ./fontconfig.nix
-      ../../extra-settings.nix
+lib.nixosSystem {
+  inherit system pkgs;
+  modules = [
+    nur.nixosModules.nur
+    ./configuration.nix
+    ./fontconfig.nix
+    ../../extra-settings.nix
 
-      home-manager.nixosModules.home-manager
-      {
-        home-manager = {
-          useGlobalPkgs = true;
-          useUserPackages = true;
-          users.${user} = import ../../home-manager/users/sachnr;
-          extraSpecialArgs = {inherit inputs pkgs system user theme;};
-        };
-      }
-    ];
-  }
+    home-manager.nixosModules.home-manager
+    {
+      home-manager = {
+        useGlobalPkgs = true;
+        useUserPackages = true;
+        users.${user} = import ../../home-manager/users/sachnr;
+        extraSpecialArgs = { inherit inputs pkgs system user theme; };
+      };
+    }
+  ];
+}

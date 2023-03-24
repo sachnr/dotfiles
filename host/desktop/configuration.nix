@@ -1,12 +1,12 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-{ config
-, pkgs
-, lib
-, ...
-}:
-let
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}: let
   rtl8814au = pkgs.linuxKernel.packages.linux_6_2.rtl8812au.overrideAttrs (_: {
     src = pkgs.fetchFromGitHub {
       owner = "aircrack-ng";
@@ -15,11 +15,10 @@ let
       sha256 = "sha256-R+DDdM8mkuAimgI/OCp927LEb4jX9tgf2lmbXFArqtY=";
     };
   });
-  sessions = pkgs.callPackage ../../pkgs/session.nix { };
-  sddm-theme = pkgs.callPackage ../../pkgs/sddmtheme.nix { };
-  theme = import ../../theme { };
-in
-{
+  sessions = pkgs.callPackage ../../pkgs/session.nix {};
+  sddm-theme = pkgs.callPackage ../../pkgs/sddmtheme.nix {};
+  theme = import ../../theme {};
+in {
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
@@ -27,11 +26,11 @@ in
 
   # Use the systemd-boot EFI boot loader.
   boot = {
-    supportedFilesystems = [ "ntfs" ];
+    supportedFilesystems = ["ntfs"];
     kernelPackages = pkgs.linuxPackages_latest;
-    blacklistedKernelModules = [ "nouveau" "i2c_nvidia_gpu" ];
-    kernelParams = [ "quiet" ];
-    extraModulePackages = [ rtl8814au ];
+    blacklistedKernelModules = ["nouveau" "i2c_nvidia_gpu"];
+    kernelParams = ["quiet"];
+    extraModulePackages = [rtl8814au];
     loader = {
       timeout = 5;
       efi = {
@@ -41,7 +40,7 @@ in
       grub = {
         enable = true;
         gfxmodeEfi = "1920x1080";
-        devices = [ "nodev" ];
+        devices = ["nodev"];
         efiSupport = true;
         useOSProber = true;
         default = "saved";
@@ -62,14 +61,13 @@ in
   i18n.defaultLocale = "en_US.UTF-8";
   console = {
     # keyMap = "us";
-    packages = with pkgs; [ terminus_font ];
+    packages = with pkgs; [terminus_font];
     font = "ter-u28b";
     useXkbConfig = true; # use xkbOptions in tty.
     earlySetup = true;
-    colors =
-      let
-        substr = str: lib.strings.removePrefix "#" str;
-      in
+    colors = let
+      substr = str: lib.strings.removePrefix "#" str;
+    in
       with theme.colors; [
         (substr black)
         (substr red)
@@ -123,7 +121,7 @@ in
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.sachnr = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "video" "audio" "users" ]; # Enable ‘sudo’ for the user.
+    extraGroups = ["wheel" "video" "audio" "users"]; # Enable ‘sudo’ for the user.
     shell = pkgs.zsh;
   };
 
@@ -159,6 +157,8 @@ in
       unzip
       exfat
       zip
+
+      sddm-theme
     ];
   };
 
@@ -191,7 +191,7 @@ in
         }
       ];
       layout = "us";
-      videoDrivers = [ "nvidia" ];
+      videoDrivers = ["nvidia"];
       desktopManager = {
         xfce.enable = false;
       };
@@ -207,9 +207,9 @@ in
         startx.enable = true;
         sddm = {
           enable = true;
-          theme = "maldives";
+          theme = "Psion";
         };
-        sessionPackages = [ sessions ];
+        sessionPackages = [sessions];
         lightdm.enable = false;
       };
       libinput = {
@@ -244,7 +244,7 @@ in
     };
   };
 
-  environment.pathsToLink = [ "/share/zsh" ];
+  environment.pathsToLink = ["/share/zsh"];
 
   # Enable the OpenSSH daemon.
 

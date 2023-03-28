@@ -18,8 +18,6 @@ icon_fg = as_rgb(color_as_int(opts.foreground))
 icon_bg = as_rgb(color_as_int(opts.background))
 clock_fg = as_rgb(color_as_int(opts.active_tab_foreground))
 clock_bg = as_rgb(color_as_int(opts.background))
-date_fg = as_rgb(color_as_int(opts.foreground))
-date_bg = as_rgb(color_as_int(opts.background))
 tab_bg = as_rgb(color_as_int(opts.background))
 SEPARATOR_SYMBOL, SOFT_SEPARATOR_SYMBOL = ("", "")
 SEPARATOR_SYMBOL_RIGHT = ""
@@ -27,7 +25,6 @@ REFRESH_TIME = 1
 ICON = "   "
 timer_id = None
 right_status_length = 0
-RIGHT_MARGIN = 2
 
 
 def _draw_icon(screen: Screen, index: int) -> int:
@@ -95,6 +92,7 @@ def _draw_right_status(screen: Screen, is_last: bool, cells: list) -> int:
     screen.cursor.x = screen.columns - right_status_length
     screen.cursor.fg = 0
     screen.cursor.bg = 0
+    screen.cursor.bold = 1
     for color_fg, color_bg, status in cells:
         screen.cursor.fg = color_fg
         screen.cursor.bg = color_bg
@@ -125,12 +123,16 @@ def draw_tab(
         timer_id = add_timer(_redraw_tab_bar, REFRESH_TIME, True)
     clock = datetime.now().strftime(" %H:%M ")
     date = datetime.now().strftime(" %d.%m.%Y ")
+    default_bg = as_rgb(int(draw_data.default_bg))
     cells = [
-        (clock_bg, tab_bg, SEPARATOR_SYMBOL_RIGHT),
+        # fg , bg, status
+        (clock_bg, default_bg, SEPARATOR_SYMBOL_RIGHT),
+        (clock_fg, clock_bg, date),
         (clock_fg, clock_bg, clock),
     ]
-    right_status_length = RIGHT_MARGIN
-    for cell in cells:
+
+    right_status_length = 0
+    for _, _, cell in cells:
         right_status_length += len(cell)
 
     _draw_icon(screen, index)

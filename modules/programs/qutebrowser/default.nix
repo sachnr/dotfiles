@@ -44,6 +44,7 @@ in
           # ║ settings                                                 ║
           # ╚══════════════════════════════════════════════════════════╝
           backend = "webengine";
+          scrolling.smooth = true;
           url = {
             default_page = "file:///home/${user}/.config/startpage/index.html";
             start_pages = "file:///home/${user}/.config/startpage/index.html";

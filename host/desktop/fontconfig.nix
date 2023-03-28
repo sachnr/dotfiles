@@ -9,10 +9,8 @@
       noto-fonts
       noto-fonts-cjk
       noto-fonts-emoji
-      material-icons
-      material-design-icons
       roboto
-      (nerdfonts.override {fonts = ["UbuntuMono" "JetBrainsMono" "RobotoMono" "NerdFontsSymbolsOnly"];})
+      (nerdfonts.override {fonts = ["JetBrainsMono" "RobotoMono" "NerdFontsSymbolsOnly"];})
     ];
 
     fontconfig = {
@@ -25,9 +23,9 @@
         style = "hintslight";
       };
       defaultFonts = {
-        serif = ["Noto Sans" "Roboto" "RobotoMono Nerd Font"];
-        sansSerif = ["Noto Sans" "Roboto" "RobotoMono Nerd Font"];
-        monospace = ["Noto Monospace" "RobotoMono Nerd Font"];
+        serif = ["Noto Sans" "Roboto" "Symbols Nerd Font Mono"];
+        sansSerif = ["Noto Sans" "Roboto" "Symbols Nerd Font Mono"];
+        monospace = ["Noto Monospace" "Symbols Nerd Font Mono"];
         emoji = ["Noto Color Emoji"];
       };
     };

@@ -41,8 +41,8 @@ in
       # };
       home = {
         packages = with pkgs; [
-          xclip
           scrot
+          xsel
           i3lock-color
           i3lockwconfig
           redshift

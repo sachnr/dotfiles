@@ -2,26 +2,24 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 {
-  config,
   pkgs,
   lib,
+  inputs,
+  theme,
+  user,
   ...
 }: let
   rtl8814au = pkgs.linuxKernel.packages.linux_6_2.rtl8812au.overrideAttrs (_: {
-    src = pkgs.fetchFromGitHub {
-      owner = "aircrack-ng";
-      repo = "rtl8812au";
-      rev = "d98018d038a5db96066e79f26ed4a72f2fe1774e";
-      sha256 = "sha256-R+DDdM8mkuAimgI/OCp927LEb4jX9tgf2lmbXFArqtY=";
-    };
+    src = inputs.rtl8812au;
   });
   sessions = pkgs.callPackage ../../pkgs/session.nix {};
   sddm-theme = pkgs.callPackage ../../pkgs/sddmtheme.nix {};
-  theme = import ../../theme {};
 in {
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
+    ./fontconfig.nix
+    ./extra-settings.nix
   ];
 
   # Use the systemd-boot EFI boot loader.
@@ -119,11 +117,13 @@ in {
   };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.sachnr = {
+  users.users.${user} = {
     isNormalUser = true;
     extraGroups = ["wheel" "video" "audio" "users"]; # Enable ‘sudo’ for the user.
     shell = pkgs.zsh;
   };
+
+  programs.zsh.enable = true;
 
   nixpkgs.config = {
     allowUnfree = true;

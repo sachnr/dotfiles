@@ -114,8 +114,9 @@ in
           end
           return {
             font = wezterm.font("JetBrains Mono"),
-            use_fancy_tab_bar  = false,
+            use_fancy_tab_bar  = true,
             font_size = 10.5,
+            adjust_window_size_when_changing_font_size = false,
             max_fps = 60,
             color_scheme = 'nixtheme',
             check_for_updates = false,

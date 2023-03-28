@@ -66,7 +66,7 @@ in
             ls = "${pkgs.exa}/bin/exa --icons --group-directories-first";
             la = "${pkgs.exa}/bin/exa -lah --icons --group-directories-first";
             tree = "${pkgs.exa}/bin/exa --tree --icons --group-directories-first";
-            e = "${pkgs.neovim}/bin/nvim ./";
+            e = "${pkgs.neovim}/bin/nvim $PWD";
             ef = "${pkgs.neovim}/bin/nvim $(${pkgs.fzf}/bin/fzf)";
             f = "${pkgs.ranger}/bin/ranger";
           };
@@ -77,8 +77,8 @@ in
               src = pkgs.fetchFromGitHub {
                 owner = "romkatv";
                 repo = "powerlevel10k";
-                rev = "v1.16.1";
-                sha256 = "sha256-DLiKH12oqaaVChRqY0Q5oxVjziZdW/PfnRW1fCSCbjo=";
+                rev = "v1.17.0";
+                sha256 = "sha256-fgrwbWj6CcPoZ6GbCZ47HRUg8ZSJWOsa7aipEqYuE0Q=";
               };
             }
             {

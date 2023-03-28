@@ -1,4 +1,4 @@
 _: let
 in {
-  colors = import ./gruvbox.nix {};
+  colors = import ./dark.nix {};
 }

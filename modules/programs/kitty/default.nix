@@ -27,7 +27,7 @@ in
           bold_font = "JetBrains Mono Bold";
           bold_italic_font = "JetBrains Mono Bold Italic";
           symbol_map = "U+23FB-U+23FE,U+2665,U+26A1,U+2B58,U+E000-U+E00A,U+E0A0-U+E0A3,U+E0B0-U+E0C8,U+E0CA,U+E0CC-U+E0D2,U+E0D4,U+E200-U+E2A9,U+E300-U+E3E3,U+E5FA-U+E634,U+E700-U+E7C5,U+EA60-U+EBEB,U+F000-U+F2E0,U+F300-U+F32F,U+F400-U+F4A9,U+F500-U+F8FF Symbols Nerd Font Mono";
-          font_size = "10.6";
+          font_size = "10.5";
           modify_font = "underline_position 125%";
 
           disable_ligatures = "never";
@@ -41,7 +41,7 @@ in
 
           # Scrollback
           scrollback_lines = 10000;
-          # scrollback_pager = "/bin/less";
+          scrollback_pager = "${pkgs.less}/bin/less";
           wheel_scroll_multiplier = "5.0";
 
           # URLs
@@ -137,7 +137,7 @@ in
           "ctrl+alt+s" = "set_background_opacity +0.05";
           "ctrl+alt+a" = "set_background_opacity -0.05";
           "ctrl+shift+t" = "new_tab_with_cwd";
-          "ctrl+shift+q" = "close_tab";
+          "ctrl+shift+d" = "close_tab";
           "ctrl+shift+," = "set_tab_title";
           "ctrl+shift+1" = "goto_tab 1";
           "ctrl+shift+2" = "goto_tab 2";
@@ -148,6 +148,9 @@ in
           "ctrl+shift+7" = "goto_tab 7";
           "ctrl+shift+8" = "goto_tab 8";
           "ctrl+shift+9" = "goto_tab 9";
+          "ctrl+shift+f1" = "launch --stdin-source=@screen_scrollback --stdin-add-formatting less +G -R";
+          "f2" = "new_window_with_cwd";
+          "ctrl+f2" = "close_window";
         };
       };
       home.file.".config/kitty/tab_bar.py".source = ./tab_bar.py;

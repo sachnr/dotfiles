@@ -4,15 +4,7 @@
   pkgs,
   lib,
   ...
-}: let
-  themix = pkgs.callPackage ../../../pkgs/themix-gui.nix {};
-in {
-  programs = {
-    obs-studio.enable = false;
-    less.enable = true;
-    java.enable = true;
-  };
-
+}: {
   services.network-manager-applet.enable = true;
 
   xdg.userDirs = {
@@ -28,6 +20,7 @@ in {
     packages = with pkgs; [
       # Terminal
       ranger
+      less
       btop
       pfetch
       lazygit
@@ -37,7 +30,6 @@ in {
 
       # General
       networkmanagerapplet
-      blueberry
       veracrypt
 
       # media
@@ -74,26 +66,28 @@ in {
       python39Packages.python-lsp-server
       nodePackages.bash-language-server
       nodePackages.yaml-language-server
-      nodePackages.vue-language-server
+      # nodePackages.vue-language-server
       nodePackages.typescript-language-server
       nodePackages.vscode-langservers-extracted
       rnix-lsp
-      statix
       sqls
       ccls
 
       # Dev
       rustup
       python39
+      jdk
       git
       nodePackages.npm
       yarn
       nodejs
-      deno
+      # deno
       jq
       gcc
-      gdb
       # go
+
+      # debugger
+      gdb
 
       # Formatters
       black
@@ -101,10 +95,11 @@ in {
       stylua
       astyle
       nodePackages.prettier
-      nixpkgs-fmt
+      alejandra
 
       # Build tools
       maven
+      cmake
     ];
   };
 }

@@ -33,7 +33,7 @@ in
           shadow = true;
           shadowOpacity = 0.7;
           shadowExclude = [];
-          vSync = false;
+          vSync = true;
           mark-wmwin-focused = true;
           mark-ovredir-focused = true;
           detect-rounded-corners = true;

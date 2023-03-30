@@ -51,14 +51,23 @@ in
             export PATH="''${PATH}:$HOME/.local/share/nodePackages/bin:''${HOME}/.local/share/nvim/mason/bin:''${HOME}/.cargo/bin"
             export EDITOR="nvim"
           '';
-          initExtra = ''
-            ZSH_THEME="powerlevel10k/powerlevel10k"
-            [[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
-
-            export FZF_DEFAULT_OPTS='
-              --ansi --layout=reverse
-            '
-          '';
+          initExtra = let
+            starship = "eval \"$(starship init zsh)\"";
+            p10k = ''
+              ZSH_THEME="powerlevel10k/powerlevel10k"
+              [[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
+            '';
+          in
+            ''
+              export FZF_DEFAULT_OPTS='
+                --ansi --layout=reverse
+              '
+            ''
+            + (
+              if config.modules.shell.starship.enable
+              then starship
+              else p10k
+            );
           shellAliases = {
             gg = "${pkgs.lazygit}/bin/lazygit";
             nixr = "sudo nixos-rebuild switch --flake /home/${user}/flake#desktop";
@@ -70,27 +79,34 @@ in
             ef = "${pkgs.neovim}/bin/nvim $(${pkgs.fzf}/bin/fzf)";
             f = "${pkgs.ranger}/bin/ranger";
           };
-          plugins = [
-            {
-              name = "powerlevel10k";
-              file = "powerlevel10k.zsh-theme";
-              src = pkgs.fetchFromGitHub {
-                owner = "romkatv";
-                repo = "powerlevel10k";
-                rev = "v1.17.0";
-                sha256 = "sha256-fgrwbWj6CcPoZ6GbCZ47HRUg8ZSJWOsa7aipEqYuE0Q=";
-              };
-            }
-            {
-              name = "zsh-vi-mode";
-              src = pkgs.fetchFromGitHub {
-                owner = "jeffreytse";
-                repo = "zsh-vi-mode";
-                rev = "v0.9.0";
-                sha256 = "sha256-KQ7UKudrpqUwI6gMluDTVN0qKpB15PI5P1YHHCBIlpg=";
-              };
-            }
-          ];
+          plugins =
+            [
+              {
+                name = "zsh-vi-mode";
+                src = pkgs.fetchFromGitHub {
+                  owner = "jeffreytse";
+                  repo = "zsh-vi-mode";
+                  rev = "v0.9.0";
+                  sha256 = "sha256-KQ7UKudrpqUwI6gMluDTVN0qKpB15PI5P1YHHCBIlpg=";
+                };
+              }
+            ]
+            ++ (
+              if config.modules.shell.starship.enable
+              then []
+              else [
+                {
+                  name = "powerlevel10k";
+                  file = "powerlevel10k.zsh-theme";
+                  src = pkgs.fetchFromGitHub {
+                    owner = "romkatv";
+                    repo = "powerlevel10k";
+                    rev = "v1.17.0";
+                    sha256 = "sha256-fgrwbWj6CcPoZ6GbCZ47HRUg8ZSJWOsa7aipEqYuE0Q=";
+                  };
+                }
+              ]
+            );
         };
       };
 

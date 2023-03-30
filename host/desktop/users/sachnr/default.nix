@@ -58,6 +58,7 @@ in {
     };
     shell = {
       zsh.enable = true;
+      starship.enable = true;
     };
   };
 }

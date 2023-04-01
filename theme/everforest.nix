@@ -28,6 +28,7 @@ _: {
     sha256 = "13h5nmpr6d1yybwsczgmwz39lv6b0jr7ps66vnwp9gff06lxqsw5";
   };
   name = {
+    theme = "everforest";
     gtk = "numix";
     kvantum = "Kvantum";
     qt_style = "Fusion";

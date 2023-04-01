@@ -37,6 +37,11 @@
       url = "github:aircrack-ng/rtl8812au";
       flake = false;
     };
+
+    awesomerc = {
+      url = "github:sachnr/awesomewm-dotfiles";
+      flake = false;
+    };
   };
 
   outputs = inputs @ {self, ...}: let

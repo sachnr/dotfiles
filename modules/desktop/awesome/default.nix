@@ -4,10 +4,12 @@
   lib,
   theme,
   user,
+  inputs,
   ...
 }: let
   cfg = config.modules.desktop.awesome;
   i3lockwconfig = import ./i3lock.nix {inherit pkgs theme;};
+  awesome_cfg = import ../../../configs/awesome {inherit inputs lib theme pkgs;};
 in
   with lib; {
     options.modules.desktop.awesome = {
@@ -54,6 +56,10 @@ in
         #   export XDG_SESSION_TYPE=x11
         #   ${pkgs.awesome-git}/bin/awesome
         # '';
+        file.".config" = {
+          source = awesome_cfg;
+          recursive = true;
+        };
       };
       xresources = with theme.colors; {
         extraConfig = import ./xresources.nix {inherit theme;};

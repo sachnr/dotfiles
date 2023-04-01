@@ -28,6 +28,7 @@ _: {
     sha256 = "sha256:0qb9jydrn9i5mbrzf55hw6h0vlxhmwy2gihp9rdcri3wl4294pp8";
   };
   name = {
+    theme = "gruvbox";
     gtk = "numix";
     kvantum = "Kvantum";
     qt_style = "Fusion";

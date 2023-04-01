@@ -29,23 +29,22 @@ in
             format = "\\[[$symbol($version(-$name))]($style)\\] ";
           };
           git_branch = {
-            symbol = " ";
+            symbol = "[ ](bold green)";
             style = "bold green";
-            format = "\\[[$symbol$branch]($style)\\] ";
+            format = "on [$symbol$branch]($style) ";
           };
           git_status = {
             conflicted = "[=](bold bright-red)";
             ahead = "[⇡\${count}](bold bright-green)";
             behind = "[⇣\${count}](bold bright red)";
             diverged = "⇕[⇡\${ahead_count}](bold bright-green)[⇣\${behind_count}](bold bright-red)";
-            untracked = "[?\${count}](bold bright-blue)";
+            untracked = "[?\${count}](bold bright-white)";
             stashed = "[+](bold bright-cyan)";
             modified = "[!\${count}](bold bright-yellow)";
             staged = "[+\${count}](bold bright-green)";
             renamed = "[»\${count}](bold bright-purple)";
             deleted = "[✘\${count}](bold bright-red)";
-            style = "bright-white";
-            format = "([\\[$all_status$ahead_behind\\]]($style)) ";
+            format = "([$all_status$ahead_behind]($style)) ";
           };
           git_commit = {
             style = "bold green";
@@ -108,7 +107,7 @@ in
           ];
           scan_timeout = 10;
           character = {
-            success_symbol = "[➜](bold bright-blue) ";
+            success_symbol = "[➜](bold bright-green) ";
             error_symbol = "[✖](bold red) ";
           };
         };

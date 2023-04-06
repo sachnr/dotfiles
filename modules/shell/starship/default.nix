@@ -108,7 +108,7 @@ in
           scan_timeout = 10;
           character = {
             success_symbol = "[➜](bold bright-green) ";
-            error_symbol = "[✖](bold red) ";
+            error_symbol = "[✖](bold bright-red) ";
           };
         };
       };

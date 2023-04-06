@@ -81,7 +81,7 @@
       nodePackages.npm
       yarn
       nodejs
-      # deno
+      deno
       jq
       gcc
       # go

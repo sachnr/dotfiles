@@ -14,7 +14,6 @@ const bookmarks = [
       { name: "GMail", url: "https://mail.google.com/mail" },
       { name: "Github", url: "https://github.com" },
       { name: "Reddit", url: "https://www.reddit.com/" },
-      { name: "Twitter", url: "https://twitter.com/" },
     ],
   },
   {
@@ -28,10 +27,10 @@ const bookmarks = [
       //   url: "https://docs.python.org/3.7/library/index.html",
       // },
       { name: "LuaDoc5.1", url: "https://www.lua.org/manual/5.1/" },
-      {
-        name: "JavaDoc",
-        url: "https://docs.oracle.com/javase/tutorial/java/index.html",
-      },
+      // {
+      //   name: "JavaDoc",
+      //   url: "https://docs.oracle.com/javase/tutorial/java/index.html",
+      // },
       { name: "nix-man", url: "https://nixos.org/manual/nix/stable/" },
     ],
   },

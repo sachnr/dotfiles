@@ -22,7 +22,7 @@
       ranger
       less
       btop
-      pfetch
+      neofetch
       lazygit
       ripgrep
       fd
@@ -63,7 +63,7 @@
       # Language Servers
       sumneko-lua-language-server
       rust-analyzer
-      python39Packages.python-lsp-server
+      python310Packages.python-lsp-server
       nodePackages.bash-language-server
       nodePackages.yaml-language-server
       # nodePackages.vue-language-server
@@ -75,7 +75,7 @@
 
       # Dev
       rustup
-      python39
+      python310
       jdk
       git
       nodePackages.npm
@@ -85,6 +85,9 @@
       jq
       gcc
       # go
+
+      # for luasnip
+      luajitPackages.jsregexp
 
       # debugger
       gdb

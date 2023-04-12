@@ -22,39 +22,37 @@ in {
 
   config.modules = rec {
     desktop = {
-      awesome.enable = true;
+      awesome.enable = false;
       i3.enable = false;
-      waylandPkgs.enable = true;
+      waylandPkgs.enable = false;
       hyprland.enable = false;
-      sway.enable = true;
-      gtk.enable = true;
+      sway.enable = false;
+      gtk.enable = false;
     };
     programs = {
-      waybar.enable = true;
-      neovim = {
-        enable = true;
-      };
+      waybar.enable = false;
+      neovim.enable = true;
       firefox = {
-        enable = true;
-        startpage = true;
+        enable = false;
+        startpage = false;
       };
-      kitty.enable = true;
-      rofi.enable = true;
-      qutebrowser.enable = true;
-      zathura.enable = true;
-      wezterm.enable = true;
+      kitty.enable = false;
+      rofi.enable = false;
+      qutebrowser.enable = false;
+      zathura.enable = false;
+      wezterm.enable = false;
       alacritty.enable = false;
     };
     services = {
-      picom.enable = true;
+      picom.enable = false;
       polybar.enable = false;
-      mpd.enable = true;
+      mpd.enable = false;
       gammastep.enable = false;
-      eww.enable = true;
-      mako.enable = true;
-      polkit.enable = true;
-      gnupg.enable = true;
-      swayidle.enable = true;
+      eww.enable = false;
+      mako.enable = false;
+      polkit.enable = false;
+      gnupg.enable = false;
+      swayidle.enable = false;
     };
     shell = {
       zsh.enable = true;

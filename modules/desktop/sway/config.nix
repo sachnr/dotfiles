@@ -103,5 +103,5 @@ in
     exec ${pkgs.blueman}/bin/blueman-applet
     exec ${pkgs.networkmanagerapplet}/bin/nm-applet --indicator
     exec ${pkgs.eww-wayland}/bin/eww daemon
-    exec ${pkgs.swww}/bin/swww init 
+    exec ${pkgs.swww}/bin/swww init
   ''

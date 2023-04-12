@@ -7,25 +7,27 @@
     fonts = with pkgs; [
       jetbrains-mono
       noto-fonts
-      noto-fonts-cjk
       noto-fonts-emoji
       roboto
-      (nerdfonts.override {fonts = ["JetBrainsMono" "RobotoMono" "NerdFontsSymbolsOnly"];})
+      (nerdfonts.override {fonts = ["RobotoMono" "NerdFontsSymbolsOnly"];})
     ];
 
     fontconfig = {
       enable = true;
       antialias = true;
-      subpixel.lcdfilter = "default";
+      subpixel = {
+        lcdfilter = "default";
+        rgba = "rgb";
+      };
       hinting = {
         enable = true;
-        autohint = true;
+        autohint = false;
         style = "hintslight";
       };
       defaultFonts = {
-        serif = ["Noto Sans" "Roboto" "Symbols Nerd Font Mono"];
-        sansSerif = ["Noto Sans" "Roboto" "Symbols Nerd Font Mono"];
-        monospace = ["Noto Monospace" "Symbols Nerd Font Mono"];
+        serif = ["Roboto"];
+        sansSerif = ["Roboto"];
+        monospace = ["RobotoMono Nerd Font"];
         emoji = ["Noto Color Emoji"];
       };
     };

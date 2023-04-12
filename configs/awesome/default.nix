@@ -18,5 +18,8 @@ pkgs.stdenv.mkDerivation rec {
 
     substituteInPlace $out/awesome/theme/pallete.lua \
       --replace "gruvbox" "${theme.colors.name.theme}"
+
+    substituteInPlace $out/awesome/keys.lua \
+      --replace "kitty" "wezterm"
   '';
 }

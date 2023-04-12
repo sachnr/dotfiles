@@ -102,7 +102,7 @@ in {
       ];
     };
     nvidia = {
-      forceFullCompositionPipeline = false;
+      forceFullCompositionPipeline = true;
       open = true;
       modesetting.enable = true;
     };

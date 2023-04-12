@@ -76,8 +76,8 @@ in
             la = "${pkgs.exa}/bin/exa -lah --icons --group-directories-first";
             tree = "${pkgs.exa}/bin/exa --tree --icons --group-directories-first";
             e = "${pkgs.neovim}/bin/nvim $PWD";
-            ef = "${pkgs.neovim}/bin/nvim $(${pkgs.fzf}/bin/fzf)";
             f = "${pkgs.ranger}/bin/ranger";
+            fd = "cd $(cat /home/${user}/Documents/paths | fzf)";
           };
           plugins =
             [

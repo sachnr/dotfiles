@@ -1,12 +1,12 @@
-{ pkgs
-, config
-, lib
-, theme
-, user
-, ...
-}:
-let
-  oomox = pkgs.callPackage ../../../pkgs/themix-gui.nix { inherit theme; };
+{
+  pkgs,
+  config,
+  lib,
+  theme,
+  user,
+  ...
+}: let
+  oomox = pkgs.callPackage ../../../pkgs/themix-gui.nix {inherit theme;};
   cfg = config.modules.desktop.gtk;
 
   kvtheme = ''
@@ -49,11 +49,10 @@ let
     ignored_applications=@Invalid()
   '';
 
-  rgbpallete =
-    let
-      split = float: builtins.head (lib.strings.splitString "." float);
-      split_all = data: lib.attrsets.mapAttrs (_: value: split (toString value)) data;
-    in
+  rgbpallete = let
+    split = float: builtins.head (lib.strings.splitString "." float);
+    split_all = data: lib.attrsets.mapAttrs (_: value: split (toString value)) data;
+  in
     with pkgs.lib.nix-rice; {
       black = split_all (color.hexToRgba theme.colors.black);
       bg = split_all (color.hexToRgba theme.colors.background);
@@ -66,10 +65,9 @@ let
       orange = split_all (color.hexToRgba theme.colors.brightred);
     };
 
-  kdeglobal =
-    let
-      rgb_str = rgb_map: "${rgb_map.r},${rgb_map.g},${rgb_map.b}";
-    in
+  kdeglobal = let
+    rgb_str = rgb_map: "${rgb_map.r},${rgb_map.g},${rgb_map.b}";
+  in
     with rgbpallete; ''
       [Colors:View]
       BackgroundAlternate=${rgb_str altbg}
@@ -112,72 +110,72 @@ let
       TerminalApplication=kitty
     '';
 in
-with lib; {
-  options.modules.desktop.gtk = {
-    enable = mkOption {
-      type = types.bool;
-      default = true;
-      description = "Gtk + qt config";
-    };
-  };
-
-  config = mkIf cfg.enable {
-    home = {
-      packages = with pkgs; [
-        libsForQt5.qt5ct
-        # libsForQt5.qtstyleplugin-kvantum
-        oomox
-        qgnomeplatform
-        adwaita-qt
-        gtk3
-      ];
-      pointerCursor = {
-        package = pkgs.phinger-cursors;
-        name = "phinger-cursors";
-        size = 24;
-        gtk.enable = true;
-        x11.enable = true;
-      };
-      sessionVariables = {
-        GTK_THEME = "${theme.colors.name.gtk}";
+  with lib; {
+    options.modules.desktop.gtk = {
+      enable = mkOption {
+        type = types.bool;
+        default = true;
+        description = "Gtk + qt config";
       };
     };
 
-    gtk = with theme.colors; {
-      enable = true;
-      gtk3.extraConfig = {
-        gtk-xft-antialias = 1;
-        gtk-xft-hinting = 1;
-        gtk-xft-hintstyle = "hintslight";
-        gtk-xft-rgba = "rgb";
+    config = mkIf cfg.enable {
+      home = {
+        packages = with pkgs; [
+          libsForQt5.qt5ct
+          # libsForQt5.qtstyleplugin-kvantum
+          oomox
+          qgnomeplatform
+          adwaita-qt
+          gtk3
+        ];
+        pointerCursor = {
+          package = pkgs.phinger-cursors;
+          name = "phinger-cursors";
+          size = 24;
+          gtk.enable = true;
+          x11.enable = true;
+        };
+        sessionVariables = {
+          GTK_THEME = "${theme.colors.name.gtk}";
+        };
       };
-      font = {
-        name = "Roboto";
-        size = 10;
+
+      gtk = with theme.colors; {
+        enable = true;
+        gtk3.extraConfig = {
+          gtk-xft-antialias = 1;
+          gtk-xft-hinting = 1;
+          gtk-xft-hintstyle = "hintslight";
+          gtk-xft-rgba = "rgb";
+        };
+        font = {
+          name = "Roboto";
+          size = 10;
+        };
+        theme.name = name.gtk;
+        iconTheme = {
+          name = name.icon;
+        };
+        cursorTheme = {
+          package = pkgs.phinger-cursors;
+          name = "phinger-cursors";
+          size = 24;
+        };
       };
-      theme.name = name.gtk;
-      iconTheme = {
-        name = name.icon;
+      qt = with theme.colors; {
+        enable = true;
+        # gtk, gnome, lxqt, qt5ct, kde
+        # platformTheme = "gnome";
+        # style = {
+        #   name = "${name.qt_style}";
+        # };
       };
-      cursorTheme = {
-        package = pkgs.phinger-cursors;
-        name = "phinger-cursors";
-        size = 24;
+      home.file.".config/Kvantum/kvantum.kvconfig".text = kvtheme;
+      home.file.".config/qt5ct/qt5ct.conf".text = qt5ct;
+      home.file.".config/kdeglobals".text = kdeglobal;
+      home.file.".config/qt5ct/colors/numix.conf" = {
+        source = "${oomox}/.config/qt5ct/colors/numix.conf";
       };
     };
-    qt = with theme.colors; {
-      enable = true;
-      # gtk, gnome, lxqt, qt5ct, kde
-      # platformTheme = "gnome";
-      # style = {
-      #   name = "${name.qt_style}";
-      # };
-    };
-    home.file.".config/Kvantum/kvantum.kvconfig".text = kvtheme;
-    home.file.".config/qt5ct/qt5ct.conf".text = qt5ct;
-    home.file.".config/kdeglobals".text = kdeglobal;
-    home.file.".config/qt5ct/colors/numix.conf" = {
-      source = "${oomox}/.config/qt5ct/colors/numix.conf";
-    };
-  };
-}
+  }

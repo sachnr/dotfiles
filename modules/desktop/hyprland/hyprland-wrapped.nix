@@ -1,5 +1,4 @@
-{ pkgs }:
-let
+{pkgs}: let
   source = pkgs.hyprland.override {
     nvidiaPatches = true;
     hidpiXWayland = false;
@@ -28,15 +27,13 @@ let
     export NIXOS_OZONE_WL=1
     export MOZ_ENABLE_WAYLAND=1
   '';
-in
-{
-  hyprland =
-    let
-      wrapped = pkgs.writeShellScriptBin "Hyprland" (env
-        + ''
+in {
+  hyprland = let
+    wrapped = pkgs.writeShellScriptBin "Hyprland" (env
+      + ''
         exec ${source}/bin/Hyprland
       '');
-    in
+  in
     pkgs.symlinkJoin {
       name = "hyprland";
       paths = [

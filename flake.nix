@@ -42,6 +42,8 @@
       url = "github:sachnr/awesomewm-dotfiles";
       flake = false;
     };
+
+    wsl.url = "github:nix-community/NixOS-WSL";
   };
 
   outputs = inputs @ {self, ...}: let
@@ -67,6 +69,10 @@
   in {
     nixosConfigurations = with inputs; {
       desktop = import ./host/desktop {
+        inherit overlays inputs;
+      };
+
+      wsl2 = import ./host/wsl2 {
         inherit overlays inputs;
       };
     };

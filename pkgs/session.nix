@@ -1,9 +1,9 @@
-{ lib
-, stdenv
-, pkgs
-, ...
-}:
-let
+{
+  lib,
+  stdenv,
+  pkgs,
+  ...
+}: let
   sway = ''
     [Desktop Entry]
     Name=Sway
@@ -19,19 +19,18 @@ let
     Exec=Hyprland
     Type=Application
   '';
-
 in
-stdenv.mkDerivation rec {
-  name = "sessions";
+  stdenv.mkDerivation rec {
+    name = "sessions";
 
-  dontUnpack = true;
+    dontUnpack = true;
 
-  installPhase = ''
-    mkdir -p $out/share/wayland-sessions
-    mkdir -p $out/share/xsessions
-    echo "${sway}" > $out/share/wayland-sessions/sway.desktop
-    echo "${hyprland}" > $out/share/wayland-sessions/hyprland.desktop
-  '';
+    installPhase = ''
+      mkdir -p $out/share/wayland-sessions
+      mkdir -p $out/share/xsessions
+      echo "${sway}" > $out/share/wayland-sessions/sway.desktop
+      echo "${hyprland}" > $out/share/wayland-sessions/hyprland.desktop
+    '';
 
-  passthru.providedSessions = [ "sway" "hyprland" ];
-}
+    passthru.providedSessions = ["sway" "hyprland"];
+  }

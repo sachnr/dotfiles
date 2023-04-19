@@ -3,6 +3,7 @@
   user,
   config,
   lib,
+  inputs,
   ...
 }: let
   cfg = config.modules.shell.zsh;
@@ -75,19 +76,20 @@ in
             ls = "${pkgs.exa}/bin/exa --icons --group-directories-first";
             la = "${pkgs.exa}/bin/exa -lah --icons --group-directories-first";
             tree = "${pkgs.exa}/bin/exa --tree --icons --group-directories-first";
-            e = "${pkgs.neovim}/bin/nvim $PWD";
+            e = "${pkgs.neovim}/bin/nvim";
             f = "${pkgs.ranger}/bin/ranger";
             fd = "cd $(cat /home/${user}/Documents/paths | fzf)";
           };
           plugins =
             [
               {
-                name = "zsh-vi-mode";
+                name = "zsh-nix-shell";
+                file = "nix-shell.plugin.zsh";
                 src = pkgs.fetchFromGitHub {
-                  owner = "jeffreytse";
-                  repo = "zsh-vi-mode";
-                  rev = "v0.9.0";
-                  sha256 = "sha256-KQ7UKudrpqUwI6gMluDTVN0qKpB15PI5P1YHHCBIlpg=";
+                  owner = "chisui";
+                  repo = "zsh-nix-shell";
+                  rev = "v0.6.0";
+                  sha256 = "B0mdmIqefbm5H8wSG1h41c/J4shA186OyqvivmSK42Q=";
                 };
               }
             ]

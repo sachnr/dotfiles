@@ -12,12 +12,12 @@
     os_icon
     dir
     vcs
-  )
-
-  typeset -g POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(
     status                  
     command_execution_time  
     background_jobs         
+  )
+
+  typeset -g POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(
   )
 
   typeset -g POWERLEVEL9K_MODE=nerdfont-complete
@@ -39,11 +39,11 @@
     typeset -g POWERLEVEL9K_EMPTY_LINE_RIGHT_PROMPT_FIRST_SEGMENT_START_SYMBOL='%{%}'
   fi
 
-  typeset -g POWERLEVEL9K_LEFT_SUBSEGMENT_SEPARATOR=''
-  typeset -g POWERLEVEL9K_RIGHT_SUBSEGMENT_SEPARATOR=''
-  typeset -g POWERLEVEL9K_LEFT_SEGMENT_SEPARATOR=''
-  typeset -g POWERLEVEL9K_RIGHT_SEGMENT_SEPARATOR=''
-  typeset -g POWERLEVEL9K_LEFT_PROMPT_LAST_SEGMENT_END_SYMBOL=''
+  typeset -g POWERLEVEL9K_LEFT_SUBSEGMENT_SEPARATOR=''
+  typeset -g POWERLEVEL9K_RIGHT_SUBSEGMENT_SEPARATOR=''
+  typeset -g POWERLEVEL9K_LEFT_SEGMENT_SEPARATOR=''
+  typeset -g POWERLEVEL9K_RIGHT_SEGMENT_SEPARATOR=''
+  typeset -g POWERLEVEL9K_LEFT_PROMPT_LAST_SEGMENT_END_SYMBOL=''
   typeset -g POWERLEVEL9K_RIGHT_PROMPT_FIRST_SEGMENT_START_SYMBOL=''
   typeset -g POWERLEVEL9K_LEFT_PROMPT_FIRST_SEGMENT_START_SYMBOL=''
   typeset -g POWERLEVEL9K_RIGHT_PROMPT_LAST_SEGMENT_END_SYMBOL=''
@@ -51,17 +51,17 @@
 
   #################################[ os_icon: os identifier ]##################################
 
-  typeset -g POWERLEVEL9K_OS_ICON_FOREGROUND=15
-  typeset -g POWERLEVEL9K_OS_ICON_BACKGROUND=0
+  typeset -g POWERLEVEL9K_OS_ICON_FOREGROUND=14
+  typeset -g POWERLEVEL9K_OS_ICON_BACKGROUND=
 
   ##################################[ dir: current directory ]##################################
 
-  typeset -g POWERLEVEL9K_DIR_BACKGROUND=4
-  typeset -g POWERLEVEL9K_DIR_FOREGROUND=0
+  typeset -g POWERLEVEL9K_DIR_BACKGROUND=
+  typeset -g POWERLEVEL9K_DIR_FOREGROUND=12
   typeset -g POWERLEVEL9K_SHORTEN_STRATEGY=truncate_to_unique
   typeset -g POWERLEVEL9K_SHORTEN_DELIMITER=
-  typeset -g POWERLEVEL9K_DIR_SHORTENED_FOREGROUND=0
-  typeset -g POWERLEVEL9K_DIR_ANCHOR_FOREGROUND=0
+  typeset -g POWERLEVEL9K_DIR_SHORTENED_FOREGROUND=12
+  typeset -g POWERLEVEL9K_DIR_ANCHOR_FOREGROUND=12
   typeset -g POWERLEVEL9K_DIR_ANCHOR_BOLD=flase
   local anchor_files=(
     .git
@@ -79,11 +79,12 @@
 
   #####################################[ vcs: git status ]######################################
   # Version control background colors.
-  typeset -g POWERLEVEL9K_VCS_CLEAN_BACKGROUND=0
-  typeset -g POWERLEVEL9K_VCS_MODIFIED_BACKGROUND=0
-  typeset -g POWERLEVEL9K_VCS_UNTRACKED_BACKGROUND=0
-  typeset -g POWERLEVEL9K_VCS_CONFLICTED_BACKGROUND=0
-  typeset -g POWERLEVEL9K_VCS_LOADING_BACKGROUND=0
+  typeset -g POWERLEVEL9K_VCS_FOREGROUND=7
+  typeset -g POWERLEVEL9K_VCS_CLEAN_BACKGROUND=
+  typeset -g POWERLEVEL9K_VCS_MODIFIED_BACKGROUND=
+  typeset -g POWERLEVEL9K_VCS_UNTRACKED_BACKGROUND=
+  typeset -g POWERLEVEL9K_VCS_CONFLICTED_BACKGROUND=
+  typeset -g POWERLEVEL9K_VCS_LOADING_BACKGROUND=
   typeset -g POWERLEVEL9K_VCS_BRANCH_ICON='󰘬 '
   typeset -g POWERLEVEL9K_VCS_UNTRACKED_ICON='󱓊 '
 

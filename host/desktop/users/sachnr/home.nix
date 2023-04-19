@@ -42,6 +42,7 @@
       # gnome.nautilus
       # gnome.nautilus-python
       # nautilus-open-any-terminal
+      kio-fuse
       libsForQt5.dolphin-plugins
       libsForQt5.dolphin
       libsForQt5.kservice
@@ -62,8 +63,7 @@
 
       # Language Servers
       sumneko-lua-language-server
-      rust-analyzer
-      python310Packages.python-lsp-server
+      python39Packages.python-lsp-server
       nodePackages.bash-language-server
       nodePackages.yaml-language-server
       # nodePackages.vue-language-server
@@ -75,7 +75,7 @@
 
       # Dev
       rustup
-      python310
+      python39
       jdk
       git
       nodePackages.npm
@@ -84,6 +84,7 @@
       deno
       jq
       gcc
+      pkg-config
       # go
 
       # for luasnip

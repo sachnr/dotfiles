@@ -139,13 +139,7 @@ in {
 
     systemPackages = with pkgs; [
       # system
-      socat
-      lsof
-      file
-      lm_sensors
       pulseaudio
-      nix-index
-
       ntfs3g
       alsa-utils
       usbutils

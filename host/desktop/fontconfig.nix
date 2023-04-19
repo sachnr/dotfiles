@@ -9,6 +9,8 @@
       noto-fonts
       noto-fonts-emoji
       roboto
+      maple-mono
+      cascadia-code
       (nerdfonts.override {fonts = ["RobotoMono" "NerdFontsSymbolsOnly"];})
     ];
 
@@ -25,10 +27,10 @@
         style = "hintslight";
       };
       defaultFonts = {
-        serif = ["Roboto"];
-        sansSerif = ["Roboto"];
-        monospace = ["RobotoMono Nerd Font"];
-        emoji = ["Noto Color Emoji"];
+        serif = ["Roboto" "Symbols Nerd Font Mono"];
+        sansSerif = ["Roboto" "Symbols Nerd Font Mono"];
+        monospace = ["jetBrains Mono" "Symbols Nerd Font Mono"];
+        emoji = ["Noto Color Emoji" "Symbols Nerd Font Mono"];
       };
     };
   };

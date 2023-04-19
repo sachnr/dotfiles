@@ -19,6 +19,13 @@ pkgs.stdenv.mkDerivation rec {
     substituteInPlace $out/awesome/theme/pallete.lua \
       --replace "gruvbox" "${theme.colors.name.theme}"
 
+    substituteInPlace $out/awesome/theme/init.lua \
+      --replace "Roboto" "${theme.colors.name.font}" \
+      --replace "RobotoMono Nerd Font" "${theme.colors.name.fontmonospace}"
+
+    substituteInPlace $out/awesome/theme/gruvbox.lua \
+      --replace "#484442" "#a89984"
+
     substituteInPlace $out/awesome/keys.lua \
       --replace "kitty" "wezterm"
   '';

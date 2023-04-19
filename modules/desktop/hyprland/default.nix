@@ -22,6 +22,7 @@ in
       home = {
         packages = with pkgs; [
           hyprland-wrapped.hyprland
+          socat
         ];
         file.".config/hypr" = {
           source = hyprcfg;

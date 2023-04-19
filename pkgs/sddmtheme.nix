@@ -34,6 +34,8 @@ stdenv.mkDerivation rec {
     rm $out/share/README.md
     rm $out/share/Changelog
     substituteInPlace $out/share/sddm/themes/Psion/Main.qml  \
-        --replace "source : \"system-users.png\"" "${text}"
+        --replace "source : \"system-users.png\"" "${text}" \
+        --replace "#b0b0ae" "#ebdbb2" \
+        --replace "#393939" "#1e2122"
   '';
 }

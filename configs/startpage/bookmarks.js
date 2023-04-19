@@ -5,6 +5,7 @@ const bookmarks = [
     links: [
       { name: "Youtube", url: "https://youtube.com" },
       { name: "Twitch", url: "https://Twitch.tv" },
+      { name: "Spotify", url: "https://open.spotify.com/queue" },
     ],
   },
   {

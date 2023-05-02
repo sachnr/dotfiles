@@ -9,8 +9,11 @@
   user,
   ...
 }: let
-  rtl8814au = pkgs.linuxKernel.packages.linux_6_2.rtl8812au.overrideAttrs (_: {
+  rtl8812au = pkgs.linuxKernel.packages.linux_6_3.rtl8812au.overrideAttrs (_: {
     src = inputs.rtl8812au;
+  });
+  rtl8814au = pkgs.linuxKernel.packages.linux_6_3.rtl8814au.overrideAttrs (_: {
+    src = inputs.rtl8814au;
   });
   sessions = pkgs.callPackage ../../pkgs/session.nix {};
   sddm-theme = pkgs.callPackage ../../pkgs/sddmtheme.nix {};
@@ -28,7 +31,7 @@ in {
     kernelPackages = pkgs.linuxPackages_latest;
     blacklistedKernelModules = ["nouveau" "i2c_nvidia_gpu"];
     kernelParams = ["quiet"];
-    extraModulePackages = [rtl8814au];
+    extraModulePackages = [rtl8812au];
     loader = {
       timeout = 5;
       efi = {

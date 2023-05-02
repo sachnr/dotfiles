@@ -11,6 +11,7 @@
       roboto
       maple-mono
       cascadia-code
+      recursive
       (nerdfonts.override {fonts = ["RobotoMono" "NerdFontsSymbolsOnly"];})
     ];
 

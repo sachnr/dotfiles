@@ -6,10 +6,8 @@ with theme.colors; ''
   wezterm.on('update-right-status', function(window, pane)
           local time = wezterm.strftime '%H:%M '
           local date = wezterm.strftime '%a %b %-d'
-          local workspace = window:active_workspace()
           window:set_right_status(wezterm.format {
               { Foreground = { Color = '${brightblue}' } },
-              { Text = workspace },
               { Text = '  ' .. date },
               { Text = '  ' .. time },
               })
@@ -30,6 +28,7 @@ with theme.colors; ''
     { key="d", mods="SHIFT|CTRL", action= act.CloseCurrentTab { confirm = true }, },
     { key="t", mods="SHIFT|CTRL", action= act.SpawnTab 'CurrentPaneDomain' },
     { key="w", mods="SHIFT|CTRL", action= act.SpawnWindow },
+    { key = 'L', mods = 'CTRL', action = wezterm.action.ShowDebugOverlay },
   }
 
   for i = 1, 9 do
@@ -45,7 +44,8 @@ with theme.colors; ''
         {
             family = "JetBrains Mono",
             -- weight = 'Regular',
-            -- harfbuzz_features = { "cv01" , "cv04" , "ss01" }
+            -- harfbuzz_features = { "cv01" , "cv04" , "ss01" },
+            harfbuzz_features = { "cv06" , "cv07" }
         },
     }),
     foreground_text_hsb = {
@@ -53,20 +53,19 @@ with theme.colors; ''
       saturation = 1.0,
       brightness = 1.0,
     },
-    font_size = 10.6,
+    font_size = 11,
     underline_position = '125%',
     dpi = 94,
-    use_fancy_tab_bar  = false,
+    use_fancy_tab_bar = false,
     freetype_load_target = "Normal",
     freetype_load_flags = "DEFAULT",
     adjust_window_size_when_changing_font_size = false,
-    max_fps = 60,
     color_scheme = "nixtheme",
     colors = {
         compose_cursor = '${orange}',
     },
     check_for_updates = false,
-    hide_tab_bar_if_only_one_tab = false,
+    hide_tab_bar_if_only_one_tab = true,
     disable_default_key_bindings = true,
     enable_scroll_bar = true,
     keys = keybinds,

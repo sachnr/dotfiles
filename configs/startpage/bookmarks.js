@@ -21,6 +21,8 @@ const bookmarks = [
     title: "Docs",
     links: [
       { name: "RustBook", url: "https://doc.rust-lang.org/book/" },
+      { name: "std-rs", url: "https://doc.rust-lang.org/std/all.html" },
+      { name: "lib.rs", url: "https://lib.rs" },
       { name: "TsDocs", url: "https://devdocs.io/typescript/" },
       // { name: "GoDoc", url: "https://go.dev/doc/" },
       // {

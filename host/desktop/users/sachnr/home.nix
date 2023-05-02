@@ -76,6 +76,7 @@
       # Dev
       rustup
       python39
+      python39Packages.pip
       jdk
       git
       nodePackages.npm
@@ -92,6 +93,7 @@
 
       # debugger
       gdb
+      lldb_15
 
       # Formatters
       black

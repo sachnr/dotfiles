@@ -38,7 +38,7 @@ in {
         enable = true;
         startpage = true;
       };
-      kitty.enable = true;
+      kitty.enable = false;
       rofi.enable = true;
       qutebrowser.enable = true;
       zathura.enable = true;
@@ -59,6 +59,7 @@ in {
     shell = {
       zsh.enable = true;
       starship.enable = true;
+      tmux.enable = true;
     };
   };
 }

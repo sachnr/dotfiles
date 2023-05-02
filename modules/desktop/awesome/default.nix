@@ -56,10 +56,10 @@ in
         #   export XDG_SESSION_TYPE=x11
         #   ${pkgs.awesome-git}/bin/awesome
         # '';
-        file.".config" = {
-          source = awesome_cfg;
-          recursive = true;
-        };
+        # file.".config" = {
+        #   source = awesome_cfg;
+        #   recursive = true;
+        # };
       };
       xresources = with theme.colors; {
         extraConfig = import ./xresources.nix {inherit theme;};

@@ -38,12 +38,22 @@
       flake = false;
     };
 
+    rtl8814au = {
+      url = "github:morrownr/8814au";
+      flake = false;
+    };
+
     awesomerc = {
       url = "github:sachnr/awesomewm-dotfiles";
       flake = false;
     };
 
     wsl.url = "github:nix-community/NixOS-WSL";
+
+    tmux-tpm = {
+      url = "github:tmux-plugins/tpm";
+      flake = false;
+    };
   };
 
   outputs = inputs @ {self, ...}: let
@@ -52,7 +62,6 @@
       nixpkgs-wayland.overlay
       neovim-nightly-overlay.overlay
       nixpkgs-f2k.overlays.compositors
-      nixpkgs-f2k.overlays.terminal-emulators
       wallpapers.overlay
       nix-rice.overlays.default
       # hyprland.overlays.default

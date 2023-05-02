@@ -107,7 +107,7 @@
       Dialog Size=600,480
 
       [General]
-      TerminalApplication=kitty
+      TerminalApplication=wezterm
     '';
 in
   with lib; {

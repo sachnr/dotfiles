@@ -1,12 +1,14 @@
 {
   pkgs,
   user,
+  theme,
   config,
   lib,
   inputs,
   ...
 }: let
   cfg = config.modules.shell.zsh;
+  tmux-sessionizer = import ./tmux.nix {inherit pkgs;};
 in
   with lib; {
     options.modules.shell.zsh = {
@@ -19,6 +21,8 @@ in
 
     config = mkIf cfg.enable {
       home.packages = with pkgs; [
+        tmux
+        tmux-sessionizer
         exa
         fzf
       ];
@@ -49,8 +53,9 @@ in
                 source "$HOME/.config/zsh/plugins/sudo/sudo.plugin.zsh"
             fi
 
-            export PATH="''${PATH}:$HOME/.local/share/nodePackages/bin:''${HOME}/.local/share/nvim/mason/bin:''${HOME}/.cargo/bin"
+            export PATH="''${PATH}:$HOME/.npm/bin:''${HOME}/.local/share/nvim/mason/bin:''${HOME}/.cargo/bin"
             export EDITOR="nvim"
+            export PYTHONPATH=$HOME/.config/pip/site-packages
           '';
           initExtra = let
             starship = "eval \"$(starship init zsh)\"";
@@ -59,16 +64,18 @@ in
               [[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
             '';
           in
-            ''
-              export FZF_DEFAULT_OPTS='
-                --ansi --layout=reverse
-              '
-            ''
-            + (
-              if config.modules.shell.starship.enable
-              then starship
-              else p10k
-            );
+            with theme.colors;
+              ''
+                export FZF_DEFAULT_OPTS="--layout=reverse"\
+                " --color=bg+:${background3},bg:${background},spinner:${aqua},hl:${blue}"\
+                " --color=fg:${brightgray},header:${blue},info:${yellow},pointer:${aqua}"\
+                " --color=marker:${aqua},fg+:${foreground},prompt:${yellow},hl+:${blue}"
+              ''
+              + (
+                if config.modules.shell.starship.enable
+                then starship
+                else p10k
+              );
           shellAliases = {
             gg = "${pkgs.lazygit}/bin/lazygit";
             nixr = "sudo nixos-rebuild switch --flake /home/${user}/flake#desktop";
@@ -76,9 +83,9 @@ in
             ls = "${pkgs.exa}/bin/exa --icons --group-directories-first";
             la = "${pkgs.exa}/bin/exa -lah --icons --group-directories-first";
             tree = "${pkgs.exa}/bin/exa --tree --icons --group-directories-first";
-            e = "${pkgs.neovim}/bin/nvim";
+            e = "${pkgs.neovim}/bin/nvim ./";
             f = "${pkgs.ranger}/bin/ranger";
-            fd = "cd $(cat /home/${user}/Documents/paths | fzf)";
+            tm = "tmux-sessionizer";
           };
           plugins =
             [

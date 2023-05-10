@@ -43,11 +43,31 @@ with theme.colors; ''
     font = wezterm.font_with_fallback({
         {
             family = "JetBrains Mono",
-            -- weight = 'Regular',
-            -- harfbuzz_features = { "cv01" , "cv04" , "ss01" },
             harfbuzz_features = { "cv06" , "cv07" }
         },
     }),
+    font_rules = {
+      {
+        intensity = 'Bold',
+        italic = false,
+        font = wezterm.font("JetBrains Mono", {weight="Bold", stretch="Normal", style="Normal"})
+      },
+      {
+        intensity = 'Bold',
+        italic = true,
+        font = wezterm.font("JetBrains Mono", {weight="Bold", stretch="Normal", style="Italic"})
+      },
+      {
+        intensity = 'Normal',
+        italic = false,
+        font = wezterm.font("JetBrains Mono", {weight="Regular", stretch="Normal", style="Normal"}),
+      },
+      {
+        intensity = 'Normal',
+        italic = true,
+        font = wezterm.font("JetBrains Mono", {weight="Regular", stretch="Normal", style="Italic"}),
+      },
+    },
     foreground_text_hsb = {
       hue = 1.0,
       saturation = 1.0,

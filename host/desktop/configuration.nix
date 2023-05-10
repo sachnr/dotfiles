@@ -147,6 +147,7 @@ in {
       alsa-utils
       usbutils
       ffmpeg
+      htop
 
       # compression
       p7zip
@@ -169,8 +170,13 @@ in {
   services = {
     blueman.enable = true;
     fstrim.enable = true;
-    gvfs.enable = true;
     dbus.enable = true;
+    # mtp
+    gvfs.enable = true;
+    udev.packages = [
+      pkgs.android-udev-rules
+      pkgs.libmtp.out
+    ];
   };
 
   # services.openssh.enable = true;

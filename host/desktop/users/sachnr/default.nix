@@ -24,9 +24,9 @@ in {
     desktop = {
       awesome.enable = true;
       i3.enable = false;
-      waylandPkgs.enable = true;
+      waylandPkgs.enable = false;
       hyprland.enable = false;
-      sway.enable = true;
+      sway.enable = false;
       gtk.enable = true;
     };
     programs = {
@@ -38,7 +38,7 @@ in {
         enable = true;
         startpage = true;
       };
-      kitty.enable = false;
+      kitty.enable = true;
       rofi.enable = true;
       qutebrowser.enable = true;
       zathura.enable = true;

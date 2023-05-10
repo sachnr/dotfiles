@@ -21,6 +21,7 @@
       less
       neofetch
       lazygit
+      gh-dash
       ripgrep
 
       # Downloader
@@ -29,7 +30,7 @@
 
       # Language Servers
       sumneko-lua-language-server
-      rust-analyzer
+      # rust-analyzer
       rnix-lsp
       ccls
 
@@ -37,7 +38,6 @@
       git
       deno
       gcc
-      zig
       rustup
       nodePackages.npm
       yarn
@@ -47,7 +47,7 @@
       # go
 
       # debugger
-      gdb
+      # gdb
 
       # Formatters
       black
@@ -58,8 +58,8 @@
       alejandra
 
       # Build tools
-      maven
-      cmake
+      # maven
+      # cmake
     ];
   };
 }

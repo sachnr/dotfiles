@@ -67,12 +67,12 @@
       # hyprland.overlays.default
       (final: prev: rec {
         awesome = nixpkgs-f2k.packages.x86_64-linux.awesome-git;
-        sway-unwrapped = nixpkgs-wayland.packages.x86_64-linux.sway-unwrapped.override {
-          wlroots_0_16 = nixpkgs-wayland.packages.x86_64-linux.wlroots.overrideAttrs (_: {
-            patches = (prev.patches or []) ++ [./patches/nvidia.patch];
-            postPatch = (prev.postPatch or "") + ''substituteInPlace render/gles2/renderer.c --replace "glFlush();" "glFinish();" '';
-          });
-        };
+        # sway-unwrapped = nixpkgs-wayland.packages.x86_64-linux.sway-unwrapped.override {
+        #   wlroots_0_16 = nixpkgs-wayland.packages.x86_64-linux.wlroots.overrideAttrs (_: {
+        #     patches = (prev.patches or []) ++ [./patches/nvidia.patch];
+        #     postPatch = (prev.postPatch or "") + ''substituteInPlace render/gles2/renderer.c --replace "glFlush();" "glFinish();" '';
+        #   });
+        # };
       })
     ];
   in {

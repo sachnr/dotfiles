@@ -21,12 +21,14 @@
       # Terminal
       ranger
       less
-      btop
       neofetch
       lazygit
       ripgrep
-      fd
       yt-dlp
+      gh-dash
+      jmtpfs
+      lxqt.pcmanfm-qt
+      libsForQt5.ark
 
       # General
       networkmanagerapplet
@@ -36,21 +38,7 @@
       feh
       pavucontrol
       steam
-
-      # File Manager
-      # gnome.file-roller
-      # gnome.nautilus
-      # gnome.nautilus-python
-      # nautilus-open-any-terminal
-      kio-fuse
-      libsForQt5.dolphin-plugins
-      libsForQt5.dolphin
-      libsForQt5.kservice
-      libsForQt5.kio
-      libsForQt5.kio-extras
-      libsForQt5.kdegraphics-thumbnailers
-      libsForQt5.ark
-      ghostscript
+      spotify
 
       # Browsers
       ungoogled-chromium
@@ -63,21 +51,21 @@
 
       # Language Servers
       sumneko-lua-language-server
-      python39Packages.python-lsp-server
-      nodePackages.bash-language-server
-      nodePackages.yaml-language-server
+      # python39Packages.python-lsp-server
+      # nodePackages.bash-language-server
+      # nodePackages.yaml-language-server
       # nodePackages.vue-language-server
       nodePackages.typescript-language-server
       nodePackages.vscode-langservers-extracted
       rnix-lsp
-      sqls
-      ccls
+      # sqls
+      # ccls
 
       # Dev
       rustup
       python39
       python39Packages.pip
-      jdk
+      # jdk
       git
       nodePackages.npm
       yarn
@@ -104,8 +92,8 @@
       alejandra
 
       # Build tools
-      maven
-      cmake
+      # maven
+      # cmake
     ];
   };
 }

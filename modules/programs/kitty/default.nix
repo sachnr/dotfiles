@@ -22,18 +22,17 @@ in
         settings = with theme.colors; {
           clear_all_shortcuts = true;
           # Fonts
-          font_family = "JetBrains Mono Regular";
+          font_family = "JetBrains Mono";
           italic_font = "JetBrains Mono Italic";
           bold_font = "JetBrains Mono Bold";
           bold_italic_font = "JetBrains Mono Bold Italic";
           symbol_map = "U+23FB-U+23FE,U+2665,U+26A1,U+2B58,U+E000-U+E00A,U+E0A0-U+E0A3,U+E0B0-U+E0C8,U+E0CA,U+E0CC-U+E0D2,U+E0D4,U+E200-U+E2A9,U+E300-U+E3E3,U+E5FA-U+E634,U+E700-U+E7C5,U+EA60-U+EBEB,U+F000-U+F2E0,U+F300-U+F32F,U+F400-U+F4A9,U+F500-U+F8FF Symbols Nerd Font Mono";
-          font_size = "11";
-          # modify_font = "underline_position 125%";
+          font_size = "10.5";
+          font_features = "JetBrains Mono +cv06 +cv07";
+          modify_font = "underline_position 125%";
 
           disable_ligatures = "never";
-          # adjust_line_height = "0";
-          # adjust_column_width = "0";
-          # box_drawing_scale = "0.001, 1, 1.5, 2";
+          box_drawing_scale = "0.001, 1, 1.5, 2";
 
           # Cursor
           cursor_blink_interval = "-1";
@@ -71,11 +70,11 @@ in
           dynamic_background_opacity = true;
           background_opacity = "1";
           placement_strategy = "center";
-          hide_window_decorations = false;
+          hide_window_decorations = true;
 
           # Tabs
           tab_bar_edge = "top";
-          tab_bar_min_tabs = 1;
+          tab_bar_min_tabs = 2;
           tab_bar_style = "custom";
           tab_title_template = "{index}:{title} {bell_symbol}";
           tab_bar_margin_width = "2.0";

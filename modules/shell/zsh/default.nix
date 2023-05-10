@@ -86,6 +86,7 @@ in
             e = "${pkgs.neovim}/bin/nvim ./";
             f = "${pkgs.ranger}/bin/ranger";
             tm = "tmux-sessionizer";
+            bk = "find ~/Documents/Books -mindepth 1 | fzf | xargs -I {} zathura '{}' --fork";
           };
           plugins =
             [

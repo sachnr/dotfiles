@@ -1,7 +1,7 @@
 _: {
-  accent = "#3d3d3d";
-  # background = "#282829";
-  background = "#1e2122";
+  accent = "#458588";
+  background = "#282829";
+  # background = "#1e2122";
   background2 = "#2e2e2e";
   background3 = "#353535";
   foreground = "#ebdbb2";

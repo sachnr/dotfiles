@@ -3,7 +3,7 @@ pkgs.writeShellScriptBin "tmux-sessionizer" ''
   if [[ $# -eq 1 ]]; then
       selected=$1
   else
-      selected=$(echo -e "$(find ~/.config/awesome ~/flake -maxdepth 0 -type d)\n$(find ~/Documents/notes ~/Documents/Projects ~/Documents/random ~/Downloads/ -mindepth 1 -maxdepth 1 -type d)" | fzf)
+      selected=$(echo -e "$(find ~/.config/awesome ~/.config/nvim ~/flake -maxdepth 0 -type d)\n$(find ~/Documents/notes ~/Documents/Projects ~/Documents/random ~/Downloads/ -mindepth 1 -maxdepth 1 -type d)" | fzf)
   fi
 
   if [[ -z $selected ]]; then

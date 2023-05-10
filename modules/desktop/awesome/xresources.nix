@@ -1,12 +1,12 @@
 {theme}:
 with theme.colors; ''
-  Xft.dpi: 96
+  Xft.dpi: 94
   Xft.antialias: 1
   Xft.hinting: 1
   Xft.autohint: 0
   Xft.hintstyle: hintslight
   Xft.rgba:	rgb
-  Xft.lcdfilter: lcddefault
+  Xft.lcdfilter: light
 
   st.font: JetBrainsMono Nerd Font:style:medium:pixelsize=14
 

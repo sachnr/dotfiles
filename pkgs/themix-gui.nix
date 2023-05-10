@@ -14,21 +14,21 @@
     substr = str: lib.strings.removePrefix "#" str;
   in
     with theme.colors; ''
-      BG=${substr background}
+      BG=${substr background2}
       FG=${substr foreground}
       SEL_BG=${substr accent}
       SEL_FG=${substr black}
       ACCENT_BG=${substr accent}
-      TXT_BG=${substr background}
+      TXT_BG=${substr background2}
       TXT_FG=${substr foreground}
-      HDR_BG=${substr black}
+      HDR_BG=${substr background}
       HDR_FG=${substr foreground}
-      BTN_BG=${substr background2}
+      BTN_BG=${substr background3}
       BTN_FG=${substr foreground}
-      HDR_BTN_BG=${substr background}
+      HDR_BTN_BG=${substr background3}
       HDR_BTN_FG=${substr foreground}
-      WM_BORDER_FOCUS=${substr brightblack}
-      WM_BORDER_UNFOCUS=${substr black}
+      WM_BORDER_FOCUS=${substr selection}
+      WM_BORDER_UNFOCUS=${substr background3}
       ROUNDNESS=3
       ROUNDNESS_GTK2_HIDPI=3
       OUTLINE_WIDTH=1

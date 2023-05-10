@@ -9,9 +9,6 @@
       noto-fonts
       noto-fonts-emoji
       roboto
-      maple-mono
-      cascadia-code
-      recursive
       (nerdfonts.override {fonts = ["RobotoMono" "NerdFontsSymbolsOnly"];})
     ];
 
@@ -19,12 +16,12 @@
       enable = true;
       antialias = true;
       subpixel = {
-        lcdfilter = "default";
+        lcdfilter = "light";
         rgba = "rgb";
       };
       hinting = {
         enable = true;
-        autohint = false;
+        autohint = true;
         style = "hintslight";
       };
       defaultFonts = {

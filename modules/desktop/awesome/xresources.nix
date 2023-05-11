@@ -6,7 +6,7 @@ with theme.colors; ''
   Xft.autohint: 0
   Xft.hintstyle: hintslight
   Xft.rgba:	rgb
-  Xft.lcdfilter: light
+  Xft.lcdfilter: lcddefault
 
   st.font: JetBrainsMono Nerd Font:style:medium:pixelsize=14
 

@@ -171,16 +171,10 @@ in {
     blueman.enable = true;
     fstrim.enable = true;
     dbus.enable = true;
-    # mtp
     gvfs.enable = true;
-    udev.packages = [
-      pkgs.android-udev-rules
-      pkgs.libmtp.out
-    ];
+    # openssh.enable = true;
+    # printing.enable = true;
   };
-
-  # services.openssh.enable = true;
-  # services.printing.enable = true;
 
   # Enable display manager
   services = {

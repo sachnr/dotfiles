@@ -48,6 +48,7 @@ in
           i3lock-color
           i3lockwconfig
           redshift
+          dconf
         ];
         # for startx
         # file.".xinitrc".text = ''

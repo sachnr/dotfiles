@@ -9,14 +9,14 @@
       noto-fonts
       noto-fonts-emoji
       roboto
-      (nerdfonts.override {fonts = ["RobotoMono" "NerdFontsSymbolsOnly"];})
+      (nerdfonts.override {fonts = ["Gohu" "NerdFontsSymbolsOnly"];})
     ];
 
     fontconfig = {
       enable = true;
       antialias = true;
       subpixel = {
-        lcdfilter = "light";
+        lcdfilter = "default";
         rgba = "rgb";
       };
       hinting = {

@@ -26,7 +26,6 @@
       ripgrep
       yt-dlp
       gh-dash
-      jmtpfs
       lxqt.pcmanfm-qt
       libsForQt5.ark
 
@@ -51,6 +50,7 @@
 
       # Language Servers
       sumneko-lua-language-server
+      rust-analyzer
       # python39Packages.python-lsp-server
       # nodePackages.bash-language-server
       # nodePackages.yaml-language-server

@@ -26,7 +26,7 @@ in
           selection-clipboard = "clipboard";
           default-bg = background;
           default-fg = foreground;
-          font = "${name.fontmonospace} Bold 10";
+          font = "${name.fontmonospace}";
           completion-highlight-bg = blue;
           completion-highlight-fg = black;
           completion-group-bg = black;

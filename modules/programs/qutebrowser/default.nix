@@ -20,6 +20,7 @@ in
     config = mkIf cfg.enable {
       programs.qutebrowser = {
         enable = true;
+        package = pkgs.qutebrowser.override {enableWideVine = true;};
         loadAutoconfig = false;
         keyBindings = {
           normal = {

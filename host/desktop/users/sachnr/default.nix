@@ -31,19 +31,15 @@ in {
     };
     programs = {
       waybar.enable = true;
-      neovim = {
-        enable = true;
-      };
-      firefox = {
-        enable = true;
-        startpage = true;
-      };
+      neovim.enable = true;
+      firefox.enable = true;
       kitty.enable = true;
       rofi.enable = true;
       qutebrowser.enable = true;
       zathura.enable = true;
       wezterm.enable = true;
       alacritty.enable = false;
+      ugchromium.enable = true;
     };
     services = {
       picom.enable = true;

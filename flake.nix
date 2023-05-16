@@ -66,7 +66,7 @@
       nix-rice.overlays.default
       # hyprland.overlays.default
       (final: prev: rec {
-        awesome = nixpkgs-f2k.packages.x86_64-linux.awesome-git;
+        awesome = nixpkgs-f2k.packages.x86_64-linux.awesome-luajit-git;
         # sway-unwrapped = nixpkgs-wayland.packages.x86_64-linux.sway-unwrapped.override {
         #   wlroots_0_16 = nixpkgs-wayland.packages.x86_64-linux.wlroots.overrideAttrs (_: {
         #     patches = (prev.patches or []) ++ [./patches/nvidia.patch];

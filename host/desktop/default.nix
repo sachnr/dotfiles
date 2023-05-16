@@ -11,8 +11,9 @@
     inherit overlays;
     config = {
       # allowBroken = true;
-      # packageOverrides = super: {
-      # };
+      packageOverrides = super: {
+        startpage = pkgs.callPackage ../../configs/startpage {};
+      };
       allowUnfree = true; # Allow proprietary software
     };
   };

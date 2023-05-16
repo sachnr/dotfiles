@@ -12,11 +12,10 @@
     /* set new tab page */
     try {
       Cu.import("resource:///modules/AboutNewTab.jsm");
-      var newTabURL = "file:///home/${user}/.config/startpage/index.html";
+      var newTabURL = "https://sachnr.github.io/";
       AboutNewTab.newTabURL = newTabURL;
     } catch(e){Cu.reportError(e);}
   '';
-  startpage = pkgs.callPackage ../../../configs/startpage {};
 in
   with lib; {
     options.modules.programs.firefox = {
@@ -25,21 +24,9 @@ in
         default = false;
         description = "enable firefox";
       };
-      startpage = mkOption {
-        type = types.bool;
-        default = false;
-        description = "enable startpage";
-      };
     };
 
     config = mkIf cfg.enable {
-      home.file = mkIf cfg.startpage {
-        ".config/startpage" = {
-          source = startpage;
-          recursive = true;
-        };
-      };
-
       programs.firefox = {
         enable = true;
         package = pkgs.wrapFirefox pkgs.firefox-unwrapped {
@@ -56,10 +43,7 @@ in
               Snippets = false;
             };
           };
-          extraPrefs =
-            if cfg.startpage
-            then mozillaCfg
-            else "";
+          extraPrefs = mozillaCfg;
         };
         profiles = {
           ${user} = {
@@ -75,7 +59,7 @@ in
             ];
 
             settings = {
-              "browser.startup.homepage" = "file:///home/${user}/.config/startpage/index.html";
+              "browser.startup.homepage" = "sachnr.github.io";
               "browser.search.region" = "IN";
               "general.useragent.locale" = "en-US";
             };

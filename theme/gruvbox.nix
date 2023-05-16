@@ -1,9 +1,8 @@
 _: {
   accent = "#458588";
   background = "#282829";
-  # background = "#1e2122";
-  background2 = "#2e2e2e";
-  background3 = "#353535";
+  background2 = "#32392f";
+  background3 = "#3c3836";
   foreground = "#ebdbb2";
   selection = "#504945";
   black = "#1d2021";

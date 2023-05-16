@@ -47,8 +47,8 @@ in
           backend = "webengine";
           scrolling.smooth = true;
           url = {
-            default_page = "file:///home/${user}/.config/startpage/index.html";
-            start_pages = "file:///home/${user}/.config/startpage/index.html";
+            default_page = "${pkgs.startpage}/index.html";
+            start_pages = "${pkgs.startpage}/index.html";
           };
           auto_save.session = true;
           tabs = {

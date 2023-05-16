@@ -67,9 +67,9 @@ in
             with theme.colors;
               ''
                 export FZF_DEFAULT_OPTS="--layout=reverse"\
-                " --color=bg+:${background3},bg:${background},spinner:${aqua},hl:${blue}"\
-                " --color=fg:${brightgray},header:${blue},info:${yellow},pointer:${aqua}"\
-                " --color=marker:${aqua},fg+:${foreground},prompt:${yellow},hl+:${blue}"
+                " --color=bg+:${background3},bg:${background2},spinner:${brightred},hl:${brightblack}"\
+                " --color=fg:${foreground},header:${brightblack},info:${brightaqua},pointer:${brightred}"\
+                " --color=marker:${brightred},fg+:${foreground},prompt:${brightred},hl+:${brightred}"
               ''
               + (
                 if config.modules.shell.starship.enable

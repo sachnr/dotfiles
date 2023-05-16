@@ -41,6 +41,7 @@ const bookmarks = [
       // { name: "nixpkgs", url: "https://search.nixos.org/packages" },
       { name: "std-rs", url: "https://doc.rust-lang.org/std/all.html" },
       { name: "lib.rs", url: "https://lib.rs" },
+      { name: "cheats.rs", url: "https://cheats.rs/" },
       { name: "nix-lib", url: "https://teu5us.github.io/nix-lib.html" },
       { name: "chatgpt", url: "https://chat.openai.com/chat" },
       // { name: "ArchWiki", url: "https://bbs.archlinux.org/" },

@@ -2,6 +2,7 @@
   pkgs,
   config,
   lib,
+  inputs,
   ...
 }: let
   cfg = config.modules.programs.neovim;
@@ -18,7 +19,9 @@ in
     config = mkIf cfg.enable {
       home = {
         packages = with pkgs; [
-          neovim-unwrapped
+          # neovim-unwrapped
+          neovim
+          emacs
         ];
       };
     };

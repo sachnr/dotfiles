@@ -67,7 +67,7 @@ in
             with theme.colors;
               ''
                 export FZF_DEFAULT_OPTS="--layout=reverse"\
-                " --color=bg+:${background3},bg:${background2},spinner:${brightred},hl:${brightblack}"\
+                " --color=bg+:${background2},bg:${background},spinner:${brightred},hl:${brightblack}"\
                 " --color=fg:${foreground},header:${brightblack},info:${brightaqua},pointer:${brightred}"\
                 " --color=marker:${brightred},fg+:${foreground},prompt:${brightred},hl+:${brightred}"
               ''

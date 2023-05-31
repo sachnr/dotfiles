@@ -1,6 +1,6 @@
 {theme}:
 with theme.colors; ''
-  Xft.dpi: 94
+  Xft.dpi: 96
   Xft.antialias: 1
   Xft.hinting: 1
   Xft.autohint: 0
@@ -8,10 +8,10 @@ with theme.colors; ''
   Xft.rgba:	rgb
   Xft.lcdfilter: lcddefault
 
-  st.font: JetBrainsMono Nerd Font:style:medium:pixelsize=14
+  ! st.font: JetBrainsMono Nerd Font:style:medium:pixelsize=14
 
   ! window padding
-  st.borderpx: 10
+  ! st.borderpx: 10
 
   !- 0.1 to 0.9 = transparency
   st.alpha: 1

@@ -1,6 +1,4 @@
 {
-  user,
-  config,
   lib,
   ...
 }: let

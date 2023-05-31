@@ -1,8 +1,5 @@
 {
-  user,
-  config,
   pkgs,
-  lib,
   ...
 }: {
   xdg.userDirs = {

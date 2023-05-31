@@ -59,7 +59,7 @@
         # nodePackages.vue-language-server
         nodePackages.typescript-language-server
         nodePackages.vscode-langservers-extracted
-        rnix-lsp
+        nil
         # sqls
         # ccls
 

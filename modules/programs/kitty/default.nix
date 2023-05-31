@@ -27,7 +27,7 @@ in
           bold_font = "JetBrains Mono Bold";
           bold_italic_font = "JetBrains Mono Bold Italic";
           symbol_map = "U+23FB-U+23FE,U+2665,U+26A1,U+2B58,U+E000-U+E00A,U+E0A0-U+E0A3,U+E0B0-U+E0C8,U+E0CA,U+E0CC-U+E0D2,U+E0D4,U+E200-U+E2A9,U+E300-U+E3E3,U+E5FA-U+E634,U+E700-U+E7C5,U+EA60-U+EBEB,U+F000-U+F2E0,U+F300-U+F32F,U+F400-U+F4A9,U+F500-U+F8FF Symbols Nerd Font Mono";
-          font_size = "10.5";
+          font_size = "10";
           font_features = "JetBrains Mono +cv06 +cv07";
           modify_font = "underline_position 125%";
 
@@ -35,7 +35,7 @@ in
           box_drawing_scale = "0.001, 1, 1.5, 2";
 
           # Cursor
-          cursor_blink_interval = "-1";
+          cursor_blink_interval = "0";
           cursor_stop_blinking_after = "15.0";
 
           # Scrollback
@@ -68,7 +68,7 @@ in
           window_padding_width = "8";
           inactive_text_alpha = "1.0";
           dynamic_background_opacity = true;
-          background_opacity = "0.95";
+          background_opacity = "0.9";
           placement_strategy = "center";
           hide_window_decorations = true;
 
@@ -130,8 +130,8 @@ in
           "ctrl+shift+right" = "next_tab";
           "ctrl+shift+v" = "paste_from_clipboard";
           "ctrl+shift+c" = "copy_to_clipboard";
-          "ctrl+shift+equal" = "change_font_size current +0.5";
-          "ctrl+shift+minus" = "change_font_size current -0.5";
+          "ctrl+shift+equal" = "change_font_size current +1";
+          "ctrl+shift+minus" = "change_font_size current -1";
           "ctrl+shift+backspace" = "restore_font_size";
           "ctrl+alt+s" = "set_background_opacity +0.05";
           "ctrl+alt+a" = "set_background_opacity -0.05";

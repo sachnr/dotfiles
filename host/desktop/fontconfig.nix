@@ -1,15 +1,11 @@
-{
-  pkgs,
-  config,
-  ...
-}: {
+{pkgs, ...}: {
   fonts = {
     fonts = with pkgs; [
       jetbrains-mono
       noto-fonts
       noto-fonts-emoji
       roboto
-      (nerdfonts.override {fonts = ["Gohu" "NerdFontsSymbolsOnly"];})
+      (nerdfonts.override {fonts = ["RobotoMono" "NerdFontsSymbolsOnly"];})
     ];
 
     fontconfig = {
@@ -21,14 +17,14 @@
       };
       hinting = {
         enable = true;
-        autohint = true;
+        autohint = false;
         style = "hintslight";
       };
       defaultFonts = {
-        serif = ["Roboto" "Symbols Nerd Font Mono"];
-        sansSerif = ["Roboto" "Symbols Nerd Font Mono"];
-        monospace = ["jetBrains Mono" "Symbols Nerd Font Mono"];
-        emoji = ["Noto Color Emoji" "Symbols Nerd Font Mono"];
+        serif = ["Noto Sans" "Symbols Nerd Font Mono"];
+        sansSerif = ["Noto Sans" "Symbols Nerd Font Mono"];
+        monospace = ["Noto Monospace" "Symbols Nerd Font Mono"];
+        emoji = ["Noto Color Emoji"];
       };
     };
   };

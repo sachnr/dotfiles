@@ -21,7 +21,7 @@ in
         enable = true;
         enableBashIntegration = true;
         enableZshIntegration = true;
-        settings = {
+        settings = with theme.colors; {
           add_newline = false;
           c = {
             symbol = "[ ](bold blue)";
@@ -29,8 +29,8 @@ in
             format = "\\[[$symbol($version(-$name))]($style)\\] ";
           };
           git_branch = {
-            symbol = "[ ](bold green)";
-            style = "bold green";
+            symbol = "[ ](bold ${gray})";
+            style = "bold ${gray}";
             format = "on [$symbol$branch]($style) ";
           };
           git_status = {
@@ -59,6 +59,10 @@ in
             style = "bright-black";
             format = "\\[[$symbol($version)]($style)\\] ";
           };
+          lua = {
+            symbol = "[󰢱 ](bold ${aqua}) ";
+            style = "bright-black";
+          };
           nodejs = {
             symbol = "[ ](bold green)";
             style = "bright-black";
@@ -74,11 +78,15 @@ in
           };
           directory = {
             truncation_length = 5;
-            style = "bold bright-blue";
+            style = "bold ${accent}";
             format = "[$path]($style)[$lock_symbol]($lock_style) ";
           };
           line_break = {
             disabled = true;
+          };
+          cmd_duration = {
+            format = "in [$duration]($style) ";
+            style = "bold ${green}";
           };
           os = {
             disabled = false;
@@ -108,7 +116,7 @@ in
           scan_timeout = 10;
           character = {
             success_symbol = "[➜](bold bright-green) ";
-            error_symbol = "[✖](bold bright-red) ";
+            error_symbol = "[➜](bold bright-red) ";
           };
         };
       };

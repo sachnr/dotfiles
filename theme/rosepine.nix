@@ -1,5 +1,5 @@
 _: {
-  accent = "#CBA6F7";
+  accent = "#ebbcba";
   background = "#191724";
   background2 = "#262431";
   background3 = "#353340";
@@ -13,7 +13,7 @@ _: {
   blue = "#8bbec7";
   purple = "#bb9ede";
   aqua = "#9ccfd8";
-  gray = "#e0def4";
+  gray = "#6e6a86";
   brightblack = "#908caa";
   brightred = "#eb6f92";
   brightorange = "#ebbcba";
@@ -22,7 +22,7 @@ _: {
   brightblue = "#8bbec7";
   brightpurple = "#c4a7e7";
   brightaqua = "#a3d6df";
-  brightgray = "#6e6a86";
+  brightgray = "#e0def4";
   wallpaper = builtins.fetchurl {
     url = "https://raw.githubusercontent.com/sachnr/wallpapers/main/wallpapers/purple/350066.jpg";
     sha256 = "0mxq7pv4623zmjiyzp78yp6in5pvpk2j5div3g2s4r5r5byl3qfj";
@@ -34,6 +34,6 @@ _: {
     qt_style = "Fusion";
     icon = "icons_papirus";
     font = "Roboto";
-    fontmonospace = "GohuFont 14 Nerd Font";
+    fontmonospace = "RobotoMono Nerd font";
   };
 }

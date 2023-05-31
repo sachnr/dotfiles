@@ -105,8 +105,11 @@ in {
       ];
     };
     nvidia = {
+      powerManagement = {
+        enable = true;
+      };
       forceFullCompositionPipeline = true;
-      open = true;
+      open = false;
       modesetting.enable = true;
     };
     bluetooth = {
@@ -184,7 +187,7 @@ in {
         {
           output = "HDMI-0";
           primary = true;
-          monitorConfig = "Option \"PreferredMode\" \"1920x1080@144.0\"";
+          monitorConfig = "Option         \"PreferredMode\" \"1920x1080@144.0\"";
         }
       ];
       layout = "us";

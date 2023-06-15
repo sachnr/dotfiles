@@ -38,11 +38,6 @@
       flake = false;
     };
 
-    rtl8814au = {
-      url = "github:morrownr/8814au";
-      flake = false;
-    };
-
     awesomerc = {
       url = "github:sachnr/awesomewm-dotfiles";
       flake = false;

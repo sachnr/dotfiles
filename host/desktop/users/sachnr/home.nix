@@ -1,9 +1,5 @@
 {
-  user,
-  config,
   pkgs,
-  lib,
-  inputs,
   ...
 }: {
   services.network-manager-applet.enable = true;
@@ -16,7 +12,7 @@
   home = {
     username = "sachnr";
     homeDirectory = "/home/sachnr";
-    stateVersion = "22.11";
+    stateVersion = "23.05";
 
     packages = let
       ryujinx-git = pkgs.callPackage ../../../../pkgs/ryujinx {};
@@ -40,6 +36,7 @@
         # media/game
         feh
         pavucontrol
+        easyeffects
         steam
         ryujinx-git
 
@@ -95,7 +92,7 @@
 
         # Build tools
         # maven
-        # cmake
+        cmake
       ];
   };
 }

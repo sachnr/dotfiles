@@ -130,8 +130,8 @@ in
           "ctrl+shift+right" = "next_tab";
           "ctrl+shift+v" = "paste_from_clipboard";
           "ctrl+shift+c" = "copy_to_clipboard";
-          "ctrl+shift+equal" = "change_font_size current +1";
-          "ctrl+shift+minus" = "change_font_size current -1";
+          "ctrl+shift+equal" = "change_font_size current +0.5";
+          "ctrl+shift+minus" = "change_font_size current -0.5";
           "ctrl+shift+backspace" = "restore_font_size";
           "ctrl+alt+s" = "set_background_opacity +0.05";
           "ctrl+alt+a" = "set_background_opacity -0.05";

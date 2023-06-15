@@ -6,34 +6,6 @@
   ...
 }: let
   cfg = config.modules.services.mpd;
-  mpdconf = ''
-    music_directory                 "/home/${user}/Music"
-    playlist_directory              "/home/${user}/.config/mpd/playlist"
-    db_file                         "/home/${user}/.config/mpd/mpd.db"
-    log_file                        "/home/${user}/.config/mpd/log"
-    pid_file                        "/home/${user}/.config/mpd/mpd.pid"
-    state_file                      "/home/${user}/.config/mpd/mpdstate"
-    sticker_file                    "/home/${user}/.config/mpd/sticker.sql"
-    user                            "sachnr"
-    bind_to_address                 "127.0.0.1"
-    port                            "6600"
-    log_level                       "default"
-    restore_paused                  "yes"
-    input {
-      plugin "curl"
-    }
-    audio_output {
-      type            "pipewire"
-      name            "MPD Output"
-    }
-    audio_output {
-      type        "fifo"
-      name        "Visualizer"
-      path        "/tmp/mpd.fifo"
-      format      "44100:16:2"
-    }
-    filesystem_charset              "UTF-8"
-  '';
 in
   with lib; {
     options.modules.services.mpd = {
@@ -53,7 +25,32 @@ in
       };
 
       services = {
-        mpd.enable = true;
+        mpd = {
+          enable = true;
+          playlistDirectory = "/home/${user}/.config/mpd/playlist";
+          dbFile = "/home/${user}/.config/mpd/mpd.db";
+          dataDir = "/home/${user}/.config/mpd";
+          musicDirectory = "/home/${user}/Music";
+          network = {
+            listenAddress = "127.0.0.1";
+            port = 6600;
+          };
+          extraConfig = ''
+            user            "${user}"
+            restore_paused  "yes"
+            audio_output {
+              type "pipewire"
+              name "My PipeWire Output"
+            }
+            audio_output {
+                type        "fifo"
+                name        "Visualizer"
+                path        "/tmp/mpd.fifo"
+                format      "44100:16:2"
+            }
+          '';
+        };
+
         # mopidy = {
         #   enable = true;
         #   extensionPackages = with pkgs; [mopidy-mpd mopidy-youtube];
@@ -87,8 +84,6 @@ in
         #   };
         # };
       };
-
-      home.file.".config/mpd/mpd.conf".text = mpdconf;
 
       programs = {
         ncmpcpp = {

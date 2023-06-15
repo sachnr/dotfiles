@@ -25,6 +25,7 @@ in
         tmux-sessionizer
         exa
         fzf
+        vscode-extensions.vadimcn.vscode-lldb
       ];
 
       programs = {
@@ -56,6 +57,7 @@ in
             export PATH="''${PATH}:$HOME/.npm/bin:''${HOME}/.local/share/nvim/mason/bin:''${HOME}/.cargo/bin"
             export EDITOR="nvim"
             export PYTHONPATH=$HOME/.config/pip/site-packages
+            export CODE_LLDB_PATH=${pkgs.vscode-extensions.vadimcn.vscode-lldb}
           '';
           initExtra = let
             starship = "eval \"$(starship init zsh)\"";
@@ -96,8 +98,8 @@ in
                 src = pkgs.fetchFromGitHub {
                   owner = "chisui";
                   repo = "zsh-nix-shell";
-                  rev = "v0.6.0";
-                  sha256 = "B0mdmIqefbm5H8wSG1h41c/J4shA186OyqvivmSK42Q=";
+                  rev = "v0.7.0";
+                  sha256 = "sha256-oQpYKBt0gmOSBgay2HgbXiDoZo5FoUKwyHSlUrOAP5E=";
                 };
               }
             ]

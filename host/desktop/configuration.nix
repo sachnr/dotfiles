@@ -10,10 +10,12 @@
   ...
 }: let
   rtl8812au = pkgs.linuxKernel.packages.linux_6_3.rtl8812au.overrideAttrs (_: {
-    src = inputs.rtl8812au;
-  });
-  rtl8814au = pkgs.linuxKernel.packages.linux_6_3.rtl8814au.overrideAttrs (_: {
-    src = inputs.rtl8814au;
+    src = pkgs.fetchFromGitHub {
+      owner = "aircrack-ng";
+      repo = "rtl8812au";
+      rev = "35308f4dd73e77fa572c48867cce737449dd8548";
+      hash = "sha256-0kHrNsTKRl/xTQpDkIOYqTtcHlytXhXX8h+6guvLmLI=";
+    };
   });
   sessions = pkgs.callPackage ../../pkgs/session.nix {};
   sddm-theme = pkgs.callPackage ../../pkgs/sddmtheme.nix {};
@@ -90,7 +92,8 @@ in {
   };
 
   # Enable sound.
-  sound.enable = true;
+  # causes conflicts with pipewire
+  # sound.enable = true;
 
   hardware = {
     pulseaudio.enable = false;

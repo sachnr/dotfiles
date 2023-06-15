@@ -10,7 +10,7 @@
   home = {
     username = "sachnr";
     homeDirectory = "/home/sachnr";
-    stateVersion = "22.11";
+    stateVersion = "23.05";
 
     packages = with pkgs; [
       # Terminal

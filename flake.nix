@@ -2,8 +2,8 @@
   description = "A very basic flake";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    # nixpkgs.url = "github:NixOS/nixpkgs/nixos-22.11";
+    # nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.05";
 
     nur = {
       url = "github:nix-community/NUR"; # NUR Packages
@@ -19,13 +19,13 @@
     #   inputs.nixpkgs.follows = "nixpkgs";
     # };
 
-    nixpkgs-wayland = {
-      url = "github:nix-community/nixpkgs-wayland";
-    };
+    # nixpkgs-wayland = {
+    #   url = "github:nix-community/nixpkgs-wayland";
+    # };
 
     nixpkgs-f2k.url = "github:fortuneteller2k/nixpkgs-f2k";
 
-    wallpapers.url = "github:sachnr/asdf";
+    # wallpapers.url = "github:sachnr/asdf";
 
     neovim-nightly-overlay = {
       url = "github:nix-community/neovim-nightly-overlay";
@@ -52,19 +52,21 @@
   };
 
   outputs = inputs @ {self, ...}: let
+    system = "x86_64-linux";
+
     overlays = with inputs; [
       nur.overlay
-      nixpkgs-wayland.overlay
+      # nixpkgs-wayland.overlay
       neovim-nightly-overlay.overlay
       nixpkgs-f2k.overlays.compositors
-      wallpapers.overlay
+      # wallpapers.overlay
       nix-rice.overlays.default
       # hyprland.overlays.default
       (final: prev: rec {
         awesome = nixpkgs-f2k.packages.x86_64-linux.awesome-luajit-git;
         # sway-unwrapped = nixpkgs-wayland.packages.x86_64-linux.sway-unwrapped.override {
         #   wlroots_0_16 = nixpkgs-wayland.packages.x86_64-linux.wlroots.overrideAttrs (_: {
-        #     patches = (prev.patches or []) ++ [./patches/nvidia.patch];
+        #     # patches = (prev.patches or []) ++ [./patches/nvidia.patch];
         #     postPatch = (prev.postPatch or "") + ''substituteInPlace render/gles2/renderer.c --replace "glFlush();" "glFinish();" '';
         #   });
         # };

@@ -4,6 +4,7 @@
       jetbrains-mono
       noto-fonts
       noto-fonts-emoji
+      iosevka
       roboto
       (nerdfonts.override {fonts = ["RobotoMono" "NerdFontsSymbolsOnly"];})
     ];

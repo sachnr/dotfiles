@@ -45,7 +45,7 @@ in
           # ║ settings                                                 ║
           # ╚══════════════════════════════════════════════════════════╝
           backend = "webengine";
-          scrolling.smooth = true;
+          scrolling.smooth = false;
           url = {
             default_page = "${pkgs.startpage}/index.html";
             start_pages = "${pkgs.startpage}/index.html";

@@ -20,6 +20,7 @@ in
     config = mkIf cfg.enable {
       programs.waybar = {
         enable = true;
+        package = pkgs.waybar-hyprland;
         settings = import ./settings.nix {inherit pkgs;};
         style = import ./style.nix {inherit theme;};
       };

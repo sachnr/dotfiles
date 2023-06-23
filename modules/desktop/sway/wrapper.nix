@@ -8,7 +8,9 @@
   export __GL_VRR_ALLOWED=0
   export WLR_DRM_NO_ATOMIC=1
   export EGL_PLATFORM=wayland
-  export WLR_BACKEND=vulkan
+
+  # Can cause flickering
+  # export WLR_BACKEND=vulkan
 
   # session
   export XDG_SESSION_TYPE=wayland

@@ -54,7 +54,8 @@ in
                 source "$HOME/.config/zsh/plugins/sudo/sudo.plugin.zsh"
             fi
 
-            export PATH="''${PATH}:$HOME/.npm/bin:''${HOME}/.local/share/nvim/mason/bin:''${HOME}/.cargo/bin"
+            export PATH="''${PATH}:$HOME/.npm/bin:''${HOME}/.local/share/nvim/mason/bin"
+            export PATH="''${PATH}:$HOME/.cargo/bin"
             export EDITOR="nvim"
             export PYTHONPATH=$HOME/.config/pip/site-packages
             export CODE_LLDB_PATH=${pkgs.vscode-extensions.vadimcn.vscode-lldb}
@@ -87,7 +88,7 @@ in
             tree = "${pkgs.exa}/bin/exa --tree --icons --group-directories-first";
             e = "${pkgs.neovim}/bin/nvim ./";
             f = "${pkgs.ranger}/bin/ranger";
-            tm = "tmux-sessionizer";
+            tm = "tmux-fzy";
             bk = "find ~/Documents/Books -mindepth 1 | fzf | xargs -I {} zathura '{}' --fork";
           };
           plugins =

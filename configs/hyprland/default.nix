@@ -21,14 +21,16 @@ in
     };
 
     installPhase = with theme.colors; ''
-      cp -r ${src} $out
-      substituteInPlace $out/autostart.conf \
-        --replace "dbus-update-activation-environment" "${pkgs.dbus}/bin/dbus-update-activation-environment"
-      substituteInPlace $out/options.conf \
-        --replace "rgba(83A598ff)" "rgba(${(substr brightblack)}ff)" \
-        --replace "rgba(1D2021ff)" "rgba(${(substr background)}ff)" \
-        --replace "rgba(1C252C90)" "rgba(${(substr black)}90)"
-      substituteInPlace $out/hyprpaper.conf \
-        --replace "~/.config/hypr/wallpaper/Shibata_Zeshin.jpg" "${wallpaper}"
-    '';
+        cp -r ${src} $out
+        substituteInPlace $out/autostart.conf \
+          --replace "dbus-update-activation-environment" "${pkgs.dbus}/bin/dbus-update-activation-environment" \
+          --replace "~/Downloads/cat.jpg" "${wallpaper}"
+        substituteInPlace $out/options.conf \
+          --replace "rgba(1D2021ff)" "rgba(${(substr background)}ff)" \
+          --replace "rgb(8a9a7b)" "rgb(${substr brightgreen})" \
+          --replace "rgb(c4746e)" "rgb(${substr brightred})" \
+          --replace "rgb(a292a3)" "rgb(${substr brightpurple})"
+        substituteInPlace $out/hyprpaper.conf \
+          --replace "~/.config/hypr/wallpaper/Shibata_Zeshin.jpg" "${wallpaper}"
+      '';
   }

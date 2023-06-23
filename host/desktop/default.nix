@@ -29,7 +29,7 @@ in
         home-manager = {
           useGlobalPkgs = true;
           useUserPackages = true;
-          users.${user} = import ./users/sachnr;
+          users.${user} = import ./user_packages.nix;
           extraSpecialArgs = {inherit inputs pkgs system user theme;};
         };
       }

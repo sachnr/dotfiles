@@ -1,9 +1,8 @@
-{pkgs, ...}: let
-in {
+{pkgs, ...}: {
   mainBar = {
     layer = "top";
     position = "top";
-    height = 30;
+    height = 32;
     mode = "dock";
     exclusive = true;
     passthrough = false;
@@ -13,10 +12,11 @@ in {
       "HDMI-A-1"
     ];
     modules-left = [
-      "sway/workspaces"
-      "sway/mode"
-      "sway/scratchpad"
-      "sway/window"
+      # "sway/workspaces"
+      # "sway/mode"
+      # "sway/scratchpad"
+      # "sway/window"
+      "wlr/workspaces"
     ];
     modules-center = [
       "mpd"
@@ -28,6 +28,11 @@ in {
       "clock"
       "custom/power"
     ];
+
+    "hyprland/window" = {
+      max-length = 200;
+      separate-outputs = true;
+    };
 
     "sway/workspaces" = {
       disable-scroll = true;
@@ -44,13 +49,32 @@ in {
       format-icons = {
         "1" = "";
         "2" = "";
-        "3" = "";
-        "4" = "";
-        "5" = "";
-        "6" = "";
+        "3" = "";
+        "4" = "󰉋";
+        "5" = "󰵅";
+        "6" = "󰊠";
         "7" = "";
         "8" = "";
-        "9" = "";
+        "9" = "";
+      };
+    };
+
+    "wlr/workspaces" = {
+      format = "{icon}";
+      "on-scroll-up" = "hyprctl dispatch workspace e+1";
+      "on-scroll-down" = "hyprctl dispatch workspace e-1";
+      all-outputs = true;
+      onclick = "activate";
+      format-icons = {
+        "1" = " ";
+        "2" = " ";
+        "3" = " ";
+        "4" = "󰉋 ";
+        "5" = "󰵅 ";
+        "6" = "󰊠 ";
+        "urgent" = " ";
+        "focused" = "";
+        "default" = "";
       };
     };
 
@@ -68,7 +92,7 @@ in {
 
     "custom/power" = {
       tooltip = false;
-      on-click = "eww open --toggle dashboard";
+      on-click = "exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'";
       format = "  ";
     };
 
@@ -151,7 +175,6 @@ in {
         "paused" = "";
         "playing" = "";
       };
-      "on-click" = "eww open --toggle music";
       "on-scroll-up" = "mpc next";
       "on-scroll-down" = "mpc prev";
       "tooltip-format" = "MPD (connected)";

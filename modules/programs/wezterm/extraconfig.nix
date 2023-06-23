@@ -42,30 +42,30 @@ with theme.colors; ''
   return {
     font = wezterm.font_with_fallback({
         {
-            family = "JetBrains Mono",
-            harfbuzz_features = { "cv06" , "cv07" }
+            family = "Iosevka",
+            -- harfbuzz_features = { "cv06" , "cv07" }
         },
     }),
     font_rules = {
       {
         intensity = 'Bold',
         italic = false,
-        font = wezterm.font("JetBrains Mono", {weight="Bold", stretch="Normal", style="Normal"})
+        font = wezterm.font("Iosevka", {weight="Bold", stretch="Normal", style="Normal"})
       },
       {
         intensity = 'Bold',
         italic = true,
-        font = wezterm.font("JetBrains Mono", {weight="Bold", stretch="Normal", style="Italic"})
+        font = wezterm.font("Iosevka", {weight="Bold", stretch="Normal", style="Italic"})
       },
       {
         intensity = 'Normal',
         italic = false,
-        font = wezterm.font("JetBrains Mono", {weight="Regular", stretch="Normal", style="Normal"}),
+        font = wezterm.font("Iosevka", {weight="Regular", stretch="Normal", style="Normal"}),
       },
       {
         intensity = 'Normal',
         italic = true,
-        font = wezterm.font("JetBrains Mono", {weight="Regular", stretch="Normal", style="Italic"}),
+        font = wezterm.font("Iosevka", {weight="Regular", stretch="Normal", style="Italic"}),
       },
     },
     foreground_text_hsb = {
@@ -73,7 +73,7 @@ with theme.colors; ''
       saturation = 1.0,
       brightness = 1.0,
     },
-    font_size = 10,
+    font_size = 12,
     underline_position = '125%',
     use_fancy_tab_bar = false,
     freetype_load_target = "Normal",

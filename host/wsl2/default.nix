@@ -27,7 +27,7 @@ in
         home-manager = {
           useGlobalPkgs = true;
           useUserPackages = true;
-          users.${user} = import ./users/sachnr;
+          users.${user} = import ./user_packages_wsl.nix;
           extraSpecialArgs = {inherit inputs pkgs system user theme;};
         };
       }

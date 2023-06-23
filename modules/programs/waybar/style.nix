@@ -1,6 +1,4 @@
-{theme, ...}: let
-in
-  with theme.colors; ''
+{theme, ...}: with theme.colors; ''
       * {
         border: none;
         border-radius: 0;
@@ -28,8 +26,12 @@ in
         color: ${foreground};
       }
       #workspaces button.focused {
-        color: ${black};
-        background-color: ${blue};
+        color: ${brightgreen};
+        background-color: ${background};
+      }
+      #workspaces button.active {
+        color: ${brightgreen};
+        background-color: ${background};
       }
       #workspaces button.persistent{
         color: ${brightblack};

@@ -22,9 +22,9 @@
 in {
   imports = [
     # Include the results of the hardware scan.
-    ./hardware-configuration.nix
     ./fontconfig.nix
     ./extra-settings.nix
+    ./hardware-configuration.nix
   ];
 
   # Use the systemd-boot EFI boot loader.
@@ -32,7 +32,7 @@ in {
     supportedFilesystems = ["ntfs"];
     kernelPackages = pkgs.linuxPackages_latest;
     blacklistedKernelModules = ["nouveau" "i2c_nvidia_gpu"];
-    kernelParams = ["quiet"];
+    kernelParams = ["quiet" "acpi_osi=!"];
     extraModulePackages = [rtl8812au];
     loader = {
       timeout = 5;
@@ -186,13 +186,12 @@ in {
   services = {
     xserver = {
       enable = true;
-      xrandrHeads = [
-        {
-          output = "HDMI-0";
-          primary = true;
-          monitorConfig = "Option         \"PreferredMode\" \"1920x1080@144.0\"";
-        }
-      ];
+      # xrandrHeads = [
+      #   {
+      #     output = "HDMI-0";
+      #     primary = true;
+      #   }
+      # ];
       layout = "us";
       videoDrivers = ["nvidia"];
       desktopManager = {
@@ -212,7 +211,7 @@ in {
           enable = true;
           theme = "Psion";
         };
-        sessionPackages = [sessions];
+        # sessionPackages = [sessions];
         lightdm.enable = false;
       };
       libinput = {

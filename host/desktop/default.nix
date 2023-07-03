@@ -1,35 +1,39 @@
-{
-  overlays,
-  inputs,
-}: let
+{inputs}: let
   inherit (inputs.nixpkgs) lib;
-  system = "x86_64-linux"; # System architecture
+  system = "x86_64-linux";
   user = "sachnr";
-  theme = import ../../theme {};
+  theme = import ../../theme/kanagawa.nix;
   pkgs = import inputs.nixpkgs {
-    inherit system;
-    inherit overlays;
+    inherit system lib;
+    overlays = import ./overlays.nix {inherit inputs;};
     config = {
-      # allowBroken = true;
+      allowBroken = false;
       packageOverrides = super: {
-        startpage = pkgs.callPackage ../../configs/startpage {};
       };
       allowUnfree = true; # Allow proprietary software
     };
   };
-  configuration = import ./configuration.nix {inherit lib user inputs theme pkgs;};
+  fonts = import ./fonts.nix {inherit theme lib pkgs;};
 in
   lib.nixosSystem {
     inherit system pkgs;
     modules = [
-      configuration
+      ./configuration.nix
+      ./packages.nix
+      fonts
       inputs.nur.nixosModules.nur
       inputs.home-manager.nixosModules.home-manager
       {
+        users.users.${user} = {
+          isNormalUser = true;
+          extraGroups = ["wheel" "video" "audio" "users"];
+          shell = pkgs.zsh;
+        };
+
         home-manager = {
           useGlobalPkgs = true;
           useUserPackages = true;
-          users.${user} = import ./user_packages.nix;
+          users.${user} = import ./home/default.nix;
           extraSpecialArgs = {inherit inputs pkgs system user theme;};
         };
       }

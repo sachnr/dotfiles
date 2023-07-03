@@ -1,5 +1,5 @@
 {theme}:
-with theme.colors; ''
+with theme; ''
   local act = wezterm.action
   local wezterm = require 'wezterm'
 

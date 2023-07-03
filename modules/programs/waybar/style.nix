@@ -1,4 +1,4 @@
-{theme, ...}: with theme.colors; ''
+{theme, ...}: with theme; ''
       * {
         border: none;
         border-radius: 0;

@@ -65,15 +65,10 @@ in
             };
             # Extra preferences to add to user.js
             extraConfig = ''
+              user_pref("media.hardware-video-decoding.force-enabled", true);
+              user_pref("media.hardware-video-decoding.enabled", true);
+              user_pref("gfx.webrender.all", true);
               user_pref("general.config.filename", "mozilla.cfg");
-              user_pref("general.config.obscure_value", 0);
-              user_pref("general.config.sandbox_enabled", false);
-              user_pref("media.ffmpeg.vaapi.enabled", true);
-              user_pref("media.rdd-ffmpeg.enabled", true);
-              user_pref("media.rdd-vpx.enabled", true);
-              user_pref("media.av1.enabled", false);
-              user_pref("media.peerconnection.enabled", true);
-              user_pref("widget.dmabuf.force-enabled", true);
               user_pref("geo.provider.use_gpsd", false);
               user_pref("geo.provider.use_geoclue", false);
               user_pref("datareporting.policy.dataSubmissionEnabled", false);
@@ -95,12 +90,8 @@ in
               user_pref("browser.newtabpage.activity-stream.feeds.telemetry", false);
               user_pref("browser.newtabpage.activity-stream.telemetry", false);
               user_pref("app.shield.optoutstudies.enabled", false);
-              user_pref("app.normandy.enabled", false);
-              user_pref("app.normandy.api_url", "");
               user_pref("browser.search.suggest.enabled", false);
               user_pref("browser.urlbar.suggest.searches", false);
-              user_pref("browser.link.open_newwindow", 3);
-              user_pref("browser.link.open_newwindow.restriction", 0);
             '';
             userChrome = import ./userChrome-css.nix {};
             userContent = import ./userContent-css.nix {};

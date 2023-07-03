@@ -1,5 +1,5 @@
 {theme}:
-with theme.colors; ''
+with theme; ''
   [global/wm]
   margin-bottom = 0
   margin-top = 0

@@ -2,7 +2,7 @@
   pkgs,
   theme,
 }:
-with theme.colors; ''
+with theme; ''
    font pango:monospace 8.000000
    floating_modifier Mod4
    default_floating_border 1pixel

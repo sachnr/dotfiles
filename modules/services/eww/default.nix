@@ -2,10 +2,11 @@
   pkgs,
   config,
   lib,
+  theme,
   ...
 }: let
   cfg = config.modules.services.eww;
-  ewwcfg = pkgs.callPackage ../../../configs/eww {};
+  ewwcfg = pkgs.callPackage ../../../configs/eww {inherit theme;};
 in
   with lib; {
     options.modules.services.eww = {

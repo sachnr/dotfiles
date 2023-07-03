@@ -22,7 +22,7 @@ in
     # ];
 
     config = mkIf cfg.enable {
-      # programs.wall-utils = with theme.colors; {
+      # programs.wall-utils = with theme; {
       #   enable = true;
       #   customCommand = "feh --bg-scale";
       #   customDir = "$HOME/wallpapers";

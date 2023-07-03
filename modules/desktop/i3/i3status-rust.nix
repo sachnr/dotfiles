@@ -1,5 +1,5 @@
 {theme}:
-with theme.colors; {
+with theme; {
   default = {
     settings = {
       theme = {

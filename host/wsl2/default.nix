@@ -7,7 +7,7 @@
   user = "sachnr";
 
   config = {
-      allowUnfree = true;
+    allowUnfree = true;
   };
 
   theme = import ../../theme {};
@@ -24,6 +24,13 @@ in
       configuration
       inputs.home-manager.nixosModules.home-manager
       {
+        # Define a user account. Don't forget to set a password with ‘passwd’.
+        users.users.${user} = {
+          isNormalUser = true;
+          extraGroups = ["wheel" "video" "audio" "users"]; # Enable ‘sudo’ for the user.
+          shell = pkgs.zsh;
+        };
+
         home-manager = {
           useGlobalPkgs = true;
           useUserPackages = true;

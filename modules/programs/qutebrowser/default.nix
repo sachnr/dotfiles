@@ -40,15 +40,15 @@ in
           c.tabs.indicator.padding = {"top": 2, "bottom": 2, "left": 0, "right": 4}
           c.tabs.padding = {"top": 7, "bottom": 7, "left": 14, "right": 14}
         '';
-        settings = with theme.colors; {
+        settings = with theme; {
           # ╔══════════════════════════════════════════════════════════╗
           # ║ settings                                                 ║
           # ╚══════════════════════════════════════════════════════════╝
           backend = "webengine";
           scrolling.smooth = false;
           url = {
-            default_page = "${pkgs.startpage}/index.html";
-            start_pages = "${pkgs.startpage}/index.html";
+            default_page = "https://sachnr.github.io";
+            start_pages = "https://sachnr.github.io";
           };
           auto_save.session = true;
           tabs = {

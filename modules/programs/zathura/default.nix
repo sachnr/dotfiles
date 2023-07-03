@@ -21,7 +21,7 @@ in
         enable = true;
         mappings = {
         };
-        options = with theme.colors; {
+        options = with theme; {
           smooth-scroll = true;
           selection-clipboard = "clipboard";
           default-bg = background;

@@ -3,13 +3,10 @@
   config,
   lib,
   theme,
-  user,
-  inputs,
   ...
 }: let
   cfg = config.modules.desktop.awesome;
-  i3lockwconfig = import ./i3lock.nix {inherit pkgs theme;};
-  awesome_cfg = import ../../../configs/awesome {inherit inputs lib theme pkgs;};
+  i3lock-script = import ./i3lock.nix {inherit pkgs theme;};
 in
   with lib; {
     options.modules.desktop.awesome = {
@@ -33,36 +30,21 @@ in
           }
           {
             delay = 630;
-            command = "${i3lockwconfig}/bin/i3lockwconfig";
+            command = "${i3lock-script}/bin/i3lock-script";
           }
         ];
       };
-      # xsession.scriptPath = ".xsession-hm";
-      # xsession.windowManager.awesome = {
-      #   enable = true;
-      # };
       home = {
         packages = with pkgs; [
           scrot
           xclip
           i3lock-color
-          i3lockwconfig
+          i3lock-script
           redshift
           dconf
         ];
-        # for startx
-        # file.".xinitrc".text = ''
-        #   export QT_QPA_PLATFORMTHEME=qt5ct
-        #   export XDG_CURRENT_DESKTOP=awesome
-        #   export XDG_SESSION_TYPE=x11
-        #   ${pkgs.awesome-git}/bin/awesome
-        # '';
-        # file.".config" = {
-        #   source = awesome_cfg;
-        #   recursive = true;
-        # };
       };
-      xresources = with theme.colors; {
+      xresources = {
         extraConfig = import ./xresources.nix {inherit theme;};
       };
     };

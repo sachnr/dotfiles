@@ -1,3 +1,0 @@
-[submodule "configs/nvim"]
-	path = configs/nvim
-	url = https://github.com/sachnr/nvim.git

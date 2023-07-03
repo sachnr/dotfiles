@@ -2,9 +2,9 @@
   lib,
   stdenv,
   pkgs,
+  theme,
   ...
 }: let
-  theme = import ../../theme {};
   substr = str: lib.strings.removePrefix "#" str;
 in
   stdenv.mkDerivation rec {
@@ -20,7 +20,7 @@ in
       src = lib.cleanSource ./.;
     };
 
-    installPhase = with theme.colors; ''
+    installPhase = with theme; ''
         cp -r ${src} $out
         substituteInPlace $out/autostart.conf \
           --replace "dbus-update-activation-environment" "${pkgs.dbus}/bin/dbus-update-activation-environment" \

@@ -17,7 +17,7 @@ in
     };
 
     config = mkIf cfg.enable {
-      services.mako = with theme.colors; {
+      services.mako = with theme; {
         enable = true;
         backgroundColor = background;
         borderColor = black;

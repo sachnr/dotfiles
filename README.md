@@ -2,7 +2,9 @@
 
 my hyprland, sway, awesome and i3 configs for nixos.
 
-### Install nix
+### Nixos
+
+- `nixos-generate-config --root /mnt`
 
 - enable flakes
 

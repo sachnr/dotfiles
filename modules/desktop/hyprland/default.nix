@@ -1,12 +1,12 @@
 {
   pkgs,
   config,
-  inputs,
+  theme,
   lib,
   ...
 }: let
   cfg = config.modules.desktop.hyprland;
-  hyprcfg = pkgs.callPackage ../../../configs/hyprland {};
+  hyprcfg = pkgs.callPackage ../../../configs/hyprland {inherit theme;};
   hyprland-wrapped = import ./hyprland-wrapped.nix {inherit pkgs;};
 in
   with lib; {

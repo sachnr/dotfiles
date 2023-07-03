@@ -45,7 +45,7 @@ in
         #   ${pkgs.i3}/bin/i3
         # '';
       };
-      xresources = with theme.colors; {
+      xresources = with theme; {
         extraConfig = import ./xresources.nix {inherit theme;};
       };
     };

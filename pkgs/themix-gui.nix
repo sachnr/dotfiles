@@ -13,7 +13,7 @@
   oomox-colors = let
     substr = str: lib.strings.removePrefix "#" str;
   in
-    with theme.colors; ''
+    with theme; ''
       BG=${substr background2}
       FG=${substr foreground}
       SEL_BG=${substr accent}

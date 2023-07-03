@@ -1,5 +1,5 @@
 {theme}:
-with theme.colors; ''
+with theme; ''
   [module/volume]
   type = internal/pulseaudio
   use-ui-max = true

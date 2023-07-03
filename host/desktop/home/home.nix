@@ -27,10 +27,11 @@
         gh-dash
         lxqt.pcmanfm-qt
         libsForQt5.ark
+        direnv
 
         # General
         networkmanagerapplet
-        veracrypt-patched
+        # veracrypt-patched
 
         # media/game
         feh
@@ -39,7 +40,7 @@
         steam
 
         # Browsers
-        tor-browser-bundle-bin
+        # tor-browser-bundle-bin
 
         # Downloader
         qbittorrent
@@ -56,7 +57,7 @@
         nodePackages.vscode-langservers-extracted
         nil
         # sqls
-        # ccls
+        ccls
 
         # Dev
         rustup

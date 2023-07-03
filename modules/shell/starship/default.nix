@@ -21,7 +21,7 @@ in
         enable = true;
         enableBashIntegration = true;
         enableZshIntegration = true;
-        settings = with theme.colors; {
+        settings = with theme; {
           add_newline = false;
           c = {
             symbol = "[ ](bold blue)";
@@ -71,7 +71,9 @@ in
           nix_shell = {
             symbol = "[ ](bright-cyan)";
             style = "bright-black";
-            format = "\\[[$symbol$state( \\($name\\))]($style)\\] ";
+            format = "\\[[$symbol$state-$name]($style)\\] ";
+            pure_msg = "pure";
+            impure_msg = "impure";
           };
           shell = {
             format = "\\[[$indicator]\\]($style) ";

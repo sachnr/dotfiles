@@ -7,7 +7,7 @@
   ...
 }: let
   cfg = config.modules.shell.tmux;
-  tmux-conf = pkgs.callPackage ../../../configs/tmux {inherit lib;};
+  tmux-conf = pkgs.callPackage ../../../configs/tmux {inherit lib theme;};
 in
   with lib; {
     options.modules.shell.tmux = {

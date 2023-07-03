@@ -7,7 +7,7 @@
 }: let
   cfg = config.modules.programs.rofi;
 
-  roficfg = with theme.colors; ''
+  roficfg = with theme; ''
      /**
      *
      * Author : Aditya Shakya (adi1090x)

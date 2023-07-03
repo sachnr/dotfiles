@@ -24,7 +24,7 @@ in
         ];
       };
 
-      programs.swaylock.settings = with theme.colors; {
+      programs.swaylock.settings = with theme; {
         font-size = 14;
         inherit (name) font;
         show-failed-attempts = true;

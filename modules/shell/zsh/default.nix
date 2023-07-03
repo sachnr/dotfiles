@@ -59,6 +59,7 @@ in
             export EDITOR="nvim"
             export PYTHONPATH=$HOME/.config/pip/site-packages
             export CODE_LLDB_PATH=${pkgs.vscode-extensions.vadimcn.vscode-lldb}
+            eval "$(direnv hook zsh)"
           '';
           initExtra = let
             starship = "eval \"$(starship init zsh)\"";
@@ -67,7 +68,7 @@ in
               [[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
             '';
           in
-            with theme.colors;
+            with theme;
               ''
                 export FZF_DEFAULT_OPTS="--layout=reverse"\
                 " --color=bg+:${background2},bg:${background},spinner:${brightred},hl:${brightblack}"\

@@ -4,8 +4,8 @@
 }: let
   substr = str: builtins.substring 1 6 str;
 in
-  with theme.colors;
-    pkgs.writeShellScriptBin "i3lockwconfig" ''
+  with theme;
+    pkgs.writeShellScriptBin "i3lock-script" ''
       ${pkgs.i3lock-color}/bin/i3lock-color -i ${wallpaper} \
           -ntfe --force-clock --indicator --inside-color=${substr background} \
           --ring-color=${substr foreground} \

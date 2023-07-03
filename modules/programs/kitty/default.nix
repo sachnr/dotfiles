@@ -19,7 +19,7 @@ in
     config = mkIf cfg.enable {
       programs.kitty = {
         enable = true;
-        settings = with theme.colors; {
+        settings = with theme; {
           clear_all_shortcuts = true;
           # Fonts
           font_family = "JetBrains Mono";

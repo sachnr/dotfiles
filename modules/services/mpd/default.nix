@@ -121,8 +121,8 @@ in
             visualizer_output_name = "Visualizer";
             visualizer_in_stereo = "no";
             visualizer_fps = "60";
-            visualizer_type = "wave";
-            visualizer_look = "∗▐";
+            visualizer_type = "ellipse";
+            visualizer_look = ".▐";
             visualizer_color = "199,200,201,202,166,130,94,58,22";
             visualizer_spectrum_smooth_look = "yes";
 

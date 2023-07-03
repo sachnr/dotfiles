@@ -1,15 +1,10 @@
-{
-  user,
-  config,
-  lib,
-  ...
-}: let
+{lib, ...}: let
   # returns list of all folders in path
-  getDirfolders = path: (lib.attrsets.mapAttrsToList (name: _: path + ("/" + name)) (lib.attrsets.filterAttrs (name: value: value == "directory") (builtins.readDir path)));
-  shell = getDirfolders ../../modules/shell;
-  desktop = getDirfolders ../../modules/desktop;
-  programs = getDirfolders ../../modules/programs;
-  services = getDirfolders ../../modules/services;
+  get_dir = path: (lib.attrsets.mapAttrsToList (name: _: path + ("/" + name)) (lib.attrsets.filterAttrs (name: value: value == "directory") (builtins.readDir path)));
+  shell = get_dir ../../../modules/shell;
+  desktop = get_dir ../../../modules/desktop;
+  programs = get_dir ../../../modules/programs;
+  services = get_dir ../../../modules/services;
 in {
   imports =
     [
@@ -20,7 +15,7 @@ in {
     ++ services
     ++ shell;
 
-  config.modules = rec {
+  config.modules = {
     desktop = {
       awesome.enable = true;
       i3.enable = false;

@@ -11,14 +11,14 @@
 
   kvtheme = ''
     [General]
-    theme=${theme.colors.name.kvantum}
+    theme=${theme.name.kvantum}
   '';
 
-  qt5ct = with theme.colors; ''
+  qt5ct = with theme; ''
     [Appearance]
     color_scheme_path=/home/${user}/.config/qt5ct/colors/numix.conf
     custom_palette=true
-    icon_theme=${theme.colors.name.icon}
+    icon_theme=${theme.name.icon}
     standard_dialogs=default
     style=${name.qt_style}
 
@@ -54,15 +54,15 @@
     split_all = data: lib.attrsets.mapAttrs (_: value: split (toString value)) data;
   in
     with pkgs.lib.nix-rice; {
-      black = split_all (color.hexToRgba theme.colors.black);
-      bg = split_all (color.hexToRgba theme.colors.background);
-      altbg = split_all (color.hexToRgba theme.colors.background2);
-      fg = split_all (color.hexToRgba theme.colors.foreground);
-      fginactive = split_all (color.hexToRgba theme.colors.brightgray);
-      green = split_all (color.hexToRgba theme.colors.green);
-      brightgreen = split_all (color.hexToRgba theme.colors.brightgreen);
-      brightred = split_all (color.hexToRgba theme.colors.brightred);
-      orange = split_all (color.hexToRgba theme.colors.brightred);
+      black = split_all (color.hexToRgba theme.black);
+      bg = split_all (color.hexToRgba theme.background);
+      altbg = split_all (color.hexToRgba theme.background2);
+      fg = split_all (color.hexToRgba theme.foreground);
+      fginactive = split_all (color.hexToRgba theme.brightgray);
+      green = split_all (color.hexToRgba theme.green);
+      brightgreen = split_all (color.hexToRgba theme.brightgreen);
+      brightred = split_all (color.hexToRgba theme.brightred);
+      orange = split_all (color.hexToRgba theme.brightred);
     };
 
   kdeglobal = let
@@ -137,11 +137,11 @@ in
           x11.enable = true;
         };
         sessionVariables = {
-          GTK_THEME = "${theme.colors.name.gtk}";
+          GTK_THEME = "${theme.name.gtk}";
         };
       };
 
-      gtk = with theme.colors; {
+      gtk = with theme; {
         enable = true;
         gtk3.extraConfig = {
           gtk-xft-antialias = 1;
@@ -164,14 +164,7 @@ in
           size = 24;
         };
       };
-      qt = with theme.colors; {
-        enable = true;
-        # gtk, gnome, lxqt, qt5ct, kde
-        # platformTheme = "gnome";
-        # style = {
-        #   name = "${name.qt_style}";
-        # };
-      };
+      qt.enable = true;
       home.file.".config/Kvantum/kvantum.kvconfig".text = kvtheme;
       home.file.".config/qt5ct/qt5ct.conf".text = qt5ct;
       home.file.".config/kdeglobals".text = kdeglobal;

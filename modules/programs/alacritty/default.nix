@@ -19,7 +19,7 @@ in
     config = mkIf cfg.enable {
       programs.alacritty = {
         enable = true;
-        settings = with theme.colors; {
+        settings = with theme; {
           window = {
             padding = {
               x = 10;

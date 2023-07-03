@@ -1,4 +1,13 @@
-{pkgs, ...}: {
+{pkgs, ...}: let
+  network-driver = pkgs.linuxKernel.packages.linux_6_4.rtl8812au.overrideAttrs (_: {
+    src = pkgs.fetchFromGitHub {
+      owner = "aircrack-ng";
+      repo = "rtl8812au";
+      rev = "60222a568da1954bff35526733ed2cecfbfc96d3";
+      hash = "sha256-HLtBfmUWdlCO9eJouqgTIe5F4sY+kLNRS+7jyJUoTfY=";
+    };
+  });
+in {
   imports = [
     ./hardware-configuration.nix
   ];
@@ -8,7 +17,7 @@
     kernelPackages = pkgs.linuxPackages_latest;
     blacklistedKernelModules = ["nouveau" "i2c_nvidia_gpu"];
     kernelParams = ["quiet" "acpi_osi=!"];
-    extraModulePackages = [pkgs.linuxKernel.packages.linux_6_4.rtl8812au];
+    extraModulePackages = [network-driver];
     loader = {
       timeout = 5;
       efi = {

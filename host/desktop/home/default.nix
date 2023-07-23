@@ -27,12 +27,12 @@ in {
     programs = {
       waybar.enable = false;
       neovim.enable = true;
-      firefox.enable = true;
+      firefox.enable = false;
       kitty.enable = true;
       rofi.enable = true;
       qutebrowser.enable = true;
       zathura.enable = true;
-      wezterm.enable = true;
+      wezterm.enable = false;
       alacritty.enable = false;
       ugchromium.enable = true;
     };

@@ -68,7 +68,7 @@ in
           window_padding_width = "8";
           inactive_text_alpha = "1.0";
           dynamic_background_opacity = true;
-          background_opacity = "0.9";
+          background_opacity = "1.0";
           placement_strategy = "center";
           hide_window_decorations = true;
 

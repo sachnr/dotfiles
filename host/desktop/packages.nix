@@ -22,7 +22,6 @@ in {
       alsa-utils
       usbutils
       ffmpeg
-      htop
       p7zip
       unrar
       unzip

@@ -40,40 +40,11 @@ with theme; ''
   end
 
   return {
-    font = wezterm.font_with_fallback({
-        {
-            family = "Iosevka",
-            -- harfbuzz_features = { "cv06" , "cv07" }
-        },
-    }),
-    font_rules = {
-      {
-        intensity = 'Bold',
-        italic = false,
-        font = wezterm.font("Iosevka", {weight="Bold", stretch="Normal", style="Normal"})
-      },
-      {
-        intensity = 'Bold',
-        italic = true,
-        font = wezterm.font("Iosevka", {weight="Bold", stretch="Normal", style="Italic"})
-      },
-      {
-        intensity = 'Normal',
-        italic = false,
-        font = wezterm.font("Iosevka", {weight="Regular", stretch="Normal", style="Normal"}),
-      },
-      {
-        intensity = 'Normal',
-        italic = true,
-        font = wezterm.font("Iosevka", {weight="Regular", stretch="Normal", style="Italic"}),
-      },
+    font = wezterm.font {
+        family = "JetBrains Mono",
+        harfbuzz_features = { "cv06" , "cv07" }
     },
-    foreground_text_hsb = {
-      hue = 1.0,
-      saturation = 1.0,
-      brightness = 1.0,
-    },
-    font_size = 12,
+    font_size = 10,
     underline_position = '125%',
     use_fancy_tab_bar = false,
     freetype_load_target = "Normal",

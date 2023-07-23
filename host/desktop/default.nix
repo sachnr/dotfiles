@@ -24,11 +24,20 @@ in
       inputs.nur.nixosModules.nur
       inputs.home-manager.nixosModules.home-manager
       {
+        virtualisation.docker.enable = true;
+
+        nixpkgs.config.allowUnfreePredicate = pkg:
+          builtins.elem (lib.getName pkg) [
+            "nvidia-x11"
+          ];
+
         users.users.${user} = {
           isNormalUser = true;
-          extraGroups = ["wheel" "video" "audio" "users"];
+          extraGroups = ["wheel" "video" "audio" "users" "docker"];
           shell = pkgs.zsh;
         };
+
+        users.extraGroups.docker.members = [user];
 
         home-manager = {
           useGlobalPkgs = true;

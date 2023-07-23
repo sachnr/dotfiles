@@ -11,6 +11,7 @@
       noto-fonts-emoji
       iosevka
       roboto
+      spleen
       (nerdfonts.override {fonts = ["RobotoMono" "NerdFontsSymbolsOnly"];})
     ];
 

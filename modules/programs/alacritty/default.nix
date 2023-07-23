@@ -32,21 +32,21 @@ in
           };
           font = {
             normal = {
-              family = "Iosevka Comfy";
+              family = "JetBrains Mono";
             };
             bold = {
-              family = "Iosevka Comfy";
+              family = "JetBrains Mono";
               style = "Bold";
             };
             italic = {
-              family = "Iosevka Comfy";
+              family = "JetBrains Mono";
               style = "Italic";
             };
             bold_italic = {
-              family = "Iosevka Comfy";
+              family = "JetBrains Mono";
               style = "Bold Italic";
             };
-            size = 12;
+            size = 10;
           };
           window.dimensions = {
             lines = 3;

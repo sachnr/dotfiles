@@ -21,8 +21,9 @@ in
         enable = true;
         mappings = {
         };
+        extraConfig = "set sandbox none";
         options = with theme; {
-          smooth-scroll = true;
+          smooth-scroll = false;
           selection-clipboard = "clipboard";
           default-bg = background;
           default-fg = foreground;
@@ -51,7 +52,7 @@ in
           recolor-darkcolor = foreground;
           render-loading-bg = background;
           render-loading-fg = foreground;
-          page-padding = 6;
+          page-padding = 0;
         };
       };
     };

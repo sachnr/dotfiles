@@ -25,7 +25,7 @@ in
         tmux-sessionizer
         exa
         fzf
-        vscode-extensions.vadimcn.vscode-lldb
+        bottom
       ];
 
       programs = {
@@ -91,6 +91,7 @@ in
             f = "${pkgs.ranger}/bin/ranger";
             tm = "tmux-fzy";
             bk = "find ~/Documents/Books -mindepth 1 | fzf | xargs -I {} zathura '{}' --fork";
+            top = "${pkgs.bottom}/bin/btm -b";
           };
           plugins =
             [

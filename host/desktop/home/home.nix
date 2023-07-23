@@ -11,87 +11,83 @@
     homeDirectory = "/home/sachnr";
     stateVersion = "23.05";
 
-    packages = let
-      veracrypt-patched = pkgs.veracrypt.overrideAttrs (prev: {
-        patches = prev.patches or [] ++ [../../patches/veracrypt.patch];
-      });
-    in
-      with pkgs; [
-        # Terminal
-        ranger
-        less
-        neofetch
-        lazygit
-        ripgrep
-        yt-dlp
-        gh-dash
-        lxqt.pcmanfm-qt
-        libsForQt5.ark
-        direnv
+    packages = with pkgs; [
+      # Terminal
+      ranger
+      less
+      neofetch
+      lazygit
+      ripgrep
+      yt-dlp
+      gh-dash
+      lxqt.pcmanfm-qt
+      libsForQt5.ark
+      direnv
 
-        # General
-        networkmanagerapplet
-        # veracrypt-patched
+      # General
+      networkmanagerapplet
 
-        # media/game
-        feh
-        pavucontrol
-        easyeffects
-        steam
+      # media/game
+      feh
+      pavucontrol
+      easyeffects
+      steam
 
-        # Browsers
-        # tor-browser-bundle-bin
+      # Browsers
+      # tor-browser-bundle-bin
+      brave
 
-        # Downloader
-        qbittorrent
-        wget
-        aria
+      # Downloader
+      qbittorrent
+      wget
+      aria
 
-        # Language Servers
-        sumneko-lua-language-server
-        # python39Packages.python-lsp-server
-        # nodePackages.bash-language-server
-        # nodePackages.yaml-language-server
-        # nodePackages.vue-language-server
-        nodePackages.typescript-language-server
-        nodePackages.vscode-langservers-extracted
-        nil
-        # sqls
-        ccls
+      # Language Servers
+      sumneko-lua-language-server
+      # python39Packages.python-lsp-server
+      # nodePackages.bash-language-server
+      # nodePackages.yaml-language-server
+      # nodePackages.vue-language-server
+      nodePackages.typescript-language-server
+      nodePackages.vscode-langservers-extracted
+      nil
+      # sqls
+      ccls
 
-        # Dev
-        rustup
-        python39
-        python39Packages.pip
-        # jdk
-        git
-        nodePackages.npm
-        yarn
-        nodejs
-        deno
-        jq
-        gcc
-        pkg-config
-        # go
+      # Dev
+      rustup
+      python39
+      python39Packages.pip
+      # jdk
+      git
+      nodePackages.npm
+      yarn
+      nodejs
+      deno
+      jq
+      gcc
+      pkg-config
+      # go
 
-        # for luasnip
-        luajitPackages.jsregexp
+      # for luasnip
+      luajitPackages.jsregexp
 
-        # debugger
-        gdb
-        lldb_15
+      # debugger
+      gdb
+      lldb_15
 
-        # Formatters
-        black
-        shfmt
-        stylua
-        astyle
-        nodePackages.prettier
-        alejandra
+      # Formatters
+      black
+      shfmt
+      stylua
+      astyle
+      nodePackages.prettier
+      alejandra
+      pgformatter
 
-        # Build tools
-        # maven
-        cmake
-      ];
+      # Build tools
+      # maven
+      cmake
+    ];
   };
 }

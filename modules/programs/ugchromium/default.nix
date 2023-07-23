@@ -20,7 +20,9 @@ in
     config = mkIf cfg.enable {
       programs.chromium = {
         enable = true;
-        package = pkgs.ungoogled-chromium;
+        commandLineArgs = [
+          "--disable-gpu-vsync"
+        ];
         extensions = [
           {id = "cjpalhdlnbpafiamejdnhcphjbkeiagm";} # ublock origin
           {id = "dbepggeogbaibhgnhhndojpepiihcmeb";} # vimium
@@ -31,6 +33,7 @@ in
           {id = "ialbpcipalajnakfondkflpkagbkdoib";} # lovely Forks
           {id = "ajopnjidmegmdimjlfnijceegpefgped";} # BetterTTV
           {id = "ldpochfccmkkmhdbclfhpagapcfdljkj";} # Decentralized
+          {id = "mmjbdbjnoablegbkcklggeknkfcjkjia";} # Custtom new Tab
         ];
       };
     };

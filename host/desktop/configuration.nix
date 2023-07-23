@@ -57,11 +57,10 @@ in {
       ];
     };
     nvidia = {
-      powerManagement = {
-        enable = true;
-      };
+      powerManagement.enable = true;
       forceFullCompositionPipeline = true;
       open = false;
+      nvidiaSettings = true;
       modesetting.enable = true;
     };
     bluetooth = {

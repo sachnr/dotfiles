@@ -32,7 +32,7 @@ in {
       rofi.enable = true;
       qutebrowser.enable = true;
       zathura.enable = true;
-      wezterm.enable = false;
+      wezterm.enable = true;
       alacritty.enable = false;
       ugchromium.enable = true;
     };

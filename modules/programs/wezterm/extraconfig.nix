@@ -39,25 +39,49 @@ with theme; ''
     })
   end
 
+   local colors = {
+      foreground = "${foreground}",
+      background = "${background}",
+
+      cursor_bg = "${gray}",
+      cursor_fg = "${gray}",
+      cursor_border = "${gray}",
+
+      selection_fg = "${gray}",
+      selection_bg = "${selection}",
+
+      scrollbar_thumb = "${background}",
+      split = "${background}",
+
+      ansi = { "${black}", "${red}", "${green}", "${yellow}", "${blue}", "${purple}", "${aqua}", "${gray}" },
+      brights = { "${brightblack}", "${brightred}", "${brightgreen}", "${brightyellow}", "${brightblue}", "${brightpurple}", "${brightaqua}", "${brightgray}" },
+      indexed = { [16] = "${gray}", [17] = "#ff5d62" },
+       compose_cursor = "${orange}",
+    }
+
   return {
-    font = wezterm.font {
-        family = "JetBrains Mono",
-        harfbuzz_features = { "cv06" , "cv07" }
+    font = wezterm.font({ family = "Iosevka" }),
+    font_size = 11,
+    font_rules = {
+        {
+            intensity = "Bold",
+            italic = false,
+            font = wezterm.font({ family = "Iosevka", weight = "Bold" }),
+        },
     },
-    font_size = 10,
-    underline_position = '125%',
     use_fancy_tab_bar = false,
-    freetype_load_target = "Normal",
-    freetype_load_flags = "DEFAULT",
+    underline_position = "125%",
+    cursor_blink_rate = 0,
+    front_end = "WebGpu",
     adjust_window_size_when_changing_font_size = false,
     color_scheme = "nixtheme",
-    colors = {
-        compose_cursor = '${orange}',
-    },
+    default_cursor_style = "SteadyBar",
+    force_reverse_video_cursor = true,
     check_for_updates = false,
     hide_tab_bar_if_only_one_tab = true,
     disable_default_key_bindings = true,
     enable_scroll_bar = true,
     keys = keybinds,
+    colors = colors,
   }
 ''

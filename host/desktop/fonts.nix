@@ -11,7 +11,6 @@
       noto-fonts-emoji
       iosevka
       roboto
-      spleen
       (nerdfonts.override {fonts = ["RobotoMono" "NerdFontsSymbolsOnly"];})
     ];
 
@@ -52,7 +51,7 @@
         (substr yellow)
         (substr blue)
         (substr purple)
-        (substr aqua)
+       (substr aqua)
         (substr gray)
         (substr brightblack)
         (substr brightred)

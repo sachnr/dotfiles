@@ -6,10 +6,10 @@
   theme,
   ...
 }: let
-  cfg = config.modules.desktop.waylandPkgs;
+  cfg = config.modules.wayland.extraPkgs;
 in
   with lib; {
-    options.modules.desktop.waylandPkgs = {
+    options.modules.wayland.extraPkgs = {
       enable = mkOption {
         type = types.bool;
         default = false;
@@ -38,13 +38,11 @@ in
         packages = with pkgs; [
           libsForQt5.qt5.qtwayland
           qt6.qtwayland
-          dconf
           grim
           slurp
           wl-clipboard
           swww
           wlr-randr
-          xsettingsd
         ];
       };
     };

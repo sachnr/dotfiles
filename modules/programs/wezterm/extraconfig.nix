@@ -60,21 +60,25 @@ with theme; ''
     }
 
   return {
-    font = wezterm.font({ family = "Iosevka" }),
-    font_size = 11,
+    font = wezterm.font({ family = "JetBrains Mono" }),
+    font_size = 10.6,
     font_rules = {
         {
             intensity = "Bold",
             italic = false,
-            font = wezterm.font({ family = "Iosevka", weight = "Bold" }),
+            font = wezterm.font({ family = "JetBrains Mono", weight = "Bold" }),
         },
     },
     use_fancy_tab_bar = false,
     underline_position = "125%",
     cursor_blink_rate = 0,
+    line_height = 1.0,
     front_end = "WebGpu",
+    freetype_load_flags = 'NO_HINTING',
+    freetype_load_target = "Normal",
     adjust_window_size_when_changing_font_size = false,
-    color_scheme = "nixtheme",
+    -- color_scheme = "nixtheme",
+    color_scheme = "Kanagawa (Gogh)",
     default_cursor_style = "SteadyBar",
     force_reverse_video_cursor = true,
     check_for_updates = false,

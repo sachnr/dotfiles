@@ -2,7 +2,8 @@
   # returns list of all folders in path
   get_dir = path: (lib.attrsets.mapAttrsToList (name: _: path + ("/" + name)) (lib.attrsets.filterAttrs (name: value: value == "directory") (builtins.readDir path)));
   shell = get_dir ../../../modules/shell;
-  desktop = get_dir ../../../modules/desktop;
+  xorg = get_dir ../../../modules/xorg;
+  wayland = get_dir ../../../modules/wayland;
   programs = get_dir ../../../modules/programs;
   services = get_dir ../../../modules/services;
 in {
@@ -10,22 +11,27 @@ in {
     [
       ./home.nix
     ]
-    ++ desktop
+    ++ xorg
+    ++ wayland
     ++ programs
     ++ services
     ++ shell;
 
   config.modules = {
-    desktop = {
+    xorg = {
       awesome.enable = true;
       i3.enable = false;
-      waylandPkgs.enable = false;
+    };
+    wayland = {
       hyprland.enable = false;
       sway.enable = false;
-      gtk.enable = true;
+      extraPkgs.enable = false;
+      mako.enable = false;
+      swayidle.enable = false;
+      waybar.enable = false;
     };
     programs = {
-      waybar.enable = false;
+      gtk.enable = true;
       neovim.enable = true;
       firefox.enable = false;
       kitty.enable = true;
@@ -40,12 +46,9 @@ in {
       picom.enable = true;
       polybar.enable = false;
       mpd.enable = true;
-      gammastep.enable = false;
       eww.enable = false;
-      mako.enable = true;
       polkit.enable = true;
       gnupg.enable = true;
-      swayidle.enable = true;
     };
     shell = {
       zsh.enable = true;

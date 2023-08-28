@@ -27,6 +27,7 @@ in {
       unzip
       exfat
       zip
+      gnome.gvfs
       sddm-theme
     ];
 
@@ -59,7 +60,6 @@ in {
     blueman.enable = true;
     fstrim.enable = true;
     dbus.enable = true;
-    gvfs.enable = true;
     # openssh.enable = true;
     # printing.enable = true;
   };
@@ -116,7 +116,7 @@ in {
   };
 
   xdg.portal = {
-    enable = true;
+    enable = false;
     extraPortals = [
       pkgs.xdg-desktop-portal-wlr
     ];

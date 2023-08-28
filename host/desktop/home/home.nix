@@ -30,7 +30,6 @@
       # media/game
       feh
       pavucontrol
-      easyeffects
       steam
 
       # Browsers
@@ -88,6 +87,7 @@
       # Build tools
       # maven
       cmake
+      gnumake
     ];
   };
 }

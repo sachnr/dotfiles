@@ -7,7 +7,7 @@
   ...
 }: let
   oomox = pkgs.callPackage ../../../pkgs/themix-gui.nix {inherit theme;};
-  cfg = config.modules.desktop.gtk;
+  cfg = config.modules.programs.gtk;
 
   kvtheme = ''
     [General]
@@ -111,7 +111,7 @@
     '';
 in
   with lib; {
-    options.modules.desktop.gtk = {
+    options.modules.programs.gtk = {
       enable = mkOption {
         type = types.bool;
         default = true;

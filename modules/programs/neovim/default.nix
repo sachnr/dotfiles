@@ -21,7 +21,7 @@ in
         packages = with pkgs; [
           # neovim-unwrapped
           neovim
-          emacs
+          tree-sitter
         ];
       };
     };

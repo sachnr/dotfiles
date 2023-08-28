@@ -34,13 +34,13 @@ in
           # shadow = true;
           # shadowOpacity = 0.7;
           # shadowExclude = [];
-          vSync = false;
+          vSync = true;
           # mark-wmwin-focused = true;
           # mark-ovredir-focused = true;
           detect-rounded-corners = true;
           detect-client-opacity = true;
           # use-damage = false;
-          # unredir-if-possible = false;
+          unredir-if-possible = false;
           # log-level = "warn";
         };
       };

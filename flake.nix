@@ -20,14 +20,14 @@
     #   inputs.nixpkgs.follows = "nixpkgs";
     # };
 
-    # hyprland = {
-    #   url = "github:vaxerski/Hyprland";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
+    hyprland = {
+      url = "github:vaxerski/Hyprland";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
-    # nixpkgs-wayland = {
-    #   url = "github:nix-community/nixpkgs-wayland";
-    # };
+    nixpkgs-wayland = {
+      url = "github:nix-community/nixpkgs-wayland";
+    };
 
     nixpkgs-f2k.url = "github:fortuneteller2k/nixpkgs-f2k";
 

@@ -1,8 +1,8 @@
-{pkgs}: let
-  source = pkgs.hyprland.override {
-    nvidiaPatches = true;
-    hidpiXWayland = false;
-  };
+{
+  inputs,
+  pkgs,
+}: let
+  source = inputs.hyprland.packages.${pkgs.system}.hyprland-nvidia;
   env = ''
     export WLR_NO_HARDWARE_CURSORS=1
     export GBM_BACKEND=nvidia-drm

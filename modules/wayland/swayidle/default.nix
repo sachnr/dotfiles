@@ -6,10 +6,10 @@
   theme,
   ...
 }: let
-  cfg = config.modules.services.swayidle;
+  cfg = config.modules.wayland.swayidle;
 in
   with lib; {
-    options.modules.services.swayidle = {
+    options.modules.wayland.swayidle = {
       enable = mkOption {
         type = types.bool;
         default = false;

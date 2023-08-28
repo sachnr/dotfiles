@@ -4,10 +4,10 @@
   lib,
   ...
 }: let
-  cfg = config.modules.services.gammastep;
+  cfg = config.modules.wayland.gammastep;
 in
   with lib; {
-    options.modules.services.gammastep = {
+    options.modules.wayland.gammastep = {
       enable = mkOption {
         type = types.bool;
         default = false;

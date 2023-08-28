@@ -1,6 +1,6 @@
 {
   accent = "#8a9a7b";
-  background = "#16161d";
+  background = "#181616";
   background2 = "#282727";
   background3 = "#393836";
   foreground = "#dcd7ba";

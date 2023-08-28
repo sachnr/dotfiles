@@ -5,10 +5,10 @@
   theme,
   ...
 }: let
-  cfg = config.modules.services.mako;
+  cfg = config.modules.wayland.mako;
 in
   with lib; {
-    options.modules.services.mako = {
+    options.modules.wayland.mako = {
       enable = mkOption {
         type = types.bool;
         default = false;

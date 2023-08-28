@@ -32,5 +32,5 @@ in
       echo "${hyprland}" > $out/share/wayland-sessions/hyprland.desktop
     '';
 
-    passthru.providedSessions = ["sway" "hyprland"];
+    passthru.providedSessions = ["hyprland"];
   }

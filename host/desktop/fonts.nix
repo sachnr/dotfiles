@@ -7,10 +7,14 @@
   fonts = {
     fonts = with pkgs; [
       jetbrains-mono
+      # iosevka
+      # inconsolata
       noto-fonts
       noto-fonts-emoji
-      iosevka
       roboto
+      terminus_font_ttf
+      source-code-pro
+      terminus-nerdfont
       (nerdfonts.override {fonts = ["RobotoMono" "NerdFontsSymbolsOnly"];})
     ];
 
@@ -51,7 +55,7 @@
         (substr yellow)
         (substr blue)
         (substr purple)
-       (substr aqua)
+        (substr aqua)
         (substr gray)
         (substr brightblack)
         (substr brightred)

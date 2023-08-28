@@ -5,7 +5,6 @@ with inputs; [
   neovim-nightly-overlay.overlay
   nixpkgs-f2k.overlays.compositors
   nix-rice.overlays.default
-  # hyprland.overlays.default
   (final: prev: {
     awesome = nixpkgs-f2k.packages.x86_64-linux.awesome-luajit-git;
     # sway-unwrapped = nixpkgs-wayland.packages.x86_64-linux.sway-unwrapped.override {

@@ -42,7 +42,7 @@ in
         home-manager = {
           useGlobalPkgs = true;
           useUserPackages = true;
-          users.${user} = import ./home/default.nix;
+          users.${user} = import ./home/modules.nix;
           extraSpecialArgs = {inherit inputs pkgs system user theme;};
         };
       }

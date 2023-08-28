@@ -3,14 +3,15 @@
   config,
   theme,
   lib,
+  inputs,
   ...
 }: let
-  cfg = config.modules.desktop.hyprland;
+  cfg = config.modules.wayland.hyprland;
   hyprcfg = pkgs.callPackage ../../../configs/hyprland {inherit theme;};
-  hyprland-wrapped = import ./hyprland-wrapped.nix {inherit pkgs;};
+  hyprland-wrapped = import ./hyprland-wrapped.nix {inherit pkgs inputs;};
 in
   with lib; {
-    options.modules.desktop.hyprland = {
+    options.modules.wayland.hyprland = {
       enable = mkOption {
         type = types.bool;
         default = false;

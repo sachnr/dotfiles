@@ -1,4 +1,4 @@
-{pkgs, ...}: let
+{pkgs, config, ...}: let
   network-driver = pkgs.linuxKernel.packages.linux_6_4.rtl8812au.overrideAttrs (_: {
     src = pkgs.fetchFromGitHub {
       owner = "aircrack-ng";
@@ -62,6 +62,7 @@ in {
       open = false;
       nvidiaSettings = true;
       modesetting.enable = true;
+      package = config.boot.kernelPackages.nvidiaPackages.vulkan_beta;
     };
     bluetooth = {
       enable = true;

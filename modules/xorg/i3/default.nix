@@ -6,13 +6,13 @@
   user,
   ...
 }: let
-  cfg = config.modules.desktop.i3;
+  cfg = config.modules.xorg.i3;
   opts = import ./config.nix {inherit pkgs theme;};
   rules = import ./win_rules.nix;
   keys = import ./keys.nix {inherit pkgs;};
 in
   with lib; {
-    options.modules.desktop.i3 = {
+    options.modules.xorg.i3 = {
       enable = mkOption {
         type = types.bool;
         default = false;

@@ -7,10 +7,10 @@
   system,
   ...
 }: let
-  cfg = config.modules.programs.waybar;
+  cfg = config.modules.wayland.waybar;
 in
   with lib; {
-    options.modules.programs.waybar = {
+    options.modules.wayland.waybar = {
       enable = mkOption {
         type = types.bool;
         default = false;
@@ -20,7 +20,7 @@ in
     config = mkIf cfg.enable {
       programs.waybar = {
         enable = true;
-        package = pkgs.waybar-hyprland;
+        package = pkgs.waybar;
         settings = import ./settings.nix {inherit pkgs;};
         style = import ./style.nix {inherit theme;};
       };

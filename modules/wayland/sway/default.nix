@@ -5,10 +5,10 @@
   theme,
   ...
 }: let
-  cfg = config.modules.desktop.sway;
+  cfg = config.modules.wayland.sway;
 in
   with lib; {
-    options.modules.desktop.sway = {
+    options.modules.wayland.sway = {
       enable = mkOption {
         type = types.bool;
         default = false;

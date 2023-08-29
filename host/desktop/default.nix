@@ -9,10 +9,17 @@
     config = {
       allowBroken = false;
       packageOverrides = super: {
+        old = import inputs.nixpkgs-old {
+          inherit system lib;
+          config = {
+            allowUnfree = true;
+          };
+        };
       };
       allowUnfree = true; # Allow proprietary software
     };
   };
+
   fonts = import ./fonts.nix {inherit theme lib pkgs;};
 in
   lib.nixosSystem {
@@ -25,11 +32,6 @@ in
       inputs.home-manager.nixosModules.home-manager
       {
         virtualisation.docker.enable = true;
-
-        nixpkgs.config.allowUnfreePredicate = pkg:
-          builtins.elem (lib.getName pkg) [
-            "nvidia-x11"
-          ];
 
         users.users.${user} = {
           isNormalUser = true;

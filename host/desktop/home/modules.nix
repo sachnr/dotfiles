@@ -23,12 +23,12 @@ in {
       i3.enable = false;
     };
     wayland = {
-      hyprland.enable = false;
+      hyprland.enable = true;
       sway.enable = false;
-      extraPkgs.enable = false;
-      mako.enable = false;
-      swayidle.enable = false;
-      waybar.enable = false;
+      extraPkgs.enable = true;
+      mako.enable = true;
+      swayidle.enable = true;
+      waybar.enable = true;
     };
     programs = {
       gtk.enable = true;

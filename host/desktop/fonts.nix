@@ -5,7 +5,7 @@
   ...
 }: {
   fonts = {
-    fonts = with pkgs; [
+    packages = with pkgs; [
       jetbrains-mono
       # iosevka
       # inconsolata
@@ -28,7 +28,7 @@
       hinting = {
         enable = true;
         autohint = false;
-        style = "hintslight";
+        style = "medium";
       };
       defaultFonts = {
         serif = ["Noto Sans" "Symbols Nerd Font Mono"];

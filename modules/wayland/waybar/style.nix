@@ -2,12 +2,12 @@
       * {
         border: none;
         border-radius: 0;
-        font-family: Material Design Icons, ${name.fontmonospace} ;
+        font-family: "Roboto", "Symbols Nerd Font Mono" ;
         font-weight: bold;
-        font-size: 12px;
+        font-size: 13.5px;
       }
       window#waybar {
-        background: ${black};
+        background: rgba(1, 2, 3, 0.0);
         color: ${foreground};
         box-shadow: 5px 4px 3px 0px rgba(1, 2, 3, 0.6);
       }
@@ -30,8 +30,8 @@
         background-color: ${background};
       }
       #workspaces button.active {
-        color: ${brightgreen};
-        background-color: ${background};
+        color: ${background};
+        background-color: ${brightgreen};
       }
       #workspaces button.persistent{
         color: ${brightblack};

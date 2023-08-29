@@ -1,5 +1,9 @@
-{pkgs, config, ...}: let
-  network-driver = pkgs.linuxKernel.packages.linux_6_4.rtl8812au.overrideAttrs (_: {
+{
+  pkgs,
+  config,
+  ...
+}: let
+  network-driver = pkgs.old.linuxKernel.packages.linux_6_3.rtl8812au.overrideAttrs (_: {
     src = pkgs.fetchFromGitHub {
       owner = "aircrack-ng";
       repo = "rtl8812au";
@@ -14,7 +18,7 @@ in {
 
   boot = {
     supportedFilesystems = ["ntfs"];
-    kernelPackages = pkgs.linuxPackages_latest;
+    kernelPackages = pkgs.old.linuxPackages_latest;
     blacklistedKernelModules = ["nouveau" "i2c_nvidia_gpu"];
     kernelParams = ["quiet" "acpi_osi=!"];
     extraModulePackages = [network-driver];
@@ -57,12 +61,15 @@ in {
       ];
     };
     nvidia = {
-      powerManagement.enable = true;
+      powerManagement = {
+        enable = true;
+        finegrained = false;
+      };
       forceFullCompositionPipeline = true;
       open = false;
       nvidiaSettings = true;
+      package = config.boot.kernelPackages.nvidiaPackages.stable;
       modesetting.enable = true;
-      package = config.boot.kernelPackages.nvidiaPackages.vulkan_beta;
     };
     bluetooth = {
       enable = true;

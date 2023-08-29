@@ -1,16 +1,14 @@
-{
-  overlays,
-  inputs,
-}: let
+{inputs}: let
   inherit (inputs.nixpkgs) lib;
   system = "x86_64-linux"; # System architecture
   user = "sachnr";
+  overlays = import ./overlays.nix {inherit inputs;};
 
   config = {
     allowUnfree = true;
   };
 
-  theme = import ../../theme {};
+  theme = import ../../theme/kanagawa.nix;
   pkgs = import inputs.nixpkgs {
     inherit config;
     inherit system;

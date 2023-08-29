@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  theme,
+  ...
+}: {
   mainBar = {
     layer = "top";
     position = "top";
@@ -26,7 +30,6 @@
       "pulseaudio"
       "clock#date"
       "clock"
-      "custom/power"
     ];
 
     "hyprland/window" = {
@@ -47,24 +50,25 @@
         "6" = [];
       };
       format-icons = {
-        "1" = "";
-        "2" = "";
-        "3" = "";
-        "4" = "󰉋";
-        "5" = "󰵅";
-        "6" = "󰊠";
-        "7" = "";
-        "8" = "";
-        "9" = "";
+        "1" = " ";
+        "2" = " ";
+        "3" = " ";
+        "4" = "󰉋 ";
+        "5" = "󰵅 ";
+        "6" = "󰊠 ";
+        "7" = " ";
+        "8" = " ";
+        "9" = " ";
       };
     };
 
     "wlr/workspaces" = {
-      format = "{icon}";
-      "on-scroll-up" = "hyprctl dispatch workspace e+1";
-      "on-scroll-down" = "hyprctl dispatch workspace e-1";
+      format = "<span font_family='Symbols Nerd Font Mono' size='medium'>{icon}</span>";
+      on-scroll-up = "hyprctl dispatch workspace e+1";
+      on-scroll-down = "hyprctl dispatch workspace e-1";
       all-outputs = true;
       onclick = "activate";
+      sort-by-number = true;
       format-icons = {
         "1" = " ";
         "2" = " ";
@@ -72,6 +76,9 @@
         "4" = "󰉋 ";
         "5" = "󰵅 ";
         "6" = "󰊠 ";
+        "7" = " ";
+        "8" = " ";
+        "9" = " ";
         "urgent" = " ";
         "focused" = "";
         "default" = "";
@@ -90,10 +97,10 @@
       max-length = 20;
     };
 
-    "custom/power" = {
+    "custom/power" = with theme; {
       tooltip = false;
       on-click = "exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'";
-      format = "  ";
+      format = "<span font_family=\"Symbols Nerd Font Mono\" size=\"medium\" color=\"${theme.accent}\">   </span>";
     };
 
     "sway/mode" = {
@@ -103,8 +110,8 @@
 
     pulseaudio = {
       tooltip = false;
-      format = " {icon} {volume}% ";
-      format-muted = " 󰖁 muted ";
+      format = " <span color=\"${theme.accent}\" font_family='Symbols Nerd Font Mono' size='medium'>{icon}</span> {volume}% ";
+      format-muted = " <span color=\"${theme.red}\" font_family='Symbols Nerd Font Mono' size='medium' rise='-4000'>󰖁 </span> muted ";
       format-icons = {
         default = [" 󰕿 " " 󰖀 " " 󰕾 "];
         headphone = " ";
@@ -142,20 +149,20 @@
 
     clock = {
       tooltip = false;
-      format = " 󱑎 {:%H:%M} ";
+      format = "<span font_family=\"Symbols Nerd Font Mono\" size=\"medium\" color=\"${theme.accent}\">󱑎</span>  {:%H:%M} ";
     };
 
     "clock#date" = {
-      format = " 󰃶 {:%a %d %b} ";
+      format = "<span font_family=\"Symbols Nerd Font Mono\" size=\"medium\" color=\"${theme.accent}\">󰃶</span>  {:%a %d %b} ";
       tooltip-format = ''
         <big>{:%Y %B}</big>
         <tt><small>{calendar}</small></tt>'';
     };
 
     "mpd" = {
-      "format" = " {stateIcon}   {artist} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S})    ";
-      "format-disconnected" = " Disconnected  ";
-      "format-stopped" = " Stopped  ";
+      "format" = " <span font_family=\"Symbols Nerd Font Mono\" size=\"medium\" color=\"${theme.accent}\">{stateIcon}</span>   {artist} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S})   <span font_family=\"Symbols Nerd Font Mono\" size=\"medium\" color=\"${theme.accent}\"> </span>";
+      "format-disconnected" = " Disconnected <span font_family=\"Symbols Nerd Font Mono\" size=\"medium\" color=\"${theme.accent}\"> </span>";
+      "format-stopped" = " Stopped <span font_family=\"Symbols Nerd Font Mono\" size=\"medium\" color=\"${theme.accent}\"> </span>";
       "interval" = 2;
       "port" = 6600;
       "consume-icons" = {
@@ -177,6 +184,7 @@
       };
       "on-scroll-up" = "mpc next";
       "on-scroll-down" = "mpc prev";
+      "on-click" = "mpc toggle";
       "tooltip-format" = "MPD (connected)";
       "tooltip-format-disconnected" = "MPD (disconnected)";
     };

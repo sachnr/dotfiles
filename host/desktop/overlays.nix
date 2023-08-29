@@ -2,7 +2,7 @@
 with inputs; [
   nur.overlay
   # nixpkgs-wayland.overlay
-  neovim-nightly-overlay.overlay
+  # neovim-nightly-overlay.overlay
   nixpkgs-f2k.overlays.compositors
   nix-rice.overlays.default
   (final: prev: {

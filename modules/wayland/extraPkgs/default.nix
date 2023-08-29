@@ -37,12 +37,13 @@ in
       home = {
         packages = with pkgs; [
           libsForQt5.qt5.qtwayland
+          egl-wayland
           qt6.qtwayland
           grim
           slurp
           wl-clipboard
-          swww
           wlr-randr
+          wpaperd
         ];
       };
     };

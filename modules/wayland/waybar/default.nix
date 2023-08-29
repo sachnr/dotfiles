@@ -21,7 +21,7 @@ in
       programs.waybar = {
         enable = true;
         package = pkgs.waybar;
-        settings = import ./settings.nix {inherit pkgs;};
+        settings = import ./settings.nix {inherit pkgs theme;};
         style = import ./style.nix {inherit theme;};
       };
     };

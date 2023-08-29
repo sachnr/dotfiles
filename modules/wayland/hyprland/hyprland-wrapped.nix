@@ -23,7 +23,7 @@
     export _JAVA_AWT_WM_NONEREPARENTING=1
     export SDL_VIDEODRIVER=wayland
     export CLUTTER_BACKEND=wayland
-    export GDK_BACKEND="wayland,x11"
+    export GDK_BACKEND=wayland
     export NIXOS_OZONE_WL=1
     export MOZ_ENABLE_WAYLAND=1
   '';

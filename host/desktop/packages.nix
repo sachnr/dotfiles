@@ -92,7 +92,7 @@ in {
         enable = true;
         theme = "Psion";
       };
-      # sessionPackages = [sessions];
+      sessionPackages = [sessions];
       lightdm.enable = false;
     };
     libinput = {
@@ -116,7 +116,7 @@ in {
   };
 
   xdg.portal = {
-    enable = false;
+    enable = true;
     extraPortals = [
       pkgs.xdg-desktop-portal-wlr
     ];

@@ -18,7 +18,7 @@ in
     config = mkIf cfg.enable {
       services.picom = {
         enable = true;
-        package = pkgs.picom;
+        package = pkgs.picom-git;
         backend = "glx";
         settings = {
           # animations = true;

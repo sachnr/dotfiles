@@ -4,7 +4,7 @@ with theme; ''
   Xft.antialias: 1
   Xft.hinting: 1
   Xft.autohint: 0
-  Xft.hintstyle: hintslight
+  Xft.hintstyle: hintfull
   Xft.rgba:	rgb
   Xft.lcdfilter: lcddefault
 

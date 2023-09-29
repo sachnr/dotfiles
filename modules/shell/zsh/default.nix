@@ -23,7 +23,7 @@ in
       home.packages = with pkgs; [
         tmux
         tmux-sessionizer
-        exa
+        eza
         fzf
         bottom
       ];
@@ -56,6 +56,7 @@ in
 
             export PATH="''${PATH}:$HOME/.npm/bin:''${HOME}/.local/share/nvim/mason/bin"
             export PATH="''${PATH}:$HOME/.cargo/bin"
+            export PATH="''${PATH}:$HOME/go/bin"
             export EDITOR="nvim"
             export PYTHONPATH=$HOME/.config/pip/site-packages
             export CODE_LLDB_PATH=${pkgs.vscode-extensions.vadimcn.vscode-lldb}
@@ -84,14 +85,15 @@ in
             gg = "${pkgs.lazygit}/bin/lazygit";
             nixr = "sudo nixos-rebuild switch --flake /home/${user}/flake#desktop";
             nixc = "sudo nix-collect-garbage --delete-older-than 7d";
-            ls = "${pkgs.exa}/bin/exa --icons --group-directories-first";
-            la = "${pkgs.exa}/bin/exa -lah --icons --group-directories-first";
-            tree = "${pkgs.exa}/bin/exa --tree --icons --group-directories-first";
+            ls = "${pkgs.eza}/bin/eza --icons --group-directories-first";
+            la = "${pkgs.eza}/bin/eza -lah --icons --group-directories-first";
+            tree = "${pkgs.eza}/bin/eza --tree --icons --group-directories-first";
             e = "${pkgs.neovim}/bin/nvim ./";
             f = "${pkgs.ranger}/bin/ranger";
             tm = "tmux-fzy";
             bk = "find ~/Documents/Books -mindepth 1 | fzf | xargs -I {} zathura '{}' --fork";
             top = "${pkgs.bottom}/bin/btm -b";
+            gotest = "gotestsum -f testname";
           };
           plugins =
             [

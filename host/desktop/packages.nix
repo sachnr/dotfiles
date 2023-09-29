@@ -81,6 +81,11 @@ in {
     windowManager = {
       awesome = {
         enable = true;
+        luaModules = with pkgs.extraLuaPackages; [
+          pkgs.luajitPackages.lgi
+          dbus_proxy
+          pulseaudio_dbus
+        ];
       };
     };
     desktopManager = {
@@ -93,6 +98,9 @@ in {
         theme = "Psion";
       };
       sessionPackages = [sessions];
+      sessionCommands = ''
+        ${pkgs.xorg.xset}/bin/xset r rate 250 25
+      '';
       lightdm.enable = false;
     };
     libinput = {

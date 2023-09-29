@@ -31,6 +31,7 @@
       feh
       pavucontrol
       steam
+      telegram-desktop
 
       # Browsers
       # tor-browser-bundle-bin
@@ -50,6 +51,7 @@
       nodePackages.typescript-language-server
       nodePackages.vscode-langservers-extracted
       nil
+      gopls
       # sqls
       ccls
 
@@ -66,7 +68,8 @@
       jq
       gcc
       pkg-config
-      # go
+      go
+      gotools
 
       # for luasnip
       luajitPackages.jsregexp

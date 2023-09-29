@@ -7,28 +7,23 @@
   fonts = {
     packages = with pkgs; [
       jetbrains-mono
-      # iosevka
-      # inconsolata
       noto-fonts
       noto-fonts-emoji
       roboto
-      terminus_font_ttf
-      source-code-pro
-      terminus-nerdfont
-      (nerdfonts.override {fonts = ["RobotoMono" "NerdFontsSymbolsOnly"];})
+      (nerdfonts.override {fonts = ["JetBrainsMono" "RobotoMono" "IosevkaTerm" "NerdFontsSymbolsOnly"];})
     ];
 
     fontconfig = {
       enable = true;
       antialias = true;
       subpixel = {
-        lcdfilter = "default";
+        lcdfilter = "light";
         rgba = "rgb";
       };
       hinting = {
         enable = true;
         autohint = false;
-        style = "medium";
+        style = "slight";
       };
       defaultFonts = {
         serif = ["Noto Sans" "Symbols Nerd Font Mono"];

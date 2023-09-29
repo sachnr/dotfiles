@@ -2,7 +2,17 @@
   description = "A very basic flake";
 
   inputs = {
+    # nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.05";
+    # home-manager = {
+    #   url = "github:nix-community/home-manager/release-23.05";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
+
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # pin older nixpkgs revision that dosent break nvidia drivers
     # NVIDIA-Linux-x86_64-530.41.03
@@ -15,17 +25,6 @@
       url = "github:nix-community/NUR"; # NUR Packages
     };
 
-    # home-manager = {
-    #   url = "github:nix-community/home-manager/release-23.05";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
-
-    # unstable
-    home-manager = {
-      url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     hyprland = {
       url = "github:vaxerski/Hyprland";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -35,11 +34,9 @@
       url = "github:nix-community/nixpkgs-wayland";
     };
 
-    nixpkgs-f2k.url = "github:fortuneteller2k/nixpkgs-f2k";
-
-    # neovim-nightly-overlay = {
-    #   url = "github:nix-community/neovim-nightly-overlay";
-    # };
+    neovim-nightly-overlay = {
+      url = "github:nix-community/neovim-nightly-overlay";
+    };
 
     nix-rice = {url = "github:bertof/nix-rice";};
 
@@ -47,6 +44,11 @@
 
     tmux-tpm = {
       url = "github:tmux-plugins/tpm";
+      flake = false;
+    };
+
+    lua-extra-pkgs = {
+      url = "github:stefano-m/nix-stefano-m-nix-overlays";
       flake = false;
     };
   };

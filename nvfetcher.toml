@@ -1,0 +1,7 @@
+[awesomewm]
+src.git = "https://github.com/awesomeWM/awesome"
+fetch.github = "awesomeWM/awesome"
+
+[picom]
+src.git = "https://github.com/yshui/picom"
+fetch.github = "yshui/picom"

@@ -5,3 +5,8 @@ fetch.github = "awesomeWM/awesome"
 [picom]
 src.git = "https://github.com/yshui/picom"
 fetch.github = "yshui/picom"
+
+[wezterm]
+src.git = "https://github.com/wez/wezterm"
+fetch.git = "https://github.com/wez/wezterm.git"
+git.fetchSubmodules = true

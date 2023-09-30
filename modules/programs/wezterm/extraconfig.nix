@@ -74,7 +74,7 @@ with theme; ''
     line_height = 1.0,
     front_end = "WebGpu",
     freetype_load_target = "Normal",
-    freetype_render_target = "Light",
+    freetype_render_target = "Normal",
     freetype_load_flags = 'DEFAULT',
     adjust_window_size_when_changing_font_size = false,
     color_scheme = "nixtheme",

@@ -49,7 +49,13 @@ in {
   i18n.defaultLocale = "en_US.UTF-8";
 
   hardware = {
-    pulseaudio.enable = false;
+    pulseaudio = {
+      enable = true;
+      support32Bit = true;
+      extraConfig = ''
+        load-module module-dbus-protocol
+      '';
+    };
     opengl = {
       enable = true;
       driSupport = true;
@@ -87,14 +93,12 @@ in {
       substituters = [
         "https://cache.nixos.org?priority=10"
         "https://hyprland.cachix.org"
-        "https://fortuneteller2k.cachix.org"
         "https://nixpkgs-wayland.cachix.org"
       ];
       trusted-public-keys = [
         "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
         "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
         "nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA="
-        "fortuneteller2k.cachix.org-1:kXXNkMV5yheEQwT0I4XYh1MaCSz+qg72k8XAi2PthJI="
       ];
       experimental-features = ["nix-command" "flakes"];
       auto-optimise-store = true;

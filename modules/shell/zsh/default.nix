@@ -9,6 +9,7 @@
 }: let
   cfg = config.modules.shell.zsh;
   tmux-sessionizer = import ./tmux.nix {inherit pkgs;};
+  getPackage = pname: pkgs: (pkgs.callPackage ../../../_sources/generated.nix {}).${pname};
 in
   with lib; {
     options.modules.shell.zsh = {
@@ -93,19 +94,17 @@ in
             tm = "tmux-fzy";
             bk = "find ~/Documents/Books -mindepth 1 | fzf | xargs -I {} zathura '{}' --fork";
             top = "${pkgs.bottom}/bin/btm -b";
-            gotest = "gotestsum -f testname";
+            gotest = "gotestsum -f testdox";
           };
-          plugins =
+          plugins = let
+            zsh-nix-shell = getPackage "zsh-nix-shell" pkgs;
+            powerlevel10k = getPackage "powerlevel10k" pkgs;
+          in
             [
               {
                 name = "zsh-nix-shell";
                 file = "nix-shell.plugin.zsh";
-                src = pkgs.fetchFromGitHub {
-                  owner = "chisui";
-                  repo = "zsh-nix-shell";
-                  rev = "v0.7.0";
-                  sha256 = "sha256-oQpYKBt0gmOSBgay2HgbXiDoZo5FoUKwyHSlUrOAP5E=";
-                };
+                src = zsh-nix-shell.src;
               }
             ]
             ++ (
@@ -115,12 +114,7 @@ in
                 {
                   name = "powerlevel10k";
                   file = "powerlevel10k.zsh-theme";
-                  src = pkgs.fetchFromGitHub {
-                    owner = "romkatv";
-                    repo = "powerlevel10k";
-                    rev = "v1.17.0";
-                    sha256 = "sha256-fgrwbWj6CcPoZ6GbCZ47HRUg8ZSJWOsa7aipEqYuE0Q=";
-                  };
+                  src = powerlevel10k.src;
                 }
               ]
             );

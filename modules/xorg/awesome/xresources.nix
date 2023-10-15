@@ -4,17 +4,9 @@ with theme; ''
   Xft.antialias: 1
   Xft.hinting: 1
   Xft.autohint: 0
-  Xft.hintstyle: hintfull
+  Xft.hintstyle: hintslight
   Xft.rgba:	rgb
   Xft.lcdfilter: lcddefault
-
-  ! st.font: JetBrainsMono Nerd Font:style:medium:pixelsize=14
-
-  ! window padding
-  ! st.borderpx: 10
-
-  !- 0.1 to 0.9 = transparency
-  st.alpha: 1
 
   *background: ${background}
   *foreground: ${foreground}

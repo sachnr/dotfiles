@@ -20,7 +20,6 @@ in
     config = mkIf cfg.enable {
       programs.wezterm = {
         enable = true;
-        package = pkgs.wezterm-git;
         extraConfig = extracfg;
       };
     };

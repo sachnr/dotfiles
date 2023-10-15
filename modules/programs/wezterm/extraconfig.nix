@@ -72,7 +72,7 @@ with theme; ''
     underline_position = "125%",
     cursor_blink_rate = 0,
     line_height = 1.0,
-    front_end = "WebGpu",
+    front_end = "OpenGL",
     freetype_load_target = "Normal",
     freetype_render_target = "Normal",
     freetype_load_flags = 'DEFAULT',

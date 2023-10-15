@@ -4,10 +4,6 @@
 in {
   programs.zsh.enable = true;
 
-  nixpkgs.config = {
-    allowUnfree = true;
-  };
-
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment = {
@@ -83,8 +79,6 @@ in {
         enable = true;
         luaModules = with pkgs.extraLuaPackages; [
           pkgs.luajitPackages.lgi
-          dbus_proxy
-          pulseaudio_dbus
         ];
       };
     };
@@ -111,17 +105,17 @@ in {
     };
   };
 
-  # services.pipewire = {
-  #   enable = true;
-  #   audio.enable = true;
-  #   alsa = {
-  #     enable = true;
-  #     support32Bit = true;
-  #   };
-  #   wireplumber.enable = true;
-  #   pulse.enable = true;
-  #   jack.enable = true;
-  # };
+  services.pipewire = {
+    enable = true;
+    audio.enable = true;
+    alsa = {
+      enable = true;
+      support32Bit = true;
+    };
+    wireplumber.enable = true;
+    pulse.enable = true;
+    jack.enable = true;
+  };
 
   xdg.portal = {
     enable = true;

@@ -74,7 +74,7 @@
       }
 
       tooltip {
-        font-family: "RobotoMono Nerd Font";
+        font-family: "Roboto Mono";
         font-size : 12px;
         border-radius: 8px;
         padding: 10px;
@@ -82,7 +82,7 @@
       }
 
       tooltip label {
-        font-family: "RobotoMono Nerd Font Bold";
+        font-family: "Roboto Mono Bold";
         font-size : 13px;
         font-weight: bold;
         padding: 20px;

@@ -10,14 +10,15 @@
       noto-fonts
       noto-fonts-emoji
       roboto
-      (nerdfonts.override {fonts = ["JetBrainsMono" "RobotoMono" "IosevkaTerm" "NerdFontsSymbolsOnly"];})
+      ibm-plex
+      (nerdfonts.override {fonts = ["NerdFontsSymbolsOnly"];})
     ];
 
     fontconfig = {
       enable = true;
       antialias = true;
       subpixel = {
-        lcdfilter = "light";
+        lcdfilter = "none";
         rgba = "rgb";
       };
       hinting = {

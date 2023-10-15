@@ -26,15 +26,18 @@ in
           # animation-for-unmap-window = "squeeze";
           # animation-for-transient-window = "none";
           # dithered-present = true;
-          corner-radius = 6;
+          corner-radius = 8;
           blur = {
+            size = 12;
             method = "dual_kawase";
-            strength = 6;
+            background = false;
+            background-frame = false;
+            strength = 5;
           };
           # shadow = true;
           # shadowOpacity = 0.7;
           # shadowExclude = [];
-          vSync = true;
+          vSync = false;
           # mark-wmwin-focused = true;
           # mark-ovredir-focused = true;
           detect-rounded-corners = true;

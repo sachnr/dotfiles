@@ -43,7 +43,7 @@ in {
       ugchromium.enable = true;
     };
     services = {
-      picom.enable = false;
+      picom.enable = true;
       polybar.enable = false;
       mpd.enable = true;
       eww.enable = false;

@@ -3,13 +3,13 @@
 {
   awesomewm = {
     pname = "awesomewm";
-    version = "aa8c7c6e27a20fa265d3f06c5dc3fe72cc5f021e";
+    version = "7ed4dd620bc73ba87a1f88e6f126aed348f94458";
     src = fetchFromGitHub ({
       owner = "awesomeWM";
       repo = "awesome";
-      rev = "aa8c7c6e27a20fa265d3f06c5dc3fe72cc5f021e";
+      rev = "7ed4dd620bc73ba87a1f88e6f126aed348f94458";
       fetchSubmodules = false;
-      sha256 = "sha256-DGAImB4u8sRP9PEoZ4YXAxopa8eaJ7YJxSiBh36yfaE=";
+      sha256 = "sha256-o69if8HQw2u0fp5J7jkS4WQeAXVuiFwpDLzGFscP4mM=";
     });
   };
   picom = {
@@ -23,16 +23,52 @@
       sha256 = "sha256-HdsDGc5bxslP048YLv7p6RMB3kG57b4TxlzhM5IarVs=";
     });
   };
+  powerlevel10k = {
+    pname = "powerlevel10k";
+    version = "862440ae112603c8e2d202f6edb94eeaa1509120";
+    src = fetchgit {
+      url = "https://github.com/romkatv/powerlevel10k.git";
+      rev = "862440ae112603c8e2d202f6edb94eeaa1509120";
+      fetchSubmodules = false;
+      deepClone = false;
+      leaveDotGit = false;
+      sha256 = "sha256-iJ35ZmlarMpwb5TOno273QrAaQJUmOBLDdGDowOo+qM=";
+    };
+  };
+  themixgui = {
+    pname = "themixgui";
+    version = "6d9f49cafe8d18ef13dff7c619aee6f293052617";
+    src = fetchgit {
+      url = "https://github.com/themix-project/themix-gui.git";
+      rev = "6d9f49cafe8d18ef13dff7c619aee6f293052617";
+      fetchSubmodules = false;
+      deepClone = false;
+      leaveDotGit = false;
+      sha256 = "sha256-PvMcAMt+KxnWEcNRSRHq4ntm22CTTrfbS3lFtiDrhj8=";
+    };
+  };
   wezterm = {
     pname = "wezterm";
-    version = "5e0fd1a06e10d23e2a61696d0b0ebdacffecb661";
+    version = "11dec45f08e3c7a611f59b030d4a9bd391807604";
     src = fetchgit {
       url = "https://github.com/wez/wezterm.git";
-      rev = "5e0fd1a06e10d23e2a61696d0b0ebdacffecb661";
+      rev = "11dec45f08e3c7a611f59b030d4a9bd391807604";
       fetchSubmodules = true;
       deepClone = false;
       leaveDotGit = false;
-      sha256 = "sha256-B3ZsF9IDrZzB573NcpWHPM+Ss5YjV8LDRLjce8RZJd0=";
+      sha256 = "sha256-flVptTUqNWvXVuWXdgjaDDfCVyc7O+9OUsI/4QgMyiY=";
+    };
+  };
+  zsh-nix-shell = {
+    pname = "zsh-nix-shell";
+    version = "406ce293f5302fdebca56f8c59ec615743260604";
+    src = fetchgit {
+      url = "https://github.com/chisui/zsh-nix-shell.git";
+      rev = "406ce293f5302fdebca56f8c59ec615743260604";
+      fetchSubmodules = false;
+      deepClone = false;
+      leaveDotGit = false;
+      sha256 = "sha256-dE86o8LfEfswIIP9r0BJpxWvkoYdu7VQcJOKTLYqtWs=";
     };
   };
 }

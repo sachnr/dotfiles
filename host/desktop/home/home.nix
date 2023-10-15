@@ -30,7 +30,7 @@
       # media/game
       feh
       pavucontrol
-      steam
+      # steam
       telegram-desktop
 
       # Browsers
@@ -77,6 +77,7 @@
       # debugger
       gdb
       lldb_15
+      delve
 
       # Formatters
       black

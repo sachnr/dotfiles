@@ -39,8 +39,8 @@ in
             user            "${user}"
             restore_paused  "yes"
             audio_output {
-              type "pipewire"
-              name "My PipeWire Output"
+                type    "pulse"
+                name    "My MPD PulseAudio Output"
             }
             audio_output {
                 type        "fifo"

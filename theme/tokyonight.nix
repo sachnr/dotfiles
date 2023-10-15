@@ -34,6 +34,6 @@
     qt_style = "Fusion";
     icon = "icons_papirus";
     font = "Roboto";
-    fontmonospace = "RobotoMono Nerd Font";
+    fontmonospace = "Roboto Mono";
   };
 }

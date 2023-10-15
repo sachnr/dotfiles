@@ -20,7 +20,7 @@ in {
     supportedFilesystems = ["ntfs"];
     kernelPackages = pkgs.old.linuxPackages_latest;
     blacklistedKernelModules = ["nouveau" "i2c_nvidia_gpu"];
-    kernelParams = ["quiet" "acpi_osi=!"];
+    kernelParams = ["quiet" "acpi_osi=!" "nvidia.NVreg_PreserveVideoMemoryAllocations=1"];
     extraModulePackages = [network-driver];
     loader = {
       timeout = 5;
@@ -49,13 +49,13 @@ in {
   i18n.defaultLocale = "en_US.UTF-8";
 
   hardware = {
-    pulseaudio = {
-      enable = true;
-      support32Bit = true;
-      extraConfig = ''
-        load-module module-dbus-protocol
-      '';
-    };
+    # pulseaudio = {
+    #   enable = true;
+    #   support32Bit = true;
+    #   extraConfig = ''
+    #     load-module module-dbus-protocol
+    #   '';
+    # };
     opengl = {
       enable = true;
       driSupport = true;
@@ -69,7 +69,6 @@ in {
     nvidia = {
       powerManagement = {
         enable = true;
-        finegrained = false;
       };
       forceFullCompositionPipeline = true;
       open = false;

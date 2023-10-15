@@ -10,6 +10,7 @@
   theme,
   ...
 }: let
+  getPackage = pname: pkgs: (pkgs.callPackage ../_sources/generated.nix {}).${pname};
   oomox-colors = let
     substr = str: lib.strings.removePrefix "#" str;
   in
@@ -90,19 +91,14 @@
       BASE16_MILD_TERMINAL=False
       UNITY_DEFAULT_LAUNCHER_STYLE=False
     '';
+in let
+  package = getPackage "themixgui" pkgs;
 in
   stdenv.mkDerivation rec {
-    name = "oomox-gtk-${version}";
+    name = "oomox-gtk";
 
-    version = "1.15.1";
-
-    src = fetchFromGitHub {
-      owner = "themix-project";
-      repo = "themix-gui";
-      rev = "${version}";
-      sha256 = "sha256-xFtwNx1c7Atb+9yorZhs/uVkkoxbZiELJ0SZ88L7KMs=";
-      fetchSubmodules = true;
-    };
+    version = package.version;
+    src = package.src;
 
     dontBuild = true;
 

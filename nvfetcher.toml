@@ -10,3 +10,16 @@ fetch.github = "yshui/picom"
 src.git = "https://github.com/wez/wezterm"
 fetch.git = "https://github.com/wez/wezterm.git"
 git.fetchSubmodules = true
+
+[zsh-nix-shell]
+src.git = "https://github.com/chisui/zsh-nix-shell"
+fetch.git = "https://github.com/chisui/zsh-nix-shell.git"
+
+[powerlevel10k]
+src.git = "https://github.com/romkatv/powerlevel10k"
+fetch.git = "https://github.com/romkatv/powerlevel10k.git"
+
+[themixgui]
+src.git = "https://github.com/themix-project/themix-gui"
+fetch.git = "https://github.com/themix-project/themix-gui.git"
+

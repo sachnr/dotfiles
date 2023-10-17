@@ -31,11 +31,11 @@
             "name": null,
             "owner": "yshui",
             "repo": "picom",
-            "rev": "751f30578e352f6cd37fc63cbf4643e47ab3587a",
-            "sha256": "sha256-HdsDGc5bxslP048YLv7p6RMB3kG57b4TxlzhM5IarVs=",
+            "rev": "a6b4e285f833c13b217c0e30ca71a903ec2464b5",
+            "sha256": "sha256-l76TyxuBjHhIHG1FWzgdAy2obELdVdgtCkdGrfXTK44=",
             "type": "github"
         },
-        "version": "751f30578e352f6cd37fc63cbf4643e47ab3587a"
+        "version": "a6b4e285f833c13b217c0e30ca71a903ec2464b5"
     },
     "powerlevel10k": {
         "cargoLocks": null,
@@ -55,6 +55,24 @@
         },
         "version": "862440ae112603c8e2d202f6edb94eeaa1509120"
     },
+    "stfork": {
+        "cargoLocks": null,
+        "extract": null,
+        "name": "stfork",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "rev": "36d225d71d448bfe307075580f0d8ef81eeb5a87",
+            "sha256": "sha256-u8E8/aqbL3T4Sz0olazg7VYxq30haRdSB1SRy7MiZiA=",
+            "type": "git",
+            "url": "https://github.com/LukeSmithxyz/st.git"
+        },
+        "version": "36d225d71d448bfe307075580f0d8ef81eeb5a87"
+    },
     "themixgui": {
         "cargoLocks": null,
         "extract": null,
@@ -63,7 +81,7 @@
         "pinned": false,
         "src": {
             "deepClone": false,
-            "fetchSubmodules": false,
+            "fetchSubmodules": true,
             "leaveDotGit": false,
             "name": null,
             "rev": "6d9f49cafe8d18ef13dff7c619aee6f293052617",

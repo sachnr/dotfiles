@@ -96,7 +96,6 @@ in let
 in
   stdenv.mkDerivation rec {
     name = "oomox-gtk";
-
     version = package.version;
     src = package.src;
 

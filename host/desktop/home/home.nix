@@ -23,6 +23,7 @@
       lxqt.pcmanfm-qt
       libsForQt5.ark
       direnv
+      go-mtpfs
 
       # General
       networkmanagerapplet

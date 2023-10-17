@@ -41,6 +41,7 @@ in {
       wezterm.enable = true;
       alacritty.enable = false;
       ugchromium.enable = true;
+      st.enable = true;
     };
     services = {
       picom.enable = true;

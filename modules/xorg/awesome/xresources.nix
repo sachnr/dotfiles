@@ -8,6 +8,22 @@ with theme; ''
   Xft.rgba:	rgb
   Xft.lcdfilter: lcddefault
 
+  xterm*font: *-fixed-*-*-*-18-*
+   xterm*VT100.Translations: #override \
+   Ctrl Shift <Key>v: insert-selection(CLIPBOARD) \n\
+   Ctrl Shift <Key>c: copy-selection(CLIPBOARD) \n\
+   Ctrl Shift <Key>minus: smaller-vt-font() \n\
+   Ctrl Shift <Key>equal: larger-vt-font()
+
+  st.font: fixed:pixelsize=16
+
+  ! window padding
+  st.borderpx: 10
+
+  !- 0.1 to 0.9 = transparency
+  st.alpha: 1
+
+
   *background: ${background}
   *foreground: ${foreground}
 

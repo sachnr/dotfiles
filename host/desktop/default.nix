@@ -2,7 +2,7 @@
   inherit (inputs.nixpkgs) lib;
   system = "x86_64-linux";
   user = "sachnr";
-  theme = import ../../theme/kanagawa.nix;
+  theme = import ../../theme/everforest.nix;
   pkgs = import inputs.nixpkgs {
     inherit system lib;
     overlays = import ./overlays.nix {inherit inputs;};

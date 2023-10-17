@@ -22,4 +22,8 @@ fetch.git = "https://github.com/romkatv/powerlevel10k.git"
 [themixgui]
 src.git = "https://github.com/themix-project/themix-gui"
 fetch.git = "https://github.com/themix-project/themix-gui.git"
+git.fetchSubmodules = true
 
+[stfork]
+src.git = "https://github.com/LukeSmithxyz/st"
+fetch.git = "https://github.com/LukeSmithxyz/st.git"

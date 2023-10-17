@@ -14,13 +14,13 @@
   };
   picom = {
     pname = "picom";
-    version = "751f30578e352f6cd37fc63cbf4643e47ab3587a";
+    version = "a6b4e285f833c13b217c0e30ca71a903ec2464b5";
     src = fetchFromGitHub ({
       owner = "yshui";
       repo = "picom";
-      rev = "751f30578e352f6cd37fc63cbf4643e47ab3587a";
+      rev = "a6b4e285f833c13b217c0e30ca71a903ec2464b5";
       fetchSubmodules = false;
-      sha256 = "sha256-HdsDGc5bxslP048YLv7p6RMB3kG57b4TxlzhM5IarVs=";
+      sha256 = "sha256-l76TyxuBjHhIHG1FWzgdAy2obELdVdgtCkdGrfXTK44=";
     });
   };
   powerlevel10k = {
@@ -35,13 +35,25 @@
       sha256 = "sha256-iJ35ZmlarMpwb5TOno273QrAaQJUmOBLDdGDowOo+qM=";
     };
   };
+  stfork = {
+    pname = "stfork";
+    version = "36d225d71d448bfe307075580f0d8ef81eeb5a87";
+    src = fetchgit {
+      url = "https://github.com/LukeSmithxyz/st.git";
+      rev = "36d225d71d448bfe307075580f0d8ef81eeb5a87";
+      fetchSubmodules = false;
+      deepClone = false;
+      leaveDotGit = false;
+      sha256 = "sha256-u8E8/aqbL3T4Sz0olazg7VYxq30haRdSB1SRy7MiZiA=";
+    };
+  };
   themixgui = {
     pname = "themixgui";
     version = "6d9f49cafe8d18ef13dff7c619aee6f293052617";
     src = fetchgit {
       url = "https://github.com/themix-project/themix-gui.git";
       rev = "6d9f49cafe8d18ef13dff7c619aee6f293052617";
-      fetchSubmodules = false;
+      fetchSubmodules = true;
       deepClone = false;
       leaveDotGit = false;
       sha256 = "sha256-PvMcAMt+KxnWEcNRSRHq4ntm22CTTrfbS3lFtiDrhj8=";

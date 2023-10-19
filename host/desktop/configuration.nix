@@ -3,13 +3,10 @@
   config,
   ...
 }: let
-  network-driver = pkgs.old.linuxKernel.packages.linux_6_3.rtl8812au.overrideAttrs (_: {
-    src = pkgs.fetchFromGitHub {
-      owner = "aircrack-ng";
-      repo = "rtl8812au";
-      rev = "60222a568da1954bff35526733ed2cecfbfc96d3";
-      hash = "sha256-HLtBfmUWdlCO9eJouqgTIe5F4sY+kLNRS+7jyJUoTfY=";
-    };
+  rtl8812au = (pkgs.callPackage ../../_sources/generated.nix {}).rtl8812au;
+  network-driver = pkgs.linuxKernel.packages.linux_6_5.rtl8812au.overrideAttrs (_: {
+    src = rtl8812au.src;
+    version = rtl8812au.version;
   });
 in {
   imports = [
@@ -18,7 +15,7 @@ in {
 
   boot = {
     supportedFilesystems = ["ntfs"];
-    kernelPackages = pkgs.old.linuxPackages_latest;
+    kernelPackages = pkgs.linuxPackages_latest;
     blacklistedKernelModules = ["nouveau" "i2c_nvidia_gpu"];
     kernelParams = ["quiet" "acpi_osi=!" "nvidia.NVreg_PreserveVideoMemoryAllocations=1"];
     extraModulePackages = [network-driver];
@@ -73,7 +70,7 @@ in {
       forceFullCompositionPipeline = true;
       open = false;
       nvidiaSettings = true;
-      package = config.boot.kernelPackages.nvidiaPackages.stable;
+      package = config.boot.kernelPackages.nvidiaPackages.beta;
       modesetting.enable = true;
     };
     bluetooth = {

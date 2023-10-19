@@ -13,14 +13,15 @@
     fixed-center = true;
     gtk-layer-shell = true;
     output = [
-      "HDMI-A-1"
+      "DP-1"
     ];
     modules-left = [
       # "sway/workspaces"
       # "sway/mode"
       # "sway/scratchpad"
       # "sway/window"
-      "wlr/workspaces"
+      # "wlr/workspaces"
+      "hyprland/workspaces"
     ];
     modules-center = [
       "mpd"
@@ -59,6 +60,34 @@
         "7" = " ";
         "8" = " ";
         "9" = " ";
+      };
+    };
+
+    "hyprland/workspaces" = {
+      "all-outputs" = true;
+      format = "<span font_family='Symbols Nerd Font Mono' size='medium'>{icon}</span>";
+      active-only = true;
+      format-icons = {
+        "1" = " ";
+        "2" = " ";
+        "3" = " ";
+        "4" = "󰉋 ";
+        "5" = "󰵅 ";
+        "6" = "󰊠 ";
+        "7" = " ";
+        "8" = " ";
+        "9" = " ";
+        "urgent" = " ";
+        "focused" = "";
+        "default" = "";
+      };
+      persistent_workspaces = {
+        "1" = [];
+        "2" = [];
+        "3" = [];
+        "4" = [];
+        "5" = [];
+        "6" = [];
       };
     };
 
@@ -121,25 +150,7 @@
       on-click = "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
       on-scroll-up = "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+";
       on-scroll-down = "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-";
-      on-click-right = pkgs.writeShellScript "wpctl_toggle_sink" ''
-        isheadphone() {
-          status=$(pactl list sinks | rg -e analog-output- | awk '/Active Port:/{print $3}')
-          if [[ $status = 'analog-output-headphones' ]]; then
-            echo $?
-          else
-            echo $?
-          fi
-        }
-        togglesink() {
-          status="$(isheadphone)"
-          if [[ "$status" = "0" ]]; then
-            pactl set-sink-port 0 analog-output-lineout
-          else
-            pactl set-sink-port 0 analog-output-headphones
-          fi
-        }
-        togglesink
-      '';
+      on-click-right = "pavucontrol";
     };
 
     tray = {

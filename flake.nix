@@ -8,7 +8,7 @@
     #   inputs.nixpkgs.follows = "nixpkgs";
     # };
 
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/master";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -17,9 +17,9 @@
     # pin older nixpkgs revision that dosent break nvidia drivers
     # NVIDIA-Linux-x86_64-530.41.03
     # kernel 6.3.8
-    nixpkgs-old = {
-      url = "github:nixos/nixpkgs?rev=b80586e5cfa435e451c368aca4f9fbbaa4f2eaa9";
-    };
+    # nixpkgs-old = {
+    #   url = "github:nixos/nixpkgs?rev=b80586e5cfa435e451c368aca4f9fbbaa4f2eaa9";
+    # };
 
     nur = {
       url = "github:nix-community/NUR"; # NUR Packages

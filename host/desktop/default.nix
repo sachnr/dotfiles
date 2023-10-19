@@ -2,19 +2,14 @@
   inherit (inputs.nixpkgs) lib;
   system = "x86_64-linux";
   user = "sachnr";
-  theme = import ../../theme/everforest.nix;
+  theme = import ../../theme/kanagawa.nix;
   pkgs = import inputs.nixpkgs {
     inherit system lib;
     overlays = import ./overlays.nix {inherit inputs;};
     config = {
       allowBroken = false;
       packageOverrides = super: {
-        old = import inputs.nixpkgs-old {
-          inherit system lib;
-          config = {
-            allowUnfree = true;
-          };
-        };
+        #
       };
       allowUnfree = true; # Allow proprietary software
     };

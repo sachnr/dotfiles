@@ -28,6 +28,7 @@ in {
       extraPkgs.enable = true;
       mako.enable = true;
       swayidle.enable = true;
+      gammastep.enable = true;
       waybar.enable = true;
     };
     programs = {
@@ -35,16 +36,17 @@ in {
       neovim.enable = true;
       firefox.enable = false;
       kitty.enable = true;
+      wezterm.enable = false;
+      foot.enable = true;
       rofi.enable = true;
       qutebrowser.enable = true;
       zathura.enable = true;
-      wezterm.enable = true;
       alacritty.enable = false;
       ugchromium.enable = true;
       st.enable = true;
     };
     services = {
-      picom.enable = true;
+      picom.enable = false;
       polybar.enable = false;
       mpd.enable = true;
       eww.enable = false;

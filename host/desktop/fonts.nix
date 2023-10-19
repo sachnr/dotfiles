@@ -11,7 +11,7 @@
       noto-fonts-emoji
       roboto
       ibm-plex
-      (nerdfonts.override {fonts = ["NerdFontsSymbolsOnly"];})
+      (nerdfonts.override {fonts = ["JetBrainsMono" "NerdFontsSymbolsOnly"];})
     ];
 
     fontconfig = {
@@ -19,7 +19,7 @@
       antialias = true;
       subpixel = {
         lcdfilter = "none";
-        rgba = "rgb";
+        rgba = "none";
       };
       hinting = {
         enable = true;

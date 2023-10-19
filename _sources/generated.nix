@@ -35,6 +35,18 @@
       sha256 = "sha256-iJ35ZmlarMpwb5TOno273QrAaQJUmOBLDdGDowOo+qM=";
     };
   };
+  rtl8812au = {
+    pname = "rtl8812au";
+    version = "04f600ee54a414b871aea509fcd4709838c8c522";
+    src = fetchgit {
+      url = "https://github.com/aircrack-ng/rtl8812au.git";
+      rev = "04f600ee54a414b871aea509fcd4709838c8c522";
+      fetchSubmodules = false;
+      deepClone = false;
+      leaveDotGit = false;
+      sha256 = "sha256-QhE3h0Jw0J5TynWCSNcSz/Iw53B+pdk0SS/oaR8RtTE=";
+    };
+  };
   stfork = {
     pname = "stfork";
     version = "36d225d71d448bfe307075580f0d8ef81eeb5a87";
@@ -61,14 +73,14 @@
   };
   wezterm = {
     pname = "wezterm";
-    version = "11dec45f08e3c7a611f59b030d4a9bd391807604";
+    version = "fec90ae04bf448d4b1475ba1d0ba1392846a70d6";
     src = fetchgit {
       url = "https://github.com/wez/wezterm.git";
-      rev = "11dec45f08e3c7a611f59b030d4a9bd391807604";
+      rev = "fec90ae04bf448d4b1475ba1d0ba1392846a70d6";
       fetchSubmodules = true;
       deepClone = false;
       leaveDotGit = false;
-      sha256 = "sha256-flVptTUqNWvXVuWXdgjaDDfCVyc7O+9OUsI/4QgMyiY=";
+      sha256 = "sha256-7eMeNdmo8vpSnoPamShdLSTAUcK/mCiEpL30t+5spvc=";
     };
   };
   zsh-nix-shell = {

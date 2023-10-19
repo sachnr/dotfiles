@@ -27,3 +27,7 @@ git.fetchSubmodules = true
 [stfork]
 src.git = "https://github.com/LukeSmithxyz/st"
 fetch.git = "https://github.com/LukeSmithxyz/st.git"
+
+[rtl8812au]
+src.git = "https://github.com/aircrack-ng/rtl8812au"
+fetch.git = "https://github.com/aircrack-ng/rtl8812au.git"

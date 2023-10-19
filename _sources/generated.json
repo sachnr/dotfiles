@@ -55,6 +55,24 @@
         },
         "version": "862440ae112603c8e2d202f6edb94eeaa1509120"
     },
+    "rtl8812au": {
+        "cargoLocks": null,
+        "extract": null,
+        "name": "rtl8812au",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "rev": "04f600ee54a414b871aea509fcd4709838c8c522",
+            "sha256": "sha256-QhE3h0Jw0J5TynWCSNcSz/Iw53B+pdk0SS/oaR8RtTE=",
+            "type": "git",
+            "url": "https://github.com/aircrack-ng/rtl8812au.git"
+        },
+        "version": "04f600ee54a414b871aea509fcd4709838c8c522"
+    },
     "stfork": {
         "cargoLocks": null,
         "extract": null,
@@ -102,12 +120,12 @@
             "fetchSubmodules": true,
             "leaveDotGit": false,
             "name": null,
-            "rev": "11dec45f08e3c7a611f59b030d4a9bd391807604",
-            "sha256": "sha256-flVptTUqNWvXVuWXdgjaDDfCVyc7O+9OUsI/4QgMyiY=",
+            "rev": "fec90ae04bf448d4b1475ba1d0ba1392846a70d6",
+            "sha256": "sha256-7eMeNdmo8vpSnoPamShdLSTAUcK/mCiEpL30t+5spvc=",
             "type": "git",
             "url": "https://github.com/wez/wezterm.git"
         },
-        "version": "11dec45f08e3c7a611f59b030d4a9bd391807604"
+        "version": "fec90ae04bf448d4b1475ba1d0ba1392846a70d6"
     },
     "zsh-nix-shell": {
         "cargoLocks": null,

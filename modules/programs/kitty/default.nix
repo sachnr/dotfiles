@@ -22,7 +22,7 @@ in
         settings = with theme; {
           clear_all_shortcuts = true;
           # Fonts
-          font_family = "IBM Plex Mono";
+          font_family = "JetBrains Mono";
           symbol_map = "U+23FB-U+23FE,U+2665,U+26A1,U+2B58,U+E000-U+E00A,U+E0A0-U+E0A3,U+E0B0-U+E0C8,U+E0CA,U+E0CC-U+E0D2,U+E0D4,U+E200-U+E2A9,U+E300-U+E3E3,U+E5FA-U+E634,U+E700-U+E7C5,U+EA60-U+EBEB,U+F000-U+F2E0,U+F300-U+F32F,U+F400-U+F4A9,U+F500-U+F8FF Symbols Nerd Font Mono";
           font_size = "10.5";
           # font_features = "JetBrains Mono +cv06 +cv07";
@@ -127,8 +127,8 @@ in
           "ctrl+shift+right" = "next_tab";
           "ctrl+shift+v" = "paste_from_clipboard";
           "ctrl+shift+c" = "copy_to_clipboard";
-          "ctrl+shift+equal" = "change_font_size current +0.5";
-          "ctrl+shift+minus" = "change_font_size current -0.5";
+          "ctrl+shift+equal" = "change_font_size current +1";
+          "ctrl+shift+minus" = "change_font_size current -1";
           "ctrl+shift+backspace" = "restore_font_size";
           "ctrl+alt+s" = "set_background_opacity +0.05";
           "ctrl+alt+a" = "set_background_opacity -0.05";

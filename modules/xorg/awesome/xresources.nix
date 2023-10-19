@@ -5,11 +5,22 @@ with theme; ''
   Xft.hinting: 1
   Xft.autohint: 0
   Xft.hintstyle: hintslight
-  Xft.rgba:	rgb
-  Xft.lcdfilter: lcddefault
+  Xft.rgba:	none
+  Xft.lcdfilter: none
 
-  xterm*font: *-fixed-*-*-*-18-*
-   xterm*VT100.Translations: #override \
+  XTerm*utf8Title: true
+  XTerm*utf8: always
+  XTerm*renderFont: true
+  XTerm*faceName: JetBrainsMono NF
+  XTerm*faceSize1: 8
+  XTerm*faceSize2: 9
+  XTerm*faceSize3: 10
+  XTerm*faceSize: 11
+  XTerm*faceSize4: 13
+  XTerm*faceSize5: 15
+  XTerm*faceSize6: 17
+
+  xterm*VT100.Translations: #override \
    Ctrl Shift <Key>v: insert-selection(CLIPBOARD) \n\
    Ctrl Shift <Key>c: copy-selection(CLIPBOARD) \n\
    Ctrl Shift <Key>minus: smaller-vt-font() \n\

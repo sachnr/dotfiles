@@ -60,7 +60,7 @@ with theme; ''
     }
 
   return {
-    font = wezterm.font("IBM Plex Mono"),
+    font = wezterm.font("JetBrains Mono"),
     foreground_text_hsb = {
         hue = 1.0,
         saturation = 1.0,
@@ -68,9 +68,10 @@ with theme; ''
     },
     font_size = 10.5,
     -- bold_brightens_ansi_colors = false,
-    use_fancy_tab_bar = false,
+    -- use_fancy_tab_bar = false,
+    front_end = "WebGpu",
     freetype_load_target = "Normal",
-    freetype_load_flags = 'NO_HINTING',
+    freetype_load_flags = 'NO_AUTOHINT',
     underline_position = "125%",
     cursor_blink_rate = 0,
     line_height = 1.0,
@@ -80,9 +81,10 @@ with theme; ''
     -- color_scheme = "Gruvbox",
     default_cursor_style = "SteadyBar",
     check_for_updates = false,
-    hide_tab_bar_if_only_one_tab = true,
+    -- hide_tab_bar_if_only_one_tab = true,
     disable_default_key_bindings = true,
     enable_scroll_bar = true,
+    enable_tab_bar = false,
     keys = keybinds,
     colors = colors,
   }

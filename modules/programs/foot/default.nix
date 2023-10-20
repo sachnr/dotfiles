@@ -20,6 +20,9 @@ in
     config = mkIf cfg.enable {
       programs.foot = {
         enable = true;
+        package = pkgs.foot.overrideAttrs (old: {
+          patches = (old.patches or []) ++ [../../../patches/foot_alpha.patch];
+        });
       };
       home.file.".config/foot/foot.ini".text = settings;
     };

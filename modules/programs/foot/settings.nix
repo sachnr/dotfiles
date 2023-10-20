@@ -7,7 +7,7 @@ with theme; let
 in ''
   # -*- conf -*-
 
-  font=JetBrains Mono:size=10.6
+  font=JetBrains Mono:size=11
   font-size-adjustment=1
   dpi-aware=yes
   pad=6x6
@@ -20,7 +20,7 @@ in ''
   # underline-thickness=<font underline thickness>
 
   [colors]
-  alpha=1.0
+  alpha=0.9
   background=${rp background}
   foreground=${rp foreground}
   flash=${rp green}
@@ -58,6 +58,8 @@ in ''
   clipboard-paste=Control+Shift+v XF86Paste
   font-increase=Control+Shift+plus
   font-decrease=Control+Shift+underscore
+  alpha-increase=Control+Shift+s
+  alpha-decrease=Control+Shift+a
   font-reset=Control+Shift+BackSpace
   primary-paste=none
   search-start=none

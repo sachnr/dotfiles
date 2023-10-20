@@ -1,0 +1,125 @@
+diff --git a/box-drawing.c b/box-drawing.c
+index cf351b31..22b631c2 100644
+--- a/box-drawing.c
++++ b/box-drawing.c
+@@ -15,8 +15,6 @@
+ #include "util.h"
+ #include "xmalloc.h"
+ 
+-#define clamp(x, lower, upper) (min(upper, max(x, lower)))
+-
+ enum thickness {
+     LIGHT,
+     HEAVY,
+diff --git a/config.c b/config.c
+index 35c847e9..cfafe657 100644
+--- a/config.c
++++ b/config.c
+@@ -104,6 +104,8 @@ static const char *const binding_action_map[] = {
+     [BIND_ACTION_FONT_SIZE_UP] = "font-increase",
+     [BIND_ACTION_FONT_SIZE_DOWN] = "font-decrease",
+     [BIND_ACTION_FONT_SIZE_RESET] = "font-reset",
++    [BIND_ACTION_ALPHA_UP] = "alpha-increase",
++    [BIND_ACTION_ALPHA_DOWN] = "alpha-decrease",
+     [BIND_ACTION_SPAWN_TERMINAL] = "spawn-terminal",
+     [BIND_ACTION_MINIMIZE] = "minimize",
+     [BIND_ACTION_MAXIMIZE] = "maximize",
+@@ -1319,7 +1321,7 @@ parse_section_colors(struct context *ctx)
+             return false;
+         }
+ 
+-        conf->colors.alpha = alpha * 65535.;
++        conf->colors.alpha = alpha * UINT16_MAX;
+         return true;
+     }
+ 
+diff --git a/input.c b/input.c
+index e3613a90..f15682b3 100644
+--- a/input.c
++++ b/input.c
+@@ -198,6 +198,14 @@ execute_binding(struct seat *seat, struct terminal *term,
+         term_font_size_reset(term);
+         return true;
+ 
++    case BIND_ACTION_ALPHA_UP:
++        term_alpha_increase(term);
++        return true;
++
++    case BIND_ACTION_ALPHA_DOWN:
++        term_alpha_decrease(term);
++        return true;
++
+     case BIND_ACTION_SPAWN_TERMINAL:
+         term_spawn_new(term);
+         return true;
+diff --git a/key-binding.h b/key-binding.h
+index 050c80a6..14b75f62 100644
+--- a/key-binding.h
++++ b/key-binding.h
+@@ -25,6 +25,8 @@ enum bind_action_normal {
+     BIND_ACTION_FONT_SIZE_UP,
+     BIND_ACTION_FONT_SIZE_DOWN,
+     BIND_ACTION_FONT_SIZE_RESET,
++    BIND_ACTION_ALPHA_UP,
++    BIND_ACTION_ALPHA_DOWN,
+     BIND_ACTION_SPAWN_TERMINAL,
+     BIND_ACTION_MINIMIZE,
+     BIND_ACTION_MAXIMIZE,
+diff --git a/terminal.c b/terminal.c
+index efbbded1..275fec0b 100644
+--- a/terminal.c
++++ b/terminal.c
+@@ -2085,6 +2085,28 @@ term_font_size_reset(struct terminal *term)
+     return load_fonts_from_conf(term);
+ }
+ 
++#define ALPHA_STEP (0.05 * UINT16_MAX)
++bool
++term_alpha_increase(struct terminal *term)
++{
++    term->colors.alpha = clamp(term->colors.alpha + ALPHA_STEP, 0, UINT16_MAX);
++    term_damage_view(term);
++    term_damage_margins(term);
++    render_refresh(term);
++    return true;
++}
++
++bool
++term_alpha_decrease(struct terminal *term)
++{
++    term->colors.alpha = clamp(term->colors.alpha - ALPHA_STEP, 0, UINT16_MAX);
++    term_damage_view(term);
++    term_damage_margins(term);
++    render_refresh(term);
++    return true;
++}
++#undef ALPHA_STEP
++
+ bool
+ term_fractional_scaling(const struct terminal *term)
+ {
+diff --git a/terminal.h b/terminal.h
+index a8b65198..ff656c88 100644
+--- a/terminal.h
++++ b/terminal.h
+@@ -747,6 +747,8 @@ bool term_update_scale(struct terminal *term);
+ bool term_font_size_increase(struct terminal *term);
+ bool term_font_size_decrease(struct terminal *term);
+ bool term_font_size_reset(struct terminal *term);
++bool term_alpha_increase(struct terminal *term);
++bool term_alpha_decrease(struct terminal *term);
+ bool term_font_dpi_changed(struct terminal *term, float old_scale);
+ void term_font_subpixel_changed(struct terminal *term);
+ int term_font_baseline(const struct terminal *term);
+diff --git a/util.h b/util.h
+index 683dbd4a..e98b013e 100644
+--- a/util.h
++++ b/util.h
+@@ -6,6 +6,7 @@
+ #define ALEN(v) (sizeof(v) / sizeof((v)[0]))
+ #define min(x, y) ((x) < (y) ? (x) : (y))
+ #define max(x, y) ((x) > (y) ? (x) : (y))
++#define clamp(x, lower, upper) (min(upper, max(x, lower)))
+ 
+ static inline const char *
+ thrd_err_as_string(int thrd_err)

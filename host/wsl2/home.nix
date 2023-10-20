@@ -1,62 +1,68 @@
-{
-  pkgs,
-  ...
-}: {
-  xdg.userDirs = {
-    enable = true;
-    createDirectories = true;
-  };
+{lib, ...}: let
+  # returns list of all folders in path
+  getDirfolders = path: (lib.attrsets.mapAttrsToList (name: _: path + ("/" + name)) (lib.attrsets.filterAttrs (name: value: value == "directory") (builtins.readDir path)));
 
-  home = {
-    username = "sachnr";
-    homeDirectory = "/home/sachnr";
-    stateVersion = "23.05";
+  shell = getDirfolders ../../modules/shell;
+  xorg = getDirfolders ../../modules/xorg;
+  wayland = getDirfolders ../../modules/wayland;
+  programs = getDirfolders ../../modules/programs;
+  services = getDirfolders ../../modules/services;
+in {
+  imports = shell ++ xorg ++ wayland ++ programs ++ services;
 
-    packages = with pkgs; [
-      # Terminal
-      ranger
-      less
-      neofetch
-      lazygit
-      gh-dash
-      ripgrep
+  config = {
+    xdg.userDirs = {
+      enable = true;
+      createDirectories = true;
+    };
 
-      # Downloader
-      wget
-      aria
+    home = {
+      username = "sachnr";
+      homeDirectory = "/home/sachnr";
+      stateVersion = "23.05";
 
-      # Language Servers
-      sumneko-lua-language-server
-      # rust-analyzer
-      rnix-lsp
-      ccls
+      packages = with pkgs; [
+        # Terminal
+        ranger
+        lazygit
+        gh-dash
+        ripgrep
 
-      # Dev
-      git
-      deno
-      gcc
-      rustup
-      nodePackages.npm
-      yarn
-      nodejs
-      deno
-      jq
-      # go
+        # Downloader
+        wget
+        aria
 
-      # debugger
-      # gdb
+        # Language Servers
+        sumneko-lua-language-server
+        # rust-analyzer
+        ccls
 
-      # Formatters
-      black
-      shfmt
-      stylua
-      astyle
-      nodePackages.prettier
-      alejandra
+        # Dev
+        git
+        gcc
+        rustup
+        nodePackages.npm
+        nodejs
+        # go
 
-      # Build tools
-      # maven
-      # cmake
-    ];
+        # Formatters
+        black
+        shfmt
+        stylua
+        astyle
+        nodePackages.prettier
+        alejandra
+      ];
+    };
+
+    modules = {
+      programs = {
+        neovim.enable = true;
+      };
+      shell = {
+        zsh.enable = true;
+        starship.enable = true;
+      };
+    };
   };
 }

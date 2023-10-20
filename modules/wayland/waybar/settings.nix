@@ -81,14 +81,6 @@
         "focused" = "";
         "default" = "";
       };
-      persistent_workspaces = {
-        "1" = [];
-        "2" = [];
-        "3" = [];
-        "4" = [];
-        "5" = [];
-        "6" = [];
-      };
     };
 
     "wlr/workspaces" = {

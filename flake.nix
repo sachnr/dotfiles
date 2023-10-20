@@ -46,11 +46,6 @@
       url = "github:tmux-plugins/tpm";
       flake = false;
     };
-
-    lua-extra-pkgs = {
-      url = "github:stefano-m/nix-stefano-m-nix-overlays";
-      flake = false;
-    };
   };
 
   outputs = inputs @ {self, ...}: {

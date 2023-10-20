@@ -1,5 +1,6 @@
 {
   config,
+  pkgs,
   lib,
   ...
 }: let
@@ -22,7 +23,6 @@ in
         latitude = "18.59";
         longitude = "73.76";
         provider = "manual";
-        tray = true;
         temperature = {
           day = 6500;
           night = 4500;

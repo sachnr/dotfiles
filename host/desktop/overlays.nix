@@ -3,19 +3,10 @@
 in
   with inputs; [
     nur.overlay
-    # nixpkgs-wayland.overlay
+    nixpkgs-wayland.overlay
     neovim-nightly-overlay.overlay
     nix-rice.overlays.default
-    (import (inputs.lua-extra-pkgs))
     (final: prev: {
-      extraLuaPackages.dbus_proxy = prev.extraLuaPackages.dbus_proxy.override {
-        lua = prev.luajit;
-      };
-
-      extraLuaPackages.pulseaudio_dbus = prev.extraLuaPackages.pulseaudio_dbus.override {
-        lua = prev.luajit;
-      };
-
       awesome = let
         package = getPackage "awesomewm" prev;
       in

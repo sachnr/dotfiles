@@ -21,13 +21,29 @@ in
     inherit system pkgs;
     modules = [
       ./configuration.nix
-      ./packages.nix
       fonts
       inputs.nur.nixosModules.nur
       inputs.home-manager.nixosModules.home-manager
+
       {
+        services.xserver.windowManager.awesome = {
+          enable = true;
+          luaModules = with pkgs.luajitPackages; [
+            luarocks
+            lgi
+          ];
+        };
+
+        programs.hyprland = {
+          enable = true;
+          package = inputs.hyprland.packages.${system}.hyprland;
+          enableNvidiaPatches = true;
+          xwayland.enable = true;
+        };
+
         virtualisation.docker.enable = true;
 
+        programs.zsh.enable = true;
         users.users.${user} = {
           isNormalUser = true;
           extraGroups = ["wheel" "video" "audio" "users" "docker"];
@@ -39,7 +55,7 @@ in
         home-manager = {
           useGlobalPkgs = true;
           useUserPackages = true;
-          users.${user} = import ./home/modules.nix;
+          users.${user} = import ./home.nix;
           extraSpecialArgs = {inherit inputs pkgs system user theme;};
         };
       }

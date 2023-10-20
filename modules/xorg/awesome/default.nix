@@ -5,15 +5,15 @@
   theme,
   ...
 }: let
-  cfg = config.modules.xorg.awesome;
+  cfg = config.modules.xorg.awesomeConfig;
   i3lock-script = import ./i3lock.nix {inherit pkgs theme;};
 in
   with lib; {
-    options.modules.xorg.awesome = {
+    options.modules.xorg.awesomeConfig = {
       enable = mkOption {
         type = types.bool;
         default = false;
-        description = "awesome basic";
+        description = "awesome config and package";
       };
     };
 

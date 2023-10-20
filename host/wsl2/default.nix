@@ -14,12 +14,11 @@
     inherit system;
     inherit overlays;
   };
-  configuration = import ./configuration.nix {inherit lib config user inputs pkgs;};
 in
   lib.nixosSystem {
     inherit system pkgs;
     modules = [
-      configuration
+      ./configuration.nix
       inputs.home-manager.nixosModules.home-manager
       {
         # Define a user account. Don't forget to set a password with ‘passwd’.
@@ -32,7 +31,7 @@ in
         home-manager = {
           useGlobalPkgs = true;
           useUserPackages = true;
-          users.${user} = import ./user_packages_wsl.nix;
+          users.${user} = import ./home.nix;
           extraSpecialArgs = {inherit inputs pkgs system user theme;};
         };
       }

@@ -3,15 +3,13 @@
   config,
   theme,
   lib,
-  inputs,
   ...
 }: let
-  cfg = config.modules.wayland.hyprland;
-  hyprcfg = pkgs.callPackage ../../../configs/hyprland {inherit theme;};
-  hyprland-wrapped = import ./hyprland-wrapped.nix {inherit pkgs inputs;};
+  cfg = config.modules.wayland.hyprlandConfig;
+  settings = import ./settings.nix {inherit theme pkgs lib;};
 in
   with lib; {
-    options.modules.wayland.hyprland = {
+    options.modules.wayland.hyprlandConfig = {
       enable = mkOption {
         type = types.bool;
         default = false;
@@ -20,15 +18,18 @@ in
     };
 
     config = mkIf (cfg.enable) {
+      home.file.".config/hypr/hyprland.conf".text = settings;
+
       home = {
         packages = with pkgs; [
-          hyprland-wrapped.hyprland
-          socat
+          libsForQt5.qt5.qtwayland
+          egl-wayland
+          grim
+          slurp
+          wl-clipboard
+          wlr-randr
+          wpaperd
         ];
-        file.".config/hypr" = {
-          source = hyprcfg;
-          recursive = true;
-        };
       };
     };
   }

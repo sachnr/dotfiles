@@ -4,14 +4,6 @@
   pkgs,
   ...
 }: let
-  sway = ''
-    [Desktop Entry]
-    Name=Sway
-    Comment=i3-compatible Wayland compositor
-    Exec=sway
-    Type=Application
-  '';
-
   hyprland = ''
     [Desktop Entry]
     Name=Hyprland
@@ -28,7 +20,6 @@ in
     installPhase = ''
       mkdir -p $out/share/wayland-sessions
       mkdir -p $out/share/xsessions
-      echo "${sway}" > $out/share/wayland-sessions/sway.desktop
       echo "${hyprland}" > $out/share/wayland-sessions/hyprland.desktop
     '';
 

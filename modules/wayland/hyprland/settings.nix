@@ -22,10 +22,13 @@ in ''
   env=__GLX_VENDOR_LIBRARY_NAME,nvidia
   env=LIBVA_DRIVER_NAME,nvidia
   env=MOZ_ENABLE_WAYLAND,1
+  env=__GL_VRR_ALLOWED,0
+  env=WLR_DRM_NO_ATOMIC,1
 
   exec-once =  "${pkgs.dbus}/bin/dbus-update-activation-environment --systemd DISPLAY HYPRLAND_INSTANCE_SIGNATURE WAYLAND_DISPLAY XDG_CURRENT_DESKTOP && systemctl --user start hyprland-session.target"
 
   monitor=DP-1, 1920x1080@144, 0x0, 1
+  monitor=HDMI-A-1, 1920x1080@144, 1920x0, 1
 
   general {
     col.active_border=rgb(${rp red}) rgb(${rp green}) rgb(${rp blue}) 270deg
@@ -156,7 +159,7 @@ in ''
   bindm=$mainMod, mouse:273, resizewindow
 
   exec=pkill waybar;waybar
-  exec-once=wpaperd
+  exec=pkill wpaperd;wpaperd
   exec-once=blueman-applet
   exec-once=gammastep-indicator -v
   exec-once=nm-applet --indicator

@@ -3,6 +3,7 @@
   config,
   theme,
   lib,
+  user,
   ...
 }: let
   cfg = config.modules.wayland.hyprlandConfig;
@@ -19,6 +20,17 @@ in
 
     config = mkIf (cfg.enable) {
       home.file.".config/hypr/hyprland.conf".text = settings;
+
+      programs.wpaperd = {
+        enable = true;
+        settings = {
+          default = {
+            path = "/home/${user}/wallpapers/home";
+            duration = "15m";
+            sorting = "ascending";
+          };
+        };
+      };
 
       home = {
         packages = with pkgs; [

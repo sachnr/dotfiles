@@ -12,9 +12,9 @@
     passthrough = false;
     fixed-center = true;
     gtk-layer-shell = true;
-    output = [
-      "DP-1"
-    ];
+    # output = [
+    #   "HDMI-A-1"
+    # ];
     modules-left = [
       # "sway/workspaces"
       # "sway/mode"
@@ -66,7 +66,7 @@
     "hyprland/workspaces" = {
       "all-outputs" = true;
       format = "<span font_family='Symbols Nerd Font Mono' size='medium'>{icon}</span>";
-      active-only = true;
+      active-only = false;
       format-icons = {
         "1" = " ";
         "2" = " ";

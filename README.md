@@ -1,6 +1,8 @@
-# dotfiles
+# Dotfiles
 
-my hyprland, sway, awesome and i3 configs for nixos.
+![](./.github/ss.png)
+
+## Instructions for Future Reference
 
 ### Nixos
 

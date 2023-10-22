@@ -33,9 +33,9 @@ in ''
   general {
     col.active_border=rgb(${rp red}) rgb(${rp green}) rgb(${rp blue}) 270deg
     col.inactive_border=rgba(${rp background}ff)
-    border_size=1
-    gaps_in=2
-    gaps_out=2
+    border_size=2
+    gaps_in=4
+    gaps_out=6
     layout=dwindle
   }
 

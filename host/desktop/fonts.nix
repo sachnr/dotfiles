@@ -6,12 +6,12 @@
 }: {
   fonts = {
     packages = with pkgs; [
-      jetbrains-mono
       noto-fonts
       noto-fonts-emoji
       roboto
       ibm-plex
-      (nerdfonts.override {fonts = ["JetBrainsMono" "NerdFontsSymbolsOnly"];})
+      pkgs.nur.repos.suhr.iosevka-term
+      (nerdfonts.override {fonts = ["JetBrainsMono" "CascadiaCode" "NerdFontsSymbolsOnly"];})
     ];
 
     fontconfig = {

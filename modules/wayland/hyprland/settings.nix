@@ -6,6 +6,8 @@
 with theme; let
   rp = str: lib.strings.removePrefix "#" str;
 in ''
+  exec-once="${pkgs.dbus}/bin/dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY HYPRLAND_INSTANCE_SIGNATURE XDG_CURRENT_DESKTOP && systemctl --user start hyprland-session.target"
+
   env=WLR_NO_HARDWARE_CURSORS,1
   env=GDK_BACKEND,wayland,x11
   env=QT_QPA_PLATFORM,"wayland;xcb"
@@ -24,8 +26,8 @@ in ''
   env=MOZ_ENABLE_WAYLAND,1
   env=__GL_VRR_ALLOWED,0
   env=WLR_DRM_NO_ATOMIC,1
-
-  exec-once =  "${pkgs.dbus}/bin/dbus-update-activation-environment --systemd DISPLAY HYPRLAND_INSTANCE_SIGNATURE WAYLAND_DISPLAY XDG_CURRENT_DESKTOP && systemctl --user start hyprland-session.target"
+  env=ELECTRON_OZONE_PLATFORM_HINT,auto
+  env=NIXOS_OZONE_WL,1
 
   monitor=DP-1, 1920x1080@144, 0x0, 1
   monitor=HDMI-A-1, 1920x1080@144, 1920x0, 1
@@ -132,7 +134,7 @@ in ''
   bind=SUPERCONTROL, L, resizeactive, 20 0
   bind=SUPERCONTROL, K, resizeactive, 0 -20
   bind=SUPERCONTROL, J, resizeactive, 0 20
-  bind=$mainMod, f, fullscreen, 0
+  bind=$mainMod, f, fullscreen,0
   bind=$mainMod, 1, workspace, 1
   bind=$mainMod, 2, workspace, 2
   bind=$mainMod, 3, workspace, 3
@@ -143,16 +145,16 @@ in ''
   bind=$mainMod, 8, workspace, 8
   bind=$mainMod, 9, workspace, 9
   bind=$mainMod, 0, workspace, 10
-  bind=$mainMod SHIFT, 1, movetoworkspace, 1
-  bind=$mainMod SHIFT, 2, movetoworkspace, 2
-  bind=$mainMod SHIFT, 3, movetoworkspace, 3
-  bind=$mainMod SHIFT, 4, movetoworkspace, 4
-  bind=$mainMod SHIFT, 5, movetoworkspace, 5
-  bind=$mainMod SHIFT, 6, movetoworkspace, 6
-  bind=$mainMod SHIFT, 7, movetoworkspace, 7
-  bind=$mainMod SHIFT, 8, movetoworkspace, 8
-  bind=$mainMod SHIFT, 9, movetoworkspace, 9
-  bind=$mainMod SHIFT, 0, movetoworkspace, 10
+  bind=$mainMod SHIFT, 1, movetoworkspacesilent, 1
+  bind=$mainMod SHIFT, 2, movetoworkspacesilent, 2
+  bind=$mainMod SHIFT, 3, movetoworkspacesilent, 3
+  bind=$mainMod SHIFT, 4, movetoworkspacesilent, 4
+  bind=$mainMod SHIFT, 5, movetoworkspacesilent, 5
+  bind=$mainMod SHIFT, 6, movetoworkspacesilent, 6
+  bind=$mainMod SHIFT, 7, movetoworkspacesilent, 7
+  bind=$mainMod SHIFT, 8, movetoworkspacesilent, 8
+  bind=$mainMod SHIFT, 9, movetoworkspacesilent, 9
+  bind=$mainMod SHIFT, 0, movetoworkspacesilent, 10
   bind=$mainMod, TAB, cyclenext
   bind=$mainMod SHIFT, TAB, cyclenext, prev
   bindm=$mainMod, mouse:272, movewindow
@@ -163,6 +165,7 @@ in ''
   exec-once=blueman-applet
   exec-once=gammastep-indicator -v
   exec-once=nm-applet --indicator
+  exec-once=swayidle -w timeout 900 '${pkgs.mpc-cli}/bin mpc pause' timeout 900 "${pkgs.swaylock}/bin/swaylock -f" timeout 910 'hyprctl dispatch dpms off' before-sleep "${pkgs.swaylock}/bin/swaylock -f"
 
   windowrule=float,Rofi
   windowrule=float,^(blueman-manager)$
@@ -173,4 +176,6 @@ in ''
   windowrulev2=float,class:^(lxappearance)$
   windowrulev2=float,class:^(Pavucontrol)$
   windowrulev2=float,class:^(ark)$|^(Ark)$
+  windowrulev2=noanim,class:^(Brave-browser)$
+  windowrulev2=noblur,class:^(Brave-browser)$
 ''

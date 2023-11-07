@@ -65,6 +65,7 @@ in {
         gopls
         # sqls
         ccls
+        nodePackages_latest.eslint
 
         # Dev
         rustup
@@ -98,6 +99,7 @@ in {
         nodePackages.prettier
         alejandra
         pgformatter
+        taplo
 
         # Build tools
         # maven
@@ -133,7 +135,7 @@ in {
       programs = {
         gtk.enable = true;
         neovim.enable = true;
-        firefox.enable = false;
+        firefox.enable = true;
         kitty.enable = true;
         wezterm.enable = false;
         foot.enable = true;

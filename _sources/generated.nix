@@ -25,26 +25,26 @@
   };
   powerlevel10k = {
     pname = "powerlevel10k";
-    version = "862440ae112603c8e2d202f6edb94eeaa1509120";
+    version = "174ce9bf0166c657404a21f4dc9608da935f7325";
     src = fetchgit {
       url = "https://github.com/romkatv/powerlevel10k.git";
-      rev = "862440ae112603c8e2d202f6edb94eeaa1509120";
+      rev = "174ce9bf0166c657404a21f4dc9608da935f7325";
       fetchSubmodules = false;
       deepClone = false;
       leaveDotGit = false;
-      sha256 = "sha256-iJ35ZmlarMpwb5TOno273QrAaQJUmOBLDdGDowOo+qM=";
+      sha256 = "sha256-3fvqWS/Zm3GLFqo36s5tPBfVX3SOpUyxjHDatMhD/u0=";
     };
   };
   rtl8812au = {
     pname = "rtl8812au";
-    version = "04f600ee54a414b871aea509fcd4709838c8c522";
+    version = "4a983e47dafc048019412350d36270864f6b5f2d";
     src = fetchgit {
       url = "https://github.com/aircrack-ng/rtl8812au.git";
-      rev = "04f600ee54a414b871aea509fcd4709838c8c522";
+      rev = "4a983e47dafc048019412350d36270864f6b5f2d";
       fetchSubmodules = false;
       deepClone = false;
       leaveDotGit = false;
-      sha256 = "sha256-QhE3h0Jw0J5TynWCSNcSz/Iw53B+pdk0SS/oaR8RtTE=";
+      sha256 = "sha256-/ucY/BWDE9orfzCcacgtAOkhZn+zXmUvaEiKvsJkT3E=";
     };
   };
   stfork = {
@@ -73,14 +73,14 @@
   };
   wezterm = {
     pname = "wezterm";
-    version = "fec90ae04bf448d4b1475ba1d0ba1392846a70d6";
+    version = "d6809533215e273ca23e52614c886929ad702715";
     src = fetchgit {
       url = "https://github.com/wez/wezterm.git";
-      rev = "fec90ae04bf448d4b1475ba1d0ba1392846a70d6";
+      rev = "d6809533215e273ca23e52614c886929ad702715";
       fetchSubmodules = true;
       deepClone = false;
       leaveDotGit = false;
-      sha256 = "sha256-7eMeNdmo8vpSnoPamShdLSTAUcK/mCiEpL30t+5spvc=";
+      sha256 = "sha256-ZnmBKBiaqKGKKrItTrPf/LGJvtu7BBvu1+QAk5PBi6g=";
     };
   };
   zsh-nix-shell = {

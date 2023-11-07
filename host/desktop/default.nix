@@ -2,7 +2,7 @@
   inherit (inputs.nixpkgs) lib;
   system = "x86_64-linux";
   user = "sachnr";
-  theme = import ../../theme/kanagawa.nix;
+  theme = import ../../theme/solarised.nix;
   pkgs = import inputs.nixpkgs {
     inherit system lib;
     overlays = import ./overlays.nix {inherit inputs;};
@@ -34,10 +34,15 @@ in
           ];
         };
 
+        programs.steam = {
+          enable = true;
+          remotePlay.openFirewall = true;
+          dedicatedServer.openFirewall = true;
+        };
+
         programs.hyprland = {
           enable = true;
-          package = inputs.hyprland.packages.${system}.hyprland;
-          enableNvidiaPatches = true;
+          package = inputs.hyprland.packages.${system}.hyprland-nvidia;
           xwayland.enable = true;
         };
 

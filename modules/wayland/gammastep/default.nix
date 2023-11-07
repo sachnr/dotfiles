@@ -24,8 +24,8 @@ in
         longitude = "73.76";
         provider = "manual";
         temperature = {
-          day = 6500;
-          night = 4500;
+          day = 6200;
+          night = 3600;
         };
       };
     };

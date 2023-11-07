@@ -7,7 +7,7 @@
         font-size: 13.5px;
       }
       window#waybar {
-        background: rgba(1, 2, 3, 0.0);
+        background: ${black};
         color: ${foreground};
         box-shadow: 5px 4px 3px 0px rgba(1, 2, 3, 0.6);
       }
@@ -26,12 +26,12 @@
         color: ${foreground};
       }
       #workspaces button.focused {
-        color: ${brightgreen};
+        color: ${accent};
         background-color: ${background};
       }
       #workspaces button.active {
         color: ${background};
-        background-color: ${brightgreen};
+        background-color: ${accent};
       }
       #workspaces button.persistent{
         color: ${brightblack};
@@ -41,6 +41,7 @@
       }
 
       #custom-power,
+      #custom-color,
       #battery,
       #backlight,
       #pulseaudio,

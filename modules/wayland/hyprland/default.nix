@@ -41,6 +41,7 @@ in
           wl-clipboard
           wlr-randr
           wpaperd
+          swayidle
         ];
       };
     };

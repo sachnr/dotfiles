@@ -4,7 +4,7 @@
   ...
 }: let
   rtl8812au = (pkgs.callPackage ../../_sources/generated.nix {}).rtl8812au;
-  network-driver = pkgs.linuxKernel.packages.linux_6_5.rtl8812au.overrideAttrs (_: {
+  network-driver = pkgs.linuxKernel.packages.linux_6_6.rtl8812au.overrideAttrs (_: {
     src = rtl8812au.src;
     version = rtl8812au.version;
   });

@@ -48,12 +48,12 @@
             "fetchSubmodules": false,
             "leaveDotGit": false,
             "name": null,
-            "rev": "862440ae112603c8e2d202f6edb94eeaa1509120",
-            "sha256": "sha256-iJ35ZmlarMpwb5TOno273QrAaQJUmOBLDdGDowOo+qM=",
+            "rev": "174ce9bf0166c657404a21f4dc9608da935f7325",
+            "sha256": "sha256-3fvqWS/Zm3GLFqo36s5tPBfVX3SOpUyxjHDatMhD/u0=",
             "type": "git",
             "url": "https://github.com/romkatv/powerlevel10k.git"
         },
-        "version": "862440ae112603c8e2d202f6edb94eeaa1509120"
+        "version": "174ce9bf0166c657404a21f4dc9608da935f7325"
     },
     "rtl8812au": {
         "cargoLocks": null,
@@ -66,12 +66,12 @@
             "fetchSubmodules": false,
             "leaveDotGit": false,
             "name": null,
-            "rev": "04f600ee54a414b871aea509fcd4709838c8c522",
-            "sha256": "sha256-QhE3h0Jw0J5TynWCSNcSz/Iw53B+pdk0SS/oaR8RtTE=",
+            "rev": "4a983e47dafc048019412350d36270864f6b5f2d",
+            "sha256": "sha256-/ucY/BWDE9orfzCcacgtAOkhZn+zXmUvaEiKvsJkT3E=",
             "type": "git",
             "url": "https://github.com/aircrack-ng/rtl8812au.git"
         },
-        "version": "04f600ee54a414b871aea509fcd4709838c8c522"
+        "version": "4a983e47dafc048019412350d36270864f6b5f2d"
     },
     "stfork": {
         "cargoLocks": null,
@@ -120,12 +120,12 @@
             "fetchSubmodules": true,
             "leaveDotGit": false,
             "name": null,
-            "rev": "fec90ae04bf448d4b1475ba1d0ba1392846a70d6",
-            "sha256": "sha256-7eMeNdmo8vpSnoPamShdLSTAUcK/mCiEpL30t+5spvc=",
+            "rev": "d6809533215e273ca23e52614c886929ad702715",
+            "sha256": "sha256-ZnmBKBiaqKGKKrItTrPf/LGJvtu7BBvu1+QAk5PBi6g=",
             "type": "git",
             "url": "https://github.com/wez/wezterm.git"
         },
-        "version": "fec90ae04bf448d4b1475ba1d0ba1392846a70d6"
+        "version": "d6809533215e273ca23e52614c886929ad702715"
     },
     "zsh-nix-shell": {
         "cargoLocks": null,

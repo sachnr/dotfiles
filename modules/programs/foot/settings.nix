@@ -7,7 +7,7 @@ with theme; let
 in ''
   # -*- conf -*-
 
-  font=JetBrains Mono:size=11
+  font=JetBrainsMono NF:size=13.5
   font-size-adjustment=1
   dpi-aware=yes
   pad=6x6
@@ -20,7 +20,7 @@ in ''
   # underline-thickness=<font underline thickness>
 
   [colors]
-  alpha=0.9
+  alpha=1.0
   background=${rp background}
   foreground=${rp foreground}
   flash=${rp green}

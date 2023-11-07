@@ -28,6 +28,7 @@
     ];
     modules-right = [
       "tray"
+      "custom/color"
       "pulseaudio"
       "clock#date"
       "clock"
@@ -122,6 +123,12 @@
       tooltip = false;
       on-click = "exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'";
       format = "<span font_family=\"Symbols Nerd Font Mono\" size=\"medium\" color=\"${theme.accent}\">   </span>";
+    };
+
+    "custom/color" = with theme; {
+      tooltip = false;
+      onclick = "exec wl-color-picker";
+      format = "<span font_family=\"Symbols Nerd Font Mono\" size=\"medium\" color=\"${accent}\"> 󰉦  </span>";
     };
 
     "sway/mode" = {

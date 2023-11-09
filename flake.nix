@@ -45,5 +45,12 @@
         inherit inputs;
       };
     };
+
+    templates = {
+      rust = {
+        path = ./templates/rust;
+        description = "Rust template";
+      };
+    };
   };
 }

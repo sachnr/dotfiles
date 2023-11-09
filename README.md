@@ -4,7 +4,13 @@
 
 ## Instructions for Future Reference
 
-### Nixos
+### Templates
+
+```
+nix flake init --template github:sachnr/dotfiles#rust
+```
+
+### Nixos install
 
 - `nixos-generate-config --root /mnt`
 
@@ -18,7 +24,7 @@
 
 - `# nixos-rebuild switch --flake github:sachnr/dotfiles#desktop`
 
-### wsl2
+### wsl2 install
 
 - enable _`Virtual Machine Platform`_ and _`Windows Subsystem for Linux`_
 - download latest release from [here](https://github.com/nix-community/NixOS-WSL/releases)

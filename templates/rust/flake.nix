@@ -15,10 +15,11 @@
           (import rust-overlay)
         ];
       };
-      toolchain = pkgs.rust-bin.nightly.latest.default.override {
-        extensions = ["rust-src" "rust-analyzer" "rustfmt" "clippy"];
-        targets = ["wasm32-unknown-unknown"];
-      };
+      toolchain = pkgs.rust-bin.selectLatestNightlyWith (toolchain:
+        toolchain.default.override {
+          extensions = ["rust-src" "rust-analyzer"];
+          targets = ["wasm32-unknown-unknown"];
+        });
     in {
       devShells.default = pkgs.mkShell {
         name = "rust-app";

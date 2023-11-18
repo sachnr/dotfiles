@@ -129,7 +129,7 @@ in {
         hyprlandConfig.enable = true;
         mako.enable = true;
         swayidle.enable = true;
-        gammastep.enable = true;
+        gammastep.enable = false;
         waybar.enable = true;
       };
       programs = {

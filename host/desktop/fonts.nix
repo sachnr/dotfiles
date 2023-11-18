@@ -10,6 +10,8 @@
       noto-fonts-emoji
       roboto
       ibm-plex
+      intel-one-mono
+      sarasa-gothic
       pkgs.nur.repos.suhr.iosevka-term
       (nerdfonts.override {fonts = ["JetBrainsMono" "CascadiaCode" "NerdFontsSymbolsOnly"];})
     ];

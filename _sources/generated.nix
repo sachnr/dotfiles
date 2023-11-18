@@ -73,14 +73,34 @@
   };
   wezterm = {
     pname = "wezterm";
-    version = "d6809533215e273ca23e52614c886929ad702715";
+    version = "721fbdf5dc39aaeacc0517e0422d06f0cf81561b";
     src = fetchgit {
       url = "https://github.com/wez/wezterm.git";
-      rev = "d6809533215e273ca23e52614c886929ad702715";
+      rev = "721fbdf5dc39aaeacc0517e0422d06f0cf81561b";
       fetchSubmodules = true;
       deepClone = false;
       leaveDotGit = false;
-      sha256 = "sha256-ZnmBKBiaqKGKKrItTrPf/LGJvtu7BBvu1+QAk5PBi6g=";
+      sha256 = "sha256-S8i3EXUEChlf2Il3AAhfjIkqZO6PoB2PfLizOeubNnU=";
+    };
+  };
+  yuzu = {
+    pname = "yuzu";
+    version = "cc7b11f0c78817d2584ec606da10d97fd1aacc55";
+    src = fetchgit {
+      url = "https://github.com/yuzu-emu/yuzu-mainline.git";
+      rev = "cc7b11f0c78817d2584ec606da10d97fd1aacc55";
+      fetchSubmodules = true;
+      deepClone = true;
+      leaveDotGit = true;
+      sha256 = "sha256-QitKGkjUZ/gvMW0kkVJhB7M8jKLqbq3WdtxLCUVJyS0=";
+    };
+  };
+  yuzu-compat-list = {
+    pname = "yuzu-compat-list";
+    version = "https://github.com/flathub/org.yuzu_emu.yuzu";
+    src = fetchurl {
+      url = "https://github.com/flathub/org.yuzu_emu.yuzu/blob/master/compatibility_list.json";
+      sha256 = "sha256-sVHtFCs0Fn1XCO/pS3SJZoW7Cgi1GNwdh2wZRV2yzkI=";
     };
   };
   zsh-nix-shell = {

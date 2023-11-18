@@ -1,16 +1,10 @@
 {
-  description = "simple rust webapp";
+  description = "Rust Flake";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     flake-utils.url = "github:numtide/flake-utils";
-    rust-overlay = {
-      url = "github:oxalica/rust-overlay";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        flake-utils.follows = "flake-utils";
-      };
-    };
+    rust-overlay.url = "github:oxalica/rust-overlay";
   };
 
   outputs = inputs @ {self, ...}:
@@ -21,20 +15,22 @@
           (import rust-overlay)
         ];
       };
-      toolchain = pkgs.rust-bin.fromRustupToolchainFile ./rust-toolchain.toml;
+      toolchain = pkgs.rust-bin.nightly.latest.default.override {
+        extensions = ["rust-src" "rust-analyzer" "rustfmt" "clippy"];
+        targets = ["wasm32-unknown-unknown"];
+      };
     in {
       devShells.default = pkgs.mkShell {
-        name = "rust-webapp";
+        name = "rust-app";
         buildInputs = with pkgs; [
           openssl
           pkg-config
-          rust-analyzer-unwrapped
           toolchain
         ];
         RUST_SRC_PATH = "${toolchain}/lib/rustlib/src/rust/library";
         LD_LIBRARY_PATH = pkgs.lib.makeLibraryPath [pkgs.openssl];
         shellHook = ''
-          rustup default nightly
+          rustup override set nightly
         '';
       };
     });

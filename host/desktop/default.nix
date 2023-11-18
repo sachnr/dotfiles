@@ -2,7 +2,7 @@
   inherit (inputs.nixpkgs) lib;
   system = "x86_64-linux";
   user = "sachnr";
-  theme = import ../../theme/solarised.nix;
+  theme = import ../../theme/rosepine.nix;
   pkgs = import inputs.nixpkgs {
     inherit system lib;
     overlays = import ./overlays.nix {inherit inputs;};
@@ -35,7 +35,7 @@ in
         };
 
         programs.steam = {
-          enable = true;
+          enable = false;
           remotePlay.openFirewall = true;
           dedicatedServer.openFirewall = true;
         };

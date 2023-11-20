@@ -34,8 +34,8 @@
     /*****----- Global Properties -----*****/
 
     * {
-        border-colour:               ${blue};
-        handle-colour:               ${blue};
+        border-colour:               ${accent};
+        handle-colour:               ${accent};
         background-colour:           ${background};
         foreground-colour:           ${foreground};
         alternate-background:        ${background};
@@ -45,7 +45,7 @@
         urgent-foreground:           ${background};
         active-background:           ${green};
         active-foreground:           ${background};
-        selected-normal-background:  ${blue};
+        selected-normal-background:  ${accent};
         selected-normal-foreground:  ${background};
         selected-urgent-background:  ${red};
         selected-urgent-foreground:  ${background};
@@ -55,7 +55,7 @@
         alternate-normal-foreground: ${foreground};
         alternate-urgent-background: ${red};
         alternate-urgent-foreground: ${background};
-        alternate-active-background: ${blue};
+        alternate-active-background: ${accent};
         alternate-active-foreground: ${background};
     }
 

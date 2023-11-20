@@ -73,7 +73,7 @@ in {
         python39Packages.pip
         # jdk
         git
-        nodePackages.npm
+        nodePackages.pnpm
         yarn
         nodejs
         deno

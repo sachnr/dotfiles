@@ -27,13 +27,11 @@
     url = "https://raw.githubusercontent.com/sachnr/wallpapers/main/wallpapers/purple/350066.jpg";
     sha256 = "0mxq7pv4623zmjiyzp78yp6in5pvpk2j5div3g2s4r5r5byl3qfj";
   };
-  name = {
-    theme = "rosepine";
-    gtk = "numix";
-    kvantum = "Kvantum";
-    qt_style = "Fusion";
-    icon = "icons_papirus";
-    font = "Roboto";
-    fontmonospace = "Roboto Mono";
+  settings = {
+    gtk = "numix"; # name of the gtk theme
+    qt-style = "Adwaita-Dark"; # name of qt style in qt5ct
+    icon = "icons_papirus"; # name of iconpack
+    font = "Iosevka"; # font
+    fontmonospace = "Iosevka"; # Iosevka everywhere
   };
 }

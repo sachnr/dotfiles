@@ -27,13 +27,11 @@
     url = "https://raw.githubusercontent.com/sachnr/awesomewm-dotfiles/master/assets/kanagawa.jpg";
     sha256 = "sha256:0vljc2h47jjsxabpjzcw7vaqhvkbrvbg8rzjq1p7ydmb08yc14vy";
   };
-  name = {
-    theme = "kanagawa";
-    gtk = "numix";
-    kvantum = "Kvantum";
-    qt_style = "Fusion";
-    icon = "icons_papirus";
-    font = "Roboto";
-    fontmonospace = "Roboto Mono";
+  settings = {
+    gtk = "numix"; # name of the gtk theme
+    qt-style = "Adwaita-Dark"; # name of qt style in qt5ct
+    icon = "icons_papirus"; # name of iconpack
+    font = "Iosevka"; # font
+    fontmonospace = "Iosevka"; # Iosevka everywhere
   };
 }

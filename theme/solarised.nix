@@ -27,13 +27,11 @@
     url = "https://raw.githubusercontent.com/NixOS/nixos-artwork/master/wallpapers/nix-wallpaper-nineish-solarized-dark.png";
     sha256 = "1aiqrs6f8h9dzxidyl302n8rph515y5fsarv3wwcdgna5kvf86k4";
   };
-  name = {
-    theme = "solarised";
-    gtk = "numix";
-    kvantum = "Kvantum";
-    qt_style = "Fusion";
-    icon = "icons_papirus";
-    font = "Roboto";
-    fontmonospace = "Roboto Mono";
+  settings = {
+    gtk = "numix"; # name of the gtk theme
+    qt-style = "Adwaita-Dark"; # name of qt style in qt5ct
+    icon = "icons_papirus"; # name of iconpack
+    font = "Iosevka"; # font
+    fontmonospace = "Iosevka"; # Iosevka everywhere
   };
 }

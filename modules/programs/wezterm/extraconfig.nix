@@ -7,7 +7,7 @@ with theme; ''
           local time = wezterm.strftime '%H:%M '
           local date = wezterm.strftime '%a %b %-d'
           window:set_right_status(wezterm.format {
-              { Foreground = { Color = '${brightblue}' } },
+              { Foreground = { Color = '${accent}' } },
               { Text = '  ' .. date },
               { Text = '  ' .. time },
               })
@@ -43,15 +43,15 @@ with theme; ''
       foreground = "${foreground}",
       background = "${background}",
 
-      cursor_bg = "${gray}",
-      cursor_fg = "${gray}",
-      cursor_border = "${gray}",
+      cursor_bg = "${foreground}",
+      cursor_fg = "${background}",
+      cursor_border = "${accent}",
 
       selection_fg = "${gray}",
       selection_bg = "${selection}",
 
       scrollbar_thumb = "${background}",
-      split = "${background}",
+      split = "${accent}",
 
       ansi = { "${black}", "${red}", "${green}", "${yellow}", "${blue}", "${purple}", "${aqua}", "${gray}" },
       brights = { "${brightblack}", "${brightred}", "${brightgreen}", "${brightyellow}", "${brightblue}", "${brightpurple}", "${brightaqua}", "${brightgray}" },
@@ -60,23 +60,18 @@ with theme; ''
     }
 
   return {
-    font = wezterm.font("JetBrains Mono"),
-    foreground_text_hsb = {
-        hue = 1.0,
-        saturation = 1.0,
-        brightness = 1.0,
-    },
-    font_size = 10.5,
-    -- bold_brightens_ansi_colors = false,
+    font = wezterm.font_with_fallback { 'Iosevka', 'Symbols Nerd Font Mono' },
+    font_size = 13,
+    bold_brightens_ansi_colors = true,
     -- use_fancy_tab_bar = false,
     front_end = "WebGpu",
-    freetype_load_target = "Normal",
-    freetype_load_flags = 'NO_AUTOHINT',
-    underline_position = "125%",
+    -- freetype_load_target = "Normal",
+    -- freetype_load_flags = 'NO_AUTOHINT',
+    -- underline_position = "125%",
     cursor_blink_rate = 0,
-    line_height = 1.0,
+    -- line_height = 1.0,
     adjust_window_size_when_changing_font_size = false,
-    color_scheme = "nixtheme",
+    -- color_scheme = "nixtheme",
     -- color_scheme = "Kanagawa (Gogh)",
     -- color_scheme = "Gruvbox",
     default_cursor_style = "SteadyBar",

@@ -66,7 +66,7 @@ in
           };
           fonts = {
             default_size = "11pt";
-            default_family = ["${name.font}"];
+            default_family = ["${settings.font}"];
             completion.category = "bold default_size default_family";
             completion.entry = "default_size default_family";
             downloads = "default_size default_family";
@@ -83,10 +83,10 @@ in
             tabs.unselected = "default_size default_family";
             web = {
               family = {
-                sans_serif = name.font;
-                serif = name.font;
-                standard = name.font;
-                fixed = name.fontmonospace;
+                sans_serif = settings.font;
+                serif = settings.font;
+                standard = settings.font;
+                fixed = settings.fontmonospace;
               };
               size.default = 16;
               size.default_fixed = 13;

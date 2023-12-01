@@ -21,7 +21,7 @@ in
         enable = true;
         settings = with theme; {
           font-size = 14;
-          inherit (name) font;
+          font = settings.font;
           show-failed-attempts = true;
           indicator-idle-visible = true;
           indicator-radius = 15;

@@ -14,7 +14,7 @@
   purple = "#BDA9D4";
   aqua = "#7EC49D";
   gray = "#686069";
-  brightblack = "#322F32";
+  brightblack = "#5E6173";
   brightred = "#E0828D";
   brightorange = "#E39A65";
   brightgreen = "#8CD881";
@@ -27,13 +27,11 @@
     url = "https://images.unsplash.com/photo-1465326718387-85450d5f1510";
     sha256 = "sha256:1v946y4wkwqk6s9m0l8jv1ccdzj1vsh86sb3zjjsf463f02qg6l5";
   };
-  name = {
-    theme = "cherry";
-    gtk = "numix";
-    kvantum = "Kvantum";
-    qt_style = "Fusion";
-    icon = "icons_papirus";
-    font = "Roboto";
-    fontmonospace = "Roboto Mono";
+  settings = {
+    gtk = "numix"; # name of the gtk theme
+    qt-style = "Adwaita-Dark"; # name of qt style in qt5ct
+    icon = "icons_papirus"; # name of iconpack
+    font = "Iosevka"; # font
+    fontmonospace = "Iosevka"; # Iosevka everywhere
   };
 }

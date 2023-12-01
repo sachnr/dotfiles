@@ -5,7 +5,6 @@
   glib,
   libxml2,
   bc,
-  fetchFromGitHub,
   gtk-engine-murrine,
   theme,
   ...
@@ -43,13 +42,13 @@
       INACTIVE_HDR_FG=${substr foreground}
       ICONS_ARCHDROID=${substr foreground}
       ICONS_DARK=${substr black}
-      ICONS_MEDIUM=${substr blue}
-      ICONS_LIGHT=${substr brightblue}
-      ICONS_LIGHT_FOLDER=${substr brightblue}
+      ICONS_MEDIUM=${substr black}
+      ICONS_LIGHT=${substr accent}
+      ICONS_LIGHT_FOLDER=${substr accent}
       ICONS_NUMIX_STYLE=0
       ICONS_STYLE=gnome_colors
-      ICONS_SYMBOLIC_ACTION=${substr foreground}
-      ICONS_SYMBOLIC_PANEL=${substr foreground}
+      ICONS_SYMBOLIC_ACTION=${substr accent}
+      ICONS_SYMBOLIC_PANEL=${substr accent}
       CARET1_FG=${substr brightgray}
       CARET2_FG=${substr gray}
       CARET_SIZE=0.04
@@ -94,7 +93,7 @@
 in let
   package = getPackage "themixgui" pkgs;
 in
-  stdenv.mkDerivation rec {
+  stdenv.mkDerivation {
     name = "oomox-gtk";
     version = package.version;
     src = package.src;
@@ -118,9 +117,7 @@ in
 
     propagatedUserEnvPkgs = [gtk-engine-murrine];
 
-    installPhase = let
-      home = builtins.getEnv "HOME";
-    in ''
+    installPhase = ''
       mkdir -p $out/share/icons/icons_papirus
       echo "${oomox-colors}" > $out/oomox.colors
       pushd plugins/icons_papirus

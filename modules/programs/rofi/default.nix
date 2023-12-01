@@ -27,7 +27,7 @@
         display-window:             "";
     	drun-display-format:        "{icon} {name}";
     	window-format:              "{w} · {c} · {t}";
-      font:                   "${name.fontmonospace} 11";
+      font:                   "${settings.fontmonospace} 11";
       icon-theme:                 "Papirus Dark";
     }
 
@@ -74,7 +74,7 @@
         enabled:                     true;
         margin:                      0px;
         padding:                     0px;
-        border:                      0px solid;
+        border:                      1px solid;
         border-radius:               10px;
         border-color:                @border-colour;
         cursor:                      "default";

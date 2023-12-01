@@ -34,7 +34,7 @@ in
           enable = true;
           enableCompletion = true;
           enableAutosuggestions = true;
-          autocd = true;
+          autocd = false;
           dotDir = ".config/zsh";
           history = {
             expireDuplicatesFirst = true;

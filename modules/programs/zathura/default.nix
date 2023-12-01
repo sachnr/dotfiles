@@ -1,5 +1,4 @@
 {
-  pkgs,
   config,
   lib,
   theme,
@@ -27,7 +26,7 @@ in
           selection-clipboard = "clipboard";
           default-bg = background;
           default-fg = foreground;
-          font = "${name.fontmonospace}";
+          font = "${settings.fontmonospace}";
           completion-highlight-bg = blue;
           completion-highlight-fg = black;
           completion-group-bg = black;

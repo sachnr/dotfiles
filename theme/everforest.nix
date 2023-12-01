@@ -27,13 +27,11 @@
     url = "https://raw.githubusercontent.com/sachnr/wallpapers/main/green/forest.jpg";
     sha256 = "13h5nmpr6d1yybwsczgmwz39lv6b0jr7ps66vnwp9gff06lxqsw5";
   };
-  name = {
-    theme = "everforest";
-    gtk = "numix";
-    kvantum = "Kvantum";
-    qt_style = "Fusion";
-    icon = "icons_papirus";
-    font = "Roboto";
-    fontmonospace = "Roboto Mono";
+  settings = {
+    gtk = "numix"; # name of the gtk theme
+    qt-style = "Adwaita-Dark"; # name of qt style in qt5ct
+    icon = "icons_papirus"; # name of iconpack
+    font = "Iosevka"; # font
+    fontmonospace = "Iosevka"; # Iosevka everywhere
   };
 }

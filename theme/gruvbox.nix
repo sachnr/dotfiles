@@ -27,13 +27,11 @@
     url = "https://raw.githubusercontent.com/FrenzyExists/wallpapers/main/Gruv/gruv-pixel-III.png";
     sha256 = "sha256:0qb9jydrn9i5mbrzf55hw6h0vlxhmwy2gihp9rdcri3wl4294pp8";
   };
-  name = {
-    theme = "gruvbox";
-    gtk = "numix";
-    kvantum = "Kvantum";
-    qt_style = "Fusion";
-    icon = "icons_papirus";
-    font = "Roboto";
-    fontmonospace = "Roboto Mono";
+  settings = {
+    gtk = "numix"; # name of the gtk theme
+    qt-style = "Adwaita-Dark"; # name of qt style in qt5ct
+    icon = "icons_papirus"; # name of iconpack
+    font = "Iosevka"; # font
+    fontmonospace = "Iosevka"; # Iosevka everywhere
   };
 }

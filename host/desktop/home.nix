@@ -31,18 +31,24 @@ in {
         yt-dlp
         gh-dash
         lxqt.pcmanfm-qt
-        libsForQt5.ark
+        lxqt.lxqt-menu-data
+        lxqt.lxqt-archiver
         direnv
         go-mtpfs
 
         # General
         networkmanagerapplet
 
-        # media/game
+        # Media
         feh
         pavucontrol
-        # steam
         telegram-desktop
+
+        # Game
+        blender
+        # steam
+        ldtk
+        krita
 
         # Browsers
         # tor-browser-bundle-bin
@@ -133,11 +139,11 @@ in {
         waybar.enable = true;
       };
       programs = {
-        gtk.enable = true;
+        gtk-qt.enable = true;
         neovim.enable = true;
         firefox.enable = true;
         kitty.enable = true;
-        wezterm.enable = false;
+        wezterm.enable = true;
         foot.enable = true;
         rofi.enable = true;
         qutebrowser.enable = false;
@@ -147,7 +153,7 @@ in {
         st.enable = false;
       };
       services = {
-        picom.enable = false;
+        picom.enable = true;
         polybar.enable = false;
         mpd.enable = true;
         eww.enable = false;

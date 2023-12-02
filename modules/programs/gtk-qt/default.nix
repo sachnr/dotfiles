@@ -9,7 +9,7 @@
   cfg = config.modules.programs.gtk-qt;
   oomox = pkgs.callPackage ../../../pkgs/themix-gui.nix {inherit theme;};
   qt5ct = import ./qt5ct.nix {inherit theme user pkgs oomox;};
-  qt-stylesheet = import ./qt-stylesheet.nix;
+  qt6ct = import ./qt6ct.nix {inherit theme user pkgs oomox;};
   # global config for kde ecosystem apps like dolphin etc, not currently using this
   # kdeglobal = import ./kdeglobal.nix {inherit pkgs lib theme;};
 in
@@ -69,6 +69,7 @@ in
       };
 
       home.file.".config/qt5ct/qt5ct.conf".text = qt5ct;
+      home.file.".config/qt6ct/qt6ct.conf".text = qt6ct;
 
       # home.file.".config/kdeglobals".text = kdeglobal;
 

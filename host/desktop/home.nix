@@ -143,7 +143,7 @@ in {
         neovim.enable = true;
         firefox.enable = true;
         kitty.enable = true;
-        wezterm.enable = true;
+        wezterm.enable = false;
         foot.enable = true;
         rofi.enable = true;
         qutebrowser.enable = false;
@@ -162,7 +162,6 @@ in {
       };
       shell = {
         zsh.enable = true;
-        starship.enable = true;
         tmux.enable = true;
       };
     };

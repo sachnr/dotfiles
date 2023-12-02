@@ -11,7 +11,7 @@
       noto-fonts-emoji
       roboto
       ibm-plex
-      iosevka
+      iosevka-bin
       (nerdfonts.override {fonts = ["JetBrainsMono" "CascadiaCode" "NerdFontsSymbolsOnly"];})
     ];
 
@@ -28,9 +28,9 @@
         style = "slight";
       };
       defaultFonts = {
-        serif = ["Noto Sans" "Symbols Nerd Font Mono"];
-        sansSerif = ["Noto Sans" "Symbols Nerd Font Mono"];
-        monospace = ["Noto Monospace" "Symbols Nerd Font Mono"];
+        serif = ["Iosevka" "Symbols Nerd Font Mono"];
+        sansSerif = ["Iosevka" "Symbols Nerd Font Mono"];
+        monospace = ["Iosevka" "Symbols Nerd Font Mono"];
         emoji = ["Noto Color Emoji"];
       };
     };

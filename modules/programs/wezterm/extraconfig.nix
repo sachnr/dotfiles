@@ -60,8 +60,8 @@ with theme; ''
     }
 
   return {
-    font = wezterm.font_with_fallback { 'Iosevka', 'Symbols Nerd Font Mono' },
-    font_size = 13,
+    font = wezterm.font_with_fallback { 'Sarasa Fixed CL', 'Symbols Nerd Font Mono' },
+    font_size = 13.5,
     bold_brightens_ansi_colors = true,
     -- use_fancy_tab_bar = false,
     front_end = "WebGpu",

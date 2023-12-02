@@ -1,6 +1,5 @@
 {
   pkgs,
-  config,
   ...
 }: let
   rtl8812au = (pkgs.callPackage ../../_sources/generated.nix {}).rtl8812au;
@@ -20,6 +19,9 @@ in {
     blacklistedKernelModules = ["nouveau" "i2c_nvidia_gpu"];
     kernelParams = ["quiet" "acpi_osi=!" "nvidia.NVreg_PreserveVideoMemoryAllocations=1"];
     extraModulePackages = [network-driver];
+    extraModprobeConfig = ''
+      options snd slots=snd-hda-intel
+    '';
     loader = {
       timeout = 5;
       efi = {
@@ -162,6 +164,7 @@ in {
     };
   };
 
+  sound.enable = true;
   services.pipewire = {
     enable = true;
     audio.enable = true;

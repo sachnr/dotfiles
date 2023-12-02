@@ -4,7 +4,6 @@
   theme,
   config,
   lib,
-  inputs,
   ...
 }: let
   cfg = config.modules.shell.zsh;
@@ -63,25 +62,15 @@ in
             export CODE_LLDB_PATH=${pkgs.vscode-extensions.vadimcn.vscode-lldb}
             eval "$(direnv hook zsh)"
           '';
-          initExtra = let
-            starship = "eval \"$(starship init zsh)\"";
-            p10k = ''
-              ZSH_THEME="powerlevel10k/powerlevel10k"
-              [[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
-            '';
-          in
-            with theme;
-              ''
-                export FZF_DEFAULT_OPTS="--layout=reverse"\
-                " --color=bg+:${background2},bg:${background},spinner:${brightred},hl:${brightblack}"\
-                " --color=fg:${foreground},header:${brightblack},info:${brightaqua},pointer:${brightred}"\
-                " --color=marker:${brightred},fg+:${foreground},prompt:${brightred},hl+:${brightred}"
-              ''
-              + (
-                if config.modules.shell.starship.enable
-                then starship
-                else p10k
-              );
+          initExtra = with theme; ''
+            export FZF_DEFAULT_OPTS="--layout=reverse"\
+            " --color=bg+:${background2},bg:${background},spinner:${brightred},hl:${brightblack}"\
+            " --color=fg:${foreground},header:${brightblack},info:${brightaqua},pointer:${brightred}"\
+            " --color=marker:${brightred},fg+:${foreground},prompt:${brightred},hl+:${brightred}"
+
+            ZSH_THEME="powerlevel10k/powerlevel10k"
+            [[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
+          '';
           shellAliases = {
             gg = "${pkgs.lazygit}/bin/lazygit";
             nixr = "sudo nixos-rebuild switch --flake /home/${user}/flake#desktop";
@@ -99,25 +88,18 @@ in
           plugins = let
             zsh-nix-shell = getPackage "zsh-nix-shell" pkgs;
             powerlevel10k = getPackage "powerlevel10k" pkgs;
-          in
-            [
-              {
-                name = "zsh-nix-shell";
-                file = "nix-shell.plugin.zsh";
-                src = zsh-nix-shell.src;
-              }
-            ]
-            ++ (
-              if config.modules.shell.starship.enable
-              then []
-              else [
-                {
-                  name = "powerlevel10k";
-                  file = "powerlevel10k.zsh-theme";
-                  src = powerlevel10k.src;
-                }
-              ]
-            );
+          in [
+            {
+              name = "zsh-nix-shell";
+              file = "nix-shell.plugin.zsh";
+              src = zsh-nix-shell.src;
+            }
+            {
+              name = "powerlevel10k";
+              file = "powerlevel10k.zsh-theme";
+              src = powerlevel10k.src;
+            }
+          ];
         };
       };
 

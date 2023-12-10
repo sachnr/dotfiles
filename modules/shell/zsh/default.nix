@@ -7,7 +7,6 @@
   ...
 }: let
   cfg = config.modules.shell.zsh;
-  tmux-sessionizer = import ./tmux.nix {inherit pkgs;};
   getPackage = pname: pkgs: (pkgs.callPackage ../../../_sources/generated.nix {}).${pname};
 in
   with lib; {
@@ -22,7 +21,6 @@ in
     config = mkIf cfg.enable {
       home.packages = with pkgs; [
         tmux
-        tmux-sessionizer
         eza
         fzf
         bottom
@@ -59,7 +57,6 @@ in
             export PATH="''${PATH}:$HOME/go/bin"
             export EDITOR="nvim"
             export PYTHONPATH=$HOME/.config/pip/site-packages
-            export CODE_LLDB_PATH=${pkgs.vscode-extensions.vadimcn.vscode-lldb}
             eval "$(direnv hook zsh)"
           '';
           initExtra = with theme; ''

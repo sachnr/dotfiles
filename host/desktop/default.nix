@@ -42,7 +42,7 @@ in
 
         programs.hyprland = {
           enable = true;
-          package = inputs.hyprland.packages.${system}.hyprland-nvidia;
+          package = inputs.hyprland.packages.${system}.hyprland;
           xwayland.enable = true;
         };
 

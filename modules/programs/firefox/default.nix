@@ -30,9 +30,6 @@ in
       programs.firefox = {
         enable = true;
         package = pkgs.wrapFirefox pkgs.firefox-unwrapped {
-          cfg = {
-            enableTridactylNative = true;
-          };
           extraPolicies = {
             ExtensionSettings = {};
             DisableFirefoxStudies = true;
@@ -53,7 +50,7 @@ in
               ublock-origin
               df-youtube
               cookie-autodelete
-              decentraleyes
+              # decentraleyes
               return-youtube-dislikes
               lovely-forks
             ];

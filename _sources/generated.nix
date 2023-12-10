@@ -3,13 +3,13 @@
 {
   awesomewm = {
     pname = "awesomewm";
-    version = "7ed4dd620bc73ba87a1f88e6f126aed348f94458";
+    version = "375d9d723550023f75ff0066122aba99fdbb2a93";
     src = fetchFromGitHub ({
       owner = "awesomeWM";
       repo = "awesome";
-      rev = "7ed4dd620bc73ba87a1f88e6f126aed348f94458";
+      rev = "375d9d723550023f75ff0066122aba99fdbb2a93";
       fetchSubmodules = false;
-      sha256 = "sha256-o69if8HQw2u0fp5J7jkS4WQeAXVuiFwpDLzGFscP4mM=";
+      sha256 = "sha256-9cIQvuXUPu8io2Qs3Q8n2WkF9OstdaGUt/+0FMrRkXk=";
     });
   };
   picom = {
@@ -25,26 +25,26 @@
   };
   powerlevel10k = {
     pname = "powerlevel10k";
-    version = "174ce9bf0166c657404a21f4dc9608da935f7325";
+    version = "d70eedb345a9cc54b4f3e9ae09b0dbbb4edc9a39";
     src = fetchgit {
       url = "https://github.com/romkatv/powerlevel10k.git";
-      rev = "174ce9bf0166c657404a21f4dc9608da935f7325";
+      rev = "d70eedb345a9cc54b4f3e9ae09b0dbbb4edc9a39";
       fetchSubmodules = false;
       deepClone = false;
       leaveDotGit = false;
-      sha256 = "sha256-3fvqWS/Zm3GLFqo36s5tPBfVX3SOpUyxjHDatMhD/u0=";
+      sha256 = "sha256-gPsOB2JaBZzISLvp2pY+1g0J9aLaGLJXszAc4u3Ih+k=";
     };
   };
   rtl8812au = {
     pname = "rtl8812au";
-    version = "4a983e47dafc048019412350d36270864f6b5f2d";
+    version = "a3e0c0b6d54546418f046db0dbf1d20e454c9ec2";
     src = fetchgit {
       url = "https://github.com/aircrack-ng/rtl8812au.git";
-      rev = "4a983e47dafc048019412350d36270864f6b5f2d";
+      rev = "a3e0c0b6d54546418f046db0dbf1d20e454c9ec2";
       fetchSubmodules = false;
       deepClone = false;
       leaveDotGit = false;
-      sha256 = "sha256-/ucY/BWDE9orfzCcacgtAOkhZn+zXmUvaEiKvsJkT3E=";
+      sha256 = "sha256-tjEkniq/ikBwjCxfppzN9egbi2QzqkuKLjMeKIzXn8M=";
     };
   };
   stfork = {
@@ -73,26 +73,26 @@
   };
   wezterm = {
     pname = "wezterm";
-    version = "721fbdf5dc39aaeacc0517e0422d06f0cf81561b";
+    version = "e3cd2e93d0ee5f3af7f3fe0af86ffad0cf8c7ea8";
     src = fetchgit {
       url = "https://github.com/wez/wezterm.git";
-      rev = "721fbdf5dc39aaeacc0517e0422d06f0cf81561b";
+      rev = "e3cd2e93d0ee5f3af7f3fe0af86ffad0cf8c7ea8";
       fetchSubmodules = true;
       deepClone = false;
       leaveDotGit = false;
-      sha256 = "sha256-S8i3EXUEChlf2Il3AAhfjIkqZO6PoB2PfLizOeubNnU=";
+      sha256 = "sha256-sj3S1fWC6j9Q/Yc+4IpLbKC3lttUWFk65ROyCdQt+Zc=";
     };
   };
   yuzu = {
     pname = "yuzu";
-    version = "cc7b11f0c78817d2584ec606da10d97fd1aacc55";
+    version = "cf8ff83544adb8b058e00f3ad3c32cb374e1fdb5";
     src = fetchgit {
       url = "https://github.com/yuzu-emu/yuzu-mainline.git";
-      rev = "cc7b11f0c78817d2584ec606da10d97fd1aacc55";
+      rev = "cf8ff83544adb8b058e00f3ad3c32cb374e1fdb5";
       fetchSubmodules = true;
-      deepClone = true;
-      leaveDotGit = true;
-      sha256 = "sha256-QitKGkjUZ/gvMW0kkVJhB7M8jKLqbq3WdtxLCUVJyS0=";
+      deepClone = false;
+      leaveDotGit = false;
+      sha256 = "sha256-WqvK6lr0hSZj3n1Drz17jf+RyBq8nkcXND3mEFexW/E=";
     };
   };
   yuzu-compat-list = {

@@ -93,9 +93,10 @@ in {
         luajitPackages.jsregexp
 
         # debugger
-        gdb
-        lldb_15
-        delve
+        # gdb
+        # lldb_15
+        # delve
+        vscode-extensions.vadimcn.vscode-lldb.adapter
 
         # Formatters
         black

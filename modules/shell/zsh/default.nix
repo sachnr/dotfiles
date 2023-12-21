@@ -24,6 +24,7 @@ in
         eza
         fzf
         bottom
+        vscode-extensions.vadimcn.vscode-lldb
       ];
 
       programs = {
@@ -56,6 +57,7 @@ in
             export PATH="''${PATH}:$HOME/.cargo/bin"
             export PATH="''${PATH}:$HOME/go/bin"
             export EDITOR="nvim"
+            export CODE_LLDB_PATH="${pkgs.vscode-extensions.vadimcn.vscode-lldb}/share/vscode/extensions/vadimcn.vscode-lldb/";
             export PYTHONPATH=$HOME/.config/pip/site-packages
             eval "$(direnv hook zsh)"
           '';
@@ -81,6 +83,7 @@ in
             bk = "find ~/Documents/Books -mindepth 1 | fzf | xargs -I {} zathura '{}' --fork";
             top = "${pkgs.bottom}/bin/btm -b";
             gotest = "gotestsum -f testdox";
+            codelldb = "${pkgs.vscode-extensions.vadimcn.vscode-lldb}/share/vscode/extensions/vadimcn.vscode-lldb/adapter/.codelldb-wrapped_";
           };
           plugins = let
             zsh-nix-shell = getPackage "zsh-nix-shell" pkgs;

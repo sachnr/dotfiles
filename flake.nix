@@ -51,6 +51,10 @@
         path = ./templates/rust;
         description = "Rust template";
       };
+      c = {
+        path = ./templates/c;
+        description = "c template";
+      };
     };
   };
 }

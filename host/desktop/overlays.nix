@@ -35,6 +35,14 @@ in
           ];
       }));
 
+      aseprite-git = let
+        package = getPackage "aseprite" prev;
+      in
+        prev.aseprite.overrideAttrs
+        (_: {
+          inherit (package) src version;
+        });
+
       wezterm-git = let
         package = getPackage "wezterm" prev;
       in (prev.callPackage "${inputs.nixpkgs}/pkgs/applications/terminal-emulators/wezterm" {

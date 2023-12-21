@@ -49,6 +49,7 @@ in {
         # steam
         ldtk
         krita
+        aseprite-git
 
         # Browsers
         # tor-browser-bundle-bin
@@ -70,7 +71,7 @@ in {
         nil
         gopls
         # sqls
-        ccls
+        # ccls
         nodePackages_latest.eslint
 
         # Dev
@@ -96,7 +97,7 @@ in {
         # gdb
         # lldb_15
         # delve
-        vscode-extensions.vadimcn.vscode-lldb.adapter
+        # vscode-extensions.vadimcn.vscode-lldb.adapter
 
         # Formatters
         black

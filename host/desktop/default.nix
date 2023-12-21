@@ -2,7 +2,7 @@
   inherit (inputs.nixpkgs) lib;
   system = "x86_64-linux";
   user = "sachnr";
-  theme = import ../../theme/cherry.nix;
+  theme = import ../../theme/melange.nix;
   pkgs = import inputs.nixpkgs {
     inherit system lib;
     overlays = import ./overlays.nix {inherit inputs;};
@@ -45,6 +45,8 @@ in
           package = inputs.hyprland.packages.${system}.hyprland;
           xwayland.enable = true;
         };
+
+        # services.emacs.enable = true;
 
         virtualisation.docker.enable = true;
 

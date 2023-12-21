@@ -1,4 +1,23 @@
 {
+    "aseprite": {
+        "cargoLocks": null,
+        "extract": null,
+        "name": "aseprite",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": true,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "aseprite",
+            "repo": "aseprite",
+            "rev": "v1.3.2",
+            "sha256": "sha256-8PXqMDf2ATxmtFqyZlGip+DhGrdK8M6Ztte7fGH6Fmo=",
+            "type": "github"
+        },
+        "version": "v1.3.2"
+    },
     "awesomewm": {
         "cargoLocks": null,
         "extract": null,
@@ -31,11 +50,11 @@
             "name": null,
             "owner": "yshui",
             "repo": "picom",
-            "rev": "a6b4e285f833c13b217c0e30ca71a903ec2464b5",
-            "sha256": "sha256-l76TyxuBjHhIHG1FWzgdAy2obELdVdgtCkdGrfXTK44=",
+            "rev": "e92745671baf07cce8044c99451418f1aa29f25a",
+            "sha256": "sha256-8AkDGK1ckT1M1eeSCxeNFflJ/NHlWDUfPIVt7i744cU=",
             "type": "github"
         },
-        "version": "a6b4e285f833c13b217c0e30ca71a903ec2464b5"
+        "version": "e92745671baf07cce8044c99451418f1aa29f25a"
     },
     "powerlevel10k": {
         "cargoLocks": null,
@@ -48,12 +67,12 @@
             "fetchSubmodules": false,
             "leaveDotGit": false,
             "name": null,
-            "rev": "d70eedb345a9cc54b4f3e9ae09b0dbbb4edc9a39",
-            "sha256": "sha256-gPsOB2JaBZzISLvp2pY+1g0J9aLaGLJXszAc4u3Ih+k=",
+            "rev": "cc6ed4be416b70fe4e3f97d17061c751abaca04f",
+            "sha256": "sha256-XGVelmN4s2fPOiOIP7j1HEZ3Wpk8p3t3JNX+qT+h02w=",
             "type": "git",
             "url": "https://github.com/romkatv/powerlevel10k.git"
         },
-        "version": "d70eedb345a9cc54b4f3e9ae09b0dbbb4edc9a39"
+        "version": "cc6ed4be416b70fe4e3f97d17061c751abaca04f"
     },
     "rtl8812au": {
         "cargoLocks": null,
@@ -138,12 +157,12 @@
             "fetchSubmodules": true,
             "leaveDotGit": false,
             "name": null,
-            "rev": "cf8ff83544adb8b058e00f3ad3c32cb374e1fdb5",
-            "sha256": "sha256-WqvK6lr0hSZj3n1Drz17jf+RyBq8nkcXND3mEFexW/E=",
+            "rev": "49f4fd1efe24b3ee3cd8d843eaafde499bc0901e",
+            "sha256": "sha256-kcaluA3H4m6XWjMFIQwGgy/OSM1HtFOYEuW+ksXmR5s=",
             "type": "git",
             "url": "https://github.com/yuzu-emu/yuzu-mainline.git"
         },
-        "version": "cf8ff83544adb8b058e00f3ad3c32cb374e1fdb5"
+        "version": "49f4fd1efe24b3ee3cd8d843eaafde499bc0901e"
     },
     "yuzu-compat-list": {
         "cargoLocks": null,

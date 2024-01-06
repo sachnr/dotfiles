@@ -55,6 +55,10 @@
         path = ./templates/c;
         description = "c template";
       };
+      zig = {
+        path = ./templates/zig;
+        description = "zig template";
+      };
     };
   };
 }

@@ -6,13 +6,13 @@
 }: {
   fonts = {
     packages = with pkgs; [
-      meslo-lg
+      # meslo-lg
       noto-fonts
       noto-fonts-emoji
       roboto
-      ibm-plex
+      # ibm-plex
       iosevka-bin
-      (nerdfonts.override {fonts = ["JetBrainsMono" "CascadiaCode" "NerdFontsSymbolsOnly"];})
+      (nerdfonts.override {fonts = ["JetBrainsMono" "Iosevka" "NerdFontsSymbolsOnly"];})
     ];
 
     fontconfig = {
@@ -23,14 +23,14 @@
         rgba = "none";
       };
       hinting = {
-        enable = true;
+        enable = false;
         autohint = false;
-        style = "slight";
+        style = "none";
       };
       defaultFonts = {
-        serif = ["Iosevka" "Symbols Nerd Font Mono"];
-        sansSerif = ["Iosevka" "Symbols Nerd Font Mono"];
-        monospace = ["Iosevka" "Symbols Nerd Font Mono"];
+        serif = ["Roboto" "Symbols Nerd Font Mono"];
+        sansSerif = ["Roboto" "Symbols Nerd Font Mono"];
+        monospace = ["Roboto" "Symbols Nerd Font Mono"];
         emoji = ["Noto Color Emoji"];
       };
     };
@@ -45,23 +45,23 @@
     colors = let
       substr = str: lib.strings.removePrefix "#" str;
     in
-      with theme; [
-        (substr black)
-        (substr red)
-        (substr green)
-        (substr yellow)
-        (substr blue)
-        (substr purple)
-        (substr aqua)
-        (substr gray)
-        (substr brightblack)
-        (substr brightred)
-        (substr brightgreen)
-        (substr brightyellow)
-        (substr brightblue)
-        (substr brightpurple)
-        (substr brightaqua)
-        (substr brightgray)
+      with theme.colors; [
+        (substr normal.black)
+        (substr normal.red)
+        (substr normal.green)
+        (substr normal.yellow)
+        (substr normal.blue)
+        (substr normal.purple)
+        (substr normal.cyan)
+        (substr normal.gray)
+        (substr bright.black)
+        (substr bright.red)
+        (substr bright.green)
+        (substr bright.yellow)
+        (substr bright.blue)
+        (substr bright.purple)
+        (substr bright.cyan)
+        (substr bright.gray)
       ];
   };
 }

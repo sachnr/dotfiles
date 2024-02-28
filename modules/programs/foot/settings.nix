@@ -2,15 +2,16 @@
   theme,
   lib,
 }:
-with theme; let
+with theme.colors; let
   rp = str: lib.strings.removePrefix "#" str;
 in ''
   # -*- conf -*-
 
-  font=JetBrainsMono NF:size=13.5
-  font-size-adjustment=1
-  dpi-aware=yes
+  font=Iosevka:size=12
+  font-size-adjustment=0.5
+  dpi-aware=no
   pad=6x6
+  underline-offset=2px
 
   [cursor]
   style=block
@@ -21,35 +22,35 @@ in ''
 
   [colors]
   alpha=1.0
-  background=${rp background}
-  foreground=${rp foreground}
-  flash=${rp green}
+  background=${rp primary.background}
+  foreground=${rp primary.foreground}
+  flash=${rp normal.green}
   flash-alpha=0.5
 
   ## Normal/regular colors (color palette 0-7)
-  regular0=${rp black}  # black
-  regular1=${rp red}  # red
-  regular2=${rp green}  # green
-  regular3=${rp yellow}  # yellow
-  regular4=${rp blue}  # blue
-  regular5=${rp purple}  # magenta
-  regular6=${rp aqua}  # cyan
-  regular7=${rp gray}  # white
+  regular0=${rp normal.black}  # black
+  regular1=${rp normal.red}  # red
+  regular2=${rp normal.green}  # green
+  regular3=${rp normal.yellow}  # yellow
+  regular4=${rp normal.blue}  # blue
+  regular5=${rp normal.purple}  # magenta
+  regular6=${rp normal.cyan}  # cyan
+  regular7=${rp normal.gray}  # white
 
   ## Bright colors (color palette 8-15)
-  bright0=${rp brightblack}   # bright black
-  bright1=${rp brightred}   # bright red
-  bright2=${rp brightgreen}   # bright green
-  bright3=${rp brightyellow}   # bright yellow
-  bright4=${rp brightblue}   # bright blue
-  bright5=${rp brightpurple}   # bright magenta
-  bright6=${rp brightaqua}   # bright cyan
-  bright7=${rp brightgray}   # bright white
+  bright0=${rp bright.black}   # bright black
+  bright1=${rp bright.red}   # bright red
+  bright2=${rp bright.green}   # bright green
+  bright3=${rp bright.yellow}   # bright yellow
+  bright4=${rp bright.blue}   # bright blue
+  bright5=${rp bright.purple}   # bright magenta
+  bright6=${rp bright.cyan}   # bright cyan
+  bright7=${rp bright.gray}   # bright white
 
   ## Misc colors
-  selection-foreground=${rp gray}
-  selection-background=${rp selection}
-  urls=${rp green}
+  selection-foreground=${rp normal.gray}
+  selection-background=${rp primary.selection}
+  urls=${rp normal.green}
 
   [key-bindings]
   scrollback-up-page=Shift+Page_Up
@@ -58,8 +59,6 @@ in ''
   clipboard-paste=Control+Shift+v XF86Paste
   font-increase=Control+Shift+plus
   font-decrease=Control+Shift+underscore
-  alpha-increase=Control+Shift+s
-  alpha-decrease=Control+Shift+a
   font-reset=Control+Shift+BackSpace
   primary-paste=none
   search-start=none

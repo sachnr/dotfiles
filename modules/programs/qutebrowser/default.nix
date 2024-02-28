@@ -2,7 +2,6 @@
   pkgs,
   config,
   lib,
-  user,
   theme,
   ...
 }: let
@@ -23,7 +22,7 @@ in
         package = pkgs.qutebrowser.override {enableWideVine = true;};
         loadAutoconfig = false;
         keyBindings = {
-          normal = {
+          insert = {
             "<Ctrl-v>" = "spawn mpv {url}";
             "<Ctrl-C>" = "yank selection";
           };
@@ -40,7 +39,7 @@ in
           c.tabs.indicator.padding = {"top": 2, "bottom": 2, "left": 0, "right": 4}
           c.tabs.padding = {"top": 7, "bottom": 7, "left": 14, "right": 14}
         '';
-        settings = with theme; {
+        settings = with theme.colors; {
           # ╔══════════════════════════════════════════════════════════╗
           # ║ settings                                                 ║
           # ╚══════════════════════════════════════════════════════════╝
@@ -66,7 +65,7 @@ in
           };
           fonts = {
             default_size = "11pt";
-            default_family = ["${settings.font}"];
+            default_family = ["${theme.settings.font}"];
             completion.category = "bold default_size default_family";
             completion.entry = "default_size default_family";
             downloads = "default_size default_family";
@@ -83,10 +82,10 @@ in
             tabs.unselected = "default_size default_family";
             web = {
               family = {
-                sans_serif = settings.font;
-                serif = settings.font;
-                standard = settings.font;
-                fixed = settings.fontmonospace;
+                sans_serif = theme.settings.font;
+                serif = theme.settings.font;
+                standard = theme.settings.font;
+                fixed = theme.settings.fontmonospace;
               };
               size.default = 16;
               size.default_fixed = 13;
@@ -120,183 +119,183 @@ in
             };
             tabs = {
               even = {
-                bg = background;
-                fg = gray;
+                bg = primary.background;
+                fg = normal.gray;
               };
               odd = {
-                bg = background;
-                fg = gray;
+                bg = primary.background;
+                fg = normal.gray;
               };
-              bar.bg = black;
+              bar.bg = normal.black;
               selected = {
                 even = {
-                  bg = selection;
-                  fg = foreground;
+                  bg = primary.selection;
+                  fg = primary.foreground;
                 };
                 odd = {
-                  bg = selection;
-                  fg = foreground;
+                  bg = primary.selection;
+                  fg = primary.foreground;
                 };
               };
               pinned = {
                 even = {
-                  bg = green;
-                  fg = foreground;
+                  bg = normal.green;
+                  fg = primary.foreground;
                 };
                 odd = {
-                  bg = green;
-                  fg = foreground;
+                  bg = normal.green;
+                  fg = primary.foreground;
                 };
               };
               indicator = {
-                start = blue;
-                stop = blue;
-                error = red;
+                start = normal.blue;
+                stop = normal.blue;
+                error = normal.red;
               };
             };
             #     ╞══════════════════════════════════════════════════════════╡
             contextmenu = {
               menu = {
-                fg = foreground;
-                bg = background;
+                fg = primary.foreground;
+                bg = primary.background;
               };
               disabled = {
-                fg = gray;
-                bg = background;
+                fg = normal.gray;
+                bg = primary.background;
               };
               selected = {
-                fg = foreground;
-                bg = selection;
+                fg = primary.foreground;
+                bg = primary.selection;
               };
             };
             #     ╞══════════════════════════════════════════════════════════╡
             statusbar = {
               normal = {
-                fg = foreground;
-                bg = black;
+                fg = primary.foreground;
+                bg = normal.black;
               };
               insert = {
-                fg = brightpurple;
-                bg = black;
+                fg = bright.purple;
+                bg = normal.black;
               };
               command = {
-                fg = brightgreen;
-                bg = black;
+                fg = bright.green;
+                bg = normal.black;
               };
               passthrough = {
-                fg = gray;
-                bg = black;
+                fg = normal.gray;
+                bg = normal.black;
               };
               private = {
-                fg = purple;
-                bg = black;
+                fg = normal.purple;
+                bg = normal.black;
               };
               command.private = {
-                fg = brightgreen;
-                bg = black;
+                fg = bright.green;
+                bg = normal.black;
               };
               url = {
-                fg = foreground;
-                error.fg = red;
-                warn.fg = brightyellow;
-                hover.fg = green;
-                success.http.fg = foreground;
-                success.https.fg = foreground;
+                fg = primary.foreground;
+                error.fg = normal.red;
+                warn.fg = bright.yellow;
+                hover.fg = normal.green;
+                success.http.fg = primary.foreground;
+                success.https.fg = primary.foreground;
               };
-              progress.bg = green;
+              progress.bg = normal.green;
               caret = {
-                fg = foreground;
-                bg = black;
+                fg = primary.foreground;
+                bg = normal.black;
                 selection = {
-                  fg = foreground;
-                  bg = selection;
+                  fg = primary.foreground;
+                  bg = primary.selection;
                 };
               };
             };
             #     ╞══════════════════════════════════════════════════════════╡
             completion = {
-              fg = foreground;
-              odd.bg = selection;
-              even.bg = selection;
+              fg = primary.foreground;
+              odd.bg = primary.selection;
+              even.bg = primary.selection;
               category = {
-                fg = foreground;
-                bg = background;
+                fg = primary.foreground;
+                bg = primary.background;
                 border = {
-                  top = black;
-                  bottom = black;
+                  top = normal.black;
+                  bottom = normal.black;
                 };
               };
               item = {
                 selected = {
-                  fg = foreground;
-                  bg = selection;
+                  fg = primary.foreground;
+                  bg = primary.selection;
                   border = {
-                    top = black;
-                    bottom = black;
+                    top = normal.black;
+                    bottom = normal.black;
                   };
-                  match.fg = brightgreen;
+                  match.fg = bright.green;
                 };
               };
-              match.fg = brightgreen;
+              match.fg = bright.green;
               scrollbar = {
-                fg = selection;
-                bg = background;
+                fg = primary.selection;
+                bg = primary.background;
               };
             };
             #     ╞══════════════════════════════════════════════════════════╡
             hints = {
-              bg = background;
-              fg = gray;
-              match.fg = foreground;
+              bg = primary.background;
+              fg = normal.gray;
+              match.fg = primary.foreground;
             };
             #     ╞══════════════════════════════════════════════════════════╡
             keyhint = {
-              bg = selection;
-              fg = foreground;
-              suffix.fg = gray;
+              bg = primary.selection;
+              fg = primary.foreground;
+              suffix.fg = normal.gray;
             };
             #     ╞══════════════════════════════════════════════════════════╡
             messages = {
               error = {
-                fg = red;
-                bg = selection;
-                border = red;
+                fg = normal.red;
+                bg = primary.selection;
+                border = normal.red;
               };
               warning = {
-                fg = brightyellow;
-                bg = selection;
-                border = yellow;
+                fg = bright.yellow;
+                bg = primary.selection;
+                border = normal.yellow;
               };
               info = {
-                fg = brightblue;
-                bg = selection;
-                border = brightblue;
+                fg = bright.blue;
+                bg = primary.selection;
+                border = bright.blue;
               };
             };
             #     ╞══════════════════════════════════════════════════════════╡
             prompts = {
-              fg = foreground;
-              bg = selection;
-              border = black;
+              fg = primary.foreground;
+              bg = primary.selection;
+              border = normal.black;
               selected = {
-                bg = selection;
-                fg = foreground;
+                bg = primary.selection;
+                fg = primary.foreground;
               };
             };
             #     ╞══════════════════════════════════════════════════════════╡
             downloads = {
-              bar.bg = green;
+              bar.bg = normal.green;
               start = {
-                fg = foreground;
-                bg = selection;
+                fg = primary.foreground;
+                bg = primary.selection;
               };
               stop = {
-                fg = gray;
-                bg = selection;
+                fg = normal.gray;
+                bg = primary.selection;
               };
               error = {
-                fg = red;
-                bg = selection;
+                fg = normal.red;
+                bg = primary.selection;
               };
             };
           };

@@ -3,7 +3,6 @@
   lib,
   config,
   user,
-  theme,
   ...
 }: let
   cfg = config.modules.programs.firefox;

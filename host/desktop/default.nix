@@ -2,10 +2,9 @@
   inherit (inputs.nixpkgs) lib;
   system = "x86_64-linux";
   user = "sachnr";
-  theme = import ../../theme/melange.nix;
   pkgs = import inputs.nixpkgs {
     inherit system lib;
-    overlays = import ./overlays.nix {inherit inputs;};
+    overlays = import ./overlays.nix {inherit inputs system;};
     config = {
       allowBroken = false;
       packageOverrides = super: {
@@ -14,7 +13,7 @@
       allowUnfree = true; # Allow proprietary software
     };
   };
-
+  theme = import ../../theme/kanagawa.nix {inherit pkgs;};
   fonts = import ./fonts.nix {inherit theme lib pkgs;};
 in
   lib.nixosSystem {

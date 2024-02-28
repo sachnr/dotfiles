@@ -1,5 +1,5 @@
 {theme}:
-with theme; ''
+with theme.colors; ''
   local act = wezterm.action
   local wezterm = require 'wezterm'
 
@@ -7,7 +7,7 @@ with theme; ''
           local time = wezterm.strftime '%H:%M '
           local date = wezterm.strftime '%a %b %-d'
           window:set_right_status(wezterm.format {
-              { Foreground = { Color = '${accent}' } },
+              { Foreground = { Color = '${primary.accent}' } },
               { Text = '  ' .. date },
               { Text = '  ' .. time },
               })
@@ -29,6 +29,7 @@ with theme; ''
     { key="t", mods="SHIFT|CTRL", action= act.SpawnTab 'CurrentPaneDomain' },
     { key="w", mods="SHIFT|CTRL", action= act.SpawnWindow },
     { key = 'L', mods = 'CTRL', action = wezterm.action.ShowDebugOverlay },
+    { key = 'i', mods = 'CTRL|SHIFT', action = act.SwitchToWorkspace },
   }
 
   for i = 1, 9 do
@@ -40,28 +41,28 @@ with theme; ''
   end
 
    local colors = {
-      foreground = "${foreground}",
-      background = "${background}",
+      foreground = "${primary.foreground}",
+      background = "${primary.background}",
 
-      cursor_bg = "${foreground}",
-      cursor_fg = "${background}",
-      cursor_border = "${accent}",
+      cursor_bg = "${primary.foreground}",
+      cursor_fg = "${primary.background}",
+      cursor_border = "${primary.accent}",
 
-      selection_fg = "${gray}",
-      selection_bg = "${selection}",
+      selection_fg = "${normal.gray}",
+      selection_bg = "${primary.selection}",
 
-      scrollbar_thumb = "${background}",
-      split = "${accent}",
+      scrollbar_thumb = "${primary.background}",
+      split = "${primary.accent}",
 
-      ansi = { "${black}", "${red}", "${green}", "${yellow}", "${blue}", "${purple}", "${aqua}", "${gray}" },
-      brights = { "${brightblack}", "${brightred}", "${brightgreen}", "${brightyellow}", "${brightblue}", "${brightpurple}", "${brightaqua}", "${brightgray}" },
-      indexed = { [16] = "${gray}", [17] = "#ff5d62" },
-       compose_cursor = "${orange}",
+      ansi = { "${normal.black}", "${normal.red}", "${normal.green}", "${normal.yellow}", "${normal.blue}", "${normal.purple}", "${normal.cyan}", "${normal.gray}" },
+      brights = { "${bright.black}", "${bright.red}", "${bright.green}", "${bright.yellow}", "${bright.blue}", "${bright.purple}", "${bright.cyan}", "${bright.gray}" },
+      indexed = { [16] = "${normal.gray}", [17] = "#ff5d62" },
+       compose_cursor = "${normal.blue}",
     }
 
   return {
-    font = wezterm.font_with_fallback { 'Sarasa Fixed CL', 'Symbols Nerd Font Mono' },
-    font_size = 13.5,
+    font = wezterm.font_with_fallback { "Iosevka NF" },
+    font_size = 13,
     bold_brightens_ansi_colors = true,
     -- use_fancy_tab_bar = false,
     front_end = "WebGpu",
@@ -71,7 +72,6 @@ with theme; ''
     cursor_blink_rate = 0,
     -- line_height = 1.0,
     adjust_window_size_when_changing_font_size = false,
-    -- color_scheme = "nixtheme",
     -- color_scheme = "Kanagawa (Gogh)",
     -- color_scheme = "Gruvbox",
     default_cursor_style = "SteadyBar",
@@ -80,6 +80,8 @@ with theme; ''
     disable_default_key_bindings = true,
     enable_scroll_bar = true,
     enable_tab_bar = false,
+    -- freetype_load_target = 'Light',
+    -- freetype_render_target = 'HorizontalLcd',
     keys = keybinds,
     colors = colors,
   }

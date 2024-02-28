@@ -7,7 +7,7 @@
 }: let
   cfg = config.modules.programs.rofi;
 
-  roficfg = with theme; ''
+  roficfg = with theme.colors; ''
      /**
      *
      * Author : Aditya Shakya (adi1090x)
@@ -27,36 +27,36 @@
         display-window:             "";
     	drun-display-format:        "{icon} {name}";
     	window-format:              "{w} · {c} · {t}";
-      font:                   "${settings.fontmonospace} 11";
+      font:                   "${theme.settings.fontmonospace} 11";
       icon-theme:                 "Papirus Dark";
     }
 
     /*****----- Global Properties -----*****/
 
     * {
-        border-colour:               ${accent};
-        handle-colour:               ${accent};
-        background-colour:           ${background};
-        foreground-colour:           ${foreground};
-        alternate-background:        ${background};
-        normal-background:           ${background};
-        normal-foreground:           ${foreground};
-        urgent-background:           ${red};
-        urgent-foreground:           ${background};
-        active-background:           ${green};
-        active-foreground:           ${background};
-        selected-normal-background:  ${accent};
-        selected-normal-foreground:  ${background};
-        selected-urgent-background:  ${red};
-        selected-urgent-foreground:  ${background};
-        selected-active-background:  ${green};
-        selected-active-foreground:  ${background};
-        alternate-normal-background: ${background};
-        alternate-normal-foreground: ${foreground};
-        alternate-urgent-background: ${red};
-        alternate-urgent-foreground: ${background};
-        alternate-active-background: ${accent};
-        alternate-active-foreground: ${background};
+        border-colour:               ${primary.accent};
+        handle-colour:               ${primary.accent};
+        background-colour:           ${primary.background};
+        foreground-colour:           ${primary.foreground};
+        alternate-background:        ${primary.background};
+        normal-background:           ${primary.background};
+        normal-foreground:           ${primary.foreground};
+        urgent-background:           ${normal.red};
+        urgent-foreground:           ${primary.background};
+        active-background:           ${normal.green};
+        active-foreground:           ${primary.background};
+        selected-normal-background:  ${primary.accent};
+        selected-normal-foreground:  ${primary.background};
+        selected-urgent-background:  ${normal.red};
+        selected-urgent-foreground:  ${primary.background};
+        selected-active-background:  ${normal.green};
+        selected-active-foreground:  ${primary.background};
+        alternate-normal-background: ${primary.background};
+        alternate-normal-foreground: ${primary.foreground};
+        alternate-urgent-background: ${normal.red};
+        alternate-urgent-foreground: ${primary.background};
+        alternate-active-background: ${primary.accent};
+        alternate-active-foreground: ${primary.background};
     }
 
     /*****----- Main Window -----*****/

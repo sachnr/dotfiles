@@ -21,6 +21,8 @@ in {
       homeDirectory = "/home/${user}";
       stateVersion = "23.05";
 
+      file."/home/${user}/links/cpp_debug".source = "${pkgs.vscode-extensions.ms-vscode.cpptools}/share/vscode/extensions/ms-vscode.cpptools/debugAdapters/bin/OpenDebugAD7";
+
       packages = with pkgs; [
         # Terminal
         ranger
@@ -30,11 +32,15 @@ in {
         ripgrep
         yt-dlp
         gh-dash
+        direnv
+        go-mtpfs
+        glow
+
+        # qt
         lxqt.pcmanfm-qt
         lxqt.lxqt-menu-data
         lxqt.lxqt-archiver
-        direnv
-        go-mtpfs
+        zathura
 
         # General
         networkmanagerapplet
@@ -45,15 +51,20 @@ in {
         telegram-desktop
 
         # Game
-        blender
+        # blender
         # steam
-        ldtk
+        lutris
+        wine
+        winetricks
+        # ldtk
         krita
         aseprite-git
+        # yuzuPackages.mainline
 
         # Browsers
         # tor-browser-bundle-bin
         brave
+        microsoft-edge
 
         # Downloader
         qbittorrent
@@ -73,37 +84,39 @@ in {
         # sqls
         # ccls
         nodePackages_latest.eslint
+        zls
 
         # Dev
         rustup
-        python39
-        python39Packages.pip
+        zig
+        # python39
+        # python39Packages.pip
         # jdk
         git
         nodePackages.pnpm
-        yarn
+        # yarn
         nodejs
-        deno
+        # deno
         jq
-        gcc
+        # gcc
+        clang
+        clang-tools
         pkg-config
         go
         gotools
 
-        # for luasnip
-        luajitPackages.jsregexp
-
         # debugger
-        # gdb
+        gdb
         # lldb_15
         # delve
         # vscode-extensions.vadimcn.vscode-lldb.adapter
+        vscode-extensions.ms-vscode.cpptools
 
         # Formatters
         black
         shfmt
         stylua
-        astyle
+        # astyle
         nodePackages.prettier
         alejandra
         pgformatter
@@ -111,8 +124,8 @@ in {
 
         # Build tools
         # maven
-        cmake
-        gnumake
+        # cmake
+        # gnumake
       ];
     };
 
@@ -131,7 +144,6 @@ in {
     modules = {
       xorg = {
         awesomeConfig.enable = true;
-        i3.enable = false;
       };
       wayland = {
         hyprlandConfig.enable = true;
@@ -148,15 +160,13 @@ in {
         wezterm.enable = false;
         foot.enable = true;
         rofi.enable = true;
-        qutebrowser.enable = false;
-        zathura.enable = true;
-        alacritty.enable = false;
+        qutebrowser.enable = true;
+        alacritty.enable = true;
         ugchromium.enable = false;
         st.enable = false;
       };
       services = {
         picom.enable = true;
-        polybar.enable = false;
         mpd.enable = true;
         eww.enable = false;
         polkit.enable = true;

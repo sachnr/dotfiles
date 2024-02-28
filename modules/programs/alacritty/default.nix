@@ -1,5 +1,4 @@
 {
-  pkgs,
   config,
   lib,
   theme,
@@ -19,7 +18,27 @@ in
     config = mkIf cfg.enable {
       programs.alacritty = {
         enable = true;
-        settings = with theme; {
+        settings = with theme.colors; {
+          env = {
+            TERM = "xterm-256color";
+          };
+          keyboard.bindings = [
+            {
+              key = "Plus";
+              mods = "Control|Shift";
+              action = "IncreaseFontSize";
+            }
+            {
+              key = "Minus";
+              mods = "Control|Shift";
+              action = "DecreaseFontSize";
+            }
+            {
+              key = "Backspace";
+              mods = "Control|Shift";
+              action = "ResetFontSize";
+            }
+          ];
           window = {
             padding = {
               x = 10;
@@ -32,21 +51,21 @@ in
           };
           font = {
             normal = {
-              family = "JetBrains Mono";
+              family = "Iosevka";
             };
             bold = {
-              family = "JetBrains Mono";
+              family = "Iosevka";
               style = "Bold";
             };
             italic = {
-              family = "JetBrains Mono";
+              family = "Iosevka";
               style = "Italic";
             };
             bold_italic = {
-              family = "JetBrains Mono";
+              family = "Iosevka";
               style = "Bold Italic";
             };
-            size = 10;
+            size = 13;
           };
           window.dimensions = {
             lines = 3;
@@ -55,76 +74,68 @@ in
           bell = {
             animation = "EaseOutExpo";
             duration = 2;
-            color = foreground;
+            color = primary.foreground;
           };
           cursor = {
-            style = {
-              shape = "Beam";
-              blinking = "Always";
-            };
-            vi_mode_style = "Block";
-            blink_interval = 500;
-            blink_timeout = 15;
-            unfocused_hollow = true;
-            thickness = 1;
+            style = "Block";
           };
 
           colors = {
             primary = {
-              background = background;
-              foreground = foreground;
-              dim_foreground = "#828482";
-              bright_foreground = "#eaeaea";
+              background = primary.background;
+              foreground = primary.foreground;
+              dim_foreground = normal.gray;
+              bright_foreground = bright.gray;
             };
             cursor = {
-              text = background;
-              cursor = foreground;
+              text = primary.background;
+              cursor = primary.foreground;
             };
             vi_mode_cursor = {
-              text = background;
-              cursor = foreground;
+              text = primary.background;
+              cursor = primary.foreground;
             };
             search = {
               matches = {
-                foreground = foreground;
-                background = background3;
+                foreground = primary.foreground;
+                background = primary.background3;
               };
               focused_match = {
-                foreground = background;
-                background = blue;
+                foreground = primary.background;
+                background = normal.blue;
               };
             };
             line_indicator = {
-              foreground = foreground;
-              background = background;
+              foreground = primary.foreground;
+              background = primary.background;
             };
             footer_bar = {
-              foreground = foreground;
-              background = background2;
+              foreground = primary.foreground;
+              background = primary.background2;
             };
             selection = {
-              text = background;
-              background = selection;
+              text = primary.background;
+              background = primary.selection;
             };
             normal = {
-              black = black;
-              red = red;
-              green = green;
-              yellow = yellow;
-              blue = blue;
-              magenta = purple;
-              cyan = aqua;
-              white = gray;
+              black = normal.black;
+              red = normal.red;
+              green = normal.green;
+              yellow = normal.yellow;
+              blue = normal.blue;
+              magenta = normal.purple;
+              cyan = normal.cyan;
+              white = normal.gray;
             };
             bright = {
-              black = brightblack;
-              red = brightred;
-              green = brightgreen;
-              yellow = brightyellow;
-              blue = brightblue;
-              magenta = brightpurple;
-              cyan = brightaqua;
-              white = brightgray;
+              black = bright.black;
+              red = bright.red;
+              green = bright.green;
+              yellow = bright.yellow;
+              blue = bright.blue;
+              magenta = bright.purple;
+              cyan = bright.cyan;
+              white = bright.gray;
             };
           };
         };

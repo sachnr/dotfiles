@@ -19,12 +19,12 @@ in
     config = mkIf cfg.enable {
       programs.kitty = {
         enable = true;
-        settings = with theme; {
+        settings = with theme.colors; {
           clear_all_shortcuts = true;
           # Fonts
           font_family = "Iosevka";
           symbol_map = "U+23FB-U+23FE,U+2665,U+26A1,U+2B58,U+E000-U+E00A,U+E0A0-U+E0A3,U+E0B0-U+E0C8,U+E0CA,U+E0CC-U+E0D2,U+E0D4,U+E200-U+E2A9,U+E300-U+E3E3,U+E5FA-U+E634,U+E700-U+E7C5,U+EA60-U+EBEB,U+F000-U+F2E0,U+F300-U+F32F,U+F400-U+F4A9,U+F500-U+F8FF Symbols Nerd Font Mono";
-          font_size = "14";
+          font_size = "12.6";
           # font_features = "JetBrains Mono +cv06 +cv07";
           modify_font = "underline_position 125%";
 
@@ -65,7 +65,7 @@ in
           window_padding_width = "2";
           inactive_text_alpha = "1.0";
           dynamic_background_opacity = true;
-          background_opacity = "1";
+          background_opacity = "0.96";
           placement_strategy = "center";
           hide_window_decorations = true;
 
@@ -86,39 +86,40 @@ in
           # term = "xterm-kitty";
 
           # colors
-          color0 = black;
-          color1 = red;
-          color2 = green;
-          color3 = yellow;
-          color4 = blue;
-          color5 = purple;
-          color6 = aqua;
-          color7 = gray;
-          color8 = brightblack;
-          color9 = brightred;
-          color10 = brightgreen;
-          color11 = brightyellow;
-          color12 = brightblue;
-          color13 = brightpurple;
-          color14 = brightaqua;
-          color15 = brightgray;
+          color0 = normal.black;
+          color1 = normal.red;
+          color2 = normal.green;
+          color3 = normal.yellow;
+          color4 = normal.blue;
+          color5 = normal.purple;
+          color6 = normal.cyan;
+          color7 = normal.gray;
+          color8 = bright.black;
+          color9 = bright.red;
+          color10 = bright.green;
+          color11 = bright.yellow;
+          color12 = bright.blue;
+          color13 = bright.purple;
+          color14 = bright.cyan;
+          color15 = bright.gray;
 
-          background = background;
-          foreground = foreground;
-          cursor = foreground;
+          background = primary.background;
+          foreground = primary.foreground;
+          cursor = primary.foreground;
+          cursor_text_color = primary.background;
 
-          selection_foreground = background;
-          selection_background = selection;
-          active_border_color = accent;
-          inactive_border_color = background;
+          selection_foreground = primary.background;
+          selection_background = primary.selection;
+          active_border_color = primary.accent;
+          inactive_border_color = primary.background;
 
-          url_color = brightgreen;
+          url_color = bright.green;
 
-          active_tab_foreground = accent;
-          active_tab_background = background;
-          inactive_tab_foreground = gray;
-          inactive_tab_background = background;
-          tab_bar_background = black;
+          active_tab_foreground = primary.accent;
+          active_tab_background = primary.background;
+          inactive_tab_foreground = normal.gray;
+          inactive_tab_background = primary.background;
+          tab_bar_background = normal.black;
         };
         keybindings = {
           "ctrl+shift+up" = "scroll_page_up";
@@ -127,11 +128,11 @@ in
           "ctrl+shift+right" = "next_tab";
           "ctrl+shift+v" = "paste_from_clipboard";
           "ctrl+shift+c" = "copy_to_clipboard";
-          "ctrl+shift+equal" = "change_font_size current +1";
-          "ctrl+shift+minus" = "change_font_size current -1";
+          "ctrl+shift+equal" = "change_font_size current +0.5";
+          "ctrl+shift+minus" = "change_font_size current -0.5";
           "ctrl+shift+backspace" = "restore_font_size";
-          "ctrl+alt+s" = "set_background_opacity +0.05";
-          "ctrl+alt+a" = "set_background_opacity -0.05";
+          "ctrl+alt+s" = "set_background_opacity +0.02";
+          "ctrl+alt+a" = "set_background_opacity -0.02";
           "ctrl+shift+t" = "new_tab_with_cwd";
           "ctrl+shift+d" = "close_tab";
           "ctrl+shift+," = "set_tab_title";

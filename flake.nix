@@ -37,6 +37,10 @@
       url = "github:tmux-plugins/tpm";
       flake = false;
     };
+
+    msedge = {
+      url = "github:sachnr/edge";
+    };
   };
 
   outputs = inputs @ {self, ...}: {

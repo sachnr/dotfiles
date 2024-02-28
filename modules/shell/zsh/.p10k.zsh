@@ -60,11 +60,11 @@
 #  ┃                        Directory                         ┃
 #  ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
   typeset -g POWERLEVEL9K_DIR_BACKGROUND=
-  typeset -g POWERLEVEL9K_DIR_FOREGROUND=09
+  typeset -g POWERLEVEL9K_DIR_FOREGROUND=12
   typeset -g POWERLEVEL9K_SHORTEN_STRATEGY=truncate_to_unique
   typeset -g POWERLEVEL9K_SHORTEN_DELIMITER=
   typeset -g POWERLEVEL9K_DIR_SHORTENED_FOREGROUND=01
-  typeset -g POWERLEVEL9K_DIR_ANCHOR_FOREGROUND=09
+  typeset -g POWERLEVEL9K_DIR_ANCHOR_FOREGROUND=12
   typeset -g POWERLEVEL9K_DIR_ANCHOR_BOLD=true
   local anchor_files=(
    .git
@@ -100,7 +100,7 @@
 #  ┃                        Git Status                        ┃
 #  ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
   typeset -g POWERLEVEL9K_VCS_BRANCH_ICON=' '
-  typeset -g POWERLEVEL9K_VCS_UNTRACKED_ICON=''
+  typeset -g POWERLEVEL9K_VCS_UNTRACKED_ICON=' '
 
   function my_git_formatter() {
     emulate -L zsh
@@ -144,22 +144,22 @@
     fi
 
     if (( VCS_STATUS_COMMITS_AHEAD || VCS_STATUS_COMMITS_BEHIND )); then
-        (( VCS_STATUS_COMMITS_BEHIND )) && res+=" ${modified}}${VCS_STATUS_COMMITS_BEHIND}"
+        (( VCS_STATUS_COMMITS_BEHIND )) && res+=" ${modified}} ${VCS_STATUS_COMMITS_BEHIND}"
         (( VCS_STATUS_COMMITS_AHEAD && !VCS_STATUS_COMMITS_BEHIND )) && res+=" "
-        (( VCS_STATUS_COMMITS_AHEAD  )) && res+="${staged}${VCS_STATUS_COMMITS_AHEAD}"
+        (( VCS_STATUS_COMMITS_AHEAD  )) && res+="${staged} ${VCS_STATUS_COMMITS_AHEAD}"
       elif [[ -n $VCS_STATUS_REMOTE_BRANCH ]]; then
        # Tip: Uncomment the next line to display '=' if up to date with the remote.
        # res+=" ${clean}="
     fi
 
-    (( VCS_STATUS_PUSH_COMMITS_BEHIND )) && res+=" ${clean}${VCS_STATUS_PUSH_COMMITS_BEHIND}"
+    (( VCS_STATUS_PUSH_COMMITS_BEHIND )) && res+=" ${clean} ${VCS_STATUS_PUSH_COMMITS_BEHIND}"
     (( VCS_STATUS_PUSH_COMMITS_AHEAD && !VCS_STATUS_PUSH_COMMITS_BEHIND )) && res+=" "
-    (( VCS_STATUS_PUSH_COMMITS_AHEAD  )) && res+="${clean}${VCS_STATUS_PUSH_COMMITS_AHEAD}"
-    (( VCS_STATUS_STASHES        )) && res+=" ${stash}${VCS_STATUS_STASHES}"
+    (( VCS_STATUS_PUSH_COMMITS_AHEAD  )) && res+="${clean} ${VCS_STATUS_PUSH_COMMITS_AHEAD}"
+    (( VCS_STATUS_STASHES        )) && res+=" ${stash} ${VCS_STATUS_STASHES}"
     [[ -n $VCS_STATUS_ACTION     ]] && res+=" ${conflicted}${VCS_STATUS_ACTION}"
-    (( VCS_STATUS_NUM_CONFLICTED )) && res+=" ${conflicted}${VCS_STATUS_NUM_CONFLICTED}"
-    (( VCS_STATUS_NUM_STAGED     )) && res+=" ${staged}✔${VCS_STATUS_NUM_STAGED}"
-    (( VCS_STATUS_NUM_UNSTAGED   )) && res+=" ${modified}✘${VCS_STATUS_NUM_UNSTAGED}"
+    (( VCS_STATUS_NUM_CONFLICTED )) && res+=" ${conflicted} ${VCS_STATUS_NUM_CONFLICTED}"
+    (( VCS_STATUS_NUM_STAGED     )) && res+=" ${staged}✔ ${VCS_STATUS_NUM_STAGED}"
+    (( VCS_STATUS_NUM_UNSTAGED   )) && res+=" ${modified}✘ ${VCS_STATUS_NUM_UNSTAGED}"
     (( VCS_STATUS_NUM_UNTRACKED  )) && res+=" ${untracked}${(g::)POWERLEVEL9K_VCS_UNTRACKED_ICON}${VCS_STATUS_NUM_UNTRACKED}"
     (( VCS_STATUS_HAS_UNSTAGED == -1 )) && res+=" ${modified}"
 

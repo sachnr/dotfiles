@@ -14,36 +14,36 @@
   };
   awesomewm = {
     pname = "awesomewm";
-    version = "375d9d723550023f75ff0066122aba99fdbb2a93";
+    version = "75758b07f3c3c326d43ac682896dbcf18fac4bd7";
     src = fetchFromGitHub ({
       owner = "awesomeWM";
       repo = "awesome";
-      rev = "375d9d723550023f75ff0066122aba99fdbb2a93";
+      rev = "75758b07f3c3c326d43ac682896dbcf18fac4bd7";
       fetchSubmodules = false;
-      sha256 = "sha256-9cIQvuXUPu8io2Qs3Q8n2WkF9OstdaGUt/+0FMrRkXk=";
+      sha256 = "sha256-pT9gCia+Cj3huTbDcXf/O6+EL6Bw4PlvL00IJ1gT+OY=";
     });
   };
   picom = {
     pname = "picom";
-    version = "e92745671baf07cce8044c99451418f1aa29f25a";
+    version = "4c34944d76770f26236a542dce0f85b0b975433e";
     src = fetchFromGitHub ({
       owner = "yshui";
       repo = "picom";
-      rev = "e92745671baf07cce8044c99451418f1aa29f25a";
+      rev = "4c34944d76770f26236a542dce0f85b0b975433e";
       fetchSubmodules = false;
-      sha256 = "sha256-8AkDGK1ckT1M1eeSCxeNFflJ/NHlWDUfPIVt7i744cU=";
+      sha256 = "sha256-OUJXhHapb0YTaavJmt16jasNIn4wSSijXuJeTZI9a1U=";
     });
   };
   powerlevel10k = {
     pname = "powerlevel10k";
-    version = "cc6ed4be416b70fe4e3f97d17061c751abaca04f";
+    version = "8fefef228571c08ce8074d42304adec3b0876819";
     src = fetchgit {
       url = "https://github.com/romkatv/powerlevel10k.git";
-      rev = "cc6ed4be416b70fe4e3f97d17061c751abaca04f";
+      rev = "8fefef228571c08ce8074d42304adec3b0876819";
       fetchSubmodules = false;
       deepClone = false;
       leaveDotGit = false;
-      sha256 = "sha256-XGVelmN4s2fPOiOIP7j1HEZ3Wpk8p3t3JNX+qT+h02w=";
+      sha256 = "sha256-m70+HjnEfOFJis0LZcWjdYLHboHm0yglRY2V3znQ0Ww=";
     };
   };
   rtl8812au = {
@@ -72,38 +72,38 @@
   };
   themixgui = {
     pname = "themixgui";
-    version = "6d9f49cafe8d18ef13dff7c619aee6f293052617";
+    version = "c145600518251ce9667cf00c31880e42d313b03f";
     src = fetchgit {
       url = "https://github.com/themix-project/themix-gui.git";
-      rev = "6d9f49cafe8d18ef13dff7c619aee6f293052617";
+      rev = "c145600518251ce9667cf00c31880e42d313b03f";
       fetchSubmodules = true;
       deepClone = false;
       leaveDotGit = false;
-      sha256 = "sha256-PvMcAMt+KxnWEcNRSRHq4ntm22CTTrfbS3lFtiDrhj8=";
+      sha256 = "sha256-FITMrrG84Xad86iiRuWaKZTV/CF0WdzXzb2HjE9aAgw=";
     };
   };
   wezterm = {
     pname = "wezterm";
-    version = "e3cd2e93d0ee5f3af7f3fe0af86ffad0cf8c7ea8";
+    version = "05eadb7cbbf26ae073f9555e587a040c82b30928";
     src = fetchgit {
       url = "https://github.com/wez/wezterm.git";
-      rev = "e3cd2e93d0ee5f3af7f3fe0af86ffad0cf8c7ea8";
+      rev = "05eadb7cbbf26ae073f9555e587a040c82b30928";
       fetchSubmodules = true;
       deepClone = false;
       leaveDotGit = false;
-      sha256 = "sha256-sj3S1fWC6j9Q/Yc+4IpLbKC3lttUWFk65ROyCdQt+Zc=";
+      sha256 = "sha256-y6HqUeHf/xXBkc5S4CcXlBIdTnbNOxoioPAuOlSnuBw=";
     };
   };
   yuzu = {
     pname = "yuzu";
-    version = "49f4fd1efe24b3ee3cd8d843eaafde499bc0901e";
+    version = "757375d0aca0024028cae97004d5d4024e09400c";
     src = fetchgit {
       url = "https://github.com/yuzu-emu/yuzu-mainline.git";
-      rev = "49f4fd1efe24b3ee3cd8d843eaafde499bc0901e";
+      rev = "757375d0aca0024028cae97004d5d4024e09400c";
       fetchSubmodules = true;
       deepClone = false;
       leaveDotGit = false;
-      sha256 = "sha256-kcaluA3H4m6XWjMFIQwGgy/OSM1HtFOYEuW+ksXmR5s=";
+      sha256 = "sha256-et3AvF6T++TbaTnpnrjcFxYLPaCJ78mlL+VFfyVTRPI=";
     };
   };
   yuzu-compat-list = {
@@ -116,14 +116,14 @@
   };
   zsh-nix-shell = {
     pname = "zsh-nix-shell";
-    version = "406ce293f5302fdebca56f8c59ec615743260604";
+    version = "82ca15e638cc208e6d8368e34a1625ed75e08f90";
     src = fetchgit {
       url = "https://github.com/chisui/zsh-nix-shell.git";
-      rev = "406ce293f5302fdebca56f8c59ec615743260604";
+      rev = "82ca15e638cc208e6d8368e34a1625ed75e08f90";
       fetchSubmodules = false;
       deepClone = false;
       leaveDotGit = false;
-      sha256 = "sha256-dE86o8LfEfswIIP9r0BJpxWvkoYdu7VQcJOKTLYqtWs=";
+      sha256 = "sha256-Rtg8kWVLhXRuD2/Ctbtgz9MQCtKZOLpAIdommZhXKdE=";
     };
   };
 }

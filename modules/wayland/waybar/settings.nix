@@ -6,7 +6,7 @@
   mainBar = {
     layer = "top";
     position = "top";
-    height = 32;
+    height = 26;
     mode = "dock";
     exclusive = true;
     passthrough = false;
@@ -22,9 +22,9 @@
       # "sway/window"
       # "wlr/workspaces"
       "hyprland/workspaces"
+      "mpd"
     ];
     modules-center = [
-      "mpd"
     ];
     modules-right = [
       "tray"
@@ -119,16 +119,16 @@
       max-length = 20;
     };
 
-    "custom/power" = with theme; {
+    "custom/power" = with theme.colors; {
       tooltip = false;
       on-click = "exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'";
-      format = "<span font_family=\"Symbols Nerd Font Mono\" size=\"medium\" color=\"${theme.accent}\">   </span>";
+      format = "<span font_family=\"Symbols Nerd Font Mono\" size=\"medium\" color=\"${primary.accent}\">   </span>";
     };
 
-    "custom/color" = with theme; {
+    "custom/color" = with theme.colors; {
       tooltip = false;
       onclick = "exec wl-color-picker";
-      format = "<span font_family=\"Symbols Nerd Font Mono\" size=\"medium\" color=\"${accent}\"> 󰉦  </span>";
+      format = "<span font_family=\"Symbols Nerd Font Mono\" size=\"medium\" color=\"${primary.accent}\"> 󰉦  </span>";
     };
 
     "sway/mode" = {
@@ -136,10 +136,10 @@
       "max-length" = 50;
     };
 
-    pulseaudio = {
-      tooltip = false;
-      format = " <span color=\"${theme.accent}\" font_family='Symbols Nerd Font Mono' size='medium'>{icon}</span> {volume}% ";
-      format-muted = " <span color=\"${theme.red}\" font_family='Symbols Nerd Font Mono' size='medium' rise='-4000'>󰖁 </span> muted ";
+    pulseaudio = with theme.colors; {
+      tooltip = true;
+      format = " <span color=\"${primary.accent}\" font_family='Symbols Nerd Font Mono' size='medium'>{icon}</span> {volume}% ";
+      format-muted = " <span color=\"${normal.red}\" font_family='Symbols Nerd Font Mono' size='medium' rise='-4000'>󰖁 </span> muted ";
       format-icons = {
         default = [" 󰕿 " " 󰖀 " " 󰕾 "];
         headphone = " ";
@@ -157,22 +157,22 @@
       spacing = 10;
     };
 
-    clock = {
+    clock = with theme.colors; {
       tooltip = false;
-      format = "<span font_family=\"Symbols Nerd Font Mono\" size=\"medium\" color=\"${theme.accent}\">󱑎</span>  {:%H:%M} ";
+      format = "<span font_family=\"Symbols Nerd Font Mono\" size=\"medium\" color=\"${primary.accent}\">󱑎</span>  {:%H:%M} ";
     };
 
-    "clock#date" = {
-      format = "<span font_family=\"Symbols Nerd Font Mono\" size=\"medium\" color=\"${theme.accent}\">󰃶</span>  {:%a %d %b} ";
+    "clock#date" = with theme.colors; {
+      format = "<span font_family=\"Symbols Nerd Font Mono\" size=\"medium\" color=\"${primary.accent}\">󰃶</span>  {:%a %d %b} ";
       tooltip-format = ''
         <big>{:%Y %B}</big>
         <tt><small>{calendar}</small></tt>'';
     };
 
-    "mpd" = {
-      "format" = " <span font_family=\"Symbols Nerd Font Mono\" size=\"medium\" color=\"${theme.accent}\">{stateIcon}</span>   {artist} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S})   <span font_family=\"Symbols Nerd Font Mono\" size=\"medium\" color=\"${theme.accent}\"> </span>";
-      "format-disconnected" = " Disconnected <span font_family=\"Symbols Nerd Font Mono\" size=\"medium\" color=\"${theme.accent}\"> </span>";
-      "format-stopped" = " Stopped <span font_family=\"Symbols Nerd Font Mono\" size=\"medium\" color=\"${theme.accent}\"> </span>";
+    "mpd" = with theme.colors; {
+      "format" = " <span font_family=\"Symbols Nerd Font Mono\" size=\"medium\" color=\"${primary.accent}\">{stateIcon}</span>   {artist} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S})   <span font_family=\"Symbols Nerd Font Mono\" size=\"medium\" color=\"${primary.accent}\"> </span>";
+      "format-disconnected" = " Disconnected <span font_family=\"Symbols Nerd Font Mono\" size=\"medium\" color=\"${primary.accent}\"> </span>";
+      "format-stopped" = " Stopped <span font_family=\"Symbols Nerd Font Mono\" size=\"medium\" color=\"${primary.accent}\"> </span>";
       "interval" = 2;
       "port" = 6600;
       "consume-icons" = {

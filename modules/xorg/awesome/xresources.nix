@@ -1,5 +1,5 @@
 {theme}:
-with theme; ''
+with theme.colors; ''
   Xft.dpi: 96
   Xft.antialias: 1
   Xft.hinting: 1
@@ -11,7 +11,7 @@ with theme; ''
   XTerm*utf8Title: true
   XTerm*utf8: always
   XTerm*renderFont: true
-  XTerm*faceName: JetBrainsMono NF
+  XTerm*faceName: Iosevka NF
   XTerm*faceSize1: 8
   XTerm*faceSize2: 9
   XTerm*faceSize3: 10
@@ -35,38 +35,38 @@ with theme; ''
   st.alpha: 1
 
 
-  *background: ${background}
-  *foreground: ${foreground}
+  *background: ${primary.background}
+  *foreground: ${primary.foreground}
 
   ! Black + DarkGrey
-  *color0:  ${black}
-  *color8:  ${brightblack}
+  *color0:  ${normal.black}
+  *color8:  ${bright.black}
 
   ! DarkRed + Red
-  *color1:  ${red}
-  *color9:  ${brightred}
+  *color1:  ${normal.red}
+  *color9:  ${bright.red}
 
   ! DarkGreen + Green
-  *color2:  ${green}
-  *color10: ${brightgreen}
+  *color2:  ${normal.green}
+  *color10: ${bright.green}
 
   ! DarkYellow + Yellow
-  *color3:  ${yellow}
-  *color11: ${brightyellow}
+  *color3:  ${normal.yellow}
+  *color11: ${bright.yellow}
 
   ! DarkBlue + Blue
-  *color4:  ${blue}
-  *color12: ${brightblue}
+  *color4:  ${normal.blue}
+  *color12: ${bright.blue}
 
   ! DarkMagenta + Magenta
-  *color5:  ${purple}
-  *color13: ${brightpurple}
+  *color5:  ${normal.purple}
+  *color13: ${bright.purple}
 
   ! DarkCyan + Cyan
-  *color6:  ${aqua}
-  *color14: ${brightaqua}
+  *color6:  ${normal.cyan}
+  *color14: ${bright.cyan}
 
   ! LightGrey + White
-  *color7:  ${gray}
-  *color15: ${brightgray}
+  *color7:  ${normal.gray}
+  *color15: ${bright.gray}
 ''

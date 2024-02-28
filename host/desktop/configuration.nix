@@ -1,9 +1,6 @@
-{
-  pkgs,
-  ...
-}: let
+{pkgs, ...}: let
   rtl8812au = (pkgs.callPackage ../../_sources/generated.nix {}).rtl8812au;
-  network-driver = pkgs.linuxKernel.packages.linux_6_6.rtl8812au.overrideAttrs (_: {
+  network-driver = pkgs.linuxKernel.packages.linux_6_7.rtl8812au.overrideAttrs (_: {
     src = rtl8812au.src;
     version = rtl8812au.version;
   });
@@ -60,6 +57,7 @@ in {
       alsa-utils
       usbutils
       ffmpeg
+      bluez
       p7zip
       unrar
       unzip
@@ -138,6 +136,7 @@ in {
     enable = true;
     layout = "us";
     videoDrivers = ["nvidia"];
+    windowManager.qtile.enable = true;
     desktopManager = {
       xfce.enable = false;
     };

@@ -24,7 +24,6 @@ in
         eza
         fzf
         bottom
-        vscode-extensions.vadimcn.vscode-lldb
       ];
 
       programs = {
@@ -57,15 +56,14 @@ in
             export PATH="''${PATH}:$HOME/.cargo/bin"
             export PATH="''${PATH}:$HOME/go/bin"
             export EDITOR="nvim"
-            export CODE_LLDB_PATH="${pkgs.vscode-extensions.vadimcn.vscode-lldb}/share/vscode/extensions/vadimcn.vscode-lldb/";
             export PYTHONPATH=$HOME/.config/pip/site-packages
             eval "$(direnv hook zsh)"
           '';
-          initExtra = with theme; ''
+          initExtra = with theme.colors; ''
             export FZF_DEFAULT_OPTS="--layout=reverse"\
-            " --color=bg+:${background2},bg:${background},spinner:${brightred},hl:${brightblack}"\
-            " --color=fg:${foreground},header:${brightblack},info:${brightaqua},pointer:${brightred}"\
-            " --color=marker:${brightred},fg+:${foreground},prompt:${brightred},hl+:${brightred}"
+            " --color=bg+:${primary.background2},bg:${primary.background},spinner:${bright.red},hl:${bright.black}"\
+            " --color=fg:${primary.foreground},header:${bright.black},info:${bright.cyan},pointer:${bright.red}"\
+            " --color=marker:${bright.red},fg+:${primary.foreground},prompt:${bright.red},hl+:${bright.red}"
 
             ZSH_THEME="powerlevel10k/powerlevel10k"
             [[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
@@ -83,7 +81,6 @@ in
             bk = "find ~/Documents/Books -mindepth 1 | fzf | xargs -I {} zathura '{}' --fork";
             top = "${pkgs.bottom}/bin/btm -b";
             gotest = "gotestsum -f testdox";
-            codelldb = "${pkgs.vscode-extensions.vadimcn.vscode-lldb}/share/vscode/extensions/vadimcn.vscode-lldb/adapter/.codelldb-wrapped_";
           };
           plugins = let
             zsh-nix-shell = getPackage "zsh-nix-shell" pkgs;

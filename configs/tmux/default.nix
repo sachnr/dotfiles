@@ -19,26 +19,26 @@ stdenv.mkDerivation rec {
 
   phases = ["installPhase"];
 
-  installPhase = with theme; ''
+  installPhase = with theme.colors; ''
     cp -r ${src} $out
 
     substituteInPlace $out/conf/theme.conf \
-      --replace "color0" "${background}" \
-      --replace "color1" "${red}" \
-      --replace "color2" "${green}" \
-      --replace "color3" "${yellow}" \
-      --replace "color4" "${accent}" \
-      --replace "color5" "${purple}" \
-      --replace "color6" "${aqua}" \
-      --replace "color7" "${gray}" \
-      --replace "color8" "${brightblack}" \
-      --replace "color9" "${brightred}" \
-      --replace "color10" "${brightgreen}" \
-      --replace "color11" "${brightyellow}" \
-      --replace "color12" "${brightblue}" \
-      --replace "color13" "${brightpurple}" \
-      --replace "color14" "${brightaqua}" \
-      --replace "color15" "${brightgray}" \
-      --replace "color16" "${background}"
+      --replace "color0" "${primary.background}" \
+      --replace "color1" "${normal.red}" \
+      --replace "color2" "${normal.green}" \
+      --replace "color3" "${normal.yellow}" \
+      --replace "color4" "${primary.accent}" \
+      --replace "color5" "${normal.purple}" \
+      --replace "color6" "${normal.cyan}" \
+      --replace "color7" "${normal.gray}" \
+      --replace "color8" "${bright.black}" \
+      --replace "color9" "${bright.red}" \
+      --replace "color10" "${bright.green}" \
+      --replace "color11" "${bright.yellow}" \
+      --replace "color12" "${bright.blue}" \
+      --replace "color13" "${bright.purple}" \
+      --replace "color14" "${bright.cyan}" \
+      --replace "color15" "${bright.gray}" \
+      --replace "color16" "${primary.background}"
   '';
 }

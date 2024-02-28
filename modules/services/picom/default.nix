@@ -26,22 +26,22 @@ in
           # animation-for-unmap-window = "squeeze";
           # animation-for-transient-window = "none";
           # dithered-present = true;
-          corner-radius = 0;
-          # blur = {
-          #   size = 12;
-          #   method = "dual_kawase";
-          #   background = false;
-          #   background-frame = false;
-          #   strength = 5;
-          # };
+          corner-radius = 8;
+          blur = {
+            size = 6;
+            method = "dual_kawase";
+            background = true;
+            background-frame = true;
+            strength = 5;
+          };
           shadow = false;
           # shadowOpacity = 0.7;
           # shadowExclude = [];
           vSync = false;
           # mark-wmwin-focused = true;
           # mark-ovredir-focused = true;
-          detect-rounded-corners = false;
-          detect-client-opacity = false;
+          detect-rounded-corners = true;
+          detect-client-opacity = true;
           # use-damage = true;
           unredir-if-possible = false;
           # log-level = "warn";

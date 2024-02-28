@@ -9,15 +9,15 @@
     split_all = data: lib.attrsets.mapAttrs (_: value: split (toString value)) data;
   in
     with pkgs.lib.nix-rice; {
-      black = split_all (color.hexToRgba theme.black);
-      bg = split_all (color.hexToRgba theme.background);
-      altbg = split_all (color.hexToRgba theme.background2);
-      fg = split_all (color.hexToRgba theme.foreground);
-      fginactive = split_all (color.hexToRgba theme.brightgray);
-      green = split_all (color.hexToRgba theme.green);
-      brightgreen = split_all (color.hexToRgba theme.brightgreen);
-      brightred = split_all (color.hexToRgba theme.brightred);
-      orange = split_all (color.hexToRgba theme.brightred);
+      black = split_all (color.hexToRgba theme.colors.normal.black);
+      bg = split_all (color.hexToRgba theme.colors.primary.background);
+      altbg = split_all (color.hexToRgba theme.colors.primary.background2);
+      fg = split_all (color.hexToRgba theme.colors.primary.foreground);
+      fginactive = split_all (color.hexToRgba theme.colors.bright.gray);
+      green = split_all (color.hexToRgba theme.colors.normal.green);
+      brightgreen = split_all (color.hexToRgba theme.colorsbright.green);
+      brightred = split_all (color.hexToRgba theme.colors.bright.red);
+      orange = split_all (color.hexToRgba theme.colors.bright.red);
     };
 in
   with rgbpallete; ''

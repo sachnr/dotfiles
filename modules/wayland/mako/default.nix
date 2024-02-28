@@ -17,12 +17,12 @@ in
     };
 
     config = mkIf cfg.enable {
-      services.mako = with theme; {
+      services.mako = with theme.colors; {
         enable = true;
-        backgroundColor = background;
-        borderColor = black;
-        progressColor = green;
-        textColor = foreground;
+        backgroundColor = primary.background;
+        borderColor = normal.black;
+        progressColor = normal.green;
+        textColor = primary.foreground;
         anchor = "top-right";
         borderRadius = 8;
         borderSize = 2;

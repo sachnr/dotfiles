@@ -41,11 +41,16 @@
     msedge = {
       url = "github:sachnr/edge";
     };
+
+    wsl.url = "github:nix-community/NixOS-WSL";
   };
 
   outputs = inputs @ {self, ...}: {
     nixosConfigurations = {
       desktop = import ./host/desktop {
+        inherit inputs;
+      };
+      wsl = import ./host/wsl {
         inherit inputs;
       };
     };

@@ -1,10 +1,4 @@
-{
-  lib,
-  stdenv,
-  pkgs,
-  config,
-  ...
-}:
+{ lib, stdenv, pkgs, config, ... }:
 stdenv.mkDerivation rec {
   pname = "Psion_kde_theme";
   version = "Psion_7c9f80db";
@@ -17,11 +11,12 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-EByn8E2ztgj7Ps92x13qXpQY5iayHupSSa9aN5v81Bc=";
   };
 
-  phases = ["installPhase"];
+  phases = [ "installPhase" ];
 
   installPhase = let
     nix-logo = builtins.fetchurl {
-      url = "https://raw.githubusercontent.com/NixOS/nixos-artwork/c1dc75611042b57a385c80495d3728724c35cfee/logo/white.svg";
+      url =
+        "https://raw.githubusercontent.com/NixOS/nixos-artwork/c1dc75611042b57a385c80495d3728724c35cfee/logo/white.svg";
       sha256 = "1k3ic1b1fmsar8fhms192vfyszx4xivdpak0f49zd2xh5pmabp8i";
     };
     text = ''

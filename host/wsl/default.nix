@@ -1,4 +1,5 @@
-{inputs}: let
+{ inputs }:
+let
   inherit (inputs.nixpkgs) lib;
   system = "x86_64-linux";
   user = "sachnr";
@@ -8,43 +9,41 @@
       inputs.nix-rice.overlays.default
       inputs.neovim-nightly-overlay.overlay
     ];
-    config = {
-      allowUnfree = true;
-    };
+    config = { allowUnfree = true; };
   };
-  theme = import ../../theme/kanagawa.nix {inherit pkgs;};
-in
-  lib.nixosSystem {
-    inherit system pkgs;
-    modules = [
-      inputs.home-manager.nixosModules.home-manager
-      inputs.wsl.nixosModules.wsl
+  theme = import ../../theme/kanagawa.nix { inherit pkgs; };
+in lib.nixosSystem {
+  inherit system pkgs;
+  modules = [
+    inputs.home-manager.nixosModules.home-manager
+    inputs.wsl.nixosModules.wsl
 
-      {
-        time.timeZone = "Asia/Kolkata";
-        i18n.defaultLocale = "en_US.UTF-8";
-        system.stateVersion = "24.05";
+    {
+      time.timeZone = "Asia/Kolkata";
+      i18n.defaultLocale = "en_US.UTF-8";
+      system.stateVersion = "24.05";
 
-        users.users.${user} = {
-          isNormalUser = true;
-          extraGroups = ["wheel" "video" "audio" "users" "docker"];
-          shell = pkgs.zsh;
-        };
+      wsl = {
+        enable = true;
+        nativeSystemd = true;
+        defaultUser = user;
+      };
+    }
 
-        wsl = {
-          enable = true;
-          nativeSystemd = true;
-          defaultUser = user;
-        };
+    {
+      programs.zsh.enable = true;
+      users.users.${user} = {
+        isNormalUser = true;
+        extraGroups = [ "wheel" "video" "audio" "users" "docker" ];
+        shell = pkgs.zsh;
+      };
 
-        programs.zsh.enable = true;
-
-        home-manager = {
-          useGlobalPkgs = true;
-          useUserPackages = true;
-          users.${user} = import ./home.nix;
-          extraSpecialArgs = {inherit inputs pkgs system user theme;};
-        };
-      }
-    ];
-  }
+      home-manager = {
+        useGlobalPkgs = true;
+        useUserPackages = true;
+        users.${user} = import ./home.nix;
+        extraSpecialArgs = { inherit inputs pkgs system user theme; };
+      };
+    }
+  ];
+}

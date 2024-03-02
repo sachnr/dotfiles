@@ -8,25 +8,20 @@
     zigls.url = "github:zigtools/zls";
   };
 
-  outputs = inputs @ {self, ...}:
-    inputs.flake-utils.lib.eachDefaultSystem (system: let
-      pkgs = import inputs.nixpkgs {
-        inherit system;
-      };
-    in {
-      devShells.default = pkgs.mkShell {
-        name = "Zig";
-        nativeBuildInputs = [
-          inputs.zig.packages.${system}.master
-          inputs.zigls.packages.${system}.default
-        ];
-        buildInputs = with pkgs; [
-          pkg-config
-        ];
+  outputs = inputs@{ self, ... }:
+    inputs.flake-utils.lib.eachDefaultSystem (system:
+      let pkgs = import inputs.nixpkgs { inherit system; };
+      in {
+        devShells.default = pkgs.mkShell {
+          name = "Zig";
+          nativeBuildInputs = [
+            inputs.zig.packages.${system}.master
+            inputs.zigls.packages.${system}.default
+          ];
+          buildInputs = with pkgs; [ pkg-config ];
 
-        LD_LIBRARY_PATH = pkgs.lib.makeLibraryPath [];
-        shellHook = ''
-        '';
-      };
-    });
+          LD_LIBRARY_PATH = pkgs.lib.makeLibraryPath [ ];
+          shellHook = "";
+        };
+      });
 }

@@ -1,4 +1,4 @@
-{pkgs}:
+{ pkgs }:
 pkgs.writeScriptBin "cm" ''
   BUILD_COMMAND="cmake -S . -B build && cmake --build build"
   RUN_COMMAND="./build/target"

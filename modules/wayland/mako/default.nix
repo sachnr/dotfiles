@@ -1,61 +1,52 @@
-{
-  pkgs,
-  config,
-  lib,
-  theme,
-  ...
-}: let
-  cfg = config.modules.wayland.mako;
-in
-  with lib; {
-    options.modules.wayland.mako = {
-      enable = mkOption {
-        type = types.bool;
-        default = false;
-        description = "enable mako";
-      };
+{ pkgs, config, lib, theme, ... }:
+let cfg = config.modules.wayland.mako;
+in with lib; {
+  options.modules.wayland.mako = {
+    enable = mkOption {
+      type = types.bool;
+      default = false;
+      description = "enable mako";
+    };
+  };
+
+  config = mkIf cfg.enable {
+    services.mako = with theme.colors; {
+      enable = true;
+      backgroundColor = primary.background;
+      borderColor = normal.black;
+      progressColor = normal.green;
+      textColor = primary.foreground;
+      anchor = "top-right";
+      borderRadius = 8;
+      borderSize = 2;
+      defaultTimeout = 10000;
+      font = "Roboto 11";
+      groupBy = "category";
+      height = 450;
+      width = 200;
+      margin = "20, 20, 0";
+      layer = "top";
+      maxIconSize = 96;
+      maxVisible = 5;
+      padding = "15, 15, 15";
+      extraConfig = "";
     };
 
-    config = mkIf cfg.enable {
-      services.mako = with theme.colors; {
-        enable = true;
-        backgroundColor = primary.background;
-        borderColor = normal.black;
-        progressColor = normal.green;
-        textColor = primary.foreground;
-        anchor = "top-right";
-        borderRadius = 8;
-        borderSize = 2;
-        defaultTimeout = 10000;
-        font = "Roboto 11";
-        groupBy = "category";
-        height = 450;
-        width = 200;
-        margin = "20, 20, 0";
-        layer = "top";
-        maxIconSize = 96;
-        maxVisible = 5;
-        padding = "15, 15, 15";
-        extraConfig = "";
+    home.packages = with pkgs; [ libnotify ];
+
+    systemd.user.services.mako = {
+      Unit = {
+        Description = "Mako notification daemon";
+        After = [ "graphical-session-pre.target" ];
+        PartOf = [ "graphical-session.target" ];
       };
-
-      home.packages = with pkgs; [
-        libnotify
-      ];
-
-      systemd.user.services.mako = {
-        Unit = {
-          Description = "Mako notification daemon";
-          After = ["graphical-session-pre.target"];
-          PartOf = ["graphical-session.target"];
-        };
-        Service = {
-          Type = "dbus";
-          BusName = "org.freedesktop.Notifications";
-          ExecStart = "${pkgs.mako}/bin/mako";
-          RestartSec = 5;
-          Restart = "always";
-        };
+      Service = {
+        Type = "dbus";
+        BusName = "org.freedesktop.Notifications";
+        ExecStart = "${pkgs.mako}/bin/mako";
+        RestartSec = 5;
+        Restart = "always";
       };
     };
-  }
+  };
+}

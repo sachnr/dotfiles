@@ -1,16 +1,10 @@
-{
-  theme,
-  user,
-  pkgs,
-  oomox,
-}: let
-  custom-stylesheet =
-    pkgs.writeText "custom.qss"
-    ''
-      QFrame {
-          border: none;
-      }
-    '';
+{ theme, user, pkgs, oomox, }:
+let
+  custom-stylesheet = pkgs.writeText "custom.qss" ''
+    QFrame {
+        border: none;
+    }
+  '';
 in ''
   [Appearance]
   color_scheme_path=${oomox}/.config/qt5ct/colors/numix.conf

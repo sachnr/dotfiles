@@ -1,11 +1,10 @@
 # Home manager setting
-{
-  lib,
-  user,
-  pkgs,
-  ...
-}: let
-  get_dirs = path: (lib.attrsets.mapAttrsToList (name: _: path + ("/" + name)) (lib.attrsets.filterAttrs (name: value: value == "directory") (builtins.readDir path)));
+{ lib, user, pkgs, ... }:
+let
+  get_dirs = path:
+    (lib.attrsets.mapAttrsToList (name: _: path + ("/" + name))
+      (lib.attrsets.filterAttrs (name: value: value == "directory")
+        (builtins.readDir path)));
 
   shell = get_dirs ../../modules/shell;
   xorg = get_dirs ../../modules/xorg;
@@ -82,7 +81,7 @@ in {
         stylua
         # astyle
         nodePackages.prettier
-        alejandra
+        nixfmt
         pgformatter
         taplo
       ];
@@ -97,12 +96,8 @@ in {
     };
 
     modules = {
-      programs = {
-        neovim.enable = true;
-      };
-      services = {
-        gnupg.enable = true;
-      };
+      programs = { neovim.enable = true; };
+      services = { gnupg.enable = true; };
       shell = {
         zsh.enable = true;
         tmux.enable = true;

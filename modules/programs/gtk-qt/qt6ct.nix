@@ -1,9 +1,4 @@
-{
-  theme,
-  user,
-  pkgs,
-  oomox,
-}: ''
+{ theme, user, pkgs, oomox, }: ''
   [Appearance]
   color_scheme_path=${oomox}/.config/qt6ct/colors/numix.conf
   custom_palette=true

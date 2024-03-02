@@ -1,10 +1,6 @@
-{
-  theme,
-  pkgs,
-  lib,
-}:
-with theme.colors; let
-  rp = str: lib.strings.removePrefix "#" str;
+{ theme, pkgs, lib, }:
+with theme.colors;
+let rp = str: lib.strings.removePrefix "#" str;
 in ''
   exec-once="${pkgs.dbus}/bin/dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY HYPRLAND_INSTANCE_SIGNATURE XDG_CURRENT_DESKTOP && systemctl --user start hyprland-session.target"
 
@@ -33,7 +29,9 @@ in ''
   monitor=HDMI-A-1, 1920x1080@144, 1920x0, 1
 
   general {
-    col.active_border=rgb(${rp normal.red}) rgb(${rp normal.green}) rgb(${rp normal.blue}) 270deg
+    col.active_border=rgb(${rp normal.red}) rgb(${rp normal.green}) rgb(${
+      rp normal.blue
+    }) 270deg
     col.inactive_border=rgba(${rp primary.background}ff)
     border_size=2
     gaps_in=4

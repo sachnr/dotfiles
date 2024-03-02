@@ -1,21 +1,22 @@
-{pkgs, ...}: let
-  rtl8812au = (pkgs.callPackage ../../_sources/generated.nix {}).rtl8812au;
-  network-driver = pkgs.linuxKernel.packages.linux_6_7.rtl8812au.overrideAttrs (_: {
-    src = rtl8812au.src;
-    version = rtl8812au.version;
-  });
-  sddm-theme = pkgs.callPackage ../../pkgs/sddmtheme.nix {};
+{ pkgs, ... }:
+let
+  rtl8812au = (pkgs.callPackage ../../_sources/generated.nix { }).rtl8812au;
+  network-driver = pkgs.linuxKernel.packages.linux_6_7.rtl8812au.overrideAttrs
+    (_: {
+      src = rtl8812au.src;
+      version = rtl8812au.version;
+    });
+  sddm-theme = pkgs.callPackage ../../pkgs/sddmtheme.nix { };
 in {
-  imports = [
-    ./hardware-configuration.nix
-  ];
+  imports = [ ./hardware-configuration.nix ];
 
   boot = {
-    supportedFilesystems = ["ntfs"];
+    supportedFilesystems = [ "ntfs" ];
     kernelPackages = pkgs.linuxPackages_latest;
-    blacklistedKernelModules = ["nouveau" "i2c_nvidia_gpu"];
-    kernelParams = ["quiet" "acpi_osi=!" "nvidia.NVreg_PreserveVideoMemoryAllocations=1"];
-    extraModulePackages = [network-driver];
+    blacklistedKernelModules = [ "nouveau" "i2c_nvidia_gpu" ];
+    kernelParams =
+      [ "quiet" "acpi_osi=!" "nvidia.NVreg_PreserveVideoMemoryAllocations=1" ];
+    extraModulePackages = [ network-driver ];
     extraModprobeConfig = ''
       options snd slots=snd-hda-intel
     '';
@@ -28,7 +29,7 @@ in {
       grub = {
         enable = true;
         gfxmodeEfi = "1920x1080";
-        devices = ["nodev"];
+        devices = [ "nodev" ];
         efiSupport = true;
         useOSProber = true;
         default = "saved";
@@ -38,8 +39,10 @@ in {
 
   networking = {
     hostName = "sachnr-nixos";
-    networkmanager.enable = true; # Easiest to use and most distros use this by default.
+    networkmanager.enable =
+      true; # Easiest to use and most distros use this by default.
     proxy.noProxy = "127.0.0.1,localhost,internal.domain";
+    extraHosts = import ./blocklist.nix;
   };
 
   time.timeZone = "Asia/Kolkata";
@@ -53,21 +56,14 @@ in {
 
     systemPackages = with pkgs; [
       pulseaudio
-      ntfs3g
       alsa-utils
+      ntfs3g
       usbutils
-      ffmpeg
       bluez
-      p7zip
-      unrar
-      unzip
-      exfat
-      zip
-      gnome.gvfs
       sddm-theme
     ];
 
-    pathsToLink = ["/share/zsh"];
+    pathsToLink = [ "/share/zsh" ];
   };
 
   hardware = {
@@ -82,9 +78,7 @@ in {
       ];
     };
     nvidia = {
-      powerManagement = {
-        enable = true;
-      };
+      powerManagement = { enable = true; };
       forceFullCompositionPipeline = true;
       open = false;
       nvidiaSettings = true;
@@ -93,11 +87,7 @@ in {
     };
     bluetooth = {
       enable = true;
-      settings = {
-        General = {
-          Enable = "Source,Sink,Media,Socket";
-        };
-      };
+      settings = { General = { Enable = "Source,Sink,Media,Socket"; }; };
     };
   };
 
@@ -134,22 +124,17 @@ in {
   # Enable display manager
   services.xserver = {
     enable = true;
-    layout = "us";
-    videoDrivers = ["nvidia"];
-    windowManager.qtile.enable = true;
-    desktopManager = {
-      xfce.enable = false;
-    };
-    desktopManager = {
-      xterm.enable = false;
-    };
+    xkb = { layout = "us"; };
+    videoDrivers = [ "nvidia" ];
+    desktopManager = { xfce.enable = false; };
+    desktopManager = { xterm.enable = false; };
     displayManager = {
       startx.enable = true;
       sddm = {
         enable = true;
         theme = "Psion";
       };
-      sessionPackages = [];
+      sessionPackages = [ ];
       sessionCommands = ''
         ${pkgs.xorg.xset}/bin/xset r rate 250 25
       '';
@@ -181,15 +166,15 @@ in {
     settings = {
       substituters = [
         "https://cache.nixos.org?priority=10"
-        "https://hyprland.cachix.org"
         "https://nixpkgs-wayland.cachix.org"
+        "https://nix-community.cachix.org"
       ];
       trusted-public-keys = [
-        "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
         "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
         "nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA="
+        "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
       ];
-      experimental-features = ["nix-command" "flakes"];
+      experimental-features = [ "nix-command" "flakes" ];
       auto-optimise-store = true;
     };
     gc = {

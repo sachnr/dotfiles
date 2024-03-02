@@ -1,55 +1,41 @@
-{
-  pkgs,
-  config,
-  lib,
-  theme,
-  ...
-}: let
+{ pkgs, config, lib, theme, ... }:
+let
   cfg = config.modules.services.eww;
-  ewwcfg = pkgs.callPackage ../../../configs/eww {inherit theme;};
-in
-  with lib; {
-    options.modules.services.eww = {
-      enable = mkOption {
-        type = types.bool;
-        default = false;
-        description = "enable eww";
+  ewwcfg = pkgs.callPackage ../../../configs/eww { inherit theme; };
+in with lib; {
+  options.modules.services.eww = {
+    enable = mkOption {
+      type = types.bool;
+      default = false;
+      description = "enable eww";
+    };
+  };
+
+  config = mkIf (cfg.enable) {
+    home = { packages = with pkgs; [ eww-wayland ]; };
+
+    home.file = {
+      ".config/eww" = {
+        source = ewwcfg;
+        recursive = true;
       };
     };
 
-    config = mkIf (cfg.enable) {
-      home = {
-        packages = with pkgs; [
-          eww-wayland
-        ];
+    systemd.user.services.eww = {
+      Unit = {
+        Description = "ElKowars wacky widgets ";
+        After = [ "graphical-session-pre.target" ];
+        PartOf = [ "graphical-session.target" ];
       };
 
-      home.file = {
-        ".config/eww" = {
-          source = ewwcfg;
-          recursive = true;
-        };
-      };
+      Install.WantedBy = [ "hyprland-session.target" ];
 
-      systemd.user.services.eww = {
-        Unit = {
-          Description = "ElKowars wacky widgets ";
-          After = ["graphical-session-pre.target"];
-          PartOf = ["graphical-session.target"];
-        };
-
-        Install.WantedBy = ["hyprland-session.target"];
-
-        Service = {
-          Type = "simple";
-          Environment = with pkgs; [
-            "PATH=${makeBinPath [
-              bash
-            ]}"
-          ];
-          ExecStart = "${pkgs.eww-wayland}/bin/eww daemon";
-          Restart = "on-abort";
-        };
+      Service = {
+        Type = "simple";
+        Environment = with pkgs; [ "PATH=${makeBinPath [ bash ]}" ];
+        ExecStart = "${pkgs.eww-wayland}/bin/eww daemon";
+        Restart = "on-abort";
       };
     };
-  }
+  };
+}

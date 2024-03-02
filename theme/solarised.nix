@@ -1,4 +1,5 @@
-{pkgs}: let
+{ pkgs }:
+let
   hexToRgba = pkgs.lib.nix-rice.color.hexToRgba;
   toRGBHex = pkgs.lib.nix-rice.color.toRGBHex;
   brighten = pkgs.lib.nix-rice.color.brighten;
@@ -40,7 +41,8 @@ in {
   };
 
   wallpaper = builtins.fetchurl {
-    url = "https://raw.githubusercontent.com/NixOS/nixos-artwork/master/wallpapers/nix-wallpaper-nineish-solarized-dark.png";
+    url =
+      "https://raw.githubusercontent.com/NixOS/nixos-artwork/master/wallpapers/nix-wallpaper-nineish-solarized-dark.png";
     sha256 = "1aiqrs6f8h9dzxidyl302n8rph515y5fsarv3wwcdgna5kvf86k4";
   };
 

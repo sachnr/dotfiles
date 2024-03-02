@@ -1,4 +1,5 @@
-{pkgs}: let
+{ pkgs }:
+let
   hexToRgba = pkgs.lib.nix-rice.color.hexToRgba;
   toRGBHex = pkgs.lib.nix-rice.color.toRGBHex;
   brighten = pkgs.lib.nix-rice.color.brighten;
@@ -40,7 +41,8 @@ in {
   };
 
   wallpaper = builtins.fetchurl {
-    url = "https://raw.githubusercontent.com/sachnr/wallpapers/main/wallpapers/purple/350066.jpg";
+    url =
+      "https://raw.githubusercontent.com/sachnr/wallpapers/main/wallpapers/purple/350066.jpg";
     sha256 = "0mxq7pv4623zmjiyzp78yp6in5pvpk2j5div3g2s4r5r5byl3qfj";
   };
 

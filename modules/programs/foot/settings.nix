@@ -1,9 +1,6 @@
-{
-  theme,
-  lib,
-}:
-with theme.colors; let
-  rp = str: lib.strings.removePrefix "#" str;
+{ theme, lib, }:
+with theme.colors;
+let rp = str: lib.strings.removePrefix "#" str;
 in ''
   # -*- conf -*-
 

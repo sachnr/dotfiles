@@ -1,4 +1,4 @@
-{theme}:
+{ theme }:
 with theme.colors; ''
   Xft.dpi: 96
   Xft.antialias: 1

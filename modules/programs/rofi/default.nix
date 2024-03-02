@@ -1,10 +1,5 @@
-{
-  pkgs,
-  lib,
-  config,
-  theme,
-  ...
-}: let
+{ pkgs, lib, config, theme, ... }:
+let
   cfg = config.modules.programs.rofi;
 
   roficfg = with theme.colors; ''
@@ -317,22 +312,17 @@
         background-color:            @background-colour;
         text-color:                  @foreground-colour;
     }'';
-in
-  with lib; {
-    options.modules.programs.rofi = {
-      enable = mkOption {
-        type = types.bool;
-        default = false;
-        description = "enable rofi";
-      };
+in with lib; {
+  options.modules.programs.rofi = {
+    enable = mkOption {
+      type = types.bool;
+      default = false;
+      description = "enable rofi";
     };
+  };
 
-    config = mkIf cfg.enable {
-      home = {
-        packages = with pkgs; [
-          rofi-wayland
-        ];
-      };
-      home.file.".config/rofi/config.rasi".text = roficfg;
-    };
-  }
+  config = mkIf cfg.enable {
+    home = { packages = with pkgs; [ rofi-wayland ]; };
+    home.file.".config/rofi/config.rasi".text = roficfg;
+  };
+}

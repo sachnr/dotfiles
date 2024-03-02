@@ -1,4 +1,5 @@
-{pkgs}: let
+{ pkgs }:
+let
   hexToRgba = pkgs.lib.nix-rice.color.hexToRgba;
   toRGBHex = pkgs.lib.nix-rice.color.toRGBHex;
   brighten = pkgs.lib.nix-rice.color.brighten;
@@ -40,7 +41,8 @@ in {
   };
 
   wallpaper = builtins.fetchurl {
-    url = "https://raw.githubusercontent.com/FrenzyExists/wallpapers/main/Gruv/gruv-pixel-III.png";
+    url =
+      "https://raw.githubusercontent.com/FrenzyExists/wallpapers/main/Gruv/gruv-pixel-III.png";
     sha256 = "sha256:0qb9jydrn9i5mbrzf55hw6h0vlxhmwy2gihp9rdcri3wl4294pp8";
   };
 

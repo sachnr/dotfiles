@@ -23,36 +23,28 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nixpkgs-wayland = {
-      url = "github:nix-community/nixpkgs-wayland";
-    };
+    nixpkgs-wayland = { url = "github:nix-community/nixpkgs-wayland"; };
 
     neovim-nightly-overlay = {
       url = "github:nix-community/neovim-nightly-overlay";
     };
 
-    nix-rice = {url = "github:bertof/nix-rice";};
+    nix-rice = { url = "github:bertof/nix-rice"; };
 
     tmux-tpm = {
       url = "github:tmux-plugins/tpm";
       flake = false;
     };
 
-    msedge = {
-      url = "github:sachnr/edge";
-    };
+    msedge = { url = "github:sachnr/edge"; };
 
     wsl.url = "github:nix-community/NixOS-WSL";
   };
 
-  outputs = inputs @ {self, ...}: {
+  outputs = inputs@{ self, ... }: {
     nixosConfigurations = {
-      desktop = import ./host/desktop {
-        inherit inputs;
-      };
-      wsl = import ./host/wsl {
-        inherit inputs;
-      };
+      desktop = import ./host/desktop { inherit inputs; };
+      wsl = import ./host/wsl { inherit inputs; };
     };
 
     templates = {

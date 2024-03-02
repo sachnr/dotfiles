@@ -1,4 +1,5 @@
-{pkgs}: let
+{ pkgs }:
+let
   hexToRgba = pkgs.lib.nix-rice.color.hexToRgba;
   toRGBHex = pkgs.lib.nix-rice.color.toRGBHex;
   brighten = pkgs.lib.nix-rice.color.brighten;
@@ -39,7 +40,8 @@ in {
   };
 
   wallpaper = builtins.fetchurl {
-    url = "https://raw.githubusercontent.com/sachnr/awesomewm-dotfiles/master/assets/kanagawa.jpg";
+    url =
+      "https://raw.githubusercontent.com/sachnr/awesomewm-dotfiles/master/assets/kanagawa.jpg";
     sha256 = "sha256:0vljc2h47jjsxabpjzcw7vaqhvkbrvbg8rzjq1p7ydmb08yc14vy";
   };
 

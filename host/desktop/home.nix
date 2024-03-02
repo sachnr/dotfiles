@@ -1,11 +1,10 @@
 # Home manager setting
-{
-  lib,
-  user,
-  pkgs,
-  ...
-}: let
-  get_dirs = path: (lib.attrsets.mapAttrsToList (name: _: path + ("/" + name)) (lib.attrsets.filterAttrs (name: value: value == "directory") (builtins.readDir path)));
+{ lib, user, pkgs, ... }:
+let
+  get_dirs = path:
+    (lib.attrsets.mapAttrsToList (name: _: path + ("/" + name))
+      (lib.attrsets.filterAttrs (name: value: value == "directory")
+        (builtins.readDir path)));
 
   shell = get_dirs ../../modules/shell;
   xorg = get_dirs ../../modules/xorg;
@@ -21,10 +20,17 @@ in {
       homeDirectory = "/home/${user}";
       stateVersion = "23.05";
 
-      file."/home/${user}/links/cpp_debug".source = "${pkgs.vscode-extensions.ms-vscode.cpptools}/share/vscode/extensions/ms-vscode.cpptools/debugAdapters/bin/OpenDebugAD7";
+      file."/home/${user}/links/cpp_debug".source =
+        "${pkgs.vscode-extensions.ms-vscode.cpptools}/share/vscode/extensions/ms-vscode.cpptools/debugAdapters/bin/OpenDebugAD7";
 
       packages = with pkgs; [
-        # Terminal
+        # compression
+        p7zip
+        unrar
+        unzip
+        zip
+
+        # Tools
         ranger
         less
         neofetch
@@ -34,7 +40,9 @@ in {
         gh-dash
         direnv
         go-mtpfs
+        gnome.gvfs
         glow
+        ffmpeg
 
         # qt
         lxqt.pcmanfm-qt
@@ -118,7 +126,7 @@ in {
         stylua
         # astyle
         nodePackages.prettier
-        alejandra
+        nixfmt
         pgformatter
         taplo
 
@@ -132,9 +140,7 @@ in {
     # Let Home Manager install and manage itself.
     programs.home-manager.enable = true;
 
-    services = {
-      network-manager-applet.enable = true;
-    };
+    services = { network-manager-applet.enable = true; };
 
     xdg.userDirs = {
       enable = true;
@@ -142,9 +148,7 @@ in {
     };
 
     modules = {
-      xorg = {
-        awesomeConfig.enable = true;
-      };
+      xorg = { awesomeConfig.enable = true; };
       wayland = {
         hyprlandConfig.enable = true;
         mako.enable = true;

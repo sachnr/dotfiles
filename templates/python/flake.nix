@@ -1,29 +1,34 @@
 {
-  description = "Python Flake";
+  description = "Application packaged using poetry2nix";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    mach-nix.url = "github:DavHau/mach-nix";
     flake-utils.url = "github:numtide/flake-utils";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    poetry2nix = {
+      url = "github:nix-community/poetry2nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
-  outputs = inputs@{ self, ... }:
-    inputs.flake-utils.lib.eachDefaultSystem (system:
+
+  outputs = { self, nixpkgs, flake-utils, poetry2nix }:
+    flake-utils.lib.eachDefaultSystem (system:
       let
-        pkgs = import inputs.nixpkgs { inherit system; };
-        py-deps = inputs.mach-nix.lib."${system}".mkPython {
-          # requirements = builtins.readFile ./requirements.txt;
-          requirements = ''
-            numpy
-            python-lsp-server
-          '';
-        };
+        # see https://github.com/nix-community/poetry2nix/tree/master#api for more functions and examples.
+        pkgs = nixpkgs.legacyPackages.${system};
+        inherit (poetry2nix.lib.mkPoetry2Nix { inherit pkgs; })
+          mkPoetryApplication;
       in {
+        packages = {
+          myapp = mkPoetryApplication { projectDir = self; };
+          default = self.packages.${system}.myapp;
+        };
+
         devShells.default = pkgs.mkShell {
-          name = "pyenv";
-          buildInputs = with pkgs; [
-            # pkg-config
-            python311
-            py-deps
+          inputsFrom = [ self.packages.${system}.myapp ];
+          packages = [
+            pkgs.poetry
+            pkgs.fasttext
+            pkgs.python311Packages.python-lsp-server
           ];
         };
       });

@@ -10,6 +10,11 @@ in with lib; {
       default = true;
       description = "enables zsh and zsh plugins";
     };
+    host = mkOption {
+      type = types.str;
+      default = "desktop";
+      description = "curr host";
+    };
   };
 
   config = mkIf cfg.enable {
@@ -58,7 +63,7 @@ in with lib; {
         shellAliases = {
           gg = "${pkgs.lazygit}/bin/lazygit";
           nixr =
-            "sudo nixos-rebuild switch --flake /home/${user}/flake#desktop";
+            "sudo nixos-rebuild switch --flake /home/${user}/dotfiles#${cfg.host}";
           nixc = "sudo nix-collect-garbage --delete-older-than 7d";
           ls = "${pkgs.eza}/bin/eza --icons --group-directories-first";
           la = "${pkgs.eza}/bin/eza -lah --icons --group-directories-first";
@@ -66,8 +71,6 @@ in with lib; {
           e = "${pkgs.neovim}/bin/nvim ./";
           f = "${pkgs.ranger}/bin/ranger";
           tm = "tmux-fzy";
-          bk =
-            "find ~/Documents/Books -mindepth 1 | fzf | xargs -I {} zathura '{}' --fork";
           top = "${pkgs.bottom}/bin/btm -b";
           gotest = "gotestsum -f testdox";
         };

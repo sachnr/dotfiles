@@ -44,6 +44,7 @@
   outputs = inputs@{ self, ... }: {
     nixosConfigurations = {
       desktop = import ./host/desktop { inherit inputs; };
+      lenovo = import ./host/lenovo { inherit inputs; };
       wsl = import ./host/wsl { inherit inputs; };
     };
 

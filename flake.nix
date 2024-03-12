@@ -61,6 +61,14 @@
         path = ./templates/zig;
         description = "zig template";
       };
+      python = {
+        path = ./templates/python;
+        description = "py template";
+      };
+      ruby = {
+        path = ./templates/ruby;
+        description = "ruby template";
+      };
     };
   };
 }

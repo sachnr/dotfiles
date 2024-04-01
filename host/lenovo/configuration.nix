@@ -79,7 +79,7 @@
     enable = true;
     xkb = { layout = "us"; };
     videoDrivers = [ "amdgpu" ];
-    displayManager = { lightdm.enable = true; };
+    displayManager = { gdm.enable = true; };
     libinput = {
       enable = true;
       mouse.accelProfile = "flat";

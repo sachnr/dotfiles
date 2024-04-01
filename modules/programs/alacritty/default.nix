@@ -39,7 +39,7 @@ in with lib; {
           decorations = "none";
           dynamic_padding = true;
           decorations_theme_variant = "Dark";
-          opacity = 0.9;
+          opacity = 1.0;
         };
         font = {
           normal = { family = "Iosevka"; };
@@ -55,7 +55,7 @@ in with lib; {
             family = "Iosevka";
             style = "Bold Italic";
           };
-          size = 13;
+          size = 18;
         };
         window.dimensions = {
           lines = 3;

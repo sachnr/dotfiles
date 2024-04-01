@@ -46,8 +46,12 @@ in with lib; {
 
           export PATH="''${PATH}:$HOME/.npm/bin:''${HOME}/.local/share/nvim/mason/bin"
           export PATH="''${PATH}:$HOME/.cargo/bin"
+          export PATH="''${PATH}:$HOME/.yarn/bin"
+          export PATH="''${PATH}:$HOME/.pnpm/bin"
+          export PATH="''${PATH}:$HOME/.local/share/gem/ruby/3.2.0/bin"
           export PATH="''${PATH}:$HOME/go/bin"
           export EDITOR="nvim"
+          export PNPM_HOME=$HOME/.pnpm
           export PYTHONPATH=$HOME/.config/pip/site-packages
           eval "$(direnv hook zsh)"
         '';

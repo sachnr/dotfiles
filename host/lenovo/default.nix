@@ -12,7 +12,7 @@ let
       allowUnfree = true;
     };
   };
-  theme = import ../../theme/kanagawa.nix { inherit pkgs; };
+  theme = import ../../theme/catppuccin.nix { inherit pkgs; };
   fonts = import ./fonts.nix { inherit theme lib pkgs; };
 in lib.nixosSystem {
   inherit system pkgs;
@@ -28,7 +28,11 @@ in lib.nixosSystem {
         luaModules = with pkgs.luajitPackages; [ luarocks lgi ];
       };
 
-      # services.emacs.enable = true;
+      # programs.hyprland = {
+      #   enable = true;
+      #   package = inputs.hyprland.packages.${system}.hyprland;
+      #   xwayland.enable = true;
+      # };
 
       virtualisation.docker.enable = true;
 

@@ -41,13 +41,11 @@ in {
         go-mtpfs
         gnome.gvfs
         glow
-        ffmpeg
 
         # qt
         lxqt.pcmanfm-qt
         lxqt.lxqt-menu-data
         lxqt.lxqt-archiver
-        zathura
 
         # General
         networkmanagerapplet
@@ -57,8 +55,6 @@ in {
         pavucontrol
 
         brave
-        microsoft-edge
-
 
         # Language Servers
         sumneko-lua-language-server
@@ -66,33 +62,33 @@ in {
         # nodePackages.bash-language-server
         # nodePackages.yaml-language-server
         # nodePackages.vue-language-server
-        nodePackages.typescript-language-server
         nodePackages.vscode-langservers-extracted
         nil
         gopls
         # sqls
         # ccls
+        ruby_3_2
         nodePackages_latest.eslint
-        zls
+        # zls
 
         # Dev
         rustup
-        zig
+        # zig
         # python39
         # python39Packages.pip
         # jdk
         git
-        nodePackages.pnpm
-        # yarn
-        nodejs
-        # deno
         jq
-        # gcc
-        clang
-        clang-tools
+        gcc
+        # clang
+        # clang-tools
         pkg-config
         go
-        gotools
+        # gotools
+        nodePackages.pnpm
+        nodejs_18
+        typescript
+        nodePackages.typescript-language-server
 
         # debugger
         gdb
@@ -100,6 +96,9 @@ in {
         # delve
         # vscode-extensions.vadimcn.vscode-lldb.adapter
         vscode-extensions.ms-vscode.cpptools
+
+        # stc
+        nodePackages_latest.pyright
 
         # Formatters
         black
@@ -120,6 +119,10 @@ in {
 
     # Let Home Manager install and manage itself.
     programs.home-manager.enable = true;
+    programs.zathura = {
+      enable = true;
+      options = { selection-clipboard = "clipboard"; };
+    };
 
     services = { network-manager-applet.enable = true; };
 
@@ -130,15 +133,22 @@ in {
 
     modules = {
       xorg = { awesomeConfig.enable = true; };
+      # wayland = {
+      #   hyprlandConfig.enable = true;
+      #   mako.enable = true;
+      #   swayidle.enable = true;
+      #   gammastep.enable = false;
+      #   waybar.enable = true;
+      # };
       programs = {
         gtk-qt.enable = true;
         neovim.enable = true;
         firefox.enable = false;
         kitty.enable = false;
         wezterm.enable = false;
-        foot.enable = false;
+        foot.enable = true;
         rofi.enable = true;
-        qutebrowser.enable = true;
+        qutebrowser.enable = false;
         alacritty.enable = true;
         ugchromium.enable = false;
         st.enable = false;

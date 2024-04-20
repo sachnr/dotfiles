@@ -41,6 +41,9 @@ in {
         go-mtpfs
         gnome.gvfs
         glow
+        cbatticon
+        pasystray
+        brightnessctl
 
         # qt
         lxqt.pcmanfm-qt
@@ -58,25 +61,15 @@ in {
 
         # Language Servers
         sumneko-lua-language-server
-        # python39Packages.python-lsp-server
         # nodePackages.bash-language-server
-        # nodePackages.yaml-language-server
-        # nodePackages.vue-language-server
         nodePackages.vscode-langservers-extracted
         nil
         gopls
-        # sqls
-        # ccls
-        ruby_3_2
-        nodePackages_latest.eslint
         # zls
 
         # Dev
         rustup
         # zig
-        # python39
-        # python39Packages.pip
-        # jdk
         git
         jq
         gcc
@@ -85,35 +78,30 @@ in {
         pkg-config
         go
         # gotools
-        nodePackages.pnpm
+        yarn
         nodejs_18
         typescript
         nodePackages.typescript-language-server
+        ruby_3_2
 
         # debugger
         gdb
-        # lldb_15
-        # delve
-        # vscode-extensions.vadimcn.vscode-lldb.adapter
         vscode-extensions.ms-vscode.cpptools
 
         # stc
-        nodePackages_latest.pyright
+        # nodePackages_latest.pyright
 
         # Formatters
         black
         shfmt
         stylua
-        # astyle
-        nodePackages.prettier
+        # nodePackages.prettier
         nixfmt
         pgformatter
         taplo
 
-        # Build tools
-        # maven
-        # cmake
-        # gnumake
+        #build
+        gnumake
       ];
     };
 
@@ -143,13 +131,13 @@ in {
       programs = {
         gtk-qt.enable = true;
         neovim.enable = true;
-        firefox.enable = false;
-        kitty.enable = false;
+        firefox.enable = true;
+        kitty.enable = true;
         wezterm.enable = false;
         foot.enable = true;
         rofi.enable = true;
         qutebrowser.enable = false;
-        alacritty.enable = true;
+        alacritty.enable = false;
         ugchromium.enable = false;
         st.enable = false;
       };

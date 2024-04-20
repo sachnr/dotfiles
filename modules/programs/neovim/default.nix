@@ -13,8 +13,8 @@ in with lib; {
     home = {
       packages = with pkgs; [
         # neovim-unwrapped
-        # neovim-nightly
-        neovim
+        neovim-nightly
+        # neovim
         tree-sitter
       ];
     };

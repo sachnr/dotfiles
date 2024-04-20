@@ -32,15 +32,6 @@ fetch.git = "https://github.com/LukeSmithxyz/st.git"
 src.git = "https://github.com/aircrack-ng/rtl8812au"
 fetch.git = "https://github.com/aircrack-ng/rtl8812au.git"
 
-[yuzu]
-src.git = "https://github.com/yuzu-emu/yuzu-mainline"
-fetch.git = "https://github.com/yuzu-emu/yuzu-mainline.git"
-git.fetchSubmodules = true
-
-[yuzu-compat-list]
-src.manual = "https://github.com/flathub/org.yuzu_emu.yuzu"
-fetch.url = "https://github.com/flathub/org.yuzu_emu.yuzu/blob/master/compatibility_list.json"
-
 [aseprite]
 src.github_tag = "aseprite/aseprite"
 fetch.github = "aseprite/aseprite"

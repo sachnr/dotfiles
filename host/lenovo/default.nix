@@ -12,7 +12,7 @@ let
       allowUnfree = true;
     };
   };
-  theme = import ../../theme/catppuccin.nix { inherit pkgs; };
+  theme = import ../../theme/kanagawa.nix { inherit pkgs; };
   fonts = import ./fonts.nix { inherit theme lib pkgs; };
 in lib.nixosSystem {
   inherit system pkgs;

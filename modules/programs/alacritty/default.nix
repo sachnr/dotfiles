@@ -26,7 +26,7 @@ in with lib; {
             action = "DecreaseFontSize";
           }
           {
-            key = "Backspace";
+            key = "Key0";
             mods = "Control|Shift";
             action = "ResetFontSize";
           }
@@ -55,7 +55,7 @@ in with lib; {
             family = "Iosevka";
             style = "Bold Italic";
           };
-          size = 18;
+          size = 16;
         };
         window.dimensions = {
           lines = 3;

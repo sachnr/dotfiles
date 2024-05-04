@@ -1,4 +1,3 @@
-# Home manager setting
 { lib, user, pkgs, ... }:
 let
   get_dirs = path:
@@ -57,7 +56,8 @@ in {
         feh
         pavucontrol
 
-        brave
+        ungoogled-chromium
+        firefox-bin
 
         # Language Servers
         sumneko-lua-language-server
@@ -131,14 +131,12 @@ in {
       programs = {
         gtk-qt.enable = true;
         neovim.enable = true;
-        firefox.enable = true;
-        kitty.enable = true;
+        kitty.enable = false;
         wezterm.enable = false;
         foot.enable = true;
         rofi.enable = true;
         qutebrowser.enable = false;
-        alacritty.enable = false;
-        ugchromium.enable = false;
+        alacritty.enable = true;
         st.enable = false;
       };
       services = {

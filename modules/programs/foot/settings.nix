@@ -4,9 +4,9 @@ let rp = str: lib.strings.removePrefix "#" str;
 in ''
   # -*- conf -*-
 
-  font=Iosevka:size=12
+  font=Iosevka:size=14
   font-size-adjustment=0.5
-  dpi-aware=no
+  dpi-aware=yes
   pad=6x6
   underline-offset=2px
 

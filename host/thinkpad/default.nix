@@ -12,8 +12,9 @@ let
       allowUnfree = true;
     };
   };
-  theme = import ../../theme/kanagawa.nix { inherit pkgs; };
+  theme = import ../../theme/ayu.nix { inherit pkgs; };
   fonts = import ./fonts.nix { inherit theme lib pkgs; };
+  dpi = "142";
 in lib.nixosSystem {
   inherit system pkgs;
   modules = [
@@ -28,11 +29,7 @@ in lib.nixosSystem {
         luaModules = with pkgs.luajitPackages; [ luarocks lgi ];
       };
 
-      # programs.hyprland = {
-      #   enable = true;
-      #   package = inputs.hyprland.packages.${system}.hyprland;
-      #   xwayland.enable = true;
-      # };
+      programs.sway = { enable = true; };
 
       virtualisation.docker.enable = true;
 
@@ -49,7 +46,7 @@ in lib.nixosSystem {
         useGlobalPkgs = true;
         useUserPackages = true;
         users.${user} = import ./home.nix;
-        extraSpecialArgs = { inherit inputs pkgs system user theme; };
+        extraSpecialArgs = { inherit inputs pkgs system user theme dpi; };
       };
     }
   ];

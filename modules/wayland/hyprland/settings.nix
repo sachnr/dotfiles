@@ -4,29 +4,17 @@ let rp = str: lib.strings.removePrefix "#" str;
 in ''
   exec-once="${pkgs.dbus}/bin/dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY HYPRLAND_INSTANCE_SIGNATURE XDG_CURRENT_DESKTOP && systemctl --user start hyprland-session.target"
 
-  env=WLR_NO_HARDWARE_CURSORS,1
-  env=GDK_BACKEND,wayland,x11
-  env=QT_QPA_PLATFORM,"wayland;xcb"
+  env=GDK_BACKEND,wayland,x11,* 
+  env=QT_QPA_PLATFORM,wayland;xcb 
   env=SDL_VIDEODRIVER,wayland
-  env=CLUTTER_BACKEND,wayland
+  env=CLUTTER_BACKEND,wayland 
   env=XDG_CURRENT_DESKTOP,Hyprland
   env=XDG_SESSION_TYPE,wayland
   env=XDG_SESSION_DESKTOP,Hyprland
-  env=QT_AUTO_SCREEN_SCALE_FACTOR,1
-  env=QT_QPA_PLATFORM,wayland;xcb
-  env=QT_WAYLAND_DISABLE_WINDOWDECORATION,1
+  env=QT_AUTO_SCREEN_SCALE_FACTOR,1 
+  env=QT_QPA_PLATFORM,wayland;xcb 
+  env=QT_WAYLAND_DISABLE_WINDOWDECORATION,1 
   env=QT_QPA_PLATFORMTHEME,qt5ct
-  env=GBM_BACKEND,nvidia-drm
-  env=__GLX_VENDOR_LIBRARY_NAME,nvidia
-  env=LIBVA_DRIVER_NAME,nvidia
-  env=MOZ_ENABLE_WAYLAND,1
-  env=__GL_VRR_ALLOWED,0
-  env=WLR_DRM_NO_ATOMIC,1
-  env=ELECTRON_OZONE_PLATFORM_HINT,auto
-  env=NIXOS_OZONE_WL,1
-
-  monitor=DP-1, 1920x1080@144, 0x0, 1
-  monitor=HDMI-A-1, 1920x1080@144, 1920x0, 1
 
   general {
     col.active_border=rgb(${rp normal.red}) rgb(${rp normal.green}) rgb(${

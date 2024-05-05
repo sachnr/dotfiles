@@ -6,9 +6,9 @@
       noto-fonts-emoji
       roboto
       iosevka-bin
-      (nerdfonts.override {
-        fonts = [ "JetBrainsMono" "NerdFontsSymbolsOnly" ];
-      })
+      # (nerdfonts.override {
+      #   fonts = [ "JetBrainsMono" "NerdFontsSymbolsOnly" ];
+      # })
     ];
 
     fontconfig = {

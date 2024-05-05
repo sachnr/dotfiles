@@ -35,7 +35,6 @@ in {
         neofetch
         lazygit
         ripgrep
-        gh-dash
         direnv
         go-mtpfs
         gnome.gvfs
@@ -43,6 +42,9 @@ in {
         cbatticon
         pasystray
         brightnessctl
+        flameshot
+        gimp
+        gpick
 
         # qt
         lxqt.pcmanfm-qt
@@ -56,40 +58,37 @@ in {
         feh
         pavucontrol
 
+        # Browsers
         ungoogled-chromium
         firefox-bin
 
         # Language Servers
         sumneko-lua-language-server
-        # nodePackages.bash-language-server
         nodePackages.vscode-langservers-extracted
         nil
         gopls
-        # zls
 
-        # Dev
-        rustup
-        # zig
-        git
-        jq
+        # Languages
         gcc
-        # clang
-        # clang-tools
-        pkg-config
+        rustup
         go
         # gotools
-        yarn
-        nodejs_18
+        # clang
+        # clang-tools
         typescript
         nodePackages.typescript-language-server
         ruby_3_2
 
+        # Dev-tools
+        git
+        jq
+        pkg-config
+        yarn
+        nodejs_18
+
         # debugger
         gdb
         vscode-extensions.ms-vscode.cpptools
-
-        # stc
-        # nodePackages_latest.pyright
 
         # Formatters
         black
@@ -121,13 +120,14 @@ in {
 
     modules = {
       xorg = { awesomeConfig.enable = true; };
-      # wayland = {
-      #   hyprlandConfig.enable = true;
-      #   mako.enable = true;
-      #   swayidle.enable = true;
-      #   gammastep.enable = false;
-      #   waybar.enable = true;
-      # };
+      wayland = {
+        hyprlandConfig.enable = false;
+        swayConfig.enable = true;
+        mako.enable = true;
+        swayidle.enable = true;
+        gammastep.enable = false;
+        waybar.enable = false;
+      };
       programs = {
         gtk-qt.enable = true;
         neovim.enable = true;
@@ -149,7 +149,7 @@ in {
       shell = {
         zsh = {
           enable = true;
-          host = "lenovo";
+          host = "thinkpad";
         };
         tmux.enable = true;
       };

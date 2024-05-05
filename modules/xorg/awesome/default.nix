@@ -1,4 +1,4 @@
-{ pkgs, config, lib, theme, ... }:
+{ pkgs, config, lib, theme, dpi, ... }:
 let
   cfg = config.modules.xorg.awesomeConfig;
   i3lock-script = import ./i3lock.nix { inherit pkgs theme; };
@@ -38,6 +38,8 @@ in with lib; {
         dconf
       ];
     };
-    xresources = { extraConfig = import ./xresources.nix { inherit theme; }; };
+    xresources = {
+      extraConfig = import ./xresources.nix { inherit theme dpi; };
+    };
   };
 }

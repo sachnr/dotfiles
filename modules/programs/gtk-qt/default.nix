@@ -20,9 +20,8 @@ in with lib; {
       packages = with pkgs; [
         libsForQt5.qt5ct
         qt6Packages.qt6ct
-        # libsForQt5.qtstyleplugin-kvantum
         oomox
-        adwaita-qt # adds styles in qt5ct
+        adwaita-qt
         gtk3
       ];
       pointerCursor = {
@@ -42,10 +41,9 @@ in with lib; {
         gtk-xft-hinting = 1;
         gtk-xft-hintstyle = "hintslight";
         gtk-xft-rgba = "rgb";
-        # gtk-application-prefer-dark-theme = 1;
       };
       font = {
-        name = "Roboto";
+        name = theme.settings.font;
         size = 10;
       };
       theme.name = settings.gtk;
@@ -59,16 +57,5 @@ in with lib; {
 
     home.file.".config/qt5ct/qt5ct.conf".text = qt5ct;
     home.file.".config/qt6ct/qt6ct.conf".text = qt6ct;
-
-    # home.file.".config/kdeglobals".text = kdeglobal;
-
-    ## i dont use kvantum anyomore
-    # home.file.".config/Kvantum/kvantum.kvconfig".text = let
-    #   kvtheme = ''
-    #     [General]
-    #     theme=${theme.settings.kvantum}
-    #   '';
-    # in
-    #   kvtheme;
   };
 }

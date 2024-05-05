@@ -1,6 +1,6 @@
-{ theme }:
+{ theme, dpi }:
 with theme.colors; ''
-  Xft.dpi: 96
+  Xft.dpi: ${dpi}
   Xft.antialias: 1
   Xft.hinting: 1
   Xft.autohint: 0

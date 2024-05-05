@@ -29,7 +29,6 @@
     networkmanager.enable =
       true; # Easiest to use and most distros use this by default.
     proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-    extraHosts = import ./blocklist.nix;
   };
 
   time.timeZone = "Asia/Kolkata";
@@ -77,9 +76,15 @@
   # Enable display manager
   services.xserver = {
     enable = true;
+    dpi = 142;
     xkb = { layout = "us"; };
     videoDrivers = [ "amdgpu" ];
-    displayManager = { gdm.enable = true; };
+    displayManager = {
+      gdm = {
+        enable = true;
+        settings = { greeter.exclude = "root"; };
+      };
+    };
     libinput = {
       enable = true;
       mouse.accelProfile = "flat";
@@ -99,6 +104,16 @@
     wireplumber.enable = true;
     pulse.enable = true;
   };
+
+  services.tlp = {
+    enable = true;
+    settings = {
+      CPU_SCALING_GOVERNOR_ON_AC = "performance";
+      CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
+    };
+  };
+
+  services.upower.enable = true;
 
   nix = {
     package = pkgs.nixFlakes;

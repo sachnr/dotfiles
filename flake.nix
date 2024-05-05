@@ -18,13 +18,6 @@
       url = "github:nix-community/NUR"; # NUR Packages
     };
 
-    hyprland = {
-      url = "github:vaxerski/Hyprland";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    nixpkgs-wayland = { url = "github:nix-community/nixpkgs-wayland"; };
-
     neovim-nightly-overlay = {
       url = "github:nix-community/neovim-nightly-overlay";
     };
@@ -36,15 +29,13 @@
       flake = false;
     };
 
-    msedge = { url = "github:sachnr/edge"; };
-
     wsl.url = "github:nix-community/NixOS-WSL";
   };
 
   outputs = inputs@{ self, ... }: {
     nixosConfigurations = {
       desktop = import ./host/desktop { inherit inputs; };
-      lenovo = import ./host/lenovo { inherit inputs; };
+      thinkpad = import ./host/thinkpad { inherit inputs; };
       wsl = import ./host/wsl { inherit inputs; };
     };
 

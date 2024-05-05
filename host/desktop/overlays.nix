@@ -4,10 +4,9 @@ let
     (pkgs.callPackage ../../_sources/generated.nix { }).${pname};
 in with inputs; [
   nur.overlay
-  nixpkgs-wayland.overlay
   neovim-nightly-overlay.overlay
   nix-rice.overlays.default
-  msedge.overlays.${system}.default
+
   (final: prev: {
     awesome = let package = getPackage "awesomewm" prev;
     in (prev.awesome.override {

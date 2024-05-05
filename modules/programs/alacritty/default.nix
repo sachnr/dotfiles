@@ -55,7 +55,7 @@ in with lib; {
             family = "Iosevka";
             style = "Bold Italic";
           };
-          size = 16;
+          size = 12;
         };
         window.dimensions = {
           lines = 3;

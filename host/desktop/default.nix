@@ -12,11 +12,12 @@ let
         {
           #
         };
-      allowUnfree = true; # Allow proprietary software
+      allowUnfree = true;
     };
   };
   theme = import ../../theme/kanagawa.nix { inherit pkgs; };
   fonts = import ./fonts.nix { inherit theme lib pkgs; };
+  dpi = "96";
 in lib.nixosSystem {
   inherit system pkgs;
   modules = [
@@ -60,7 +61,7 @@ in lib.nixosSystem {
         useGlobalPkgs = true;
         useUserPackages = true;
         users.${user} = import ./home.nix;
-        extraSpecialArgs = { inherit inputs pkgs system user theme; };
+        extraSpecialArgs = { inherit inputs pkgs system user theme dpi; };
       };
     }
   ];

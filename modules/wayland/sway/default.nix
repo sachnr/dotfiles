@@ -43,6 +43,9 @@ in with lib; {
       };
     };
 
+    home.file.".config/i3status/config.toml".text =
+      import ./i3status.nix { inherit theme; };
+
     home = {
       packages = with pkgs; [
         grim

@@ -51,7 +51,7 @@ in with lib; {
 
     services.swayidle = {
       enable = true;
-      systemdTarget = "hyprland-session.target";
+      # systemdTarget = "hyprland-session.target";
       events = [
         {
           event = "before-sleep";
@@ -73,10 +73,10 @@ in with lib; {
         }
         {
           timeout = 910;
-          # command = "${pkgs.sway}/bin/swaymsg 'output * dpms off'";
-          # resumeCommand = "${pkgs.sway}/bin/swaymsg 'output * dpms on'";
-          command = "hyprctl dispatch dpms off";
-          resumeCommand = "hyprctl dispatch dpms on";
+          command = "${pkgs.sway}/bin/swaymsg 'output * dpms off'";
+          resumeCommand = "${pkgs.sway}/bin/swaymsg 'output * dpms on'";
+          # command = "hyprctl dispatch dpms off";
+          # resumeCommand = "hyprctl dispatch dpms on";
         }
       ];
     };

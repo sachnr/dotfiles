@@ -5,14 +5,10 @@ with theme.colors; ''
 
     bindsym $mod+q kill
     bindsym $alt+space exec rofi -show drun
-    bindsym $mod+Return exec foot
+    bindsym $mod+Return exec alacritty
     bindsym $mod+Shift+r reload
     bindsym $mod+f fullscreen toggle
     bindsym Print exec grim -t png -g "$(slurp)" ~/Pictures/$(date +%Y-%m-%d_%H-%m-%s).png
-
-    # Laptop
-    bindswitch lid:on output eDP-1 disable
-    bindswitch lid:off output eDP-1 enable
 
     # Workspace
     bindsym $mod+Tab workspace back_and_forth
@@ -43,13 +39,8 @@ with theme.colors; ''
 
     # focus
     bindsym $mod+a focus parent
-    # with arrow keys
-    bindsym $mod+Up focus up
-    bindsym $mod+Down focus down
-    bindsym $mod+Left focus left
-    bindsym $mod+Right focus right
 
-    # with hjkl
+    # focus 
     bindsym $mod+h focus left
     bindsym $mod+j focus down
     bindsym $mod+k focus up
@@ -60,11 +51,6 @@ with theme.colors; ''
     bindsym $mod+Shift+j move down
     bindsym $mod+Shift+k move up
     bindsym $mod+Shift+l move right
-    # hjkl
-    bindsym $mod+Shift+Down move down
-    bindsym $mod+Shift+Left move left
-    bindsym $mod+Shift+Right move right
-    bindsym $mod+Shift+Up move up
 
     # Layout
     bindsym $mod+s layout stacking
@@ -175,17 +161,12 @@ with theme.colors; ''
         separator ${primary.accent}
         background ${primary.background} 
         active_workspace ${primary.background} ${primary.background} ${primary.accent}
-        inactive_workspace ${primary.background} ${primary.background} ${bright.black}
+        inactive_workspace ${primary.background} ${primary.background} ${primary.foreground}
         focused_workspace ${primary.accent} ${primary.accent} ${primary.background}
         urgent_workspace ${normal.red} ${normal.red} ${primary.foreground}
     }
   }
 
-  exec ${pkgs.networkmanagerapplet}/bin/nm-applet --indicator
   exec wpaperd
-  # exec ${pkgs.blueman}/bin/blueman-applet
-  # exec pasystray
-  # exec flameshot
-  # exec cbatticon
-  # exec_always wpaper
+  # exec_always wpaperd
 ''

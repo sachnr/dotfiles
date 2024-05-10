@@ -19,9 +19,9 @@
         rgba = "none";
       };
       hinting = {
-        enable = false;
+        enable = true;
         autohint = false;
-        style = "none";
+        style = "slight";
       };
       defaultFonts = {
         serif = [ "Roboto" "Symbols Nerd Font Mono" ];

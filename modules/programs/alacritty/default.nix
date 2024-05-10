@@ -55,17 +55,17 @@ in with lib; {
             family = "Iosevka";
             style = "Bold Italic";
           };
-          size = 12;
+          size = 14;
         };
         window.dimensions = {
           lines = 3;
           columns = 200;
         };
-        bell = {
-          animation = "EaseOutExpo";
-          duration = 2;
-          color = primary.foreground;
-        };
+        # bell = {
+        #   animation = "EaseOutExpo";
+        #   duration = 2;
+        #   color = primary.background;
+        # };
         cursor = { style = "Block"; };
 
         colors = {
@@ -90,7 +90,7 @@ in with lib; {
             };
             focused_match = {
               foreground = primary.background;
-              background = normal.blue;
+              background = primary.accent;
             };
           };
           line_indicator = {

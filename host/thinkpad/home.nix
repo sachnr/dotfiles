@@ -39,10 +39,7 @@ in {
         go-mtpfs
         gnome.gvfs
         glow
-        cbatticon
-        pasystray
         brightnessctl
-        flameshot
         gimp
         gpick
 
@@ -105,13 +102,21 @@ in {
     };
 
     # Let Home Manager install and manage itself.
-    programs.home-manager.enable = true;
-    programs.zathura = {
-      enable = true;
-      options = { selection-clipboard = "clipboard"; };
+    programs = {
+      home-manager.enable = true;
+      zathura = {
+        enable = true;
+        options = { selection-clipboard = "clipboard"; };
+      };
     };
 
-    services = { network-manager-applet.enable = true; };
+    services = {
+      network-manager-applet.enable = true;
+      udiskie = {
+        enable = true;
+        notify = false;
+      };
+    };
 
     xdg.userDirs = {
       enable = true;
@@ -122,8 +127,9 @@ in {
       xorg = { awesomeConfig.enable = true; };
       wayland = {
         hyprlandConfig.enable = false;
+        dunst.enable = true;
         swayConfig.enable = true;
-        mako.enable = true;
+        mako.enable = false;
         swayidle.enable = true;
         gammastep.enable = false;
         waybar.enable = false;
@@ -132,8 +138,8 @@ in {
         gtk-qt.enable = true;
         neovim.enable = true;
         kitty.enable = false;
-        wezterm.enable = false;
-        foot.enable = true;
+        wezterm.enable = true;
+        foot.enable = false;
         rofi.enable = true;
         qutebrowser.enable = false;
         alacritty.enable = true;

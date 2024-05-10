@@ -61,8 +61,8 @@ with theme.colors; ''
     }
 
   return {
-    font = wezterm.font_with_fallback { "Iosevka NF" },
-    font_size = 13,
+    font = wezterm.font_with_fallback { "Iosevka" },
+    font_size = 12,
     bold_brightens_ansi_colors = true,
     -- use_fancy_tab_bar = false,
     front_end = "WebGpu",

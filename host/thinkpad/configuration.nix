@@ -79,12 +79,7 @@
     dpi = 142;
     xkb = { layout = "us"; };
     videoDrivers = [ "amdgpu" ];
-    displayManager = {
-      gdm = {
-        enable = true;
-        settings = { greeter.exclude = "root"; };
-      };
-    };
+    displayManager = { gdm = { enable = true; }; };
     libinput = {
       enable = true;
       mouse.accelProfile = "flat";
@@ -109,7 +104,7 @@
     enable = true;
     settings = {
       CPU_SCALING_GOVERNOR_ON_AC = "performance";
-      CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
+      CPU_SCALING_GOVERNOR_ON_BAT = "conservative";
     };
   };
 

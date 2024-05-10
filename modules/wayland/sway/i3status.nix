@@ -20,10 +20,7 @@ with theme.colors; ''
   separator_fg = "${bright.black}"
 
   [icons]
-  icons = "awesome4"
-  [icons.overrides]
-  bat = ["|E|", "|_|", "|=|", "|F|"]
-  bat_charging = "|^| "
+  icons = "material-nf"
 
   [[block]]
   block = "net"
@@ -38,10 +35,7 @@ with theme.colors; ''
 
   [[block]]
   block = "battery"
-  format = "Bat: $percentage $icon"
-  full_format = "Bat: $percentage $icon"
-  not_charging_format = "Bat: $percentage"
-  charging_format = "Bat: $percentage $icon"
+  format = "$icon $percentage"
   device = "DisplayDevice"
   driver = "upower"
 

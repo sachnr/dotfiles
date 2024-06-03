@@ -70,7 +70,7 @@ in with lib; {
           ls = "${pkgs.eza}/bin/eza --icons --group-directories-first";
           la = "${pkgs.eza}/bin/eza -lah --icons --group-directories-first";
           tree = "${pkgs.eza}/bin/eza --tree --icons --group-directories-first";
-          e = "${pkgs.neovim}/bin/nvim ./";
+          e = "${pkgs.neovim}/bin/nvim";
           f = "${pkgs.ranger}/bin/ranger";
           tm = "tmux-fzy";
           top = "${pkgs.bottom}/bin/btm -b";

@@ -43,7 +43,7 @@ in {
   wallpaper = builtins.fetchurl {
     url =
       "https://raw.githubusercontent.com/Gingeh/wallpapers/main/os/nix-black-4k.png";
-    sha256 = "0000000000000000000000000000000000000000000000000000";
+    sha256 = "1ygn07s89qxlyjcigfx2jflzxrr6mw89n66qvz38j1hkk1vl2m3v";
   };
 
   settings = {

@@ -20,50 +20,36 @@ in with lib; {
         dataDir = "/home/${user}/.config/mpd";
         musicDirectory = "/home/${user}/Music";
         network = {
-          listenAddress = "127.0.0.1";
+          listenAddress = "localhost";
           port = 6600;
         };
         extraConfig = ''
-          user            "${user}"
-          restore_paused  "yes"
+          user              "${user}"
+          restore_paused    "yes"
           audio_output {
-              type    "pulse"
-              name    "My MPD PulseAudio Output"
+              type          "pulse"
+              name          "My MPD PulseAudio Output"
           }
           audio_output {
-              type        "fifo"
-              name        "Visualizer"
-              path        "/tmp/mpd.fifo"
-              format      "44100:16:2"
+              type          "fifo"
+              name          "Visualizer"
+              path          "/tmp/mpd.fifo"
+              format        "44100:16:2"
           }
         '';
       };
 
+      mpdris2.enable = true;
+
       # mopidy = {
       #   enable = true;
-      #   extensionPackages = with pkgs; [mopidy-mpd mopidy-youtube];
+      #   extensionPackages = with pkgs; [ mopidy-mpd mopidy-youtube ];
       #   settings = {
-      #     # ╞══════════════════════════════════════════════════════════╡
-      #     file = {
-      #       media_dirs = [
-      #         "$XDG_MUSIC_DIR"
-      #       ];
-      #       follow_symlinks = true;
-      #       excluded_file_extensions = [
-      #         ".html"
-      #         ".zip"
-      #         ".jpg"
-      #         ".jpeg"
-      #         ".png"
-      #       ];
-      #     };
-      #     # ╞══════════════════════════════════════════════════════════╡
       #     mpd = {
       #       enabled = true;
-      #       hostname = "127.0.0.1";
+      #       hostname = "~/.config/mpd/socket";
       #       port = 6600;
       #     };
-      #     # ╞══════════════════════════════════════════════════════════╡
       #     youtube = {
       #       enabled = true;
       #       allow_cache = true;
@@ -99,7 +85,7 @@ in with lib; {
         settings = {
           # MPD
           # ---
-          mpd_host = "127.0.0.1";
+          mpd_host = "localhost";
           mpd_port = 6600;
           mpd_crossfade_time = "2";
 

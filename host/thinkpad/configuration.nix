@@ -53,7 +53,7 @@
       extraPackages = with pkgs; [ vaapiVdpau libvdpau-va-gl amdvlk ];
     };
     bluetooth = {
-      enable = true;
+      enable = false;
       settings = { General = { Enable = "Source,Sink,Media,Socket"; }; };
     };
   };
@@ -100,13 +100,13 @@
     pulse.enable = true;
   };
 
-  services.tlp = {
-    enable = true;
-    settings = {
-      CPU_SCALING_GOVERNOR_ON_AC = "performance";
-      CPU_SCALING_GOVERNOR_ON_BAT = "conservative";
-    };
-  };
+  # services.tlp = {
+  #   enable = true;
+  #   settings = {
+  #     CPU_SCALING_GOVERNOR_ON_AC = "performance";
+  #     CPU_SCALING_GOVERNOR_ON_BAT = "conservative";
+  #   };
+  # };
 
   services.upower.enable = true;
 

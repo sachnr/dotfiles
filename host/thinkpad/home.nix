@@ -141,13 +141,13 @@ in {
         wezterm.enable = true;
         foot.enable = false;
         rofi.enable = true;
-        qutebrowser.enable = false;
+        qutebrowser.enable = true;
         alacritty.enable = true;
         st.enable = false;
       };
       services = {
         picom.enable = true;
-        mpd.enable = false;
+        mpd.enable = true;
         eww.enable = false;
         polkit.enable = true;
         gnupg.enable = true;

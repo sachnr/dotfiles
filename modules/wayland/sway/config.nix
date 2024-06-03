@@ -10,6 +10,9 @@ with theme.colors; ''
     bindsym $mod+f fullscreen toggle
     bindsym Print exec grim -t png -g "$(slurp)" ~/Pictures/$(date +%Y-%m-%d_%H-%m-%s).png
 
+    output DP-2 position 0,0
+    output eDP-1 position 1920,0
+
     # Workspace
     bindsym $mod+Tab workspace back_and_forth
     bindsym $mod+Shift+n workspace next

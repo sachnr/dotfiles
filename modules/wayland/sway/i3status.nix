@@ -13,14 +13,21 @@ with theme.colors; ''
   good_fg = "${bright.green}"
   warning_bg = "${normal.black}"
   warning_fg = "${bright.yellow}"
-  critical_bg = "${normal.black}"
-  critical_fg = "${bright.red}"
+  critical_bg = "${normal.red}"
+  critical_fg = "${primary.background}"
   separator = "  |  "
   separator_bg = "auto"
   separator_fg = "${bright.black}"
 
   [icons]
   icons = "material-nf"
+
+  [[block]]
+  block = "music"
+  format = " $icon {$combo.str(max_w:20,rot_interval:0.5) $play $next |}"
+  [[block.click]]
+  button = "left"
+  action = "play_pause"
 
   [[block]]
   block = "net"

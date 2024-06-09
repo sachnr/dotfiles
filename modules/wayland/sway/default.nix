@@ -1,8 +1,17 @@
-{ pkgs, config, theme, lib, user, ... }:
+{
+  pkgs,
+  config,
+  theme,
+  lib,
+  user,
+  ...
+}:
 let
   cfg = config.modules.wayland.swayConfig;
   settings = import ./config.nix { inherit theme pkgs; };
-in with lib; {
+in
+with lib;
+{
   options.modules.wayland.swayConfig = {
     enable = mkOption {
       type = types.bool;
@@ -16,6 +25,9 @@ in with lib; {
       enable = true;
       package = null;
       config = null;
+      extraOptions = [
+        "--unsupported-gpu"
+      ];
       extraConfig = settings;
       extraSessionCommands = ''
         env=GDK_BACKEND,wayland,x11,* 
@@ -36,15 +48,14 @@ in with lib; {
       enable = true;
       settings = {
         default = {
-          path = "/home/${user}/Wallpapers";
+          path = "/home/${user}/wallpapers/home/";
           duration = "15m";
           sorting = "ascending";
         };
       };
     };
 
-    home.file.".config/i3status/config.toml".text =
-      import ./i3status.nix { inherit theme; };
+    home.file.".config/i3status/config.toml".text = import ./i3status.nix { inherit theme; };
 
     home = {
       packages = with pkgs; [

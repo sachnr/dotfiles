@@ -1,21 +1,22 @@
 { pkgs, ... }:
 let
-  rtl8812au = (pkgs.callPackage ../../_sources/generated.nix { }).rtl8812au;
-  network-driver = pkgs.linuxKernel.packages.linux_6_7.rtl8812au.overrideAttrs
-    (_: {
-      src = rtl8812au.src;
-      version = rtl8812au.version;
-    });
-  sddm-theme = pkgs.callPackage ../../pkgs/sddmtheme.nix { };
-in {
+  network-driver = pkgs.linuxKernel.packages.linux_6_9.rtl88xxau-aircrack;
+in
+{
   imports = [ ./hardware-configuration.nix ];
 
   boot = {
     supportedFilesystems = [ "ntfs" ];
     kernelPackages = pkgs.linuxPackages_latest;
-    blacklistedKernelModules = [ "nouveau" "i2c_nvidia_gpu" ];
-    kernelParams =
-      [ "quiet" "acpi_osi=!" "nvidia.NVreg_PreserveVideoMemoryAllocations=1" ];
+    blacklistedKernelModules = [
+      "nouveau"
+      "i2c_nvidia_gpu"
+    ];
+    kernelParams = [
+      "quiet"
+      "acpi_osi=!"
+      "nvidia.NVreg_PreserveVideoMemoryAllocations=1"
+    ];
     extraModulePackages = [ network-driver ];
     extraModprobeConfig = ''
       options snd slots=snd-hda-intel
@@ -39,8 +40,7 @@ in {
 
   networking = {
     hostName = "sachnr-nixos";
-    networkmanager.enable =
-      true; # Easiest to use and most distros use this by default.
+    networkmanager.enable = true; # Easiest to use and most distros use this by default.
     proxy.noProxy = "127.0.0.1,localhost,internal.domain";
     extraHosts = import ./blocklist.nix;
   };
@@ -60,7 +60,6 @@ in {
       ntfs3g
       usbutils
       bluez
-      sddm-theme
     ];
 
     pathsToLink = [ "/share/zsh" ];
@@ -78,8 +77,10 @@ in {
       ];
     };
     nvidia = {
-      powerManagement = { enable = true; };
-      forceFullCompositionPipeline = true;
+      powerManagement = {
+        enable = true;
+      };
+      forceFullCompositionPipeline = false;
       open = false;
       nvidiaSettings = true;
       # package = config.boot.kernelPackages.nvidiaPackages.beta;
@@ -87,7 +88,11 @@ in {
     };
     bluetooth = {
       enable = true;
-      settings = { General = { Enable = "Source,Sink,Media,Socket"; }; };
+      settings = {
+        General = {
+          Enable = "Source,Sink,Media,Socket";
+        };
+      };
     };
   };
 
@@ -124,42 +129,44 @@ in {
   # Enable display manager
   services.xserver = {
     enable = true;
-    xkb = { layout = "us"; };
+    xkb = {
+      layout = "us";
+    };
     videoDrivers = [ "nvidia" ];
-    desktopManager = { xfce.enable = false; };
-    desktopManager = { xterm.enable = false; };
     displayManager = {
       startx.enable = true;
-      sddm = {
+      gdm = {
+        wayland = true;
         enable = true;
-        theme = "Psion";
       };
-      sessionPackages = [ ];
       sessionCommands = ''
         ${pkgs.xorg.xset}/bin/xset r rate 250 25
       '';
-      lightdm.enable = false;
-    };
-    libinput = {
-      enable = true;
-      mouse.accelProfile = "flat";
-      mouse.accelSpeed = "0";
-      touchpad.naturalScrolling = true;
     };
   };
 
-  sound.enable = true;
-  services.pipewire = {
+  services.displayManager.sessionPackages = [ ];
+
+  services.libinput = {
     enable = true;
-    audio.enable = true;
-    alsa = {
-      enable = true;
-      support32Bit = true;
-    };
-    wireplumber.enable = true;
-    pulse.enable = true;
-    jack.enable = true;
+    mouse.accelProfile = "flat";
+    mouse.accelSpeed = "0";
+    touchpad.naturalScrolling = true;
   };
+
+  sound.enable = true;
+  hardware.pulseaudio.enable = true;
+  # services.pipewire = {
+  #   enable = true;
+  #   audio.enable = true;
+  #   alsa = {
+  #     enable = true;
+  #     support32Bit = true;
+  #   };
+  #   wireplumber.enable = true;
+  #   pulse.enable = true;
+  #   jack.enable = true;
+  # };
 
   nix = {
     package = pkgs.nixFlakes;
@@ -174,7 +181,10 @@ in {
         "nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA="
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
       ];
-      experimental-features = [ "nix-command" "flakes" ];
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
       auto-optimise-store = true;
     };
     gc = {

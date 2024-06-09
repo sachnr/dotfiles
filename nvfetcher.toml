@@ -28,10 +28,6 @@ git.fetchSubmodules = true
 src.git = "https://github.com/LukeSmithxyz/st"
 fetch.git = "https://github.com/LukeSmithxyz/st.git"
 
-[rtl8812au]
-src.git = "https://github.com/aircrack-ng/rtl8812au"
-fetch.git = "https://github.com/aircrack-ng/rtl8812au.git"
-
 [aseprite]
 src.github_tag = "aseprite/aseprite"
 fetch.github = "aseprite/aseprite"

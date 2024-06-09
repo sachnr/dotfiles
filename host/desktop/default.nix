@@ -8,17 +8,17 @@ let
     overlays = import ./overlays.nix { inherit inputs system; };
     config = {
       allowBroken = false;
-      packageOverrides = super:
-        {
-          #
-        };
+      packageOverrides = super: {
+        #
+      };
       allowUnfree = true;
     };
   };
   theme = import ../../theme/kanagawa.nix { inherit pkgs; };
   fonts = import ./fonts.nix { inherit theme lib pkgs; };
   dpi = "96";
-in lib.nixosSystem {
+in
+lib.nixosSystem {
   inherit system pkgs;
   modules = [
     ./configuration.nix
@@ -29,19 +29,26 @@ in lib.nixosSystem {
     {
       services.xserver.windowManager.awesome = {
         enable = true;
-        luaModules = with pkgs.luajitPackages; [ luarocks lgi ];
+        luaModules = with pkgs.luajitPackages; [
+          luarocks
+          lgi
+        ];
+      };
+
+      services.xserver.desktopManager = {
+        xfce = {
+          enable = true;
+        };
+      };
+
+      programs.sway = {
+        enable = true;
       };
 
       programs.steam = {
         enable = true;
         remotePlay.openFirewall = true;
         dedicatedServer.openFirewall = true;
-      };
-
-      programs.hyprland = {
-        enable = true;
-        package = inputs.hyprland.packages.${system}.hyprland;
-        xwayland.enable = true;
       };
 
       # services.emacs.enable = true;
@@ -51,17 +58,33 @@ in lib.nixosSystem {
       programs.zsh.enable = true;
       users.users.${user} = {
         isNormalUser = true;
-        extraGroups = [ "wheel" "video" "audio" "users" "docker" ];
+        extraGroups = [
+          "wheel"
+          "video"
+          "audio"
+          "users"
+          "docker"
+        ];
         shell = pkgs.zsh;
       };
 
       users.extraGroups.docker.members = [ user ];
 
       home-manager = {
+        backupFileExtension = "rebuild";
         useGlobalPkgs = true;
         useUserPackages = true;
         users.${user} = import ./home.nix;
-        extraSpecialArgs = { inherit inputs pkgs system user theme dpi; };
+        extraSpecialArgs = {
+          inherit
+            inputs
+            pkgs
+            system
+            user
+            theme
+            dpi
+            ;
+        };
       };
     }
   ];

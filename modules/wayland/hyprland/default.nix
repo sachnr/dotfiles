@@ -1,8 +1,17 @@
-{ pkgs, config, theme, lib, user, ... }:
+{
+  pkgs,
+  config,
+  theme,
+  lib,
+  user,
+  ...
+}:
 let
   cfg = config.modules.wayland.hyprlandConfig;
   settings = import ./settings.nix { inherit theme pkgs lib; };
-in with lib; {
+in
+with lib;
+{
   options.modules.wayland.hyprlandConfig = {
     enable = mkOption {
       type = types.bool;
@@ -13,17 +22,6 @@ in with lib; {
 
   config = mkIf (cfg.enable) {
     home.file.".config/hypr/hyprland.conf".text = settings;
-
-    programs.wpaperd = {
-      enable = true;
-      settings = {
-        default = {
-          path = "/home/${user}/wallpapers/home";
-          duration = "15m";
-          sorting = "ascending";
-        };
-      };
-    };
 
     home = {
       packages = with pkgs; [

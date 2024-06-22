@@ -1,33 +1,27 @@
 # Home manager setting
-{
-  lib,
-  user,
-  pkgs,
-  ...
-}:
+{ lib, user, pkgs, ... }:
 let
-  get_dirs =
-    path:
-    (lib.attrsets.mapAttrsToList (name: _: path + ("/" + name)) (
-      lib.attrsets.filterAttrs (name: value: value == "directory") (builtins.readDir path)
-    ));
+  get_dirs = path:
+    (lib.attrsets.mapAttrsToList (name: _: path + ("/" + name))
+      (lib.attrsets.filterAttrs (name: value: value == "directory")
+        (builtins.readDir path)));
 
   shell = get_dirs ../../modules/shell;
   xorg = get_dirs ../../modules/xorg;
   wayland = get_dirs ../../modules/wayland;
   programs = get_dirs ../../modules/programs;
   services = get_dirs ../../modules/services;
-in
-{
+in {
   imports = xorg ++ wayland ++ programs ++ services ++ shell;
 
   config = {
     home = {
       username = user;
       homeDirectory = "/home/${user}";
-      stateVersion = "23.05";
+      stateVersion = "24.05";
 
-      file."/home/${user}/links/cpp_debug".source = "${pkgs.vscode-extensions.ms-vscode.cpptools}/share/vscode/extensions/ms-vscode.cpptools/debugAdapters/bin/OpenDebugAD7";
+      file."/home/${user}/links/cpp_debug".source =
+        "${pkgs.vscode-extensions.ms-vscode.cpptools}/share/vscode/extensions/ms-vscode.cpptools/debugAdapters/bin/OpenDebugAD7";
 
       packages = with pkgs; [
         # compression
@@ -132,8 +126,7 @@ in
         stylua
         # astyle
         nodePackages.prettier
-        # nixfmt
-        nixfmt-rfc-style
+        nixfmt-classic
         pgformatter
         taplo
 
@@ -147,9 +140,7 @@ in
     # Let Home Manager install and manage itself.
     programs.home-manager.enable = true;
 
-    services = {
-      network-manager-applet.enable = true;
-    };
+    services = { network-manager-applet.enable = true; };
 
     xdg.userDirs = {
       enable = true;
@@ -157,9 +148,7 @@ in
     };
 
     modules = {
-      xorg = {
-        awesomeConfig.enable = true;
-      };
+      xorg = { awesomeConfig.enable = true; };
       wayland = {
         hyprlandConfig.enable = false;
         dunst.enable = true;

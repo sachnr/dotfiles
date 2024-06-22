@@ -4,7 +4,6 @@ let
     (pkgs.callPackage ../../_sources/generated.nix { }).${pname};
 in with inputs; [
   nur.overlay
-  neovim-nightly-overlay.overlay
   nix-rice.overlays.default
 
   (final: prev: {

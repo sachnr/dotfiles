@@ -5,7 +5,6 @@ in
 with inputs;
 [
   nur.overlay
-  neovim-nightly-overlay.overlay
   nix-rice.overlays.default
 
   (final: prev: {

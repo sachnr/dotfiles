@@ -1,6 +1,15 @@
-{ pkgs, config, lib, ... }:
-let cfg = config.modules.programs.neovim;
-in with lib; {
+{
+  pkgs,
+  config,
+  lib,
+  inputs,
+  ...
+}:
+let
+  cfg = config.modules.programs.neovim;
+in
+with lib;
+{
   options.modules.programs.neovim = {
     enable = mkOption {
       type = types.bool;
@@ -13,7 +22,7 @@ in with lib; {
     home = {
       packages = with pkgs; [
         # neovim-unwrapped
-        neovim
+        inputs.neovim-nightly-overlay.packages.${pkgs.system}.default
         tree-sitter
       ];
     };

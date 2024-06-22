@@ -1,22 +1,14 @@
 { pkgs, ... }:
-let
-  network-driver = pkgs.linuxKernel.packages.linux_6_9.rtl88xxau-aircrack;
-in
-{
+let network-driver = pkgs.linuxKernel.packages.linux_6_9.rtl88xxau-aircrack;
+in {
   imports = [ ./hardware-configuration.nix ];
 
   boot = {
     supportedFilesystems = [ "ntfs" ];
     kernelPackages = pkgs.linuxPackages_latest;
-    blacklistedKernelModules = [
-      "nouveau"
-      "i2c_nvidia_gpu"
-    ];
-    kernelParams = [
-      "quiet"
-      "acpi_osi=!"
-      "nvidia.NVreg_PreserveVideoMemoryAllocations=1"
-    ];
+    blacklistedKernelModules = [ "nouveau" "i2c_nvidia_gpu" ];
+    kernelParams =
+      [ "quiet" "acpi_osi=!" "nvidia.NVreg_PreserveVideoMemoryAllocations=1" ];
     extraModulePackages = [ network-driver ];
     extraModprobeConfig = ''
       options snd slots=snd-hda-intel
@@ -40,7 +32,8 @@ in
 
   networking = {
     hostName = "sachnr-nixos";
-    networkmanager.enable = true; # Easiest to use and most distros use this by default.
+    networkmanager.enable =
+      true; # Easiest to use and most distros use this by default.
     proxy.noProxy = "127.0.0.1,localhost,internal.domain";
     extraHosts = import ./blocklist.nix;
   };
@@ -54,13 +47,7 @@ in
       EDITOR = "nvim";
     };
 
-    systemPackages = with pkgs; [
-      pulseaudio
-      alsa-utils
-      ntfs3g
-      usbutils
-      bluez
-    ];
+    systemPackages = with pkgs; [ pulseaudio alsa-utils ntfs3g usbutils bluez ];
 
     pathsToLink = [ "/share/zsh" ];
   };
@@ -77,9 +64,7 @@ in
       ];
     };
     nvidia = {
-      powerManagement = {
-        enable = true;
-      };
+      powerManagement = { enable = true; };
       forceFullCompositionPipeline = false;
       open = false;
       nvidiaSettings = true;
@@ -88,11 +73,7 @@ in
     };
     bluetooth = {
       enable = true;
-      settings = {
-        General = {
-          Enable = "Source,Sink,Media,Socket";
-        };
-      };
+      settings = { General = { Enable = "Source,Sink,Media,Socket"; }; };
     };
   };
 
@@ -129,23 +110,25 @@ in
   # Enable display manager
   services.xserver = {
     enable = true;
-    xkb = {
-      layout = "us";
-    };
+    xkb = { layout = "us"; };
     videoDrivers = [ "nvidia" ];
     displayManager = {
       startx.enable = true;
-      gdm = {
-        wayland = true;
-        enable = true;
-      };
+      # gdm = {
+      #   wayland = true;
+      #   enable = true;
+      # };
+
       sessionCommands = ''
         ${pkgs.xorg.xset}/bin/xset r rate 250 25
       '';
     };
   };
 
-  services.displayManager.sessionPackages = [ ];
+  services.displayManager = {
+    sddm = { enable = true; };
+    sessionPackages = [ ];
+  };
 
   services.libinput = {
     enable = true;
@@ -181,10 +164,7 @@ in
         "nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA="
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
       ];
-      experimental-features = [
-        "nix-command"
-        "flakes"
-      ];
+      experimental-features = [ "nix-command" "flakes" ];
       auto-optimise-store = true;
     };
     gc = {

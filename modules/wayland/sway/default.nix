@@ -67,6 +67,7 @@ with lib;
         qt6.qtwayland
         i3status-rust
         hyprpicker
+        egl-wayland
       ];
     };
   };

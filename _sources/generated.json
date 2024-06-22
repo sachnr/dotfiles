@@ -1,6 +1,7 @@
 {
     "aseprite": {
         "cargoLocks": null,
+        "date": null,
         "extract": null,
         "name": "aseprite",
         "passthru": null,
@@ -20,6 +21,7 @@
     },
     "awesomewm": {
         "cargoLocks": null,
+        "date": "2024-06-06",
         "extract": null,
         "name": "awesomewm",
         "passthru": null,
@@ -39,6 +41,7 @@
     },
     "picom": {
         "cargoLocks": null,
+        "date": "2024-06-21",
         "extract": null,
         "name": "picom",
         "passthru": null,
@@ -50,14 +53,15 @@
             "name": null,
             "owner": "yshui",
             "repo": "picom",
-            "rev": "79325256ef6fa890c3b1e05c4062de94e6dd9a21",
-            "sha256": "sha256-qxx35kwYec90btXLU2zlHr5FQf4mSLRuEJvCkvN6fFQ=",
+            "rev": "452aa751875bc86799895c941e121b1f0041b0af",
+            "sha256": "sha256-K+haDRtSN9XK99+ZKfj0QoW2pF0LOBfDiZp+n8EuP6k=",
             "type": "github"
         },
-        "version": "79325256ef6fa890c3b1e05c4062de94e6dd9a21"
+        "version": "452aa751875bc86799895c941e121b1f0041b0af"
     },
     "powerlevel10k": {
         "cargoLocks": null,
+        "date": "2024-05-21",
         "extract": null,
         "name": "powerlevel10k",
         "passthru": null,
@@ -76,6 +80,7 @@
     },
     "stfork": {
         "cargoLocks": null,
+        "date": "2022-10-01",
         "extract": null,
         "name": "stfork",
         "passthru": null,
@@ -94,6 +99,7 @@
     },
     "themixgui": {
         "cargoLocks": null,
+        "date": "2024-06-21",
         "extract": null,
         "name": "themixgui",
         "passthru": null,
@@ -103,15 +109,16 @@
             "fetchSubmodules": true,
             "leaveDotGit": false,
             "name": null,
-            "rev": "82404c0c9878b0d43a8391be1a9b43d1527b2666",
-            "sha256": "sha256-qKOTwjIepOv0BIucCvq0nRkgxqhpYHj6upkKROIQw1o=",
+            "rev": "c1e0d5a7b8c227eda717faebf74b1ffa72c15058",
+            "sha256": "sha256-OTTD/ArwPLtzaxCHcJrW19B0EgurmHCc4g/iJXigCD0=",
             "type": "git",
             "url": "https://github.com/themix-project/themix-gui.git"
         },
-        "version": "82404c0c9878b0d43a8391be1a9b43d1527b2666"
+        "version": "c1e0d5a7b8c227eda717faebf74b1ffa72c15058"
     },
     "wezterm": {
         "cargoLocks": null,
+        "date": "2024-06-17",
         "extract": null,
         "name": "wezterm",
         "passthru": null,
@@ -121,15 +128,16 @@
             "fetchSubmodules": true,
             "leaveDotGit": false,
             "name": null,
-            "rev": "eb26a5daa1f9ae4d1ff756f165d6b6933e2683f8",
-            "sha256": "sha256-M7Ojitlqd//U/T7R67qLcJzF3R0ufC8xzbqXj0k5SEw=",
+            "rev": "cb1406860a23896ca6935696169644d140e29208",
+            "sha256": "sha256-5BsbCoK6JYcDKlnzVEvB+ivNt51rYDySUoYb4L9bYFc=",
             "type": "git",
             "url": "https://github.com/wez/wezterm.git"
         },
-        "version": "eb26a5daa1f9ae4d1ff756f165d6b6933e2683f8"
+        "version": "cb1406860a23896ca6935696169644d140e29208"
     },
     "zsh-nix-shell": {
         "cargoLocks": null,
+        "date": "2023-12-31",
         "extract": null,
         "name": "zsh-nix-shell",
         "passthru": null,

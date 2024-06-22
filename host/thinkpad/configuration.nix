@@ -66,7 +66,7 @@
       ];
     };
     bluetooth = {
-      enable = false;
+      enable = true;
       settings = {
         General = {
           Enable = "Source,Sink,Media,Socket";

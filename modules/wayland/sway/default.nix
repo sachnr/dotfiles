@@ -48,7 +48,7 @@ with lib;
       enable = true;
       settings = {
         default = {
-          path = "/home/${user}/wallpapers/home/";
+          path = "/home/${user}/Wallpapers";
           duration = "15m";
           sorting = "ascending";
         };

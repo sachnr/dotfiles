@@ -85,7 +85,7 @@ in {
 
         # debugger
         gdb
-        vscode-extensions.ms-vscode.cpptools
+        # vscode-extensions.ms-vscode.cpptools
 
         # Formatters
         black

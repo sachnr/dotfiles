@@ -48,7 +48,6 @@ with theme.colors; ''
 
   [[block]]
   block = "backlight"
-  device = "amdgpu_bl0"
 
   [[block]]
   block = "disk_space"

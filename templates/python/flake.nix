@@ -13,7 +13,8 @@
   outputs = { self, nixpkgs, flake-utils, poetry2nix }:
     flake-utils.lib.eachDefaultSystem (system:
       let
-        # see https://github.com/nix-community/poetry2nix/tree/master#api for more functions and examples.
+        # see https://github.com/nix-community/poetry2nix/tree/master#api
+        # for more functions and examples.
         pkgs = nixpkgs.legacyPackages.${system};
         inherit (poetry2nix.lib.mkPoetry2Nix { inherit pkgs; })
           mkPoetryApplication;
@@ -27,8 +28,8 @@
           inputsFrom = [ self.packages.${system}.myapp ];
           packages = [
             pkgs.poetry
-            pkgs.fasttext
-            pkgs.python311Packages.python-lsp-server
+            pkgs.python312Packages.python-lsp-server
+            pkgs.python312
           ];
         };
       });

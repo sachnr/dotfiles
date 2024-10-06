@@ -43,6 +43,7 @@ in {
         gnome.gvfs
         glow
         ffmpeg
+        universal-android-debloater
 
         # qt
         lxqt.pcmanfm-qt
@@ -63,6 +64,7 @@ in {
         # steam
         lutris
         wine
+        gamescope
         winetricks
         # ldtk
         krita
@@ -72,7 +74,6 @@ in {
         # Browsers
         # tor-browser-bundle-bin
         brave
-        microsoft-edge
 
         # Downloader
         qbittorrent
@@ -170,7 +171,7 @@ in {
         st.enable = false;
       };
       services = {
-        picom.enable = false;
+        picom.enable = true;
         mpd.enable = true;
         eww.enable = false;
         polkit.enable = true;

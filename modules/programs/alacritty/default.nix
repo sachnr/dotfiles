@@ -36,10 +36,14 @@ in with lib; {
             x = 10;
             y = 10;
           };
-          decorations = "none";
+          decorations = "full";
           dynamic_padding = true;
           decorations_theme_variant = "Dark";
-          opacity = 0.98;
+          opacity = 0.9;
+          dimensions = {
+            columns = 120;
+            lines = 30;
+          };
         };
         font = {
           normal = { family = "Iosevka"; };
@@ -56,10 +60,6 @@ in with lib; {
             style = "Bold Italic";
           };
           size = 14;
-        };
-        window.dimensions = {
-          lines = 3;
-          columns = 200;
         };
         # bell = {
         #   animation = "EaseOutExpo";

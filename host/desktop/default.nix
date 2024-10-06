@@ -33,7 +33,13 @@ in lib.nixosSystem {
 
       services.desktopManager = { plasma6.enable = false; };
 
-      programs.sway = { enable = true; };
+      # environment.systemPackages = with pkgs; [ egl-wayland ];
+      # programs.sway = {
+      #   enable = true;
+      #   wrapperFeatures.gtk = true;
+      #   package = pkgs.swayfx;
+      # };
+      programs.hyprland.enable = true;
 
       programs.steam = {
         enable = true;

@@ -1,18 +1,14 @@
-{ pkgs, ... }:
-let network-driver = pkgs.linuxKernel.packages.linux_6_9.rtl88xxau-aircrack;
+{ pkgs, config, ... }:
+let network-driver = pkgs.linuxKernel.packages.linux_zen.rtl88xxau-aircrack;
 in {
   imports = [ ./hardware-configuration.nix ];
 
   boot = {
     supportedFilesystems = [ "ntfs" ];
-    kernelPackages = pkgs.linuxPackages_latest;
-    blacklistedKernelModules = [ "nouveau" "i2c_nvidia_gpu" ];
-    kernelParams =
-      [ "quiet" "acpi_osi=!" "nvidia.NVreg_PreserveVideoMemoryAllocations=1" ];
+    kernelPackages = pkgs.linuxPackages_zen;
+    blacklistedKernelModules = [ "nouveau" ];
+    kernelParams = [ "quiet" "fbdev=1" ];
     extraModulePackages = [ network-driver ];
-    extraModprobeConfig = ''
-      options snd slots=snd-hda-intel
-    '';
     loader = {
       timeout = 5;
       efi = {
@@ -31,11 +27,12 @@ in {
   };
 
   networking = {
+    nameservers = [ "1.1.1.1" ];
     hostName = "sachnr-nixos";
     networkmanager.enable =
       true; # Easiest to use and most distros use this by default.
     proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-    extraHosts = import ./blocklist.nix;
+    # extraHosts = import ./blocklist.nix;
   };
 
   time.timeZone = "Asia/Kolkata";
@@ -64,12 +61,24 @@ in {
       ];
     };
     nvidia = {
-      powerManagement = { enable = true; };
-      forceFullCompositionPipeline = false;
+      powerManagement = {
+        enable = true;
+        finegrained = false;
+      };
+      forceFullCompositionPipeline = true;
       open = false;
       nvidiaSettings = true;
-      # package = config.boot.kernelPackages.nvidiaPackages.beta;
       modesetting.enable = true;
+      package = config.boot.kernelPackages.nvidiaPackages.mkDriver {
+        version = "555.58.02";
+        sha256_64bit = "sha256-xctt4TPRlOJ6r5S54h5W6PT6/3Zy2R4ASNFPu8TSHKM=";
+        sha256_aarch64 = "sha256-8hyRiGB+m2hL3c9MDA/Pon+Xl6E788MZ50WrrAGUVuY=";
+        openSha256 = "sha256-8hyRiGB+m2hL3c9MDA/Pon+Xl6E788MZ50WrrAGUVuY=";
+        settingsSha256 = "sha256-ZpuVZybW6CFN/gz9rx+UJvQ715FZnAOYfHn5jt5Z2C8=";
+        persistencedSha256 =
+          "sha256-a1D7ZZmcKFWfPjjH1REqPM5j/YLWKnbkP9qfRyIyxAw=";
+      };
+      # package = pkgs.linuxKernel.packages.linux_zen.nvidia_x11;
     };
     bluetooth = {
       enable = true;
@@ -114,10 +123,10 @@ in {
     videoDrivers = [ "nvidia" ];
     displayManager = {
       startx.enable = true;
-      # gdm = {
-      #   wayland = true;
-      #   enable = true;
-      # };
+      gdm = {
+        wayland = true;
+        enable = true;
+      };
 
       sessionCommands = ''
         ${pkgs.xorg.xset}/bin/xset r rate 250 25
@@ -126,7 +135,7 @@ in {
   };
 
   services.displayManager = {
-    sddm = { enable = true; };
+    # sddm = { enable = true; };
     sessionPackages = [ ];
   };
 

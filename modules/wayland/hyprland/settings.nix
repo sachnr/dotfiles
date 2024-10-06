@@ -5,16 +5,20 @@ in ''
   exec-once="${pkgs.dbus}/bin/dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY HYPRLAND_INSTANCE_SIGNATURE XDG_CURRENT_DESKTOP && systemctl --user start hyprland-session.target"
 
   env=GDK_BACKEND,wayland,x11,* 
-  env=QT_QPA_PLATFORM,wayland;xcb 
   env=SDL_VIDEODRIVER,wayland
   env=CLUTTER_BACKEND,wayland 
-  env=XDG_CURRENT_DESKTOP,Hyprland
-  env=XDG_SESSION_TYPE,wayland
-  env=XDG_SESSION_DESKTOP,Hyprland
-  env=QT_AUTO_SCREEN_SCALE_FACTOR,1 
-  env=QT_QPA_PLATFORM,wayland;xcb 
-  env=QT_WAYLAND_DISABLE_WINDOWDECORATION,1 
+  env=GBM_BACKEND,nvidia-drm
+  env=__GLX_VENDOR_LIBRARY_NAME,nvidia
   env=QT_QPA_PLATFORMTHEME,qt5ct
+  env=QT_QPA_PLATFORM,wayland;xcb 
+
+  env=LIBVA_DRIVER_NAME,nvidia
+  env=MOZ_ENABLE_WAYLAND,1
+  env = NVD_BACKEND,direct
+
+  cursor {
+    no_hardware_cursors = true
+  }
 
   general {
     col.active_border=rgb(${rp normal.red}) rgb(${rp normal.green}) rgb(${

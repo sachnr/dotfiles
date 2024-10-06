@@ -30,6 +30,11 @@
     };
 
     wsl.url = "github:nix-community/NixOS-WSL";
+
+    nixpkgs-wayland = {
+      url = "github:nix-community/nixpkgs-wayland";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs@{ self, ... }: {

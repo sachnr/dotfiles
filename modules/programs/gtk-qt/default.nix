@@ -1,35 +1,11 @@
-{
-  pkgs,
-  config,
-  lib,
-  theme,
-  user,
-  ...
-}:
+{ pkgs, config, lib, theme, user, ... }:
 let
   cfg = config.modules.programs.gtk-qt;
   oomox = pkgs.callPackage ../../../pkgs/themix-gui.nix { inherit theme; };
-  qt5ct = import ./qt5ct.nix {
-    inherit
-      theme
-      user
-      pkgs
-      oomox
-      ;
-  };
-  qt6ct = import ./qt6ct.nix {
-    inherit
-      theme
-      user
-      pkgs
-      oomox
-      ;
-  };
-in
-# global config for kde ecosystem apps like dolphin etc, not currently using this
-# kdeglobal = import ./kdeglobal.nix {inherit pkgs lib theme;};
-with lib;
-{
+  qt5ct = import ./qt5ct.nix { inherit theme user pkgs oomox; };
+  qt6ct = import ./qt6ct.nix { inherit theme user pkgs oomox; };
+  # kdeglobal = import ./kdeglobal.nix { inherit pkgs lib theme; };
+in with lib; {
   options.modules.programs.gtk-qt = {
     enable = mkOption {
       type = types.bool;
@@ -54,9 +30,7 @@ with lib;
         gtk.enable = true;
         x11.enable = true;
       };
-      sessionVariables = {
-        GTK_THEME = "${theme.settings.gtk}";
-      };
+      sessionVariables = { GTK_THEME = "${theme.settings.gtk}"; };
     };
 
     gtk = with theme; {
@@ -89,9 +63,7 @@ with lib;
         size = 10;
       };
       theme.name = settings.gtk;
-      iconTheme = {
-        name = settings.icon;
-      };
+      iconTheme = { name = settings.icon; };
       cursorTheme = {
         package = pkgs.phinger-cursors;
         name = "phinger-cursors";
@@ -101,5 +73,6 @@ with lib;
 
     home.file.".config/qt5ct/qt5ct.conf".text = qt5ct;
     home.file.".config/qt6ct/qt6ct.conf".text = qt6ct;
+    # home.file.".config/kdeglobals".text = qt6ct;
   };
 }

@@ -6,9 +6,10 @@
       noto-fonts-emoji
       roboto
       iosevka-bin
-      # (nerdfonts.override {
-      #   fonts = [ "JetBrainsMono" "NerdFontsSymbolsOnly" ];
-      # })
+      open-dyslexic
+      (nerdfonts.override {
+        fonts = [ "JetBrainsMono" "NerdFontsSymbolsOnly" ];
+      })
     ];
 
     fontconfig = {

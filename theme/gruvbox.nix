@@ -42,15 +42,15 @@ in {
 
   wallpaper = builtins.fetchurl {
     url =
-      "https://raw.githubusercontent.com/FrenzyExists/wallpapers/main/Gruv/gruv-pixel-III.png";
-    sha256 = "sha256:0qb9jydrn9i5mbrzf55hw6h0vlxhmwy2gihp9rdcri3wl4294pp8";
+      "https://raw.githubusercontent.com/NixOS/nixos-artwork/refs/heads/master/wallpapers/nix-wallpaper-binary-black.png";
+    sha256 = "sha256:0v3111a1ihsh4ajijbjh6y7a8p5cb5g3rdxqjbzx37pn1k9s254s";
   };
 
   settings = {
     gtk = "numix"; # name of the gtk theme
     qt-style = "Adwaita-Dark"; # name of qt style in qt5ct
     icon = "icons_papirus"; # name of iconpack
-    font = "Iosevka"; 
+    font = "Iosevka";
     fontmonospace = "Iosevka";
   };
 }

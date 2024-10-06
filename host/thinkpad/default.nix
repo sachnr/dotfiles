@@ -12,9 +12,9 @@ let
       allowUnfree = true;
     };
   };
-  theme = import ../../theme/kanagawa.nix { inherit pkgs; };
+  theme = import ../../theme/bamboo.nix { inherit pkgs; };
   fonts = import ./fonts.nix { inherit theme lib pkgs; };
-  dpi = "142";
+  dpi = "0";
 in lib.nixosSystem {
   inherit system pkgs;
   modules = [
@@ -29,7 +29,11 @@ in lib.nixosSystem {
         luaModules = with pkgs.luajitPackages; [ luarocks lgi ];
       };
 
-      programs.sway = { enable = true; };
+      programs.sway = {
+        enable = true;
+        package = pkgs.swayfx;
+        wrapperFeatures.gtk = true;
+      };
 
       virtualisation.docker.enable = true;
 

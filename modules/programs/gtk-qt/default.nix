@@ -99,7 +99,7 @@ with lib;
       };
     };
 
-    # home.file.".config/qt5ct/qt5ct.conf".text = qt5ct;
-    # home.file.".config/qt6ct/qt6ct.conf".text = qt6ct;
+    home.file.".config/qt5ct/qt5ct.conf".text = qt5ct;
+    home.file.".config/qt6ct/qt6ct.conf".text = qt6ct;
   };
 }

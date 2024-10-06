@@ -170,6 +170,6 @@ with theme.colors; ''
     }
   }
 
-  exec wpaperd
-  # exec_always wpaperd
+  # exec mpvpaper eDP-1 ~/Wallpapers/city-of-tears.mp4
+  exec_always wpaperd
 ''

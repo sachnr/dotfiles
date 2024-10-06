@@ -1,16 +1,12 @@
-{ pkgs, ... }:
-{
+{ pkgs, ... }: {
   imports = [ ./hardware-configuration.nix ];
 
   boot = {
     supportedFilesystems = [ "ntfs" ];
     kernelPackages = pkgs.linuxPackages_latest;
     blacklistedKernelModules = [ "nouveau" ];
-    kernelParams = [
-      "quiet"
-      "mem_sleep_default=deep"
-      "pcie_aspm.policy=powersupersave"
-    ];
+    kernelParams =
+      [ "quiet" "mem_sleep_default=deep" "pcie_aspm.policy=powersupersave" ];
     loader = {
       timeout = 5;
       efi = {
@@ -30,7 +26,8 @@
 
   networking = {
     hostName = "sachnr-nixos";
-    networkmanager.enable = true; # Easiest to use and most distros use this by default.
+    networkmanager.enable =
+      true; # Easiest to use and most distros use this by default.
     proxy.noProxy = "127.0.0.1,localhost,internal.domain";
   };
 
@@ -43,13 +40,7 @@
       EDITOR = "nvim";
     };
 
-    systemPackages = with pkgs; [
-      pulseaudio
-      alsa-utils
-      ntfs3g
-      usbutils
-      bluez
-    ];
+    systemPackages = with pkgs; [ pulseaudio alsa-utils ntfs3g usbutils bluez ];
 
     pathsToLink = [ "/share/zsh" ];
   };
@@ -59,19 +50,11 @@
       enable = true;
       driSupport = true;
       driSupport32Bit = true;
-      extraPackages = with pkgs; [
-        vaapiVdpau
-        libvdpau-va-gl
-        amdvlk
-      ];
+      extraPackages = with pkgs; [ vaapiVdpau libvdpau-va-gl amdvlk ];
     };
     bluetooth = {
       enable = true;
-      settings = {
-        General = {
-          Enable = "Source,Sink,Media,Socket";
-        };
-      };
+      settings = { General = { Enable = "Source,Sink,Media,Socket"; }; };
     };
   };
 
@@ -79,6 +62,22 @@
   security = {
     polkit.enable = true;
     rtkit.enable = true;
+    pam.services.swaylock.text = ''
+      # Account management.
+      account required pam_unix.so
+
+      # Authentication management.
+      auth sufficient pam_unix.so   likeauth try_first_pass
+      auth required pam_deny.so
+
+      # Password management.
+      password sufficient pam_unix.so nullok sha512
+
+      # Session management.
+      session required pam_env.so conffile=/etc/pam/environment readenv=0
+      session required pam_unix.so
+    '';
+
   };
 
   # List services that you want to enable:
@@ -94,24 +93,25 @@
   services.xserver = {
     enable = true;
     dpi = 142;
-    xkb = {
-      layout = "us";
-    };
+    xkb = { layout = "us"; };
     videoDrivers = [ "amdgpu" ];
-    displayManager = {
-      gdm = {
-        enable = true;
-      };
-    };
+    displayManager = { gdm = { enable = true; }; };
   };
 
   services.displayManager.sessionPackages = [ ];
 
   services.libinput = {
     enable = true;
-    mouse.accelProfile = "flat";
-    mouse.accelSpeed = "0";
-    touchpad.naturalScrolling = true;
+    mouse = {
+      accelProfile = "flat";
+      accelSpeed = "0";
+    };
+    touchpad = {
+      tapping = true;
+      tappingButtonMap = "lrm";
+      accelProfile = "flat";
+      accelSpeed = "0";
+    };
   };
 
   sound.enable = true;
@@ -150,10 +150,7 @@
         "nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA="
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
       ];
-      experimental-features = [
-        "nix-command"
-        "flakes"
-      ];
+      experimental-features = [ "nix-command" "flakes" ];
       auto-optimise-store = true;
     };
     gc = {

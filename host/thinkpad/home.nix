@@ -58,6 +58,7 @@ in {
         # Browsers
         ungoogled-chromium
         firefox-bin
+        ladybird
 
         # Language Servers
         sumneko-lua-language-server

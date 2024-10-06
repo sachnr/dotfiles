@@ -43,7 +43,8 @@ in {
         gnome.gvfs
         glow
         ffmpeg
-        universal-android-debloater
+        nvfetcher
+        wofi
 
         # qt
         lxqt.pcmanfm-qt
@@ -74,6 +75,8 @@ in {
         # Browsers
         # tor-browser-bundle-bin
         brave
+        ungoogled-chromium
+        firefox-bin
 
         # Downloader
         qbittorrent
@@ -103,7 +106,7 @@ in {
         # jdk
         git
         nodePackages.pnpm
-        # yarn
+        yarn
         nodejs
         # deno
         jq
@@ -151,11 +154,10 @@ in {
     modules = {
       xorg = { awesomeConfig.enable = true; };
       wayland = {
-        hyprlandConfig.enable = false;
+        hyprland.enable = true;
         dunst.enable = true;
-        swayConfig.enable = true;
+        swayConfig.enable = false;
         mako.enable = false;
-        swayidle.enable = true;
         gammastep.enable = false;
         waybar.enable = true;
       };
@@ -171,7 +173,7 @@ in {
         st.enable = false;
       };
       services = {
-        picom.enable = true;
+        picom.enable = false;
         mpd.enable = true;
         eww.enable = false;
         polkit.enable = true;

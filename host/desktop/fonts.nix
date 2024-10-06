@@ -17,13 +17,13 @@
       enable = true;
       antialias = true;
       subpixel = {
-        lcdfilter = "none";
+        lcdfilter = "default";
         rgba = "none";
       };
       hinting = {
         enable = false;
         autohint = false;
-        style = "none";
+        style = "slight";
       };
       defaultFonts = {
         serif = [ "Roboto" "Symbols Nerd Font Mono" ];

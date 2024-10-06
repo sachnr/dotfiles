@@ -58,7 +58,6 @@ in {
         # Browsers
         ungoogled-chromium
         firefox-bin
-        ladybird
 
         # Language Servers
         sumneko-lua-language-server
@@ -129,9 +128,8 @@ in {
       wayland = {
         hyprlandConfig.enable = false;
         dunst.enable = true;
-        swayConfig.enable = true;
+        sway.enable = true;
         mako.enable = false;
-        swayidle.enable = true;
         gammastep.enable = false;
         waybar.enable = false;
       };

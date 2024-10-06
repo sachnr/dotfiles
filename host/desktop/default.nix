@@ -12,7 +12,7 @@ let
       allowUnfree = true;
     };
   };
-  theme = import ../../theme/kanagawa.nix { inherit pkgs; };
+  theme = import ../../theme/bamboo.nix { inherit pkgs; };
   fonts = import ./fonts.nix { inherit theme lib pkgs; };
   dpi = "96";
 in lib.nixosSystem {

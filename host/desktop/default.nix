@@ -39,7 +39,7 @@ in lib.nixosSystem {
       #   wrapperFeatures.gtk = true;
       #   package = pkgs.swayfx;
       # };
-      programs.hyprland.enable = true;
+      programs.hyprland = { enable = true; };
 
       programs.steam = {
         enable = true;

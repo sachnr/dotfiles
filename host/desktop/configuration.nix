@@ -1,5 +1,5 @@
 { pkgs, config, ... }:
-let network-driver = pkgs.linuxKernel.packages.linux_zen.rtl88xxau-aircrack;
+let network-driver = pkgs.linuxKernel.packages.linux_zen.rtl88x2bu;
 in {
   imports = [ ./hardware-configuration.nix ];
 

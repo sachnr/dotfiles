@@ -1,4 +1,4 @@
-{ pkgs, config, theme, lib, user, ... }:
+{ inputs, pkgs, config, theme, lib, user, ... }:
 let
   cfg = config.modules.wayland.hyprland;
   settings = import ./settings.nix { inherit theme pkgs lib; };
@@ -17,13 +17,15 @@ in with lib; {
       enable = true;
       systemd.enable = true;
       extraConfig = settings;
+      plugins =
+        [ pkgs.hyprlandPlugins.csgo-vulkan-fix ];
     };
 
     programs.wpaperd = {
       enable = true;
       settings = {
         default = {
-          path = "/home/${user}/wallpapers/wallpapers/starwars-new.png";
+          path = "/home/${user}/wallpapers/wallpapers";
           duration = "15m";
           sorting = "ascending";
         };

@@ -112,11 +112,12 @@ in with theme.colors; ''
       # Default animations, see https://wiki.hyprland.org/Configuring/Animations/ for more
 
       bezier = myBezier, 0.05, 0.9, 0.1, 1.05
+      bezier = linear, 0.0, 0.0, 1.0, 1.0
 
       animation = windows, 1, 7, myBezier
       animation = windowsOut, 1, 7, default, popin 80%
       animation = border, 1, 10, default
-      animation = borderangle, 1, 8, default
+      animation = borderangle, 1, 100, linear, loop
       animation = fade, 1, 7, default
       animation = workspaces, 1, 6, default
   }
@@ -175,6 +176,22 @@ in with theme.colors; ''
   #     sensitivity = -0.5
   # }
 
+  ####################
+  ##### Plugins ######
+  ####################
+
+  plugin {
+      csgo-vulkan-fix {
+          res_w = 1920
+          res_h = 1200
+
+          # NOT a regex! This is a string and has to exactly match initial_class
+          class = cs2
+
+          # Whether to fix the mouse position. A select few apps might be wonky with this.
+          fix_mouse = false
+      }
+  }
 
   ####################
   ### KEYBINDINGSS ###

@@ -32,3 +32,7 @@ fetch.git = "https://github.com/LukeSmithxyz/st.git"
 src.github_tag = "aseprite/aseprite"
 fetch.github = "aseprite/aseprite"
 git.fetchSubmodules = true
+
+[rtl88x2bu]
+src.git = "https://github.com/cilynx/rtl88x2bu"
+fetch.git = "https://github.com/cilynx/rtl88x2bu.git"

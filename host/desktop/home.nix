@@ -44,7 +44,6 @@ in {
         glow
         ffmpeg
         nvfetcher
-        wofi
 
         # qt
         lxqt.pcmanfm-qt
@@ -58,19 +57,15 @@ in {
         # Media
         feh
         pavucontrol
-        telegram-desktop
 
         # Game
         # blender
-        # steam
-        lutris
+        snixembed
         wine
         gamescope
         winetricks
-        # ldtk
         krita
         # aseprite-git
-        # yuzuPackages.mainline
 
         # Browsers
         # tor-browser-bundle-bin
@@ -173,7 +168,7 @@ in {
         st.enable = false;
       };
       services = {
-        picom.enable = false;
+        picom.enable = true;
         mpd.enable = true;
         eww.enable = false;
         polkit.enable = true;

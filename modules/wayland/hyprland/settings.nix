@@ -45,13 +45,20 @@ in with theme.colors; ''
 
   env = XCURSOR_SIZE,24
   env = HYPRCURSOR_SIZE,24
+
   env = XDG_CURRENT_DESKTOP,Hyprland
   env = XDG_SESSION_TYPE,wayland
   env = XDG_SESSION_DESKTOP,Hyprland
-  env = QT_QPA_PLATFORMTHEME,qt5ct
-  env = MOZ_ENABLE_WAYLAND,1
+
   env = LIBVA_DRIVER_NAME,nvidia
   env = GBM_BACKEND,nvidia-drm
+  env = QT_QPA_PLATFORMTHEME,qt5ct
+  env = __GLX_VENDOR_LIBRARY_NAME,nvidia
+  env = MOZ_ENABLE_WAYLAND,1
+
+  cursor {
+    no_hardware_cursors = true
+  }
 
   #####################
   ### LOOK AND FEEL ###

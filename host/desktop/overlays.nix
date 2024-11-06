@@ -25,7 +25,7 @@ in with inputs; [
     in (prev.picom.overrideAttrs (old: {
       inherit (package) src version;
       buildInputs = (old.buildInputs or [ ])
-        ++ [ prev.pcre2 prev.xorg.xcbutil ];
+        ++ [ prev.pcre2 prev.xorg.xcbutil prev.asciidoctor ];
     }));
 
     #aseprite-git =

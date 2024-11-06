@@ -12,9 +12,9 @@ let
       allowUnfree = true;
     };
   };
-  theme = import ../../theme/bamboo.nix { inherit pkgs; };
+  theme = import ../../theme/ayu.nix { inherit pkgs; };
   fonts = import ./fonts.nix { inherit theme lib pkgs; };
-  dpi = "96";
+  dpi = 109;
 in lib.nixosSystem {
   inherit system pkgs;
   modules = [
@@ -54,7 +54,7 @@ in lib.nixosSystem {
       programs.zsh.enable = true;
       users.users.${user} = {
         isNormalUser = true;
-        extraGroups = [ "wheel" "video" "audio" "users" "docker" ];
+        extraGroups = [ "wheel" "video" "audio" "users" "docker" "pipewire" ];
         shell = pkgs.zsh;
       };
 

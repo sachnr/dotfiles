@@ -30,15 +30,13 @@ let
     INACTIVE_FG=${substr primary.foreground}
     INACTIVE_TXT_FG=${substr primary.foreground}
     INACTIVE_HDR_FG=${substr primary.foreground}
-    ICONS_ARCHDROID=${substr primary.foreground}
     ICONS_DARK=${substr normal.black}
     ICONS_MEDIUM=${substr normal.black}
     ICONS_LIGHT=${substr primary.accent}
     ICONS_LIGHT_FOLDER=${substr primary.accent}
-    ICONS_NUMIX_STYLE=0
-    ICONS_STYLE=gnome_colors
     ICONS_SYMBOLIC_ACTION=${substr primary.accent}
     ICONS_SYMBOLIC_PANEL=${substr primary.accent}
+    ICONS_STYLE=icons_papirus
     CARET1_FG=${substr bright.gray}
     CARET2_FG=${substr normal.gray}
     CARET_SIZE=0.04
@@ -91,7 +89,7 @@ in stdenv.mkDerivation {
   nativeBuildInputs = [ glib libxml2 bc ];
 
   buildInputs = with pkgs; [
-    gnome3.gnome-themes-extra
+    gnome-themes-extra
     gdk-pixbuf
     librsvg
     sassc
@@ -103,10 +101,20 @@ in stdenv.mkDerivation {
 
   installPhase = ''
     mkdir -p $out/share/icons/icons_papirus
+    mkdir -p $out/share/icons/icons_numix
+    mkdir -p $out/share/icons/icons_suruplus
     echo "${oomox-colors}" > $out/oomox.colors
     pushd plugins/icons_papirus
     patchShebangs .
     ./change_color.sh -o icons_papirus -d $out/share/icons/icons_papirus $out/oomox.colors
+    popd
+    pushd plugins/icons_numix
+    patchShebangs .
+    ./change_color.sh -o icons_numix -d $out/share/icons/icons_numix $out/oomox.colors
+    popd
+    pushd plugins/icons_suruplus
+    patchShebangs .
+    ./change_color.sh -o icons_suruplus -d $out/share/icons/icons_suruplus $out/oomox.colors
     popd
     mkdir -p $out/share/themes/numix
     pushd plugins/theme_oomox

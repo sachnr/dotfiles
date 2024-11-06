@@ -42,7 +42,7 @@
     gtk = "numix"; # name of the gtk theme
     qt-style = "Adwaita-Dark"; # name of qt style in qt5ct
     icon = "icons_papirus"; # name of iconpack
-    font = "Iosevka";
+    font = "Roboto";
     fontmonospace = "Iosevka";
   };
 }

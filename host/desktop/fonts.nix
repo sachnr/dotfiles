@@ -23,7 +23,7 @@
       hinting = {
         enable = false;
         autohint = false;
-        style = "slight";
+        style = "none";
       };
       defaultFonts = {
         serif = [ "Roboto" "Symbols Nerd Font Mono" ];

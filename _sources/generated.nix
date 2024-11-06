@@ -3,51 +3,64 @@
 {
   aseprite = {
     pname = "aseprite";
-    version = "v1.3.7";
+    version = "v1.3.9.1";
     src = fetchFromGitHub {
       owner = "aseprite";
       repo = "aseprite";
-      rev = "v1.3.7";
+      rev = "v1.3.9.1";
       fetchSubmodules = true;
-      sha256 = "sha256-75kYJXmyags0cW2D5Ksq1uUrFSCAkFOdmn7Ya/6jLXc=";
+      sha256 = "sha256-ADpbIR7YV/X1i/keA5RVgg+GI3d/xqbIejBrSYVWgpA=";
     };
   };
   awesomewm = {
     pname = "awesomewm";
-    version = "ad0290bc1aac3ec2391aa14784146a53ebf9d1f0";
+    version = "206e6e1cbf54d887ce60fc36ff9f6acfb8b2e213";
     src = fetchFromGitHub {
       owner = "awesomeWM";
       repo = "awesome";
-      rev = "ad0290bc1aac3ec2391aa14784146a53ebf9d1f0";
+      rev = "206e6e1cbf54d887ce60fc36ff9f6acfb8b2e213";
       fetchSubmodules = false;
-      sha256 = "sha256-uaskBbnX8NgxrprI4UbPfb5cRqdRsJZv0YXXshfsxFU=";
+      sha256 = "sha256-CpieBypRPQ9h/RzWskvv/zSVbPPBHCWOIdrGBySBtlQ=";
     };
-    date = "2024-06-06";
+    date = "2024-10-14";
   };
   picom = {
     pname = "picom";
-    version = "452aa751875bc86799895c941e121b1f0041b0af";
+    version = "16486739fa9daa5964e1bba5baa551da622999d7";
     src = fetchFromGitHub {
       owner = "yshui";
       repo = "picom";
-      rev = "452aa751875bc86799895c941e121b1f0041b0af";
+      rev = "16486739fa9daa5964e1bba5baa551da622999d7";
       fetchSubmodules = false;
-      sha256 = "sha256-K+haDRtSN9XK99+ZKfj0QoW2pF0LOBfDiZp+n8EuP6k=";
+      sha256 = "sha256-T79wLg1YjsXRSBUVaE4WAP8rwdeH9B0/c3m9QL2fYFA=";
     };
-    date = "2024-06-21";
+    date = "2024-10-18";
   };
   powerlevel10k = {
     pname = "powerlevel10k";
-    version = "bde5ca4c2aa6e0c52dd7f15cf216dffdb1ec788c";
+    version = "0996a9411824cbfe8fdd8cb17448c94ef891be34";
     src = fetchgit {
       url = "https://github.com/romkatv/powerlevel10k.git";
-      rev = "bde5ca4c2aa6e0c52dd7f15cf216dffdb1ec788c";
+      rev = "0996a9411824cbfe8fdd8cb17448c94ef891be34";
       fetchSubmodules = false;
       deepClone = false;
       leaveDotGit = false;
-      sha256 = "sha256-IA2pPW8WT/9/jz/+5zDwedkYz+rzyCy0DRnIvDh9zac=";
+      sha256 = "sha256-yk2ajJ7ml8z1vIZ0gOp6RFrrRfd6p5P0RorZq9fPO5A=";
     };
-    date = "2024-05-21";
+    date = "2024-10-04";
+  };
+  rtl88x2bu = {
+    pname = "rtl88x2bu";
+    version = "6fc1fb1e341a3e44846ca69998e1819e25f06218";
+    src = fetchgit {
+      url = "https://github.com/cilynx/rtl88x2bu.git";
+      rev = "6fc1fb1e341a3e44846ca69998e1819e25f06218";
+      fetchSubmodules = false;
+      deepClone = false;
+      leaveDotGit = false;
+      sha256 = "sha256-ARxR61TFu6Kvs2PkzCIbEuRbymgXcXIGm+lmhnTfObE=";
+    };
+    date = "2024-10-09";
   };
   stfork = {
     pname = "stfork";
@@ -64,29 +77,29 @@
   };
   themixgui = {
     pname = "themixgui";
-    version = "c1e0d5a7b8c227eda717faebf74b1ffa72c15058";
+    version = "ddec4ff4f66a41ed45fa93aab7b60c28772c93b3";
     src = fetchgit {
       url = "https://github.com/themix-project/themix-gui.git";
-      rev = "c1e0d5a7b8c227eda717faebf74b1ffa72c15058";
+      rev = "ddec4ff4f66a41ed45fa93aab7b60c28772c93b3";
       fetchSubmodules = true;
       deepClone = false;
       leaveDotGit = false;
-      sha256 = "sha256-OTTD/ArwPLtzaxCHcJrW19B0EgurmHCc4g/iJXigCD0=";
+      sha256 = "sha256-Y6ATYl57+jBWQRUJxuxppOM0YsUEFos5SvxDdAryTq8=";
     };
-    date = "2024-06-21";
+    date = "2024-09-25";
   };
   wezterm = {
     pname = "wezterm";
-    version = "cb1406860a23896ca6935696169644d140e29208";
+    version = "9ddca7bde92090792dbcdc65c1e9897c362196d7";
     src = fetchgit {
       url = "https://github.com/wez/wezterm.git";
-      rev = "cb1406860a23896ca6935696169644d140e29208";
+      rev = "9ddca7bde92090792dbcdc65c1e9897c362196d7";
       fetchSubmodules = true;
       deepClone = false;
       leaveDotGit = false;
-      sha256 = "sha256-5BsbCoK6JYcDKlnzVEvB+ivNt51rYDySUoYb4L9bYFc=";
+      sha256 = "sha256-BC+qJ54hF+iFtq15/ygQNHjLUkncWmM2ueIMDwjGmiE=";
     };
-    date = "2024-06-17";
+    date = "2024-10-15";
   };
   zsh-nix-shell = {
     pname = "zsh-nix-shell";

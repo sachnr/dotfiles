@@ -17,8 +17,7 @@ in with lib; {
       enable = true;
       systemd.enable = true;
       extraConfig = settings;
-      plugins =
-        [ pkgs.hyprlandPlugins.csgo-vulkan-fix ];
+      plugins = [ pkgs.hyprlandPlugins.csgo-vulkan-fix ];
     };
 
     programs.wpaperd = {
@@ -91,6 +90,7 @@ in with lib; {
     home = {
       packages = with pkgs; [
         libsForQt5.qt5.qtwayland
+        kdePackages.qtwayland
         egl-wayland
         grim
         slurp

@@ -1,9 +1,9 @@
 { pkgs, config, theme, lib, user, ... }:
 let
-  cfg = config.modules.wayland.swayConfig;
+  cfg = config.modules.wayland.sway;
   settings = import ./config.nix { inherit theme pkgs; };
 in with lib; {
-  options.modules.wayland.swayConfig = {
+  options.modules.wayland.sway = {
     enable = mkOption {
       type = types.bool;
       default = false;

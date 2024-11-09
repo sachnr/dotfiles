@@ -42,6 +42,7 @@ in {
         brightnessctl
         gimp
         gpick
+        themix-gui
 
         # qt
         lxqt.pcmanfm-qt
@@ -53,6 +54,7 @@ in {
 
         # Media
         feh
+        # pwvucontrol
         pavucontrol
 
         # Browsers
@@ -72,8 +74,8 @@ in {
         # gotools
         # clang
         # clang-tools
-        typescript
-        nodePackages.typescript-language-server
+        # typescript
+        # nodePackages.typescript-language-server
         ruby_3_2
 
         # Dev-tools
@@ -124,19 +126,19 @@ in {
     };
 
     modules = {
-      xorg = { awesomeConfig.enable = true; };
+      xorg = { awesomeConfig.enable = false; };
       wayland = {
-        hyprlandConfig.enable = false;
+        hyprland.enable = true;
         dunst.enable = true;
-        sway.enable = true;
+        sway.enable = false;
         mako.enable = false;
         gammastep.enable = false;
-        waybar.enable = false;
+        waybar.enable = true;
       };
       programs = {
         gtk-qt.enable = true;
         neovim.enable = true;
-        kitty.enable = false;
+        kitty.enable = true;
         wezterm.enable = true;
         foot.enable = false;
         rofi.enable = true;
@@ -145,7 +147,7 @@ in {
         st.enable = false;
       };
       services = {
-        picom.enable = true;
+        picom.enable = false;
         mpd.enable = true;
         eww.enable = false;
         polkit.enable = true;

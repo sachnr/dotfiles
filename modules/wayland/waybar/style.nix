@@ -42,6 +42,7 @@ with theme.colors; ''
     #custom-power,
     #custom-color,
     #battery,
+    #memory,
     #backlight,
     #pulseaudio,
     #network,

@@ -4,7 +4,7 @@
   boot = {
     supportedFilesystems = [ "ntfs" ];
     kernelPackages = pkgs.linuxPackages_latest;
-    blacklistedKernelModules = [ "nouveau" ];
+    blacklistedKernelModules = [ ];
     kernelParams =
       [ "quiet" "mem_sleep_default=deep" "pcie_aspm.policy=powersupersave" ];
     loader = {
@@ -15,7 +15,7 @@
       };
       grub = {
         enable = true;
-        gfxmodeEfi = "1920x1080";
+        gfxmodeEfi = "1920x1200";
         devices = [ "nodev" ];
         efiSupport = true;
         useOSProber = true;
@@ -40,16 +40,21 @@
       EDITOR = "nvim";
     };
 
-    systemPackages = with pkgs; [ pulseaudio alsa-utils ntfs3g usbutils bluez ];
+    systemPackages = with pkgs; [
+      pulseaudio
+      alsa-utils
+      ntfs3g
+      usbutils
+      bluez
+      sof-firmware
+    ];
 
     pathsToLink = [ "/share/zsh" ];
   };
 
   hardware = {
-    opengl = {
+    graphics = {
       enable = true;
-      driSupport = true;
-      driSupport32Bit = true;
       extraPackages = with pkgs; [ vaapiVdpau libvdpau-va-gl amdvlk ];
     };
     bluetooth = {
@@ -92,7 +97,7 @@
   # Enable display manager
   services.xserver = {
     enable = true;
-    dpi = 142;
+    # dpi = 142;
     xkb = { layout = "us"; };
     videoDrivers = [ "amdgpu" ];
     displayManager = { gdm = { enable = true; }; };
@@ -114,17 +119,14 @@
     };
   };
 
-  sound.enable = true;
+  hardware.pulseaudio.enable = true;
 
   services.pipewire = {
-    enable = true;
-    audio.enable = true;
-    alsa = {
-      enable = true;
-      support32Bit = true;
-    };
-    wireplumber.enable = true;
-    pulse.enable = true;
+    enable = false;
+    alsa.enable = false;
+    alsa.support32Bit = false;
+    wireplumber.enable = false;
+    pulse.enable = false;
   };
 
   # services.tlp = {
@@ -138,7 +140,7 @@
   services.upower.enable = true;
 
   nix = {
-    package = pkgs.nixFlakes;
+    package = pkgs.nixVersions.latest;
     settings = {
       substituters = [
         "https://cache.nixos.org?priority=10"

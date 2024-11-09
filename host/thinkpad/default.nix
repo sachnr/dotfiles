@@ -12,7 +12,7 @@ let
       allowUnfree = true;
     };
   };
-  theme = import ../../theme/bamboo.nix { inherit pkgs; };
+  theme = import ../../theme/ayu.nix { inherit pkgs; };
   fonts = import ./fonts.nix { inherit theme lib pkgs; };
   dpi = "0";
 in lib.nixosSystem {
@@ -33,6 +33,14 @@ in lib.nixosSystem {
         enable = true;
         package = pkgs.swayfx;
         wrapperFeatures.gtk = true;
+      };
+
+      programs.hyprland.enable = true;
+
+      xdg.portal = {
+        enable = true;
+        extraPortals =
+          [ pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-hyprland ];
       };
 
       virtualisation.docker.enable = true;

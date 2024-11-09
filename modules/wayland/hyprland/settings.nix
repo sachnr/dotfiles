@@ -6,9 +6,8 @@ in with theme.colors; ''
   ################
 
   # See https://wiki.hyprland.org/Configuring/Monitors/
-  monitor=,preferred,2560x1440@180,auto
-  monitor= DP-3,2560x1440@180, 0x0 ,1
-
+  monitor= eDP-1 ,1920x1200@60, 0x0 , 1
+  monitor= DP-2, 2560x1440@144, 2560x0, 1
 
   ###################
   ### MY PROGRAMS ###
@@ -36,6 +35,7 @@ in with theme.colors; ''
   exec = pkill wpaperd;wpaperd
   exec= i3status-rs ~/.config/i3status/config.toml
   exec-once = nm-applet --indicator
+  exec-once = blueman-applet
 
   #############################
   ### ENVIRONMENT VARIABLES ###
@@ -142,10 +142,13 @@ in with theme.colors; ''
 
   # https://wiki.hyprland.org/Configuring/Variables/#misc
   misc { 
-      force_default_wallpaper = -1 # Set to 0 or 1 to disable the anime mascot wallpapers
-      disable_hyprland_logo = false # If true disables the random hyprland logo / anime girl background. :(
+      force_default_wallpaper = 1 # Set to 0 or 1 to disable the anime mascot wallpapers
+      disable_hyprland_logo = true # If true disables the random hyprland logo / anime girl background. :(
   }
 
+  binds {
+    workspace_back_and_forth = true
+  }
 
   #############
   ### INPUT ###
@@ -188,16 +191,6 @@ in with theme.colors; ''
   ####################
 
   plugin {
-      csgo-vulkan-fix {
-          res_w = 1920
-          res_h = 1200
-
-          # NOT a regex! This is a string and has to exactly match initial_class
-          class = cs2
-
-          # Whether to fix the mouse position. A select few apps might be wonky with this.
-          fix_mouse = false
-      }
   }
 
   ####################
@@ -208,6 +201,7 @@ in with theme.colors; ''
   $mainMod = SUPER # Sets "Windows" key as main modifier
 
   # Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
+  bind = $mainMod, Tab, workspace, previous
   bind = $mainMod, RETURN, exec, $terminal
   bind = $mainMod, q, killactive,
   bind = ALT, SPACE, exec, $menu
@@ -302,4 +296,6 @@ in with theme.colors; ''
   windowrulev2=float,class:^(ark)$|^(Ark)$
   windowrulev2=noanim,class:^(Brave-browser)$
   windowrulev2=noblur,class:^(Brave-browser)$
+  windowrulev2=noblur,class:^(Firefox)$
+  windowrulev2=noblur,class:^()$,title:^()$
 ''

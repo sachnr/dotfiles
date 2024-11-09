@@ -1,4 +1,4 @@
-{ inputs, pkgs, config, theme, lib, user, ... }:
+{ pkgs, config, theme, lib, user, ... }:
 let
   cfg = config.modules.wayland.hyprland;
   settings = import ./settings.nix { inherit theme pkgs lib; };
@@ -24,7 +24,7 @@ in with lib; {
       enable = true;
       settings = {
         default = {
-          path = "/home/${user}/wallpapers/wallpapers";
+          path = "/home/${user}/Wallpapers";
           duration = "15m";
           sorting = "ascending";
         };
@@ -61,8 +61,8 @@ in with lib; {
       enable = true;
       extraConfig = ''
         background {
-            monitor = DP-3
-            path = ~/wallpapers/wallpapers/starwars-new.png
+            monitor = 
+            path = ${theme.wallpaper} 
             color = rgba(25, 20, 20, 1.0)
 
             # all these options are taken from hyprland, see https://wiki.hyprland.org/Configuring/Variables/#blur for explanations

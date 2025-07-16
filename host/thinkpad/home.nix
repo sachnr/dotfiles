@@ -14,10 +14,15 @@ in {
   imports = xorg ++ wayland ++ programs ++ services ++ shell;
 
   config = {
+    dconf = {
+      enable = true;
+      settings."org/gnome/desktop/interface".color-scheme = "prefer-dark";
+    };
+
     home = {
       username = user;
       homeDirectory = "/home/${user}";
-      stateVersion = "23.05";
+      stateVersion = "25.11";
 
       file."/home/${user}/links/cpp_debug".source =
         "${pkgs.vscode-extensions.ms-vscode.cpptools}/share/vscode/extensions/ms-vscode.cpptools/debugAdapters/bin/OpenDebugAD7";
@@ -26,6 +31,7 @@ in {
         # compression
         p7zip
         unrar
+        # rar
         unzip
         zip
 
@@ -33,21 +39,21 @@ in {
         ranger
         less
         neofetch
+        ffmpeg
         lazygit
         ripgrep
         direnv
-        go-mtpfs
         gnome.gvfs
-        glow
-        brightnessctl
-        gimp
-        gpick
-        themix-gui
-
-        # qt
-        lxqt.pcmanfm-qt
+        go-mtpfs
+        pcmanfm-qt
         lxqt.lxqt-menu-data
         lxqt.lxqt-archiver
+        glow
+        brightnessctl
+        gpick
+        ghostty
+        cloudflared
+        gimp
 
         # General
         networkmanagerapplet
@@ -55,11 +61,12 @@ in {
         # Media
         feh
         # pwvucontrol
-        pavucontrol
+        lxqt.pavucontrol-qt
+        postman
+        flameshot
 
         # Browsers
-        ungoogled-chromium
-        firefox-bin
+        brave
 
         # Language Servers
         sumneko-lua-language-server
@@ -67,39 +74,31 @@ in {
         nil
         gopls
 
-        # Languages
-        gcc
+        # compilers
         rustup
         go
-        # gotools
-        # clang
-        # clang-tools
-        # typescript
-        # nodePackages.typescript-language-server
-        ruby_3_2
+        clang
+        clang-tools
+        gitlab-ci-ls
 
         # Dev-tools
         git
         jq
         pkg-config
+        openssl
         yarn
-        nodejs_18
+        nodejs
 
         # debugger
         gdb
-        # vscode-extensions.ms-vscode.cpptools
 
         # Formatters
         black
         shfmt
         stylua
-        # nodePackages.prettier
         nixfmt-classic
         pgformatter
         taplo
-
-        #build
-        gnumake
       ];
     };
 
@@ -116,7 +115,7 @@ in {
       network-manager-applet.enable = true;
       udiskie = {
         enable = true;
-        notify = false;
+        notify = true;
       };
     };
 
@@ -126,7 +125,7 @@ in {
     };
 
     modules = {
-      xorg = { awesomeConfig.enable = false; };
+      xorg = { awesomeConfig.enable = true; };
       wayland = {
         hyprland.enable = true;
         dunst.enable = true;
@@ -138,8 +137,8 @@ in {
       programs = {
         gtk-qt.enable = true;
         neovim.enable = true;
-        kitty.enable = true;
-        wezterm.enable = true;
+        kitty.enable = false;
+        wezterm.enable = false;
         foot.enable = false;
         rofi.enable = true;
         qutebrowser.enable = true;

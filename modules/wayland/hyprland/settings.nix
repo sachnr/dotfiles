@@ -6,8 +6,8 @@ in with theme.colors; ''
   ################
 
   # See https://wiki.hyprland.org/Configuring/Monitors/
-  monitor= eDP-1 ,1920x1200@60, 0x0 , 1
-  monitor= DP-2, 2560x1440@144, 2560x0, 1
+  monitor= HDMI-1, 2560x1440@144, 0x0, 1
+  monitor= eDP-1 ,1920x1200@60, 2560x0, 1
 
   ###################
   ### MY PROGRAMS ###
@@ -16,7 +16,7 @@ in with theme.colors; ''
   # See https://wiki.hyprland.org/Configuring/Keywords/
 
   # Set programs that you use
-  $terminal = alacritty
+  $terminal = ghostty
   $fileManager = pcmanfm
   $menu = rofi -show drun
 
@@ -45,20 +45,6 @@ in with theme.colors; ''
 
   env = XCURSOR_SIZE,24
   env = HYPRCURSOR_SIZE,24
-
-  env = XDG_CURRENT_DESKTOP,Hyprland
-  env = XDG_SESSION_TYPE,wayland
-  env = XDG_SESSION_DESKTOP,Hyprland
-
-  env = LIBVA_DRIVER_NAME,nvidia
-  env = GBM_BACKEND,nvidia-drm
-  env = QT_QPA_PLATFORMTHEME,qt5ct
-  env = __GLX_VENDOR_LIBRARY_NAME,nvidia
-  env = MOZ_ENABLE_WAYLAND,1
-
-  cursor {
-    no_hardware_cursors = true
-  }
 
   #####################
   ### LOOK AND FEEL ###
@@ -96,11 +82,12 @@ in with theme.colors; ''
       active_opacity = 1.0
       inactive_opacity = 1.0
 
-      drop_shadow = true
-      shadow_range = 4
-      shadow_render_power = 3
-      col.shadow=rgba(${rp primary.background}70)
-
+      shadow {
+          enabled = true
+          range = 4
+          render_power = 3
+          color = rgba(1a1a1aee)
+      }
 
       # https://wiki.hyprland.org/Configuring/Variables/#blur
       blur {
@@ -114,19 +101,32 @@ in with theme.colors; ''
 
   # https://wiki.hyprland.org/Configuring/Variables/#animations
   animations {
-      enabled = true
+      enabled = yes, please :)
 
       # Default animations, see https://wiki.hyprland.org/Configuring/Animations/ for more
 
-      bezier = myBezier, 0.05, 0.9, 0.1, 1.05
-      bezier = linear, 0.0, 0.0, 1.0, 1.0
+      bezier = easeOutQuint,0.23,1,0.32,1
+      bezier = easeInOutCubic,0.65,0.05,0.36,1
+      bezier = linear,0,0,1,1
+      bezier = almostLinear,0.5,0.5,0.75,1.0
+      bezier = quick,0.15,0,0.1,1
 
-      animation = windows, 1, 7, myBezier
-      animation = windowsOut, 1, 7, default, popin 80%
-      animation = border, 1, 10, default
-      animation = borderangle, 1, 100, linear, loop
-      animation = fade, 1, 7, default
-      animation = workspaces, 1, 6, default
+      animation = global, 1, 10, default
+      animation = border, 1, 5.39, easeOutQuint
+      animation = windows, 1, 4.79, easeOutQuint
+      animation = windowsIn, 1, 4.1, easeOutQuint, popin 87%
+      animation = windowsOut, 1, 1.49, linear, popin 87%
+      animation = fadeIn, 1, 1.73, almostLinear
+      animation = fadeOut, 1, 1.46, almostLinear
+      animation = fade, 1, 3.03, quick
+      animation = layers, 1, 3.81, easeOutQuint
+      animation = layersIn, 1, 4, easeOutQuint, fade
+      animation = layersOut, 1, 1.5, linear, fade
+      animation = fadeLayersIn, 1, 1.79, almostLinear
+      animation = fadeLayersOut, 1, 1.39, almostLinear
+      animation = workspaces, 1, 1.94, almostLinear, fade
+      animation = workspacesIn, 1, 1.21, almostLinear, fade
+      animation = workspacesOut, 1, 1.94, almostLinear, fade
   }
 
   # See https://wiki.hyprland.org/Configuring/Dwindle-Layout/ for more
@@ -142,7 +142,7 @@ in with theme.colors; ''
 
   # https://wiki.hyprland.org/Configuring/Variables/#misc
   misc { 
-      force_default_wallpaper = 1 # Set to 0 or 1 to disable the anime mascot wallpapers
+      force_default_wallpaper = 0 # Set to 0 or 1 to disable the anime mascot wallpapers
       disable_hyprland_logo = true # If true disables the random hyprland logo / anime girl background. :(
   }
 
@@ -169,6 +169,9 @@ in with theme.colors; ''
       accel_profile=flat
       force_no_accel=true
 
+      repeat_delay = 300
+      repeat_rate = 50
+
       touchpad {
           natural_scroll = false
       }
@@ -176,7 +179,7 @@ in with theme.colors; ''
 
   # https://wiki.hyprland.org/Configuring/Variables/#gestures
   gestures {
-      workspace_swipe = false
+      workspace_swipe = true
   }
 
   # Example per-device config
@@ -201,7 +204,6 @@ in with theme.colors; ''
   $mainMod = SUPER # Sets "Windows" key as main modifier
 
   # Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
-  bind = $mainMod, Tab, workspace, previous
   bind = $mainMod, RETURN, exec, $terminal
   bind = $mainMod, q, killactive,
   bind = ALT, SPACE, exec, $menu
@@ -209,16 +211,17 @@ in with theme.colors; ''
   bind = $mainMod, t, togglefloating,
   bind = $mainMod, P, pseudo, # dwindle
   bind = $mainMod, D, togglesplit, # dwindle
-  bind = ,Print,exec,grim -t png -g "$(slurp)" ~/Pictures/$(date +%Y-%m-%d_%H-%m-%s).png
+  bind = ,Print,exec,grim -t png -g slurp ~/Pictures/$(date +%Y-%m-%d_%H-%m-%s).png
   bind = $mainMod, F2, exec, hyprlock
   bind = $mainMod, f, fullscreen,0
+  bind = $mainMod SHIFT, r, exec, hyprctl reload
+  bind = $mainMod , TAB, workspace, previous
 
-
-  # Move focus with mainMod + arrow keys
-  bind = $mainMod, H, movefocus, l
-  bind = $mainMod, L, movefocus, r
-  bind = $mainMod, K, movefocus, u
-  bind = $mainMod, J, movefocus, d
+  # Move focus with mainMod + hjkl
+   bind = $mainMod, H, movefocus, l
+   bind = $mainMod, L, movefocus, r
+   bind = $mainMod, K, movefocus, u
+   bind = $mainMod, J, movefocus, d
 
   # Switch workspaces with mainMod + [0-9]
   bind = $mainMod, 1, workspace, 1
@@ -252,23 +255,28 @@ in with theme.colors; ''
   bind = $mainMod, mouse_down, workspace, e+1
   bind = $mainMod, mouse_up, workspace, e-1
 
-  # Resize
-
-  bind = SUPERCONTROL, left, resizeactive, -20 0
-  bind = SUPERCONTROL, right, resizeactive, 20 0
-  bind = SUPERCONTROL, up, resizeactive, 0 -20
-  bind = SUPERCONTROL, down, resizeactive, 0 10
+  # Move/resize windows with mainMod + LMB/RMB and dragging
+  bindm = $mainMod, mouse:272, movewindow
+  bindm = $mainMod, mouse:273, resizewindow
   bind = SUPERCONTROL, H, resizeactive, -20 0
   bind = SUPERCONTROL, L, resizeactive, 20 0
   bind = SUPERCONTROL, K, resizeactive, 0 -20
   bind = SUPERCONTROL, J, resizeactive, 0 20
 
-  # Move/resize windows with mainMod + LMB/RMB and dragging
-  bindm = $mainMod, mouse:272, movewindow
-  bindm = $mainMod, mouse:273, resizewindow
 
-  bind = $mainMod, TAB, cyclenext
-  bind = $mainMod SHIFT, TAB, cyclenext, prev
+  # Laptop multimedia keys for volume and LCD brightness
+  bindel = ,XF86AudioRaiseVolume, exec, wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+
+  bindel = ,XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
+  bindel = ,XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
+  bindel = ,XF86AudioMicMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle
+  bindel = ,XF86MonBrightnessUp, exec, brightnessctl s 10%+
+  bindel = ,XF86MonBrightnessDown, exec, brightnessctl s 10%-
+
+  # Requires playerctl
+  bindl = , XF86AudioNext, exec, playerctl next
+  bindl = , XF86AudioPause, exec, playerctl play-pause
+  bindl = , XF86AudioPlay, exec, playerctl play-pause
+  bindl = , XF86AudioPrev, exec, playerctl previous
 
 
   ##############################
@@ -298,4 +306,5 @@ in with theme.colors; ''
   windowrulev2=noblur,class:^(Brave-browser)$
   windowrulev2=noblur,class:^(Firefox)$
   windowrulev2=noblur,class:^()$,title:^()$
+  windowrule = nofocus,class:^$,title:^$,xwayland:1,floating:1,fullscreen:0,pinned:0
 ''

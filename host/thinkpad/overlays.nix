@@ -3,11 +3,11 @@ let
   getPackage = pname: pkgs:
     (pkgs.callPackage ../../_sources/generated.nix { }).${pname};
 in with inputs; [
-  nur.overlay
+  nur.overlays.default
   nix-rice.overlays.default
 
   (final: prev: {
-    awesome = let package = getPackage "awesomewm" prev;
+    awesome-git = let package = getPackage "awesomewm" prev;
     in (prev.awesome.override {
       lua = prev.luajit;
       gtk3Support = true;
@@ -19,13 +19,6 @@ in with inputs; [
         patchShebangs tests/examples/_postprocess_cleanup.lua
       '';
     });
-
-    picom-git = let package = getPackage "picom" prev;
-    in (prev.picom.overrideAttrs (old: {
-      inherit (package) src version;
-      buildInputs = (old.buildInputs or [ ])
-        ++ [ prev.pcre2 prev.xorg.xcbutil ];
-    }));
 
     aseprite-git = let package = getPackage "aseprite" prev;
     in prev.aseprite.overrideAttrs (_: { inherit (package) src version; });

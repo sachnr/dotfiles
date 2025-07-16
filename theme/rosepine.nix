@@ -42,12 +42,12 @@ in {
 
   wallpaper = builtins.fetchurl {
     url =
-      "https://raw.githubusercontent.com/sachnr/wallpapers/main/wallpapers/purple/350066.jpg";
-    sha256 = "0mxq7pv4623zmjiyzp78yp6in5pvpk2j5div3g2s4r5r5byl3qfj";
+      "https://raw.githubusercontent.com/NixOS/nixos-artwork/refs/heads/master/wallpapers/nix-wallpaper-binary-black.png";
+    sha256 = "sha256:0v3111a1ihsh4ajijbjh6y7a8p5cb5g3rdxqjbzx37pn1k9s254s";
   };
 
   settings = {
-    gtk = "numix";
+    gtk = "rose-pine";
     qt-style = "Adwaita-Dark";
     icon = "icons_papirus";
     font = "Iosevka";

@@ -39,27 +39,27 @@ in with lib; {
           decorations = "full";
           dynamic_padding = true;
           decorations_theme_variant = "Dark";
-          opacity = 0.9;
+          opacity = 1;
           dimensions = {
             columns = 120;
             lines = 30;
           };
         };
         font = {
-          normal = { family = "Iosevka"; };
+          normal = { family = "IosevkaTerm NF"; };
           bold = {
-            family = "Iosevka";
+            family = "IosevkaTerm NF";
             style = "Bold";
           };
           italic = {
-            family = "Iosevka";
+            family = "IosevkaTerm NF";
             style = "Italic";
           };
           bold_italic = {
-            family = "Iosevka";
+            family = "IosevkaTerm NF";
             style = "Bold Italic";
           };
-          size = 14;
+          size = 13;
         };
         # bell = {
         #   animation = "EaseOutExpo";

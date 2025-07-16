@@ -1,15 +1,12 @@
 { pkgs, lib, theme, ... }: {
   fonts = {
     packages = with pkgs; [
-      # meslo-lg
       noto-fonts
       noto-fonts-emoji
       roboto
-      iosevka-bin
-      open-dyslexic
-      (nerdfonts.override {
-        fonts = [ "JetBrainsMono" "NerdFontsSymbolsOnly" ];
-      })
+      nerd-fonts.jetbrains-mono
+      nerd-fonts.symbols-only
+      nerd-fonts.iosevka-term
     ];
 
     fontconfig = {

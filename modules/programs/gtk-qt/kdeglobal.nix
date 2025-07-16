@@ -12,7 +12,7 @@ let
     fg = split_all (color.hexToRgba theme.colors.primary.foreground);
     fginactive = split_all (color.hexToRgba theme.colors.bright.gray);
     green = split_all (color.hexToRgba theme.colors.normal.green);
-    brightgreen = split_all (color.hexToRgba theme.colorsbright.green);
+    brightgreen = split_all (color.hexToRgba theme.colors.bright.green);
     brightred = split_all (color.hexToRgba theme.colors.bright.red);
     orange = split_all (color.hexToRgba theme.colors.bright.red);
   };
@@ -55,5 +55,5 @@ in with rgbpallete; ''
   Dialog Size=600,480
 
   [General]
-  TerminalApplication=wezterm
+  TerminalApplication=alacritty
 ''

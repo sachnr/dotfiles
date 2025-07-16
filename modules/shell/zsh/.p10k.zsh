@@ -16,6 +16,7 @@
     node_version
     rust_version
     luaenv
+    virtualenv
     pyenv
     nix_shell
     go_version
@@ -227,6 +228,7 @@ typeset -g POWERLEVEL9K_PYENV_BACKGROUND=
 typeset -g POWERLEVEL9K_PYENV_SOURCES=(shell local global)
 typeset -g POWERLEVEL9K_PYENV_CONTENT_EXPANSION='${P9K_CONTENT}${${P9K_CONTENT:#$P9K_PYENV_PYTHON_VERSION(|/*)}:+ $P9K_PYENV_PYTHON_VERSION}'
 typeset -g POWERLEVEL9K_PYENV_VISUAL_IDENTIFIER_EXPANSION=' '
+typeset -g POWERLEVEL9K_VIRTUALENV_SHOW_WITH_PYENV=true
 
 #  ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
 #  ┃                          Nodejs                          ┃
@@ -261,6 +263,16 @@ typeset -g POWERLEVEL9K_PYENV_VISUAL_IDENTIFIER_EXPANSION=' '
   typeset -g POWERLEVEL9K_LUAENV_PROMPT_ALWAYS_SHOW=false
   typeset -g POWERLEVEL9K_LUAENV_SHOW_SYSTEM=true
   typeset -g POWERLEVEL9K_LUAENV_VISUAL_IDENTIFIER_EXPANSION=' '
+
+#  ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+#  ┃                        virtualenv                        ┃
+#  ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+  typeset -g POWERLEVEL9K_VIRTUALENV_FOREGROUND=11
+  typeset -g POWERLEVEL9K_LUAENV_BACKGROUND=
+  typeset -g POWERLEVEL9K_VIRTUALENV_SHOW_PYTHON_VERSION=false
+  typeset -g POWERLEVEL9K_VIRTUALENV_{LEFT,RIGHT}_DELIMITER=
+  typeset -g POWERLEVEL9K_VIRTUALENV_VISUAL_IDENTIFIER_EXPANSION=' '
+
 
 #  ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
 #  ┃                         Options                          ┃

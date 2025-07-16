@@ -12,13 +12,14 @@ in with lib; {
   config = mkIf cfg.enable {
     services.picom = {
       enable = true;
-      package = pkgs.picom-git;
+      package = pkgs.picom;
       backend = "glx";
       settings = {
         corner-radius = 8;
-        blur-size = 6;
+        blur-size = 3;
         blur-method = "dual_kawase";
-        blur-background = false;
+        deviation = 0.84089642;
+        blur-background = true;
         blur-background-frame = false;
         blur-strength = 5;
         blur-background-exclude = [
@@ -47,7 +48,7 @@ in with lib; {
           "window_type = 'tooltip'"
           "_GTK_FRAME_EXTENTS@:c"
         ];
-        vsync = false;
+        vsync = true;
         detect-rounded-corners = true;
         detect-client-opacity = true;
         unredir-if-possible = false;

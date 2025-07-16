@@ -28,15 +28,9 @@ in with lib; {
         }
       ];
     };
+    xsession = { enable = true; };
     home = {
-      packages = with pkgs; [
-        scrot
-        xclip
-        i3lock-color
-        i3lock-script
-        redshift
-        dconf
-      ];
+      packages = with pkgs; [ scrot xclip i3lock-script redshift dconf ];
     };
     xresources = {
       extraConfig = import ./xresources.nix { inherit theme dpi; };

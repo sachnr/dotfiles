@@ -25,7 +25,7 @@
   };
 
   networking = {
-    hostName = "sachnr-nixos";
+    hostName = "thinkpad";
     networkmanager.enable =
       true; # Easiest to use and most distros use this by default.
     proxy.noProxy = "127.0.0.1,localhost,internal.domain";
@@ -36,7 +36,7 @@
 
   environment = {
     sessionVariables = {
-      QT_QPA_PLATFORMTHEME = "qt5ct";
+      QT_QPA_PLATFORMTHEME = "gtk3";
       EDITOR = "nvim";
     };
 
@@ -67,6 +67,20 @@
   security = {
     polkit.enable = true;
     rtkit.enable = true;
+    pam.services.i3lock.text = ''
+      # Account management.
+      account required pam_unix.so
+
+      # Authentication management.
+      auth required pam_unix.so nullok_secure
+
+      # Password management.
+      password required pam_unix.so nullok sha512
+
+      # Session management.
+      session required pam_env.so conffile=/etc/pam/environment readenv=0
+      session required pam_unix.so
+    '';
     pam.services.swaylock.text = ''
       # Account management.
       account required pam_unix.so
@@ -94,16 +108,17 @@
     # printing.enable = true;
   };
 
-  # Enable display manager
   services.xserver = {
     enable = true;
-    # dpi = 142;
+    dpi = 96;
     xkb = { layout = "us"; };
     videoDrivers = [ "amdgpu" ];
-    displayManager = { gdm = { enable = true; }; };
   };
 
-  services.displayManager.sessionPackages = [ ];
+  services.displayManager = {
+    gdm = { enable = true; };
+    sessionPackages = [ ];
+  };
 
   services.libinput = {
     enable = true;
@@ -112,21 +127,19 @@
       accelSpeed = "0";
     };
     touchpad = {
-      tapping = true;
-      tappingButtonMap = "lrm";
-      accelProfile = "flat";
-      accelSpeed = "0";
+      disableWhileTyping = true;
+      tapping = false;
     };
   };
 
-  hardware.pulseaudio.enable = true;
+  services.pulseaudio.enable = false;
 
   services.pipewire = {
-    enable = false;
-    alsa.enable = false;
-    alsa.support32Bit = false;
-    wireplumber.enable = false;
-    pulse.enable = false;
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    wireplumber.enable = true;
+    pulse.enable = true;
   };
 
   # services.tlp = {
@@ -168,11 +181,14 @@
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 
+  networking.firewall.enable = true;
+  networking.firewall.allowPing = true;
+
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It’s perfectly fine and recommended to leave
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "23.11"; # Did you read the comment?
+  system.stateVersion = "25.05"; # Did you read the comment?
 }

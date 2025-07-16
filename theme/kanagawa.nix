@@ -46,7 +46,7 @@ in {
   };
 
   settings = {
-    gtk = "numix"; 
+    gtk = "Kanagawa-B"; 
     qt-style = "Adwaita-Dark";
     icon = "icons_papirus";
     font = "Roboto"; 

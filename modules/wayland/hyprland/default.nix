@@ -17,10 +17,9 @@ in with lib; {
       enable = true;
       systemd.enable = true;
       extraConfig = settings;
-      plugins = [ pkgs.hyprlandPlugins.csgo-vulkan-fix ];
     };
 
-    programs.wpaperd = {
+    services.wpaperd = {
       enable = true;
       settings = {
         default = {
@@ -35,20 +34,24 @@ in with lib; {
       enable = true;
       settings = {
         general = {
+          lock_cmd = "pidof hyprlock || hyprlock";
+          before_sleep_cmd = "loginctl lock-session";
           after_sleep_cmd = "hyprctl dispatch dpms on";
-          ignore_dbus_inhibit = false;
-          lock_cmd = "hyprlock";
         };
 
         listener = [
           {
-            timeout = 900;
-            on-timeout = "hyprlock";
+            timeout = 600;
+            on-timeout = "loginctl lock-session";
           }
           {
-            timeout = 1200;
+            timeout = 660;
             on-timeout = "hyprctl dispatch dpms off";
             on-resume = "hyprctl dispatch dpms on";
+          }
+          {
+            timeout = 1800;
+            on-timeout = "systemctl suspend";
           }
         ];
       };
@@ -59,38 +62,13 @@ in with lib; {
 
     programs.hyprlock = {
       enable = true;
-      extraConfig = ''
-        background {
-            monitor = 
-            path = ${theme.wallpaper} 
-            color = rgba(25, 20, 20, 1.0)
-
-            # all these options are taken from hyprland, see https://wiki.hyprland.org/Configuring/Variables/#blur for explanations
-            blur_passes = 0 # 0 disables blurring
-            blur_size = 7
-            noise = 0.0117
-            contrast = 0.8916
-            brightness = 0.8172
-            vibrancy = 0.1696
-            vibrancy_darkness = 0.0
-        }
-        text = Hi there, $USER
-        text_align = center 
-        color = rgba(200, 200, 200, 1.0)
-        font_size = 25
-        font_family = Noto Sans
-        rotate = 0 # degrees, counter-clockwise
-
-        position = 0, 80
-        halign = center
-        valign = center
-      '';
+      extraConfig = import ./hyprlock.nix { inherit theme lib; };
     };
 
     home = {
       packages = with pkgs; [
         libsForQt5.qt5.qtwayland
-        kdePackages.qtwayland
+        kdePackages.qtwayland # this is qt6 wayland
         egl-wayland
         grim
         slurp
@@ -99,6 +77,7 @@ in with lib; {
         wl-clipboard
         wlr-randr
         wpaperd
+        wf-recorder
       ];
     };
   };

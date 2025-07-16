@@ -12,47 +12,45 @@ let
       allowUnfree = true;
     };
   };
-  theme = import ../../theme/ayu.nix { inherit pkgs; };
+  theme = import ../../theme/rosepine.nix { inherit pkgs; };
   fonts = import ./fonts.nix { inherit theme lib pkgs; };
-  dpi = "0";
+  dpi = "96";
 in lib.nixosSystem {
   inherit system pkgs;
   modules = [
     ./configuration.nix
     fonts
-    inputs.nur.nixosModules.nur
+    inputs.nur.modules.nixos.default
     inputs.home-manager.nixosModules.home-manager
 
     {
       services.xserver.windowManager.awesome = {
         enable = true;
-        luaModules = with pkgs.luajitPackages; [ luarocks lgi ];
-      };
-
-      programs.sway = {
-        enable = true;
-        package = pkgs.swayfx;
-        wrapperFeatures.gtk = true;
-      };
-
-      programs.hyprland.enable = true;
-
-      xdg.portal = {
-        enable = true;
-        extraPortals =
-          [ pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-hyprland ];
+        package = pkgs.awesome-git;
+        luaModules = with pkgs.luajitPackages; [ luarocks lgi luv ];
       };
 
       virtualisation.docker.enable = true;
 
+      programs.i3lock = {
+        enable = true;
+        package = pkgs.i3lock-color;
+      };
+
       programs.zsh.enable = true;
+      programs.fish.enable = true;
       users.users.${user} = {
         isNormalUser = true;
         extraGroups = [ "wheel" "video" "audio" "users" "docker" ];
-        shell = pkgs.zsh;
+        shell = pkgs.fish;
       };
 
       users.extraGroups.docker.members = [ user ];
+
+      services = {
+        udisks2.enable = true;
+        devmon.enable = true;
+      };
 
       home-manager = {
         useGlobalPkgs = true;

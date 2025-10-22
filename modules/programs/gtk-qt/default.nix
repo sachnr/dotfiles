@@ -1,7 +1,7 @@
 { pkgs, config, lib, theme, user, ... }:
 let
   cfg = config.modules.programs.gtk-qt;
-  # oomox = pkgs.callPackage ../../../pkgs/themix-gui.nix { inherit theme; };
+  oomox = pkgs.callPackage ../../../pkgs/themix-gui.nix { inherit theme; };
   # qt5ct = import ./qt5ct.nix { inherit theme user pkgs oomox; };
   # qt6ct = import ./qt6ct.nix { inherit theme user pkgs oomox; };
   # kdeglobal = import ./kdeglobal.nix { inherit pkgs lib theme; };
@@ -22,6 +22,8 @@ in with lib; {
         gnome-themes-extra
         rose-pine-gtk-theme
         sassc
+        papirus-icon-theme
+        oomox
       ];
       pointerCursor = {
         package = pkgs.phinger-cursors;
@@ -42,7 +44,7 @@ in with lib; {
         extraConfig = {
           gtk-xft-antialias = 0;
           gtk-xft-hinting = 1;
-          gtk-xft-hintstyle = "hintslight";
+          gtk-xft-hintstyle = "hintmedium";
           gtk-xft-rgba = "none";
         };
         extraCss = with theme.colors; ''

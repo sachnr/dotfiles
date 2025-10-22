@@ -14,7 +14,7 @@ let
   };
   theme = import ../../theme/ayu.nix { inherit pkgs; };
   fonts = import ./fonts.nix { inherit theme lib pkgs; };
-  dpi = 109;
+  dpi = 108;
 in lib.nixosSystem {
   inherit system pkgs;
   modules = [

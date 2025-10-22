@@ -4,25 +4,22 @@ let rp = str: lib.strings.removePrefix "#" str;
 in ''
   # -*- conf -*-
 
-  font=Iosevka:size=12
+  font=Iosevka:size=9
   font-size-adjustment=0.5
-  dpi-aware=no
+  dpi-aware=yes
   pad=6x6
   underline-offset=2px
 
   [cursor]
   style=block
-  # color=<inverse foreground/background>
   blink=no
   beam-thickness=1.5
-  # underline-thickness=<font underline thickness>
 
   [colors]
-  alpha=1.0
-  background=${rp primary.background}
+  alpha=0.8
+  background=0a0a0a
+  # background=${rp primary.background}
   foreground=${rp primary.foreground}
-  flash=${rp normal.green}
-  flash-alpha=0.5
 
   ## Normal/regular colors (color palette 0-7)
   regular0=${rp normal.black}  # black

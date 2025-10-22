@@ -36,10 +36,9 @@ in with lib; {
             x = 10;
             y = 10;
           };
-          decorations = "full";
+          decorations = "none";
           dynamic_padding = true;
-          decorations_theme_variant = "Dark";
-          opacity = 1;
+          opacity = 0.8;
           dimensions = {
             columns = 120;
             lines = 30;
@@ -59,7 +58,7 @@ in with lib; {
             family = "IosevkaTerm NF";
             style = "Bold Italic";
           };
-          size = 13;
+          size = 12.5;
         };
         # bell = {
         #   animation = "EaseOutExpo";

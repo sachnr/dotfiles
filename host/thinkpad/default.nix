@@ -12,9 +12,9 @@ let
       allowUnfree = true;
     };
   };
-  theme = import ../../theme/rosepine.nix { inherit pkgs; };
+  theme = import ../../theme/cyberdream.nix { inherit pkgs; };
   fonts = import ./fonts.nix { inherit theme lib pkgs; };
-  dpi = "96";
+  dpi = "108";
 in lib.nixosSystem {
   inherit system pkgs;
   modules = [
@@ -37,7 +37,8 @@ in lib.nixosSystem {
         package = pkgs.i3lock-color;
       };
 
-      programs.zsh.enable = true;
+      programs.hyprland = { enable = true; };
+
       programs.fish.enable = true;
       users.users.${user} = {
         isNormalUser = true;

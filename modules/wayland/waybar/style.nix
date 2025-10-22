@@ -7,7 +7,7 @@ with theme.colors; ''
       font-size: 12px;
     }
     window#waybar {
-      background: ${normal.black};
+      background: rgba(0,0,0,0.6);
       color: ${primary.foreground};
       box-shadow: 5px 4px 3px 0px rgba(1, 2, 3, 0.6);
     }

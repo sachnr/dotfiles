@@ -39,8 +39,6 @@ in with lib; {
         '';
       };
 
-      mpdris2.enable = true;
-
       # mopidy = {
       #   enable = true;
       #   extensionPackages = with pkgs; [ mopidy-mpd mopidy-youtube ];

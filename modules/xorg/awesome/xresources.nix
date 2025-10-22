@@ -1,10 +1,10 @@
 { theme, dpi }:
 with theme.colors; ''
   Xft.dpi: ${toString dpi}
-  Xft.antialias: 1
+  Xft.antialias: 0
   Xft.hinting: 1
   Xft.autohint: 0
-  Xft.hintstyle: hintslight
+  Xft.hintstyle: hintmedium
   Xft.rgba:	none
   Xft.lcdfilter: none
 

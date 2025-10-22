@@ -110,13 +110,16 @@
 
   services.xserver = {
     enable = true;
-    dpi = 96;
+    dpi = 108;
     xkb = { layout = "us"; };
     videoDrivers = [ "amdgpu" ];
   };
 
   services.displayManager = {
-    gdm = { enable = true; };
+    gdm = {
+      enable = true;
+      wayland = true;
+    };
     sessionPackages = [ ];
   };
 
@@ -159,11 +162,13 @@
         "https://cache.nixos.org?priority=10"
         "https://nixpkgs-wayland.cachix.org"
         "https://nix-community.cachix.org"
+        "https://ghostty.cachix.org"
       ];
       trusted-public-keys = [
         "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
         "nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA="
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+        "ghostty.cachix.org-1:QB389yTa6gTyneehvqG58y0WnHjQOqgnA+wBnpWWxns="
       ];
       experimental-features = [ "nix-command" "flakes" ];
       auto-optimise-store = true;

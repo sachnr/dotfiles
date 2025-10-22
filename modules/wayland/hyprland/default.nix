@@ -15,6 +15,7 @@ in with lib; {
   config = mkIf (cfg.enable) {
     wayland.windowManager.hyprland = {
       enable = true;
+      package = null;
       systemd.enable = true;
       extraConfig = settings;
     };
@@ -23,7 +24,7 @@ in with lib; {
       enable = true;
       settings = {
         default = {
-          path = "/home/${user}/Wallpapers";
+          path = "/home/${user}/wallpapers";
           duration = "15m";
           sorting = "ascending";
         };

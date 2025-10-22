@@ -36,6 +36,8 @@ in {
         unrar
         unzip
         zip
+        fd
+        bat
 
         # Language Servers
         sumneko-lua-language-server

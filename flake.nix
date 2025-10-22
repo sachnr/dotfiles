@@ -24,6 +24,8 @@
     };
 
     wsl.url = "github:nix-community/NixOS-WSL";
+
+    ghostty = { url = "github:ghostty-org/ghostty"; };
   };
 
   outputs = inputs@{ self, ... }: {

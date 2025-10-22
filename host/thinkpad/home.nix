@@ -1,4 +1,4 @@
-{ lib, user, pkgs, ... }:
+{ lib, user, pkgs, inputs, ... }:
 let
   get_dirs = path:
     (lib.attrsets.mapAttrsToList (name: _: path + ("/" + name))
@@ -22,7 +22,7 @@ in {
     home = {
       username = user;
       homeDirectory = "/home/${user}";
-      stateVersion = "25.11";
+      stateVersion = "25.05";
 
       file."/home/${user}/links/cpp_debug".source =
         "${pkgs.vscode-extensions.ms-vscode.cpptools}/share/vscode/extensions/ms-vscode.cpptools/debugAdapters/bin/OpenDebugAD7";
@@ -51,12 +51,26 @@ in {
         glow
         brightnessctl
         gpick
-        ghostty
         cloudflared
-        gimp
+
+        # terminal
+        tmux
+        eza
+        bat
+        fd
+        fzf
+        bottom
+        yazi
+        vscode
+        blender
+        krita
 
         # General
         networkmanagerapplet
+
+        # games
+        extremetuxracer
+        tuxtype
 
         # Media
         feh
@@ -77,9 +91,12 @@ in {
         # compilers
         rustup
         go
+        zig
+        odin
+        ols
         clang
         clang-tools
-        gitlab-ci-ls
+        # gitlab-ci-ls
 
         # Dev-tools
         git
@@ -119,9 +136,13 @@ in {
       };
     };
 
-    xdg.userDirs = {
-      enable = true;
-      createDirectories = true;
+    xdg = {
+      userDirs = {
+        enable = true;
+        createDirectories = true;
+      };
+      portal.enable = true;
+      portal.configPackages = [ pkgs.gnome-session ];
     };
 
     modules = {
@@ -138,10 +159,11 @@ in {
         gtk-qt.enable = true;
         neovim.enable = true;
         kitty.enable = false;
+        ghostty.enable = false;
         wezterm.enable = false;
-        foot.enable = false;
+        foot.enable = true;
         rofi.enable = true;
-        qutebrowser.enable = true;
+        qutebrowser.enable = false;
         alacritty.enable = true;
         st.enable = false;
       };
@@ -154,7 +176,7 @@ in {
       };
       shell = {
         zsh = {
-          enable = true;
+          enable = false;
           host = "thinkpad";
         };
         tmux.enable = true;

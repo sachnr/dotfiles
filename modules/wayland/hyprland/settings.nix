@@ -16,7 +16,7 @@ in with theme.colors; ''
   # See https://wiki.hyprland.org/Configuring/Keywords/
 
   # Set programs that you use
-  $terminal = ghostty
+  $terminal = foot
   $fileManager = pcmanfm
   $menu = rofi -show drun
 
@@ -33,9 +33,10 @@ in with theme.colors; ''
   # exec-once = waybar & hyprpaper & firefox
   exec = pkill waybar;waybar
   exec = pkill wpaperd;wpaperd
-  exec= i3status-rs ~/.config/i3status/config.toml
+  # exec= i3status-rs ~/.config/i3status/config.toml
   exec-once = nm-applet --indicator
   exec-once = blueman-applet
+  # exec-once = ~/.local/bin/ghostty --gtk-single-instance=true --quit-after-last-window-closed=false --initial-window=false
 
   #############################
   ### ENVIRONMENT VARIABLES ###
@@ -45,6 +46,7 @@ in with theme.colors; ''
 
   env = XCURSOR_SIZE,24
   env = HYPRCURSOR_SIZE,24
+  env = NIXOS_OZONE_WL,1
 
   #####################
   ### LOOK AND FEEL ###
@@ -54,14 +56,12 @@ in with theme.colors; ''
 
   # https://wiki.hyprland.org/Configuring/Variables/#general
   general { 
-      gaps_in = 4
-      gaps_out = 6
+      gaps_in = 8
+      gaps_out = 10
       border_size = 2
 
       # https://wiki.hyprland.org/Configuring/Variables/#variable-types for info about colors
-      col.active_border=rgb(${rp normal.red}) rgb(${rp normal.green}) rgb(${
-        rp normal.blue
-      }) 270deg
+      col.active_border=rgba(${rp primary.accent}ff) 
       col.inactive_border=rgba(${rp primary.background}ff)
 
       # Set to true enable resizing windows by clicking and dragging on borders and gaps
@@ -76,7 +76,7 @@ in with theme.colors; ''
 
   # https://wiki.hyprland.org/Configuring/Variables/#decoration
   decoration {
-      rounding = 10
+      rounding = 4
 
       # Change transparency of focused and unfocused windows
       active_opacity = 1.0
@@ -91,11 +91,16 @@ in with theme.colors; ''
 
       # https://wiki.hyprland.org/Configuring/Variables/#blur
       blur {
-          enabled = true
-          size = 3
-          passes = 1
-          
-          vibrancy = 0.1696
+          enabled            = true
+          size               = 4      
+          passes             = 2       
+          new_optimizations  = true
+          ignore_opacity     = true
+          xray               = true
+          noise              = 0.020   
+          contrast           = 0.85    
+          brightness         = 0.80    
+          vibrancy           = 0.22    
       }
   }
 
@@ -164,7 +169,7 @@ in with theme.colors; ''
 
       follow_mouse = 1
 
-      sensitivity = 0 # -1.0 - 1.0, 0 means no modification.
+      sensitivity = 0
 
       accel_profile=flat
       force_no_accel=true
@@ -174,12 +179,14 @@ in with theme.colors; ''
 
       touchpad {
           natural_scroll = false
+          tap-to-click = false
+          disable_while_typing = true
       }
   }
 
   # https://wiki.hyprland.org/Configuring/Variables/#gestures
   gestures {
-      workspace_swipe = true
+      # workspace_swipe = true
   }
 
   # Example per-device config
@@ -188,6 +195,10 @@ in with theme.colors; ''
   #     name = epic-mouse-v1
   #     sensitivity = -0.5
   # }
+
+  cursor { 
+    hide_on_key_press = true
+  }
 
   ####################
   ##### Plugins ######
@@ -211,7 +222,8 @@ in with theme.colors; ''
   bind = $mainMod, t, togglefloating,
   bind = $mainMod, P, pseudo, # dwindle
   bind = $mainMod, D, togglesplit, # dwindle
-  bind = ,Print,exec,grim -t png -g slurp ~/Pictures/$(date +%Y-%m-%d_%H-%m-%s).png
+  bind = ,Print, exec, grim -g "$(slurp -d)" - | wl-copy
+  # bind = ,Print,exec,grim -t png -g slurp ~/Pictures/$(date +%Y-%m-%d_%H-%m-%s).png
   bind = $mainMod, F2, exec, hyprlock
   bind = $mainMod, f, fullscreen,0
   bind = $mainMod SHIFT, r, exec, hyprctl reload
@@ -222,6 +234,12 @@ in with theme.colors; ''
    bind = $mainMod, L, movefocus, r
    bind = $mainMod, K, movefocus, u
    bind = $mainMod, J, movefocus, d
+
+  # Move focus with mainMod + hjkl
+   bind = $mainMod SHIFT, H, movewindow, l
+   bind = $mainMod SHIFT, L, movewindow, r
+   bind = $mainMod SHIFT, K, movewindow, u
+   bind = $mainMod SHIFT, J, movewindow, d
 
   # Switch workspaces with mainMod + [0-9]
   bind = $mainMod, 1, workspace, 1
@@ -293,10 +311,6 @@ in with theme.colors; ''
   # windowrulev2 = float,class:^(kitty)$,title:^(kitty)$
 
   windowrulev2 = suppressevent maximize, class:.* # You'll probably like this.
-  windowrule=float,Rofi
-  windowrule=float,^(blueman-manager)$
-  windowrule=idleinhibit fullscreen,brave
-  windowrule=float,Steam Guard
   windowrulev2=float,class:^(GtkFileChooserDialog)$,title:^(Open File)$|^(Save File)$|^(Preferences)$
   windowrulev2=float,class:^(nm-connection-editor)$
   windowrulev2=float,class:^(lxappearance)$
@@ -307,4 +321,5 @@ in with theme.colors; ''
   windowrulev2=noblur,class:^(Firefox)$
   windowrulev2=noblur,class:^()$,title:^()$
   windowrule = nofocus,class:^$,title:^$,xwayland:1,floating:1,fullscreen:0,pinned:0
+  windowrulev2 = opacity 1.0,class:^(com.mitchellh.ghostty)$
 ''

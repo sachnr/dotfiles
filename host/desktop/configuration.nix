@@ -154,7 +154,7 @@ in {
   # Enable display manager
   services.xserver = {
     enable = true;
-    dpi = 109;
+    dpi = 108;
     xkb = { layout = "us"; };
     videoDrivers = [ "nvidia" ];
     displayManager = { gdm = { enable = true; }; };

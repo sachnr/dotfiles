@@ -322,7 +322,7 @@ in with lib; {
   };
 
   config = mkIf cfg.enable {
-    home = { packages = with pkgs; [ rofi-wayland ]; };
+    home = { packages = with pkgs; [ rofi ]; };
     home.file.".config/rofi/config.rasi".text = roficfg;
   };
 }

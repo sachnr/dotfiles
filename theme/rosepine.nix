@@ -49,8 +49,8 @@ in {
   settings = {
     gtk = "rose-pine";
     qt-style = "Adwaita-Dark";
-    icon = "icons_papirus";
-    font = "Iosevka";
-    fontmonospace = "Iosevka";
+    icon = "Papirus-Dark";
+    font = "IosevkaTerm NF";
+    fontmonospace = "IosevkaTerm NF";
   };
 }

@@ -6,7 +6,8 @@
       roboto
       nerd-fonts.jetbrains-mono
       nerd-fonts.symbols-only
-      nerd-fonts.iosevka-term
+      aporetic-bin
+      iosevka-bin
     ];
 
     fontconfig = {
@@ -19,7 +20,7 @@
       hinting = {
         enable = true;
         autohint = false;
-        style = "slight";
+        style = "medium";
       };
       defaultFonts = {
         serif = [ "Roboto" "Symbols Nerd Font Mono" ];

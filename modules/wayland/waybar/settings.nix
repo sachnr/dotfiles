@@ -1,7 +1,7 @@
 { theme, ... }: {
   mainBar = {
     layer = "top";
-    position = "top";
+    position = "bottom";
     height = 26;
     mode = "dock";
     exclusive = true;
